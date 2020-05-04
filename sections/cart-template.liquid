@@ -1,0 +1,346 @@
+{% comment %}
+** Cart page - default view **
+- Template section
+{% endcomment %}
+<div class="container main content">
+  <a name="pagecontent" id="pagecontent"></a>
+  
+  <div class="section clearfix">
+    <div class="sixteen columns">
+      <h1>{{ 'cart.general.title' | t }}</h1>
+      <div class="feature_divider"></div>
+    </div>
+  </div>
+  
+  {% if cart.item_count == 0 %}
+    <div class="sixteen columns">
+      <div class="section clearfix">
+        <div class="six columns offset-by-five medium-down--one-whole">
+          <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
+  
+          <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/solar-ovens{% endif %}" class="button action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+        </div>
+        <br class="clear" />
+      </div>
+    </div>
+  {% else %}
+  
+    <form action="#cart" method="post" id="cart_form">
+      <div class="section clearfix">
+        <div class="eleven columns medium-down--one-whole cart-items">
+          {% assign total_saving = 0 %}
+          {% for item in cart.items %}
+            {% if item.variant.compare_at_price > item.variant.price %}
+              {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+              {% assign total_saving = saving | plus: total_saving %}
+            {% endif %}
+  
+            <div class="section clearfix">
+              <div class="five columns alpha">
+                <a href="{{ item.url }}" title="{{ item.title | escape }}" class="cart_page_image">
+                  {% include 'image-element', image: item, alt: item.title, object_fit: settings.align_height, max_height: settings.collection_height %}
+                </a>
+              </div>
+  
+              <div class="eleven columns omega cart_content_info">
+                <h3>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h3>
+  
+                {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                  <p class="meta">
+                    {% for option in item.product.options %}
+                      <span class="label">{{ option }}:</span> <span>{{ item.variant.options[forloop.index0] }}</span><br />
+                    {% endfor %}
+                  </p>
+                {% endunless %}
+  
+                {% if item.properties %}
+                  <p>
+                    {% for p in item.properties %}
+                      {% unless p.last == blank %}
+                        {% if p.last contains '/uploads/' %}
+                          <div>
+                            {{ p.first }}: <a class="lightbox" href="{{ p.last }}">{{ 'cart.general.uploaded_file' | t }}</a>
+                          </div>
+                        {% else %}
+                          <div>
+                            {{ p.first }}: {{ p.last }}
+                          </div>
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                  </p>
+                {% endif %}
+  
+                <p class="modal_price">
+                  {% if item.price > 0 %}
+                    <span class="money">{{ item.price | money }}</span>
+                  {% else %}
+                    {{ settings.free_price_text }}
+                  {% endif %}
+  
+                  {% if item.price < item.variant.compare_at_price %}
+                    <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
+                  {% endif %}
+                </p>
+  
+                <div class="product-quantity-box left">
+                  <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                  <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %} />
+                  <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+          {% endfor %}
+        </div>
+  
+        <div class="five columns medium-down--one-whole">
+          <div class="section clearfix">
+            <div class="subtotal">
+
+
+
+
+
+
+
+
+<div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
+  <table class="total-line-table">
+
+<tbody class="total-line-table__tbody">
+
+
+
+    <tr class="total-line total-line--shipping">
+<th class="total-line__name" scope="row">
+<span>
+  Shipping
+</span>
+</th>
+<td class="total-line__price">
+<span class="order-summary__small-text" data-checkout-total-shipping-target="0">
+  Calculated at next step
+</span>
+</td>
+</tr>
+
+
+    <tr class="total-line total-line--taxes " data-checkout-taxes="">
+<th class="total-line__name" scope="row">Taxes</th>
+<td class="total-line__price">
+<span class="order-summary__emphasis" >Calculated at next step</span>
+</td>
+</tr>
+
+<tr class="total-line total-line--subtotal">
+  <th class="total-line__name" scope="row">Your savings</th>
+  <td class="total-line__price">
+  <span class="order-summary__emphasis" >
+    {{ total_saving | money }}
+  </span>
+  </td>
+  </tr>
+  
+
+</tbody>
+<tfoot class="total-line-table__footer">
+<tr class="total-line">
+  <th class="total-line__name payment-due-label" scope="row">
+    <span class="payment-due-label__total">Subtotal</span>
+  </th>
+  <td class="total-line__price payment-due">
+    <span class="payment-due__price" >
+      {{ cart.total_price | money }}
+    </span>
+  </td>
+</tr>
+</tfoot>
+</table>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{% if settings.show_multiple_currencies %}
+<p>
+  <small>
+    {{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
+  </small>
+</p>
+{% endif %}
+
+
+<div class="order-summary__section">
+  {% if section.settings.display_special_instructions %}
+  <label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
+  <textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>
+  {% endif %}
+</div>
+
+{% if settings.display_tos_checkbox %}
+<p>
+  <input type="checkbox" class="tos_agree" id="cart_agree" required />
+    <label class="tos_label" for="cart_agree">
+      {{ 'cart.general.agree_to_terms_html' | t }}
+    </label>
+  {% if settings.tos_page != blank %}
+    <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+  {% endif %}
+</p>
+{% endif %}
+
+{% if section.settings.cart_message != blank %}
+<div>
+  {{ section.settings.cart_message }}
+</div>
+{% endif %}
+
+<div class="order-summary__section"></div>
+
+<p>
+<button type="submit" class="button action_button add_to_cart" id="checkout" name="checkout">{% if settings.show_lock_icon %}<span class="buttonicon-lock"></span>{% endif %}{{ 'cart.general.checkout' | t }}</button>
+</p>
+
+</div>
+<div class="order-summary__section">
+
+{% if content_for_additional_checkout_buttons %}
+<p class="text-center clr-sub"> - Or checkout with -</p>
+<div class="additional-checkout-buttons">
+  {{ content_for_additional_checkout_buttons }}
+</div>
+{% endif %}
+
+</div>
+
+{% if cart.item_count > 0 %}
+<div class="featured-links">
+  <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}" class="secondary_button">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+</div>
+{% endif %}
+</div>
+</div>
+{% include 'cart-shipping-calculator' %}
+<a href="//www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" title="This online store is secured by Shopify" target="_blank"><img src="//cdn.shopify.com/s/images/badges/shopify-secure-badge-light-shadow.png" alt="Shopify secure badge" /></a>
+</div>
+</div>
+</form>
+
+
+{% endif %}
+<div>
+</div>
+<p></p>
+
+<!--SteelHouse Tracking Pixel-->
+      <!-- INSTALL ON ALL PAGES OF SITE-->
+      <script type="text/javascript">
+      (function(){"use strict";var e=null,b="4.0.0",
+      n="13060",
+      additional="",
+      t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.steelhousemedia.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
+
+      </script>
+
+
+</div>
+
+
+{% schema %}
+
+{
+"name": "Cart page",
+"class": "cart-section",
+"settings": [
+{
+"type": "checkbox",
+"id": "display_special_instructions",
+"label": "Show \"note\" text box"
+},
+{
+"type": "checkbox",
+"id": "display_savings",
+"label": "Show total savings",
+"default": true
+},
+{
+"type": "richtext",
+"id": "cart_message",
+"label": "Cart message"
+}
+],
+"blocks": [
+{
+"type": "featured_collection",
+"name": "Featured collection",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "You may also be interested in"
+},
+{
+"type": "checkbox",
+"id": "collection_description",
+"label": "Show collection description",
+"default": false
+},
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection"
+},
+{
+"type": "radio",
+"id": "collection_style",
+"label": "Collection layout",
+"default": "grid",
+"options": [
+{
+"value": "slider",
+"label": "Slider"
+},
+{
+"value": "grid",
+"label": "Grid"
+}
+]
+},
+{
+"type": "range",
+"id": "products_per",
+"label": "Products per row",
+"min": 2,
+"max": 7,
+"step": 1,
+"default": 6
+},
+{
+"type": "range",
+"id": "products_limit",
+"label": "Limit products",
+"min": 2,
+"max": 50,
+"step": 1,
+"default": 6
+}
+]
+}
+]
+}
+
+{% endschema %}

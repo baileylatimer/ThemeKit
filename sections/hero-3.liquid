@@ -1,0 +1,66 @@
+{% comment %}
+** Hero 3 - homepage partial **
+- Draggable section
+{% endcomment %}
+
+{% include 'include-hero-3' %}
+
+{% schema %}
+
+{
+  "name": "Hero 3",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "wide_display",
+      "label": "Wide display",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (Left)"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button1",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_external",
+      "label": "Open link in new tab",
+      "default": false
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": "Hero 3",
+      "category": "Image",
+      "settings": {
+        "image": "",
+        "title": "Living off-grid has never been easier."
+      }
+    }
+  ]
+}
+
+{% endschema %}

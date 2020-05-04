@@ -1,0 +1,95 @@
+{% if section.settings.show_payment_button %}
+  {% assign show_payment_button = true %}
+{% elsif show_payment_button_quickshop %}
+  {% assign show_payment_button = true %}
+{% else %}
+  {% assign show_payment_button = false %}
+{% endif %}
+
+{% assign variant = product.selected_or_first_available_variant %}
+
+<div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
+      id="product-form-{{ product.id }}"
+      data-product-form
+      data-money-format="{{ shop.money_format }}"
+      data-shop-currency="{{ shop.currency }}"
+      data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+      data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+      data-product="{{ product | json | escape }}"
+      {% if settings.limit_quantity or settings.display_inventory_left %}
+        data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+      {% endif %}
+      data-product-id="{{ product.id }}"
+      >
+  {% form 'product', product %}
+
+  {% if product.options.size > 1 %}
+    <div class="select">
+      <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
+        {% for v in product.variants %}
+          <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  {% elsif product.options.size == 1 and product.variants.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
+    <div class="select">
+      <label>{{ product.options[0] }}</label>
+      <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
+        {% for v in product.variants %}
+          <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  {% else %}
+    <input type="hidden" name="id" value="{{ variant.id }}" />
+  {% endif %}
+
+  {% if settings.product_form_style == "swatches" and product.variants.size > 1 or settings.product_form_style == "swatches" and product.options[0] != "Title" %}
+    <div class="swatch_options">
+      {% for option in product.options %}
+        {% include 'product-swatch' with option %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if product.available %}
+    {% if settings.display_inventory_left %}
+      <div class="items_left">
+        {% if variant.inventory_management != blank and variant.inventory_quantity > 0 %}
+          {% capture items_left_text %}
+            {% if variant.inventory_quantity == 1 %}
+              {{ 'products.product.items_left_count.one' | t }}
+            {% else %}
+              {{ 'products.product.items_left_count.other' | t }}
+            {% endif %}
+          {% endcapture %}
+          {% if variant.inventory_quantity <= settings.inventory_threshold %}
+            {{ variant.inventory_quantity }} {{ items_left_text }}
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+
+     <div class="info-item--product">
+            <span class="icon">
+              <i class="material-icons">verified_user</i>
+            </span>
+            <a title="Warranty Policy | GoSun" href="/pages/warranty"> <b>1-Year</b>  Warranty and Money-Back Guarantee</a>
+          </div>
+
+
+    <div class="purchase-details">
+
+      <div class=" ">
+
+      
+        <a href="https://www.kickstarter.com/projects/patricksherwin/gosun-flatware-reusable-utensils-to-stop-single-use-plastic" target="_blank" type=""  class=" button button-cherry -hollow -kickstarter" >
+          Pre-order on <img src="https://ksr-static.imgix.net/d3rwhjkg-kickstarter-logo-white.png?ixlib=rb-2.1.0&amp;s=244bcba8f71f4d229d1cbae730f4d7b9">
+        </a>
+
+      </div>
+    </div>
+  {% endif %}
+{% endform %}
+</div>

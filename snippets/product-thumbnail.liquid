@@ -1,0 +1,47 @@
+<div class="
+  {% if products_per_row == 2 %}
+    eight columns
+  {% elsif products_per_row == 3 %}
+    one-third column
+  {% elsif products_per_row == 4 %}
+    four columns
+  {% elsif products_per_row == 5 %}
+    one-fifth column
+  {% elsif products_per_row == 6 %}
+    one-sixth column
+  {% else %}
+    one-seventh column
+  {% endif %}
+  {% if settings.mobile_products_per_row == '1' %}
+    medium-down--one-half
+    small-down--one-whole
+  {% else %}
+    medium-down--one-half
+    small-down--one-half
+  {% endif %}
+  thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}">
+
+  {% assign collection_handles = product.collections | map: 'handle' %}
+  {% assign alt_text = product.featured_image.alt %}
+  {% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
+
+  <article class="article-tile article-tile--lg" >
+    <meta itemprop="image" content="{{ product.featured_image | img_url: '800x' }}">
+    <a href="{{ product.url }}" itemprop="url">
+      <figure class="product-media">
+        <div class="article-violator article-violator--top">
+          {% if violator != blank %}
+            <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
+          {% endif %}
+          <div class="right mr10" onclick="return false">
+            {% render 'flits_wishlist_snippet' with 'flits_collection_page_wsl_btn', product:product %}
+          </div> 
+        </div>
+        <div class="article-media article-media--lg lazyload" style="background-image: url('{{ product.featured_image | img_url: '800x' }};" title="{{ alt_text | escape }} "></div>
+      </figure>
+
+      {% include "product-info" %}
+
+    </a>
+  </article>
+</div>

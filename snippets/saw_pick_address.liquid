@@ -1,0 +1,75 @@
+  <!-- 
+  % include 'sam_pick_address' %
+  -->
+  <div class="sam-pick-address sam-hidden2">
+    <label>Shipping address</label>
+    <select id="sam-shipping-address-no" class="select-disable-wrapper">
+    </select>
+    <br>
+    <a href="/account/addresses" class="sam-add-address"><b>click here to edit or add a new address</b></a>
+  </div>
+
+  <style>
+  .sam-pick-address {
+  }
+  .sam-add-address {
+    font-size: 12px;
+  }
+    
+  #sam-shipping-address-no {
+    width: 12em !important;
+    display: inline !important;
+    margin-bottom: 0;
+    padding: 1px !important;
+    padding-left: 15px !important;
+  }
+
+    /* better to disable SelectView in theme.js.liquid */
+  .select-wrapper { 
+    width: 100% !important;
+    float: none !important;
+  }
+    
+  </style>
+
+
+  <script>
+    function sawDecodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+    
+    window.sam_addresses =  {{customer.addresses | json}};
+    if (window.sam_addresses == null) {
+      window.sam_addresses = []
+    }
+    var h = "<option value=''></option>"
+    for (var i=0; i<sam_addresses.length; i++) {
+      var a = sam_addresses[i]
+      a.address1 = sawDecodeHtml(a.address1)
+      a.address2 = sawDecodeHtml(a.address2)
+      a.city = sawDecodeHtml(a.city)
+      a.company = sawDecodeHtml(a.company)
+      a.first_name = sawDecodeHtml(a.first_name)
+      a.last_name = sawDecodeHtml(a.last_name)
+      a.name = sawDecodeHtml(a.name)
+      sam_addresses[i] = a
+
+      //console.log(a)
+          h += "<option value='" + i + "'>" + a.address1 + " " + a.city + " " + a.zip + "</option>"
+          
+    }
+    jQuery("#sam-shipping-address-no").html(h)
+    
+    setTimeout(function() {
+        if (sam_addresses.length == 0) {
+          jQuery(".purchase-benefits").remove()
+          jQuery(".sam-shipping-address-no").remove()
+          jQuery(".sam-add-address").addClass("sam-add-address-error")
+          
+        }
+    }, 400)
+    
+  </script>
+

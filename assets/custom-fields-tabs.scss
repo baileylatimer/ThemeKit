@@ -1,0 +1,29 @@
+/* https://customfields.zendesk.com/hc/en-us/articles/360000622771 */
+#custom-fields-tabs ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+#custom-fields-tabs ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+#custom-fields-tabs ul.tabs li.current{
+    background: #ededed;
+    color: #222;
+}
+
+#custom-fields-tabs .tab-content{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+}
+
+#custom-fields-tabs .tab-content.current{
+    display: inherit;

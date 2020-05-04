@@ -1,0 +1,35 @@
+
+{% if saw_variant.compare_at_price == blank  or saw_variant.compare_at_price == 0 or saw_variant.compare_at_price < saw_variant.price %}
+	{% assign saw_variant_compare_at_price = saw_variant.price %}
+{% else %}
+	{% assign saw_variant_compare_at_price = saw_variant.compare_at_price %}
+{% endif %}
+
+{% if base_price == 'price' %}
+{% assign saw_variant_compare_at_price = saw_variant.price %}
+{% endif %}
+
+{% assign saw_variant_price = saw_variant.price %}
+
+ {% if saw_discount < 0.99 %}
+        {% assign saw_variant_price = saw_variant_compare_at_price | times: saw_discount %}
+        {% if saw_variant_price > saw_variant.price  %}
+            {% assign saw_variant_price = saw_variant.price %}
+        {% endif %}
+{% endif %}
+
+{% comment %}
+<!-- price_key {{price_key}} saw_variant.metafields.sawholesale[price_key] {{saw_variant.metafields.sawholesale[price_key]}} -->
+{% endcomment %}
+{% if saw_variant.metafields.sawholesale[price_key] == blank %}
+{% else %}
+	{% assign saw_variant_price = saw_variant.metafields.sawholesale[price_key] %}
+{% endif %}
+
+
+{% comment %}
+show largest variant compare price
+{% if saw_variant_compare_at_price < saw_variant.compare_at_price %}
+	{% assign saw_variant_compare_at_price = saw_variant.compare_at_price %}
+{% endif %}
+{% endcomment %}

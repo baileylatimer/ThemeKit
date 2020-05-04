@@ -1,0 +1,117 @@
+{%- comment -%} 
+BC Style Setting 
+
+fTitleTextColor,
+fTitleFontSize,
+fTitleFontWeight,
+fTitleFontTransform,
+fTitleFontFamily,
+fOptionTextColor,
+fOptionFontSize,
+fOptionFontFamily,
+fMobileButtonTextColor,
+fMobileButtonFontSize,
+fMobileButtonFontWeight,
+fMobileButtonFontTransform,
+fMobileButtonFontFamily,
+fMobileButtonBackgroundColor
+{%- endcomment -%}
+
+{%- assign bc_shop_metafields = shop.metafields.bc-sf-filter -%}
+{%- assign bc_settings = shop.metafields.bc-sf-filter.settings -%}
+{%- if bc_settings contains 'style":{' -%}
+  <style data-id="bc-sf-filter-style" type="text/css">
+      #bc-sf-filter-options-wrapper .bc-sf-filter-option-block .bc-sf-filter-block-title h3,
+      #bc-sf-filter-tree-h .bc-sf-filter-option-block .bc-sf-filter-block-title a {
+        {%- if bc_shop_metafields.fTitleTextColor != nil and bc_shop_metafields.fTitleTextColor != blank -%}
+          color: {{ bc_shop_metafields.fTitleTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fTitleFontSize != nil and bc_shop_metafields.fTitleFontSize != blank -%}
+          font-size: {{ bc_shop_metafields.fTitleFontSize }}px !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fTitleFontWeight != nil and bc_shop_metafields.fTitleFontWeight != blank -%}
+          font-weight: {{ bc_shop_metafields.fTitleFontWeight }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fTitleFontTransform != nil and bc_shop_metafields.fTitleFontTransform != blank -%}
+          text-transform: {{ bc_shop_metafields.fTitleFontTransform }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fTitleFontFamily != nil and bc_shop_metafields.fTitleFontFamily != blank -%}
+          font-family: {{ bc_shop_metafields.fTitleFontFamily }} !important;
+        {%- endif -%}
+      }
+    
+     .bc-sf-filter-option-block .bc-sf-filter-block-title h3>span:before {
+        {%- if bc_shop_metafields.fTitleTextColor != nil and bc_shop_metafields.fTitleTextColor != blank -%}
+          border-top-color: {{ bc_shop_metafields.fTitleTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+      }
+      .bc-sf-filter-option-block .bc-sf-filter-block-title h3>span.up:before {
+        {%- if bc_shop_metafields.fTitleTextColor != nil and bc_shop_metafields.fTitleTextColor != blank -%}
+          border-bottom-color: {{ bc_shop_metafields.fTitleTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+      }
+    
+      #bc-sf-filter-options-wrapper .bc-sf-filter-option-block .bc-sf-filter-block-content ul li a,
+      #bc-sf-filter-tree-h .bc-sf-filter-option-block .bc-sf-filter-block-content ul li a,
+      .bc-sf-filter-option-block-sub_category .bc-sf-filter-block-content ul li h3 a,
+      .bc-sf-filter-selection-wrapper .bc-sf-filter-selected-items .selected-item>a,
+      .bc-sf-filter-selection-wrapper .bc-sf-filter-block-title h3,
+      .bc-sf-filter-clear, 
+      .bc-sf-filter-clear-all{
+        {%- if bc_shop_metafields.fOptionTextColor != nil and bc_shop_metafields.fOptionTextColor != blank -%}
+          color: {{ bc_shop_metafields.fOptionTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fOptionFontSize != nil and bc_shop_metafields.fOptionFontSize != blank -%}
+          font-size: {{ bc_shop_metafields.fOptionFontSize }}px !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fOptionFontFamily != nil and bc_shop_metafields.fOptionFontFamily != blank -%}
+          font-family: {{ bc_shop_metafields.fOptionFontFamily }} !important;
+        {%- endif -%}        
+      }
+    
+      .bc-sf-filter-option-block-sub_category .bc-sf-filter-option-single-list li span.sub-icon:before {
+        {%- if bc_shop_metafields.fOptionTextColor != nil and bc_shop_metafields.fOptionTextColor != blank -%}
+          border-top-color: {{ bc_shop_metafields.fOptionTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+      }
+      .bc-sf-filter-option-block-sub_category .bc-sf-filter-option-single-list li span.sub-icon.sub-up:before {
+        {%- if bc_shop_metafields.fOptionTextColor != nil and bc_shop_metafields.fOptionTextColor != blank -%}
+          border-bottom-color: {{ bc_shop_metafields.fOptionTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+      }
+
+      #bc-sf-filter-tree-mobile button {
+        {%- if bc_shop_metafields.fMobileButtonTextColor != nil and bc_shop_metafields.fMobileButtonTextColor != blank -%}
+          color: {{ bc_shop_metafields.fMobileButtonTextColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fMobileButtonFontSize != nil and bc_shop_metafields.fMobileButtonFontSize != blank -%}
+          font-size: {{ bc_shop_metafields.fMobileButtonFontSize }}px !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fMobileButtonFontWeight != nil and bc_shop_metafields.fMobileButtonFontWeight != blank -%}
+          font-weight: {{ bc_shop_metafields.fMobileButtonFontWeight }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fMobileButtonFontTransform != nil and bc_shop_metafields.fMobileButtonFontTransform != blank -%}
+          text-transform: {{ bc_shop_metafields.fMobileButtonFontTransform }} !important;
+        {%- endif -%}
+        
+        {%- if bc_shop_metafields.fMobileButtonFontFamily != nil and bc_shop_metafields.fMobileButtonFontFamily != blank -%}
+          font-family: {{ bc_shop_metafields.fMobileButtonFontFamily }} !important;
+        {%- endif -%}
+            
+        {%- if bc_shop_metafields.fMobileButtonBackgroundColor != nil and bc_shop_metafields.fMobileButtonBackgroundColor != blank -%}
+          background: {{ bc_shop_metafields.fMobileButtonBackgroundColor | replace: '"','' | replace: '||',',' | strip }} !important;
+        {%- endif -%} 
+      }
+    </style>
+{%- endif -%}
+{%- comment -%} BC Lib CSS {%- endcomment -%}
+{{ 'bc-sf-filter.scss.css' | asset_url | stylesheet_tag }}

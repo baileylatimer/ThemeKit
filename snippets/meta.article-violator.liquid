@@ -1,0 +1,5 @@
+<div class="article-violator article-violator--top">
+    {% if violator != blank %}
+    <div class="thumbnail_banner violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
+    {% endif %}
+</div>

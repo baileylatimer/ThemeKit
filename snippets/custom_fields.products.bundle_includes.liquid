@@ -1,0 +1,26 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/105623/edit
+{% endcomment %}
+
+{% if product.metafields.custom_fields["product_reference"] != blank %}
+<div class="custom-field-product-reference">
+	<h3 class="custom-field--title">Related Products</h3>
+	<div class="custom-fields-related-items-wrapper">
+		{% assign product_refs = product.metafields.custom_fields["product_reference"] | split: "|" %}
+		{% for product_handle in product_refs %}
+		<div class="referenced-item">
+			{% assign product_ref = all_products[product_handle] %}
+			<div class="custom-fields-referenced-image">
+				<a href="{{product_ref.url}}"><img src="{{product_ref | img_url: '100x100'}}"></a>
+			</div>
+			<div class="custom-fields-referenced-title">
+				{{ product_ref.title | link_to: product_ref.url }}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<div class="clearfix"></div>
+{% endif %}

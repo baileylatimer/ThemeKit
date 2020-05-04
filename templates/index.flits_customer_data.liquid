@@ -1,0 +1,73 @@
+
+{% layout none %}
+<div class="flits-checkout-data-div" style="display:none;">
+    <div class="flits-checkout-data">
+        {
+        "token": "{{ shop.metafields.Flits.SHOP_TOKEN }}",
+        "shop_id" : "{{ shop.metafields.Flits.SHOP_ID }}", 
+        "customer_url" : "/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/{{ customer.id }}",
+        "customer_id" : "{{ customer.id }}",
+        "store_credit_applied":"{{ 'flits.cart_page.store_credit_applied' | t }}",
+        "spent_rules" : {
+        "credit_cart_percentage":"{{ 'flits.cart_page.credit_cart_percentage' | t: credits: '##credits##',total_credits:'##total_credits##',percentage:'##percentage##' }}",
+        "free_shipping_rule":"{{ 'flits.cart_page.free_shipping' | t }}",
+        "select_store_credit_option":"{{ 'flits.cart_page.select_store_credit_option' | t }}"
+        }
+        } 
+    </div>
+    <div class="flits-checkout-checkbox">
+        <input type="hidden" value="{{ shop.money_format }}" name="money_format" id="flits-money-format">
+        {% if customer and customer.metafields.Flits.total_credit > 0 %}
+        <div class="fieldset" style='user-select:none;'>
+            <div class="field">
+                <div class="field__input-btn-wrapper">
+                    <div class="field__input-wrapper">
+                        <div class='checkbox__input' style='display:none !important;'>
+                            <input type='checkbox' class='input-checkbox' id='flits-want-to-use-credit' checked="checked">
+                        </div>
+                        <label for='flits-want-to-use-credit' class='checkbox__label' style='width:auto !important; display:inline-block !important;padding-top: 0.80em;padding-bottom: 0.80em;'>
+                            <span class='checkbox__label__primary'>
+                                {% assign credits  = customer.metafields.Flits.total_credit | money %}
+
+                                {% assign cart_msg = 'flits.general.cart_page_msg' | t: credit:"####" %}
+                                {{ cart_msg | replace : '####', credits }}
+                            </span>
+                        </label>
+                    </div>
+                    <button type="button" class="field__input-btn btn apply-flits-credit">
+                        <span class="btn__content visually-hidden-on-mobile" style="pointer-events: none;" data-apply-text="Apply" data-applied-text="Applied">Apply</span>
+                        <i class="btn__content shown-on-mobile icon icon--arrow" style="pointer-events: none;"></i>
+                        <i class="btn__spinner icon icon--button-spinner" style="pointer-events: none;"></i>
+                        <img style="pointer-events: none;display:none;width:35px;" class="btn__applied" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTA0LjUwMiw3NS40OTZjLTkuOTk3LTkuOTk4LTI2LjIwNS05Ljk5OC0zNi4yMDQsMEwxNjEuNTk0LDM4Mi4yMDNMNDMuNzAyLDI2NC4zMTFjLTkuOTk3LTkuOTk4LTI2LjIwNS05Ljk5Ny0zNi4yMDQsMCAgICBjLTkuOTk4LDkuOTk3LTkuOTk4LDI2LjIwNSwwLDM2LjIwM2wxMzUuOTk0LDEzNS45OTJjOS45OTQsOS45OTcsMjYuMjE0LDkuOTksMzYuMjA0LDBMNTA0LjUwMiwxMTEuNyAgICBDNTE0LjUsMTAxLjcwMyw1MTQuNDk5LDg1LjQ5NCw1MDQuNTAyLDc1LjQ5NnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="flits-checkout-select-credit-div">
+        
+        <div class="fieldset" style='user-select:none;'>
+            <div class="field">
+                <div class="field__input-btn-wrapper">
+                    <div class="field field--required field--show-floating-label" style="padding: 0px;">
+
+                        <div class="field__input-wrapper field__input-wrapper--select">
+                            <label class="field__label field__label--visible" for="flits-want-to-use-credit">{{ 'flits.cart_page.select_store_credit_option' | t }}</label>
+                            <select class="field__input field__input--select" aria-required="true" name="flits-want-to-use-credit" id="flits-want-to-use-credit">
+                                <option value="-1">{{ 'flits.cart_page.select_store_credit_option' | t }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="field__input-btn btn apply-flits-credit">
+                        <span class="btn__content visually-hidden-on-mobile" style="pointer-events: none;" data-apply-text="Apply" data-applied-text="Applied">Apply</span>
+                        <i class="btn__content shown-on-mobile icon icon--arrow" style="pointer-events: none;"></i>
+                        <i class="btn__spinner icon icon--button-spinner" style="pointer-events: none;"></i>
+                        <img style="pointer-events: none;display:none;width:35px;" class="btn__applied" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNTA0LjUwMiw3NS40OTZjLTkuOTk3LTkuOTk4LTI2LjIwNS05Ljk5OC0zNi4yMDQsMEwxNjEuNTk0LDM4Mi4yMDNMNDMuNzAyLDI2NC4zMTFjLTkuOTk3LTkuOTk4LTI2LjIwNS05Ljk5Ny0zNi4yMDQsMCAgICBjLTkuOTk4LDkuOTk3LTkuOTk4LDI2LjIwNSwwLDM2LjIwM2wxMzUuOTk0LDEzNS45OTJjOS45OTQsOS45OTcsMjYuMjE0LDkuOTksMzYuMjA0LDBMNTA0LjUwMiwxMTEuNyAgICBDNTE0LjUsMTAxLjcwMyw1MTQuNDk5LDg1LjQ5NCw1MDQuNTAyLDc1LjQ5NnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

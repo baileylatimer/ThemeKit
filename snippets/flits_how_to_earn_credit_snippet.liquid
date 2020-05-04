@@ -1,0 +1,156 @@
+
+{% case flits_how_to_earn_credit_snippet %}
+{% when 'multi_language' %}
+<script>
+    if (!window.flitsApp || typeof window.flitsApp == "undefined") {
+        window.flitsApp = {};
+    }
+    window.flitsApp.multilang_how_to_earn = {
+        register_rule_title: "{{ 'flits.how_to_earn_credit_page.register_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        register_rule_description: "{{ 'flits.how_to_earn_credit_page.register_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        subscribe_rule_title: "{{ 'flits.how_to_earn_credit_page.subscribe_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        subscribe_rule_description: "{{ 'flits.how_to_earn_credit_page.subscribe_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        order_number_rule_title: "{{ 'flits.how_to_earn_credit_page.order_number_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        order_rule_rule_description: "{{ 'flits.how_to_earn_credit_page.order_rule_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        after_order_number_rule_title: "{{ 'flits.how_to_earn_credit_page.after_order_number_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        after_order_number_rule_description: "{{ 'flits.how_to_earn_credit_page.after_order_number_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        birthdate_rule_title: "{{ 'flits.how_to_earn_credit_page.birthdate_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        birthdate_rule_description: "{{ 'flits.how_to_earn_credit_page.birthdate_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        monthly_rule_title: "{{ 'flits.how_to_earn_credit_page.monthly_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        monthly_rule_description: "{{ 'flits.how_to_earn_credit_page.monthly_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        spent_on_cart_rule_title: "{{ 'flits.how_to_earn_credit_page.spent_on_cart_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        spent_on_cart_rule_description: "{{ 'flits.how_to_earn_credit_page.spent_on_cart_rule_description' | t: order_number:'##order_number##',credits:'##credits##',min_cart_value:'##min_cart_value##',max_cart_value:'##max_cart_value##' }}", 
+        or_more: "{{ 'flits.how_to_earn_credit_page.or_more' | t }}", 
+        free_shipping_rule_title: "{{ 'flits.how_to_earn_credit_page.free_shipping_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        free_shipping_rule_description: "{{ 'flits.how_to_earn_credit_page.free_shipping_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        expiration_rule_title: "{{ 'flits.how_to_earn_credit_page.expiration_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        expiration_rule_description: "{{ 'flits.how_to_earn_credit_page.expiration_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        product_review_rule_title: "{{ 'flits.how_to_earn_credit_page.product_review_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        product_review_rule_description: "{{ 'flits.how_to_earn_credit_page.product_review_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        referrer_friend_title:"{{ 'flits.how_to_earn_credit_page.referrer_friend_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrer_friend_description:"{{ 'flits.how_to_earn_credit_page.referrer_friend_description' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referee_friend_title:"{{ 'flits.how_to_earn_credit_page.referee_friend_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referee_friend_description:"{{ 'flits.how_to_earn_credit_page.referee_friend_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        product_tag_earning_rule_title:"{{ 'flits.how_to_earn_credit_page.product_tag_earning_rule_title' | t: credits:'##credits##' }}", 
+        product_tag_earning_rule_description:"{{ 'flits.how_to_earn_credit_page.product_tag_earning_rule_description' | t: credits:'##credits##',tag:'##tag##' }}",
+        referrals_total_number_rule_title:"{{ 'flits.how_to_earn_credit_page.referrals_total_number_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrals_total_number_rule_description:"{{ 'flits.how_to_earn_credit_page.referrals_total_number_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        referrals_order_number_rule_title:"{{ 'flits.how_to_earn_credit_page.referrals_order_number_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrals_order_number_rule_description:"{{ 'flits.how_to_earn_credit_page.referrals_order_number_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+      	referrals_after_order_number_rule_title:"{{ 'flits.how_to_earn_credit_page.referrals_after_order_number_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrals_after_order_number_rule_description:"{{ 'flits.how_to_earn_credit_page.referrals_after_order_number_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        referrals_total_spent_rule_title:"{{ 'flits.how_to_earn_credit_page.referrals_total_spent_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrals_total_spent_rule_description:"{{ 'flits.how_to_earn_credit_page.referrals_total_spent_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        referrals_product_review_rule_title:"{{ 'flits.how_to_earn_credit_page.referrals_product_review_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        referrals_product_review_rule_description:"{{ 'flits.how_to_earn_credit_page.referrals_product_review_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+        add_product_to_wishlist_rule_title:"{{ 'flits.how_to_earn_credit_page.add_product_to_wishlist_rule_title' | t: order_number:'##order_number##',credits:'##credits##' }}", 
+        add_product_to_wishlist_rule_description:"{{ 'flits.how_to_earn_credit_page.add_product_to_wishlist_rule_description' | t: order_number:'##order_number##',credits:'##credits##' }}",
+    };
+</script>
+{% when 'style_css' %}
+<style type="text/css">
+    .flits-earn-credit-tab{overflow:hidden;margin-left:30%!important;border:1px solid #ebf0f2!important;background-color:#ebf0f2!important}.flits-earn-credit-tabcontent{border:1px solid #ebf0f2!important;display:none;padding:6px 12px;border-top:none}.flits-earn-credit-tab button{float:none!important;background-color:#36404a;color:#dde3e5;border:none;outline:0;cursor:pointer;padding:10px 20px;transition:.3s;font-size:16px}.flits-earn-credit-tab button.flits-active,.flits-earn-credit-tab button:hover{background-color:#36404a;color:#5fbeaa}.flits-rule-card{margin:0 auto;max-width:500px;font-size:16px;font-family:"Work Sans",HelveticaNeue,"Helvetica Neue",sans-serif;color:#3d4246;line-height:1.5}.flits-rule-box{box-shadow:0 10px 25px 0 rgba(49,49,93,.1);border-radius:5px;text-align:left;padding:1.25rem;margin-top:1.5625rem;width:100%;background-color:#ebf0f2}.flits-rule-card-content{position:relative}.flits-rule-overflow-hidden{overflow:hidden}.flits-rule-card-content .avatar{position:absolute;width:50px;height:50px}.flits-rule-card-content .avatar img{position:relative;width:40px;height:40px;margin-top:4px;margin-left:0}.flits-rule-card-content .flits-rule-header{padding-left:65px;min-height:100%}.flits-how-to-earn-credit-row{padding:15px;border:1px solid #36404a!important;border-radius:5px;margin-bottom:15px}.flits-how-to-earn-credit-row .flits-rule-title-row{padding-bottom:10px;border-bottom:1px solid #ddd}.flits-rule-title{font-weight:700}.flits-how-to-earn-credit-row .flits-order-detail-row{margin-top:10px}.flits-how-to-earn-credit-row .flits-rule-row{margin-top:10px;border:1px solid #ddd}.flits-how-to-earn-credit-row .flits-rule-row .flits-rule-data{padding:10px;margin-top:5px;border-bottom:1px solid #ddd}.flits-how-to-earn-credit-row .flits-rule-row .flits-rule-data:last-of-type{border-bottom:0}.flits-how-to-earn-credit-row .flits-rule-row .flits-rule-data .flits-rule-image{text-align:center;border-right:1px solid #ddd}@media only screen and (max-width:992px){.flits-how-to-earn-credit-row .flits-rule-row .flits-rule-data .flits-rule-details{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:100%;display:block}}.flits-earned-rule,.flits-not-eligible-rule{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%)}.flits-z-dept-1{box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2)}
+
+    .flits-earn-credit-tab{
+        {% if shop.metafields.Flits.C_BG_CLR %}
+        background-color: {{ shop.metafields.Flits.C_BG_CLR }} !important;
+        border: 1px solid {{ shop.metafields.Flits.C_BG_CLR }} !important;
+        {% endif %}
+    }
+    .flits-earn-credit-tabcontent{
+        {% if shop.metafields.Flits.C_BG_CLR %}
+        border: 1px solid {{ shop.metafields.Flits.C_BG_CLR }} !important;
+        {% endif %}
+    }
+    .flits-earn-credit-tab button{
+        {% if shop.metafields.Flits.S_BG_CLR %}
+        background-color: {{ shop.metafields.Flits.S_BG_CLR }} !important;
+        {% endif %}
+        {% if shop.metafields.Flits.S_T_CLR %}
+        color:{{ shop.metafields.Flits.S_T_CLR }} !important;
+        {% endif %}
+    }
+    .flits-earn-credit-tab button.flits-active{
+        {% if shop.metafields.Flits.S_M_A_T_CLR %}
+        color:{{ shop.metafields.Flits.S_M_A_T_CLR }} !important;
+        {% endif %}
+        {% if shop.metafields.Flits.S_M_A_BG_CLR %}
+        background-color: {{ shop.metafields.Flits.S_M_A_BG_CLR }} !important;
+        {% endif %}
+    }
+
+    .flits-earn-credit-tab button:hover,
+    .flits-earn-credit-tab button:focus{
+        {% if shop.metafields.Flits.S_M_H_BG_CLR %}
+        background-color: {{ shop.metafields.Flits.S_M_H_BG_CLR }} !important;
+        {% endif %}
+        {% if shop.metafields.Flits.S_M_H_T_CLR %}
+        color: {{  shop.metafields.Flits.S_M_H_T_CLR }} !important;
+        {% endif %}
+    }
+
+</style>
+{% when 'account_page_data' %}
+<div class="flits-how-to-earn-credit-extra-data flits-hidden">
+    <div class="flits-anchor">
+        {% if shop.metafields.Flits.is_store_credit_enable == 0 or shop.metafields.Flits.IS_STORE_CREDIT_PAID == 0 or shop.metafields.Flits.IS_HOW_TO_EARN_CREDIT_DISPLAY == 0%}
+
+        {% else %}
+        <a disabled data-type="flits" data-href="#flits-page-earn-credit" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.how_to_manage_credit' | t }}</a>
+        {% endif %}
+
+    </div>
+    <div class="flits-div">
+        <div id="flits-page-earn-credit" data-type="page" class="flits-hidden">
+            <div class="flits-page-heading">
+                <span class="flits-back-icon flits-return-to-menu">
+                    {{ 'flits.buttons.back' | t }}
+                </span>
+                <span class="flits-heading">
+                    {{ 'flits.heading.how_to_manage_credit' | t }}
+                </span>
+            </div>
+
+            <div>
+                <div class="flits-earn-credit-tab">
+                    <button class="flits-earn-credit-tablinks flits_earning_rules flits-active" onclick="window.flitsApp.how_to_earn_credit_obj.openRuleTab(event, 'flits_earning_rules')" disabled="" title="{{ 'flits.how_to_earn_credit_page.no_earning_rule' | t }}">{{ 'flits.how_to_earn_credit_page.earning' | t }}</button>
+                    <button class="flits-earn-credit-tablinks flits_spent_rules" onclick="window.flitsApp.how_to_earn_credit_obj.openRuleTab(event, 'flits_spent_rules')" disabled="" title="{{ 'flits.how_to_earn_credit_page.no_spent_rule' | t }}">{{ 'flits.how_to_earn_credit_page.spent' | t }}</button>
+                    <button class="flits-earn-credit-tablinks flits_from_admin_rules" onclick="window.flitsApp.how_to_earn_credit_obj.openRuleTab(event, 'flits_from_admin_rules')" disabled="" title="{{ 'flits.how_to_earn_credit_page.no_admin_rule' | t }}">{{ 'flits.how_to_earn_credit_page.from_admin' | t }}</button>
+                </div>
+
+                <div id="flits_earning_rules" class="flits-earn-credit-tabcontent"></div>
+
+                <div id="flits_spent_rules" class="flits-earn-credit-tabcontent"></div>
+
+                <div id="flits_from_admin_rules" class="flits-earn-credit-tabcontent"></div>
+
+                <div class='flits-rule-meta-data flits-hidden'>
+                    <div class="flits-rule-card">
+                        <div class="flits-rule-box">
+                            <div class="flits-rule-card-content">
+                                <div class="flits-rule-overflow-hidden">
+                                    <div class="avatar">
+                                        <img class="flits-rule-image" src="">
+                                    </div>
+                                    <div class="flits-rule-header">
+                                        <div class="flits-rule-details"></div>
+                                        <div class="flits-rule-credit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% else %}
+{% if template contains 'customers/account' %}
+{% render 'flits_how_to_earn_credit_snippet' with 'style_css' %}	
+{% render 'flits_how_to_earn_credit_snippet' with 'multi_language' %}	
+{{ 'flits-how-to-earn-credit.js' | asset_url | script_tag}}
+{% endif %}
+{% endcase %} 
+

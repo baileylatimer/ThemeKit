@@ -1,0 +1,44 @@
+
+<script>
+
+    if (!window.flitsApp || typeof window.flitsApp == "undefined") {
+        window.flitsApp = {};
+
+    }
+    window.flitsApp.multilang = {
+        earned: "{{ 'flits.credit_page.earned' | t }}",
+        spent: "{{ 'flits.credit_page.spent' | t }}",
+        loyal_customer: "{{ 'flits.credit_page.loyal_customer' | t }}",
+        repeat_customer: "{{ 'flits.credit_page.repeat_customer' | t }}",
+        fault_in_product: "{{ 'flits.credit_page.fault_in_product' | t }}",
+        canceled_order_first_time_by_customer: "{{ 'flits.credit_page.canceled_order_first_time_by_customer' | t }}",
+        delay_in_delivery_time: "{{ 'flits.credit_page.delay_in_delivery_time' | t }}",
+        registration_credit: "{{ 'flits.credit_page.registration_credit' | t }}",
+        subscribe_credit: "{{ 'flits.credit_page.subscribe_credit' | t }}",
+        first_order_credit: "{{ 'flits.credit_page.first_order_credit' | t }}",
+        spent_in_order: "{{ 'flits.credit_page.spent_in_order' | t:order_number :'-1-1' }}",
+        spent_in_order_through_pos: "{{ 'flits.credit_page.spent_in_order_through_pos' | t:order_number :'-1-1' }}",
+        applying_credit_message: "{{ 'flits.cart_page.applying_credit_message' | t }}",
+        password_not_match: "{{ 'flits.update_password_page.password_not_match' | t }}",
+        save_details: "{{ 'flits.profile_page.save_details' | t }}",
+        saved_successfully: "{{ 'flits.profile_page.saved_successfully' | t }}",
+        something_went_wrong: "{{ 'flits.profile_page.something_went_wrong' | t }}",
+        updating_password: "{{ 'flits.update_password_page.updating_password' | t }}",
+        password_updated_successfully: "{{ 'flits.update_password_page.password_updated_successfully' | t }}",
+        updating_address: "{{ 'flits.address_page.updating_address' | t }}",
+        adding_new_address: "{{ 'flits.address_page.adding_new_address' | t }}",
+        address_updated_successfully: "{{ 'flits.address_page.address_updated_successfully' | t }}",
+        address_added_successfully: "{{ 'flits.address_page.address_added_successfully' | t }}",
+        delete_address: "{{ 'flits.address_page.delete_address' | t }}",
+        deleting_address: "{{ 'flits.address_page.deleting_address' | t }}",
+        address_deleted_successfully: "{{ 'flits.address_page.address_deleted_successfully' | t }}",
+        edit_address: "{{ 'flits.address_page.edit_address' | t }}",
+        adding_items_to_cart: "{{ 'flits.cart_page.adding_items_to_cart' | t }}",
+        items_added_to_cart: "{{ 'flits.order_page.items_added_to_cart' | t }}",
+        product_is_deleted_from_shop: "{{ 'flits.order_page.product_is_deleted_from_shop' | t }}",
+        single_product_deleted: "{{ 'flits.order_page.single_product_deleted' | t }}",
+        all_products_deleted: "{{ 'flits.order_page.all_products_deleted' | t }}",
+        some_products_deleted: "{{ 'flits.order_page.some_products_deleted' | t }}"
+    };
+
+</script>

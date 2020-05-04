@@ -1,0 +1,277 @@
+{% comment %}
+** banner - homepage partial **
+- Draggable section
+{% endcomment %}
+{% if type == 'block' %}
+  {% assign id = block.id %}
+  {% assign wide_display = block.settings.wide_display %}
+  {% assign image = block.settings.image %}
+  {% assign title = block.settings.title %}
+  {% assign subtitle = block.settings.subtitle %}
+  {% assign caption_background = block.settings.caption_background %}
+  {% assign caption_background_transparency = block.settings.caption_background_transparency %}
+  {% assign button1 = block.settings.button1 %}
+  {% assign button1_link = block.settings.button1_link %}
+  {% assign banner_columns = block.settings.banner_columns %}
+  {% assign background_color = block.settings.background_color %}
+  {% assign text_color = block.settings.text_color %}
+{% else %}
+  {% assign id = section.id %}
+  {% assign wide_display = section.settings.wide_display %}
+  {% assign image = section.settings.image %}
+  {% assign title = section.settings.title %}
+  {% assign subtitle = section.settings.subtitle %}
+  {% assign caption_background = section.settings.caption_background %}
+  {% assign caption_background_transparency = section.settings.caption_background_transparency %}
+  {% assign button1 = section.settings.button1 %}
+  {% assign button1_link = section.settings.button1_link %}
+  {% assign banner_columns = section.settings.banner_columns %}
+  {% assign background_color = section.settings.background_color %}
+  {% assign text_color = section.settings.text_color %}
+{% endif %}
+
+{% if section.settings.hero_external %}
+        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--true mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
+    {% else %}
+        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} page_banner tri_banner nav-shadow mobile--true mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_self')" {% endif %}>
+{% endif %}
+
+    <div class="width-1-1 split-banner split-banner--img right no-filter"> 
+        {% if image != nil %}
+                {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+        {% endif %}
+    </div>
+    {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
+        <div class="width-1-1 split-banner split-banner--content {{ background_color }} pattern-map">
+            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description banner_description"> 
+                
+                {% if title != blank %}
+                    <h1 class="split-banner--headline">
+                        {{ title }}
+                    </h1>
+                {% endif %}
+                {% if subtitle != blank %}
+                    <div class="split-banner--text body-text body-text--large">
+                        <h4> {{ subtitle }}</h4>
+                    </div>
+                {% endif %}
+                <div class="split-banner--action">
+                    {% if button1 != blank %}
+                        <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                            {{ button1 }}
+                        </a>
+                        {% endif %}
+                </div>           
+            </div>
+        </div>
+    {% endunless %}
+</section>
+
+
+
+
+
+
+
+
+
+{% if section.settings.hero_external %}
+        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
+    {% else %}
+        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_self')" {% endif %}>
+{% endif %}
+
+    {% if banner_columns == "3" %}
+        <div class="width-1-3 split-banner split-banner--img left no-filter"> 
+            <img src="https://cdn.shopify.com/s/files/1/0789/1333/files/Sport_Picnic.jpg?19330" alt="Senior citizen cooks chicken recipe in GoSun Sport Solar Oven">
+        </div>
+    {% endif %}
+
+    {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
+        {% if banner_columns == "3" %}
+            <div class="width-1-{{ banner_columns }} split-banner split-banner--content middle flex-right {{ background_color }} pattern-map">
+            {% else %}
+            <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} pattern-map">
+        {% endif %}
+        
+            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description banner_description"> 
+                {% if title != blank %}
+                    <h1 class="split-banner--headline">
+                        {{ title }}
+                    </h1>
+                {% endif %}
+                {% if subtitle != blank %}
+                    <div class="body-text body-text--large">
+                        <h4> {{ subtitle }}</h4>
+                    </div>
+                {% endif %}
+                <div class="split-banner--action btn-group">
+                    {% if button1 != blank %}
+                        <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                            {{ button1 }}
+                        </a>
+                        {% endif %}
+                        {% if button2 != blank %}
+                        <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                            {{ button2 }}
+                        </a>
+                    {% endif %}
+                </div>           
+            </div>
+        </div>
+    {% endunless %}
+        <div class="width-1-{{ banner_columns }} split-banner split-banner--img right no-filter"> 
+      
+      {% if image != nil %}
+                {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+        {% endif %}
+                
+           
+    {% unless button1_link != blank %}
+        {% if button1_link != blank and button1 == blank %}
+            <a href="#" class="button -{{ text_color }} -hollow split-banner--button ">
+                {{ button1 }}
+            </a>
+        {% endif %}
+    
+    {% endunless %}
+    </div>
+</section>
+
+
+
+{% schema %}
+
+{
+  "name": "Banner",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background color",
+      "options": [
+        {
+          "value": "grape",
+          "label": "Grape"
+        },
+        {
+          "value": "olive",
+          "label": "Olive"
+        },
+        {
+          "value": "leaf",
+          "label": "Leaf"
+        },
+        {
+          "value": "pumpkin",
+          "label": "Pumpkin"
+        },
+        {
+          "value": "honey",
+          "label": "Honey"
+        },
+        {
+          "value": "mint",
+          "label": "Mint"
+        },
+        {
+          "value": "tundra",
+          "label": "Tundra"
+        },
+        {
+          "value": "wood-300",
+          "label": "Wood"
+        }
+      ]
+    },
+
+{
+      "type": "select",
+      "id": "text_color",
+      "label": "Text color",
+      "options": [
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        }
+      ]
+    },
+
+   {
+      "type": "select",
+      "id": "banner_columns",
+      "label": "Columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "670x380 recommended"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button1",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_external",
+      "label": "Open link in new tab",
+      "default": false
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": "Banner",
+      "category": "Image",
+      "settings": {
+        "image": "",
+        "title": "Living off-grid has never been easier.",
+        "button1": "Shop now",
+        "button1_link": ""
+      }
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,75 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/pages/configure/106858/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["staff"] != blank %}
+  <div class="custom-field custom-field__staff custom-field__type--field-collection">
+    <h3 class="custom-field--title">Staff Members</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign staff_first_name_array = page.metafields.custom_fields["staff_first_name"] | split: separator %}
+      {% assign staff_last_name_array = page.metafields.custom_fields["staff_last_name"] | split: separator %}
+      {% assign staff_job_title_array = page.metafields.custom_fields["staff_job_title"] | split: separator %}
+      {% assign staff_photo_array = page.metafields.custom_fields["staff_photo"] | split: separator %}
+      {% assign staff_bio_array = page.metafields.custom_fields["staff_bio"] | split: separator %}
+      {% assign staff_personal_site_array = page.metafields.custom_fields["staff_personal_site"] | split: separator %}
+      {% assign staff_email_array = page.metafields.custom_fields["staff_email"] | split: separator %}
+      {% assign staff_linkedin_array = page.metafields.custom_fields["staff_linkedin"] | split: separator %}
+      {% assign staff_instagram_array = page.metafields.custom_fields["staff_instagram"] | split: separator %}
+      {% assign staff_twitter_array = page.metafields.custom_fields["staff_twitter"] | split: separator %}
+      {% assign staff_facebook_array = page.metafields.custom_fields["staff_facebook"] | split: separator %}
+      {% assign staff_hide_array = page.metafields.custom_fields["staff_hide"] | split: separator %}
+      {% assign staff_dribbble_array = page.metafields.custom_fields["staff_dribbble"] | split: separator %}
+      {% assign staff_codepen_array = page.metafields.custom_fields["staff_codepen"] | split: separator %}
+      {% assign fc_keys = page.metafields.custom_fields["staff"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item--staff member fc-index--{{ index }}">
+          <div class="fc-field field__staff-first-name">
+            {{ staff_first_name_array[index] }}
+          </div>
+          <div class="fc-field field__staff-last-name">
+            {{ staff_last_name_array[index] }}
+          </div>
+          <div class="fc-field field__staff-job-title">
+            {{ staff_job_title_array[index] }}
+          </div>
+          <div class="fc-field field__staff-photo">
+            {{ staff_photo_array[index] }}
+          </div>
+          <div class="fc-field field__staff-bio">
+            {{ staff_bio_array[index] }}
+          </div>
+          <div class="fc-field field__staff-personal-site">
+            {{ staff_personal_site_array[index] }}
+          </div>
+          <div class="fc-field field__staff-email">
+            {{ staff_email_array[index] }}
+          </div>
+          <div class="fc-field field__staff-linkedin">
+            {{ staff_linkedin_array[index] }}
+          </div>
+          <div class="fc-field field__staff-instagram">
+            {{ staff_instagram_array[index] }}
+          </div>
+          <div class="fc-field field__staff-twitter">
+            {{ staff_twitter_array[index] }}
+          </div>
+          <div class="fc-field field__staff-facebook">
+            {{ staff_facebook_array[index] }}
+          </div>
+          <div class="fc-field field__staff-hide">
+            {{ staff_hide_array[index] }}
+          </div>
+          <div class="fc-field field__staff-dribbble">
+            {{ staff_dribbble_array[index] }}
+          </div>
+          <div class="fc-field field__staff-codepen">
+            {{ staff_codepen_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

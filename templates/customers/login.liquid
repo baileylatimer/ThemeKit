@@ -1,0 +1,131 @@
+<a name="pagecontent" id="pagecontent"></a>
+
+<main class="wh100 f-cl-c filter-map--white">
+  <div class="sixteen columns clearfix collection_nav f-cl-c">
+    
+    <div class="feature_divider"></div>
+
+
+    {% comment %}
+      Card begins
+    {% endcomment %}
+
+    <div class="clearfix card card--body p40 mt20 card--lg f-cl-c" id="customer">
+      <img onclick="window.open('/', '_self')" class="pointer mobile--false width-1-2" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Shine-Light.png?v=1583518253"/>
+      <div class="columns animated fadeInUp" id="login_form">
+
+        
+        <h5 class="text-center">{{ 'customer.login.title' | t }}</h5>
+        <div class="divider"></div>
+
+        {% form 'customer_login' %}
+          
+
+        
+          <label for="customer_email" class="login">{{ 'customer.login.email' | t }}</label>
+          <input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30"  autocorrect="off" autocapitalize="off" tabindex="1" />
+
+          {% if form.password_needed %}
+
+            {% comment %}
+              Customer Account Login
+            {% endcomment %}
+
+            <small class="right"><a href="#" onclick="showRecoverPasswordForm()">{{ 'customer.login.forgot_password' | t }}</a></small>
+            <label for="customer_password" class="login">{{ 'customer.login.password' | t }}</label>
+            <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" tabindex="2" />
+
+          {% endif %}
+          {{ form.errors | default_errors }}
+          <input class="btn button -shine action_button width-1-1" type="submit" value="{{ 'customer.login.sign_in' | t }}" style="margin-bottom: 5px !important" tabindex="3" />       
+        {% endform %}
+
+        <div class="large--right">
+          {% if shop.checkout.guest_login %}
+            <span class="or"> {{ 'customer.login.or' | t }} </span>
+            {% form 'guest_login' %}
+              <input class="guest_button" type="submit" value="{{ 'customer.login.guest_title_html' | t }}" />
+            {% endform %}
+          {% endif %}
+        </div>
+          {% comment %}
+            <div class="divider"></div>
+            <p class="text-center"> Or log in with </p>
+        {% endcomment %}
+      </div>
+
+
+        <div id="recover-password" style='display:none'>
+          <div class="columns animated fadeInUp">
+
+            <h4>{{ 'customer.recover_password.title' | t }}</h4>
+
+            {% form 'recover_customer_password' %}
+              {{ form.errors | default_errors }}
+
+              {% if form.posted_successfully? %}
+                {% assign reset_success = true %}
+              {% endif %}
+
+              {% if reset_success %}
+                <p>
+                  <em class="note">{{ 'customer.recover_password.success' | t }}</em>
+                </p>
+              {% else %}
+                <div id="recover_email" class="clearfix large_form">
+                  <label for="email" class="large">{{ 'customer.recover_password.email' | t }}</label>
+                  <input type="email" value="" size="30" name="email" id="recover-email" class="large" autocorrect="off" autocapitalize="off" />
+                </div>
+                <p>
+                  <em class="note">{{ 'customer.recover_password.subtext' | t }}</em>
+                </p>
+                <div class="action_bottom">
+                  <input class="btn button action_button width-1-1" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
+                  <span class="note">{{ 'customer.recover_password.or' | t }} <a href="#" onclick="hideRecoverPasswordForm()">{{ 'customer.recover_password.cancel' | t }}</a></span>
+                </div>
+              {% endif %}
+
+
+
+            {% endform %}
+          </div>
+        </div>
+      </div>
+
+      {% comment %}
+        Card ends
+      {% endcomment %}
+
+      {% unless shop.checkout.guest_login %}
+        <p class="" style="padding-top: 10px;">
+          {{ 'customer.login.new_customer_label' | t }} {{ 'customer.login.sign_up_html' | t | customer_register_link }}
+        </p>
+      {% endunless %}
+
+
+  </div>
+</main>
+
+<br class="clear" />
+<br class="clear" />
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('login_form').style.display='none';
+    return false;
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('login_form').style.display = 'block';
+    return false;
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  {% if reset_success %}
+    showRecoverPasswordForm();
+  {% endif %}
+</script>

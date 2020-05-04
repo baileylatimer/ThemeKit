@@ -1,0 +1,8 @@
+<!-- ./snippets/buildify-head.liquid -->
+{%- if shop.metafields.bdf_devit_settings["bdf_theme_css_position"] == blank or shop.metafields.bdf_devit_settings["bdf_theme_css_position"] == "header" -%}
+    {%- include 'buildify-global-styles' -%}
+
+    <!-- SKIP_ON_BUILDIFY_EDIT_MODE_HEAD -->
+    {%- include 'buildify-item-styles' -%}
+    <!-- /SKIP_ON_BUILDIFY_EDIT_MODE_HEAD -->
+{%- endif -%}

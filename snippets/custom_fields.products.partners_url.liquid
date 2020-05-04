@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/125833/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["partners_url"] != blank %}
+  <div class="custom-field custom-field__partners-url custom-field__type--text">
+    <h3 class="custom-field--title">URL</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["partners_url"] }}
+    </div>
+  </div>
+{% endif %}

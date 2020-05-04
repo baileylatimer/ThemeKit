@@ -1,0 +1,21 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/105996/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["bundle_includes_items"] != blank %}
+  <div class="custom-field custom-field__bundle-includes-items custom-field__type--product-reference">
+    <h3 class="custom-field--title">Bundle Includes: Items</h3>
+    <div class="custom-field--value">  
+    {% assign product_refs = product.metafields.custom_fields["bundle_includes_items"] | split: "|" %}
+      <ul>
+        {% for product_handle in product_refs %}
+          <li>
+            {% assign product_ref = all_products[product_handle] %}
+            {{ product_ref.title | link_to: product_ref.url }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

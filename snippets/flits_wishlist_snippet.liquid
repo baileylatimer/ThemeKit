@@ -1,0 +1,253 @@
+
+{% assign default_before_heart_clr = shop.metafields.Flits.WSL_DEFAULT_BEFORE_HEART_COLOR %}
+{% assign default_after_heart_clr = shop.metafields.Flits.WSL_DEFAULT_AFTER_HEART_COLOR %}
+
+{% assign before_heart_clr = shop.metafields.Flits.WSL_BEFORE_HEART_COLOR %}
+{% assign before_btn_clr = shop.metafields.Flits.WSL_BEFORE_BTN_COLOR %}
+{% assign before_btn_border_clr = shop.metafields.Flits.WSL_BEFORE_BTN_BORDER_COLOR %}
+{% assign before_text_clr = shop.metafields.Flits.WSL_BEFORE_BTN_TEXT_COLOR %}
+{% assign before_text_span = shop.metafields.Flits.WSL_BEFORE_BTN_TEXT %}
+
+{% assign after_heart_clr = shop.metafields.Flits.WSL_AFTER_HEART_COLOR %}
+{% assign after_btn_clr = shop.metafields.Flits.WSL_AFTER_BTN_COLOR %}
+{% assign after_btn_border_clr = shop.metafields.Flits.WSL_AFTER_BTN_BORDER_COLOR %}
+{% assign after_text_clr = shop.metafields.Flits.WSL_AFTER_BTN_TEXT_COLOR %}
+{% assign after_text_span = shop.metafields.Flits.WSL_AFTER_BTN_TEXT %}
+
+{% assign product_img = product | img_url %}
+{% assign product_id = 'data-flits-product-id="' | append: product.id | append : '"'  %}
+{% assign product_title = 'data-flits-product-title="' | append: product.title | append : '"'  %}
+{% assign product_handle = 'data-flits-product-handle="' | append: product.handle | append : '"'  %}
+{% assign product_image = 'data-flits-product-image="' | append: product_img | append : '"'  %}
+{% assign customer_id = 'data-flits-customer-id="' | append: customer.id | append : '"'  %}
+{% assign customer_email = 'data-flits-customer-email="' | append: customer.email | append : '"'  %}
+
+{% assign product_page = 'data-page=' | append: "product-page"%}
+{% assign collection_page = 'data-page=' | append: "collection-page"%}
+
+{% assign data_attribute = product_id  
+| append: " " | append: product_title  
+| append: " " | append: product_handle
+| append: " " | append: product_image
+| append: " " | append: customer_id 
+| append: " " | append: customer_email %}
+
+{% assign svg_path = "M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z" %}
+
+{% assign customer_meta = customer.metafields.Flits %}
+{% assign key = 'wishlisted_products' %}
+{% assign handle_string = customer_meta[key] %}
+
+{% assign is_product_found = false %}
+{%- assign  handle_string = handle_string | split:',' %}
+{%- for handle in handle_string -%}
+{%- if handle == product.handle -%}
+{% assign add_btn_show = "display:none;" %}
+{% assign remove_btn_show = "display:inline-block;" %}
+{% assign is_product_found = true %}
+{%- break -%}
+{%- endif -%}
+{%- endfor -%}
+{% if is_product_found == false %}
+{% assign remove_btn_show = "display:none;" %}
+{% assign add_btn_show = "display:inline-block;" %}
+{% endif%}
+
+{% if shop.metafields.Flits.WSL_COUNT_ENABLE == "1" %}
+{% assign product_count_show = "display:inline-block;" %}
+{% else %}
+{% assign product_count_show = "display:none;" %}
+{% endif %}
+
+{% if product.metafields.Flits.wsl-count %}
+{% assign product_count = product.metafields.Flits.wsl-count %}
+{% else %}
+{% assign product_count = 0 %}
+{% endif %}
+
+{% case flits_wishlist_snippet %}
+
+{% when 'flits_wsl_css' %}
+
+<style type="text/css">
+  .flits-wsl-btn-div{position:relative;display:inline-block}.flits-wsl-icon{text-align:left;display:inline-block;padding:10px 0;cursor:pointer;pointer-events:all;opacity:1;border:none}.flits-wsl-btn{border:1px solid #305875;padding-left:35px;padding:10px;font-family:Arial,Tahoma,Verdana,FreeSans,sans-serif;display:inline-block;white-space:nowrap;line-height:1em;position:relative;outline:none;overflow:visible;cursor:pointer;-moz-border-radius:4px;-webkit-border-radius:4px}.flits-wsl-heart-empty,.flits-wsl-heart-filled{position:absolute;left:3%;top:7px;width:25px}.flits-wsl-product-count{cursor:default;padding:4px;font-size:12px;background-color:white;border:1px solid silver;border-radius:3px;}.flits-wsl-product-default-count{position:absolute!important;left:35px!important;top:18px!important}.flits-wsl-coll-page-heart-empty{display:inline-block;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAATRJREFUSInt1M8rRFEYxvHPGEVZkFKKpb3/woqlra0iZfyKkJ2UCPnRLJTtLJUF/gAbSwtLGylbC6Gpsbh3Mk5zZ+a67HxX577ve573ec/pHv5pQr5JvhddeE3I96EDb0kCuYTYFMbxhAoGcY79uGYWY3iMTfajhGJc35AzFHyfrg3TsUgJk4G5PBZwGoqFRzSBD2wHTiq4xQAecBLsq+AGw6Jp75LcX4nONIn2OqZq6cRluCF08t5AoNwgR53Lbgu+6116Wr5phA3K6M4g3iO6w0RGcZihwQlGagPhBBd4wfoPxDfwjOtWirexmkJ8DZtpHe1iuYW6FWylFa+yh8UG+SXRtJk4wFyd+Dx2sopXORI9cFUKouma0uqPlcMx7uP1EGZSGGy5STFu9Gfk/M5z8s8Xn64EMobWUtQ6AAAAAElFTkSuQmCC);width:24px;height:24px;background-size:100%;vertical-align:top;cursor:pointer}.flits-wsl-coll-page-heart-filled{display:inline-block;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAglJREFUSInlk81LVGEUh5/33JmxEKxFixZFQTbJBCKYUdGHFyeQ2hQ0aMvaRQW1q7+ifyE0CKSFWzMYKJiZGgSFcSYtKLGF5CYoM5uZc1rYjCPOZ86us3rf+/7O85x7uS/89zURi3kTsZhX69xVbqb7+/cFg+sPMHfDhDCAYQtivAhI8cn5xMJ3gNTp7q5fEnqIcVPFhQET1UWce16Z2yZ4PdATVvFeIhypMcznopPhYD5vGvCmgKPVQop9ChR0+GL6/WJZMNXb29mxNz+HyLF6n0PRZQBBDtfP8aHr956+UzMzPwUg1Fm43wheAjeCb+Y4/iO0fufvGpy6kUZNrZaqjZQFKnai3QKQnrIAdYV2452Q3xI4ZtstMNO5ssDBWLsFzrnxsoCOA08N3rWNbqRWD50cg4qLFh+IHHQB9wbo3iX+oxXsgp/OrkDpDQA/nV0polHQL/9KVnS5iEZL8G0CgKFkbqnoAlFVW20VbqpfzQUuDyVzS5XPXbVw/FykzxUtjsj+5kbXb+Y5309kd/yNUi3vJ7KzTuQq6FoT9DU870o1eE0BwKXkfAL1rqNs1GazYca1wUQmWStSUwAw+DYzbaKjqO686aoFEx31U7lX9Rh1BQB+MjdpIrcVbGtwzDzvlp/MTTbqbyjYlMyPC9wr7Z1y109knjXT21LFz0Qex89GHrUdvJv6A2EZxk2RhllEAAAAAElFTkSuQmCC);width:24px;height:24px;background-size:100%;vertical-align:top;cursor:pointer}.flits-tingle-modal *{box-sizing:border-box}.flits-tingle-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:-webkit-box;display:-ms-flexbox;display:flex;visibility:hidden;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;overflow:hidden;background:rgba(0,0,0,.8);opacity:0;cursor:pointer;-webkit-transition:-webkit-transform .2s ease;transition:-webkit-transform .2s ease;transition:transform .2s ease;transition:transform .2s ease,-webkit-transform .2s ease}.flits-tingle-modal--noClose .flits-tingle-modal__close,.flits-tingle-modal__closeLabel{display:none}.flits-tingle-modal--confirm .flits-tingle-modal-box{text-align:center}.flits-tingle-modal--noOverlayClose{cursor:default}.flits-tingle-modal__close{position:fixed;top:0;right:6px;z-index:1000;padding:0;width:auto;height:auto;border:none;background-color:transparent;color:black;font-size:30px;font-family:monospace;line-height:1;cursor:pointer;opacity:.5;-webkit-transition:all .3s ease;transition:all .3s ease}.flits-tingle-modal__close:hover{color:black;opacity:1}.flits-tingle-modal-box{position:relative;-ms-flex-negative:0;flex-shrink:0;margin-top:auto;margin-bottom:auto;width:40%;border-radius:0;background:#fff;opacity:1;cursor:auto;-webkit-transition:-webkit-transform .3s cubic-bezier(.175,.885,.32,1.275);transition:-webkit-transform .3s cubic-bezier(.175,.885,.32,1.275);transition:transform .3s cubic-bezier(.175,.885,.32,1.275);transition:transform .3s cubic-bezier(.175,.885,.32,1.275),-webkit-transform .3s cubic-bezier(.175,.885,.32,1.275);-webkit-transform:scale(.8);-ms-transform:scale(.8);transform:scale(.8)}.flits-tingle-modal-box__content{padding:15px}.flits-tingle-modal-box__footer{padding:1.5rem 2rem;width:auto;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background-color:#f5f5f5;cursor:auto}.flits-tingle-modal-box__footer::after{display:table;clear:both;content:""}.flits-tingle-modal-box__footer--sticky{position:fixed;bottom:-200px;z-index:10001;opacity:1;-webkit-transition:bottom .3s ease-in-out .3s;transition:bottom .3s ease-in-out .3s}.flits-tingle-enabled{overflow:hidden;height:100%}.flits-tingle-modal--visible .flits-tingle-modal-box__footer{bottom:0}.flits-tingle-enabled .flits-tingle-content-wrapper{-webkit-filter:blur(15px);filter:blur(15px)}.flits-tingle-modal--visible{visibility:visible;opacity:1}.flits-tingle-modal--visible .flits-tingle-modal-box{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}.flits-tingle-modal--overflow{overflow-y:scroll;padding-top:8vh}.flits-tingle-btn{display:inline-block;margin:0 .5rem;padding:1rem 2rem;border:none;background-color:grey;box-shadow:none;color:#fff;vertical-align:middle;text-decoration:none;font-size:inherit;font-family:inherit;line-height:normal;cursor:pointer;-webkit-transition:background-color .4s ease;transition:background-color .4s ease}.flits-tingle-btn--primary{background-color:#3498db}.flits-tingle-btn--danger{background-color:#e74c3c}.flits-tingle-btn--default{background-color:#34495e}.flits-tingle-btn--pull-left{float:left}.flits-tingle-btn--pull-right{float:right}@media (max-width:540px){.flits-tingle-modal{top:0;display:block;padding-top:0;width:100%}.flits-tingle-modal-box{width:auto;border-radius:0}.flits-tingle-modal-box__content{overflow-y:scroll}.flits-tingle-modal--noClose{top:0}.flits-tingle-modal-box__footer .flits-tingle-btn{display:block;float:none;margin-bottom:1rem;width:100%}.flits-tingle-modal__close{position:relative!important;top:0;right:0;left:0;display:block;width:100%;height:40px;border:none;background-color:#2c3e50;box-shadow:none;color:#fff;opacity:1;line-height:40px}.flits-tingle-modal__closeLabel{display:inline-block;vertical-align:middle;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif}.flits-tingle-modal__closeIcon{display:inline-block;margin-right:.5rem;vertical-align:middle;font-size:25px}}
+  .flits-wsl-icon button{
+    outline:0;
+  }
+  .flits-wsl-heart-empty, .flits-wsl-heart-filled{
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    vertical-align: middle !important;
+  }
+  .flits-wishlist-collection-page .flits-wsl-icon button,
+  .flits-wishlist-product-page .flits-wsl-icon,
+  .flits-wishlist-collection-page .flits-wsl-icon{
+    padding:0px;
+  }
+  .flits-wishlist-ul li span.flits-wsl-product-remove {
+    padding-top:1px !important;
+  }
+</style>
+
+{% when 'flits_product_page_wsl_btn' %}
+{% if shop.metafields.Flits.IS_WISHLIST_ENABLE == 1 %}
+<div class="flits-wishlist-product-page">
+  <input type="hidden" name="token" id="flits-wsl-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}">
+  <input type="hidden" name="wsl-url" id="flits-wsl-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/wishlist">
+  {% assign btn = shop.metafields.Flits.WSL_BTN_TYPE %}
+  {% if btn == '-1' %}
+  <div class="default-wishlist flits-wsl-btn-div">
+    <div class="flits-wsl-icon">
+      <button type="button" class="flits-add-to-wsl-btn" {{data_attribute}} {{product_page}}
+              style="{{add_btn_show}}; border:0; background-color: transparent;"
+              title="{{ 'flits.wishlisted_product_page.add_to_wishlist_btn_title' | t }}">
+        <svg style="fill: {{ default_before_heart_clr }};" class="flits-wsl-heart-empty" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+      </button>
+      <button type="button" class="flits-remove-from-wsl-btn" {{data_attribute}} {{product_page}} 
+              style="{{remove_btn_show}}; border:0; background-color: transparent"
+              title="{{ 'flits.wishlisted_product_page.remove_from_wishlist_btn_title' | t }}">
+        <svg style="fill: {{ default_after_heart_clr }};" class="flits-wsl-heart-filled" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+      </button>
+    </div>
+    <span class="flits-wsl-product-count flits-wsl-product-default-count" 
+          style="{{product_count_show}};">{{product_count}}</span>
+  </div>
+  {% elsif btn == '1' %}
+  <div class="btn-style-one flits-wsl-btn-div">
+    <div class="flits-wsl-icon">
+      <button type="button" class="flits-wsl-btn flits-wsl-btn-heart-span flits-add-to-wsl-btn"
+              {{data_attribute}} {{product_page}}
+              style="background-color: {{ before_btn_clr }};
+                     border: 1px solid {{ before_btn_border_clr }};
+                     color: {{ before_text_clr }};
+                     {{add_btn_show}};"
+              title="{{ 'flits.wishlisted_product_page.add_to_wishlist_btn_title' | t }}">
+        <svg style="fill: {{ before_heart_clr }};" class="flits-wsl-heart-empty" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+        {{before_text_span}}
+      </button>
+      <button type="button" class="flits-wsl-btn flits-wsl-btn-heart-span flits-remove-from-wsl-btn"
+              {{data_attribute}} {{product_page}}              
+              style="background-color: {{ after_btn_clr }};
+                     border: 1px solid {{ after_btn_border_clr }};
+                     color: {{ after_text_clr }};
+                     {{remove_btn_show}};"
+              title="{{ 'flits.wishlisted_product_page.remove_from_wishlist_btn_title' | t }}">
+        <svg style="fill: {{after_heart_clr}};" class="flits-wsl-heart-filled" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+        {{after_text_span}}
+      </button>
+    </div>
+    <span class="flits-wsl-product-count"
+          style="{{product_count_show}};">{{product_count}}</span>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% when 'flits_collection_page_wsl_btn' %}
+{% if shop.metafields.Flits.IS_WISHLIST_ENABLE == 1 %}
+<div class="flits-wishlist-collection-page">
+  <input type="hidden" name="token" id="flits-wsl-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}">
+  <input type="hidden" name="wsl-url" id="flits-wsl-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/wishlist">
+  <div class="flits-wsl-btn-div">
+    <div class="flits-wsl-icon">
+      <button class="flits-add-to-wsl-btn" 
+              {{data_attribute}} {{collection_page}}
+              style="{{add_btn_show}}; border:0; background-color: transparent;"
+              title="{{ 'flits.wishlisted_product_page.add_to_wishlist_btn_title' | t }}">
+        <svg style="fill: {{default_before_heart_clr}};" class="flits-wsl-heart-empty" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+      </button>
+      <button class="flits-remove-from-wsl-btn"
+              {{data_attribute}} {{collection_page}}
+              style="{{remove_btn_show}}; border:0; background-color: transparent;"
+              title="{{ 'flits.wishlisted_product_page.remove_from_wishlist_btn_title' | t }}">
+        <svg style="fill: {{default_after_heart_clr}};" class="flits-wsl-heart-filled" viewBox="0 0 32 29.6">
+          <path d="{{svg_path}}"></path>
+        </svg>
+      </button>
+    </div>
+    <span class="flits-wsl-product-count flits-wsl-coll-page-product-count"
+          style="{{product_count_show}};">{{product_count}}</span>
+  </div>
+</div>
+{% endif %}
+
+{% else %}
+{% render 'flits_wishlist_snippet' with 'flits_wsl_css' %}
+<div id="flits-wsl-guest-modal" style="display:none;">
+  <form id='flits-guest-wsl-form'>
+    <h4 style='margin-top:10px;margin-bottom:10px;'>
+      {{ 'flits.wishlisted_product_page.what_is_your_email' | t }}
+    </h4>
+    <input type='email' class='' name='email' id='flits_email_id' placeholder="{{ 'flits.wishlisted_product_page.wishlist_popup_email_placeholder' | t }}"
+           style='width:100%;margin-top:10px;margin-bottom: 10px;' required>
+    <div style='text-align:center; margin-top:10px;margin-bottom: 10px;'>
+      <button type="submit" class="btn">
+        {{ 'flits.wishlisted_product_page.add_to_wishlist' | t }}
+      </button>
+    </div>
+  </form>
+  <div id='flits-wsl-msg-modal' style='text-align:center; display:none'>
+    <span style='text-align:center; font-size:16px'>
+      <strong>
+        {{ 'flits.wishlisted_product_page.product_added_to_wishlist' | t }}
+      </strong>
+    </span>
+    <br>
+    <span style='text-align:center; font-size:16px'>
+      {{ 'flits.wishlisted_product_page.view_your_wishlist_message' | t }}
+    </span>
+    <br>
+    <span style='text-align:center; font-size:13px' id='flits-guest-email'> 
+      {{ 'flits.wishlisted_product_page.create_account_through' | t: customer_email: '##customer_email##' }}
+    </span>
+    <div style='text-align:center; margin-top:10px;margin-bottom: 10px;'>
+      <a class="btn" href="/account/login">{{ 'flits.wishlisted_product_page.login' | t }}</a>
+      <a class="btn" href="/account/register">{{ 'flits.wishlisted_product_page.register' | t }}</a>
+    </div>
+  </div>
+</div>
+
+{% if template contains 'customers/account' %}
+  <input type="hidden" value="1" name="flits-is-wishlist-automatic" id="flits-is-wishlist-automatic">
+  {{ 'flits-wishlist.js' | asset_url | script_tag}}
+  <script>
+    window.flitsApp.wishlist_products_obj = new window.flitsApp.wishlist_products();
+  </script>
+
+{% elsif template contains 'product' %}
+  {% if shop.metafields.Flits.WSL_CODE_AUTOMATIC == "0" or shop.metafields.Flits.IS_WISHLIST_ENABLE == 0 %}
+  <input type="hidden" value="0" name="flits-is-wishlist-automatic" id="flits-is-wishlist-automatic">
+  {% else %}
+  <input type="hidden" value="1" name="flits-is-wishlist-automatic" id="flits-is-wishlist-automatic">
+  <div style="display:none" id="flits-wishlist-automatic-code">
+    {% render 'flits_wishlist_snippet' with 'flits_product_page_wsl_btn' %}
+  </div>
+  {% endif %}
+  {{ 'flits-wishlist.js' | asset_url | script_tag}}
+  <script>
+    window.flitsApp.wishlist_products_obj = new window.flitsApp.wishlist_products();
+  </script>
+
+{% elsif template contains 'collection' %}
+  <input type="hidden" value="1" name="flits-is-wishlist-automatic" id="flits-is-wishlist-automatic">
+  {{ 'flits-wishlist.js' | asset_url | script_tag}}
+  <script>
+    window.flitsApp.wishlist_products_obj = new window.flitsApp.wishlist_products();
+  </script>
+
+{% else %}
+
+{% endif %}
+
+{% endcase %}

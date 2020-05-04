@@ -1,0 +1,1065 @@
+
+{{ 'flits.css' | asset_url | stylesheet_tag }}
+{% render 'flits_snippet' with 'style_css' %}
+<div class="page-width flits-container">
+    <div class="flits-hidden">
+        <input type="hidden" name="token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}" id="flits-token">
+        <input type="hidden" name="flits-shop-money-format" value="{{ shop.money_format }}" id="flits-shop-money-format">
+        <input type="hidden" name="customer-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/{{ customer.id }}" id="flits-customer-url">
+        <input type="hidden" name="flits-order-shipment-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}" id="flits-order-shipment-url">  
+        <input type="hidden" name="flits-order-tracking-paid" value="{{ shop.metafields.Flits.IS_ORDER_TRACKING_PAID }}" id="flits-order-tracking-paid">
+        <input type="hidden" name="flits-order-tracking-enable" value="{{ shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE }}" id="flits-order-tracking-enable">
+        <input type="hidden" name="flits-order-tracking-domain" value="{{ shop.metafields.Flits.ORDER_TRACKING_DOMAIN }}" id="flits-order-tracking-domain">
+        <div class="flits-hidden">
+            <li class='flits-card-box' id="flits-customer-address-template">
+                <span class="flits-remove-address-btn" data-form-id="{{ customer.default_address.id }}" data-confirm-message="{{ 'flits.address_page.delete_confirm' | t }}">X</span>
+                <div class="flits-address">
+                    <div class="flits-row">
+                        <div class="flits-col-md-12 flits-text-center">
+                            <strong>&nbsp;</strong>
+                        </div>
+                    </div>
+                    <div class='flits-address-details'>
+                        <div class='flits-row flits-address-name-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.first_name }} {{ customer.default_address.last_name }}">
+                                {{ customer.default_address.first_name }} {{ customer.default_address.last_name }}
+                            </div>
+                        </div>
+                        <div class='flits-row flits-company-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.company }}">
+                                {{ customer.default_address.company }}
+                            </div>
+                        </div>
+                        <div class='flits-row  flits-address1-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.address1 }}">
+                                {{ customer.default_address.address1 }}
+                            </div>
+                        </div>
+                        <div class='flits-row  flits-address2-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.address2 }}">
+                                {{ customer.default_address.address2 }}
+                            </div>
+                        </div>
+                        <div class='flits-row flits-city-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.zip }} {{ customer.default_address.city }} {{ customer.default_address.province_code }}">
+                                {{ customer.default_address.zip }} {{ customer.default_address.city }} {{ customer.default_address.province_code }}
+                            </div>
+                        </div>
+                        <div class='flits-row flits-country-row'>
+                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.country }}">
+                                {{ customer.default_address.country }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class='flits-row flits-m-t-20 flits-text-center'>
+                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-col-md-offset-3 flits-col-sm-offset-3 flits-col-xs-offset-3">
+                            <button type="button" class="flits-btn-inline flits-btn-custom flits-btn-default flits-btn flits-full-width flits-btn-small flits-edit-address-btn" data-form-id="{{ customer.default_address.id }}">{{ 'flits.address_page.edit' | t }}</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="flits-list-group-item" id="flits-credit-log-template">
+                <div class="flits-row flits-credit-log-with-dropdown">
+                  <div class="flits-col-md-3 flits-credit-col">
+                  </div>
+                  <div class="flits-col-md-6 flits-credit-comment-col flits-text-muted">
+                  </div>
+                  <div class="flits-col-lg-3 flits-credit-date-col">
+                  </div>
+                </div>
+                <div class="flits-credit-details" style="display: none;">
+                </div>
+            </li>
+            <div class="flits-row flits-credit-details-template flits-credit-details-row">
+              <div class="flits-col-md-3 flits-product-tag-credit">
+              </div>
+              <div class="flits-col-md-6 flits-product-title flits-text-nowrap">
+              </div>
+              <div class="flits-col-md-3 flits-product-tag-div">
+                <div class="flits-product-tag-svg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+                </div>
+                <span class="flits-product-tag flits-text-nowrap"></span>
+              </div>
+            </div>
+            <div class="flits-credit-dropdown-svg-div flits-credit-dropdown">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+        </div>
+    </div>  
+    <div>
+        <div class="flits-text-left flits-account-page-title mb25">
+            <h1>{{ 'flits.general.greeting' | t }}  {{ customer.first_name }}</h1>
+        </div>
+        {% if customer %}
+            <div>
+                <p>
+                    Your Shine Points <span class="sweettooth-points-balance"></span>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="flits-page">
+        <div class="flits-nav-bar">
+            <div class="flits-nav sidebar-content flits-h-full">
+                <div class="flits-list-group">
+                    <a disabled data-type="flits" data-href="#flits-page-profile" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.profile' | t }}</a>
+                    <a disabled data-type="flits" data-href="#flits-page-orders" data-toggle='page' class="flits-list-group-item active flits-bg-theme">{{ 'flits.navigation.my_orders' | t }}</a>
+                    <a disabled data-type="flits" data-href="#flits-page-address" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.delivery_address' | t }}</a>
+                    {% if shop.metafields.Flits.is_store_credit_enable == 0 or shop.metafields.Flits.IS_STORE_CREDIT_PAID == 0 %}
+
+                    {% else %}
+                    <a disabled data-type="flits" data-href="#flits-page-credits" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.store_credit' | t }}</a>
+                    {% endif %}
+
+                    {% assign total_pages = shop.metafields.Flits.total_pages %}
+
+                    {% for i in (1..total_pages) %}
+                    {% assign title_str = 'title_' | append: i %}
+                    {% assign url_str = 'url_' | append:i %}
+                    {% assign type_str = 'type_' | append:i %}
+                    {% assign title = shop.metafields.Flits[title_str] | capitalize  %}
+                    {% assign url = shop.metafields.Flits[url_str] %}
+                    {% assign type =  shop.metafields.Flits[type_str] %}
+                    {% if type != 'PAGE' %}
+                    <a disabled data-type="flits" href="{{ url }}" target="_blank" class="flits-list-group-item flits-bg-theme">{{ title }}</a>
+                    {% else %}
+                    <a disabled data-type="flits" data-title="{{ title }}" data-toggle='page' data-href="#flits-page-{{ url }}" class="flits-list-group-item flits-bg-theme">{{ title }}</a>          
+                    {% endif %}
+
+                    {% endfor %}
+
+                    {% if shop.metafields.Flits.is_recently_view_enable == 0 %}
+                    {% else %}
+                    <a disabled data-type="flits" data-href="#flits-page-recently-view" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.recently_viewed_products' | t }}</a>
+                    {% endif %}
+                    <a disabled data-type="flits" data-href="#flits-page-security" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.change_password' | t }}</a>
+                    <a href="account/logout" class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.log_out' | t }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="flits-page-content">
+            <div class="flits-pages flits-h-full">
+                <div id="flits-page-profile" data-type="page" class="flits-hidden">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.my_profile' | t }}
+                        </span>
+                    </div>
+                    <form data-action="profile_save" id="flits-form-profile" method="post">
+                        <div class="flits-row">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.profile_page.first_name' | t }}</label>
+                                <label class="flits-hide-profile-edit base-BodyText">{{ customer.first_name }}</label>
+                                <input type="text" name="first_name" class="flits-hidden flits-hide-profile-cancel" value="{{ customer.first_name }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.profile_page.last_name' | t }}</label>
+                                <label class="flits-hide-profile-edit base-BodyText">{{ customer.last_name }}</label>
+                                <input type="text" name="last_name" class="flits-hidden flits-hide-profile-cancel" value="{{ customer.last_name }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.profile_page.email' | t }}</label>
+                                <label class="flits-hide-profile-edit base-BodyText">{{ customer.email }}</label>
+                                <input type="email" readonly="" class="flits-hidden flits-hide-profile-cancel" value="{{ customer.email }}" name="email">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>Phone</label>
+                                <label class="flits-hide-profile-edit base-BodyText">{{ customer.phone }}</label>
+                                <input type="text" name="phone" class="flits-hidden flits-hide-profile-cancel"  value="{{ customer.phone }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>Birthday</label>
+                                <label class="flits-hide-profile-edit base-BodyText">{{ customer.metafields.Flits.birthdate }}</label>
+                                <input type="date" name="birthdate" max="2000-12-01" class="flits-profile-birthdate flits-hidden flits-hide-profile-cancel" value="{{ customer.metafields.Flits.birthdate }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.profile_page.gender' | t }}</label>
+                                <label class="flits-hide-profile-edit flits-profile-gender-label">
+                                        {% if customer.metafields.Flits.gender and customer.metafields.Flits.gender != ""%}
+                                        {{ 'flits.profile_page.' | append:customer.metafields.Flits.gender | t }}
+                                        {% endif %}
+                                </label>
+                                <div class="flits-m-t-15 flits-hidden flits-hide-profile-cancel">
+                                    <select name="gender" class="flits-profile-gender" id="flits-profile-gender">
+                                        <option value="male" {% if customer.metafields.Flits.gender == 'male' %}selected{% endif %}>{{ 'flits.profile_page.male' | t }}</option>
+                                        <option value="female" {% if customer.metafields.Flits.gender == 'female' %}selected{% endif %}>{{ 'flits.profile_page.female' | t }}</option>
+                                        <option value="other" {% if customer.metafields.Flits.gender == 'other' %}selected{% endif %}>{{ 'flits.profile_page.other' | t }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-10 flits-edit-button-row">
+                            <div class="flits-col-md-2">
+                                <label>&nbsp;</label>
+                                <button type="button" data-type="flits" class='flits-btn-inline flits-btn-block flits-btn flits-btn-default flits-btn-custom flits-profile-edit-button' disabled>{{ 'flits.buttons.edit' | t }}</button>
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-10 flits-save-button-row flits-hidden">
+                            <div class="flits-col-md-2">
+                                <label>&nbsp;</label>
+                                <button type="button" data-type="flits" class='flits-btn-inline flits-btn-block flits-btn-danger flits-btn-custom flits-profile-cancel-button flits-btn' disabled>{{ 'flits.buttons.cancel' | t }}</button>
+                            </div>
+                            <div class="flits-col-md-2">
+                                <label>&nbsp;</label>
+                                <button type="submit" data-type="flits" class='flits-btn-inline flits-btn-block flits-btn-primary flits-btn-custom  flits-btn' disabled>{{ 'flits.buttons.save' | t }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="flits-page-orders" data-type="page">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.my_orders' | t }}
+                        </span>
+                    </div>
+                    {% assign date_format = 'flits.order_page.order_date_format' | t %}
+                    {% if customer.orders.size != 0 %}
+                    {% paginate customer.orders by 3 %}
+                    {% for order in customer.orders %}
+                    
+                    {% assign order_date_month_original = order.created_at | date: '%B' %}
+                    {% assign order_date_month_downcase = order.created_at | date: '%B' | downcase  %}
+                    {% assign order_date_month_text = 'flits.months.' | append:order_date_month_downcase | t %}	
+                    {% assign order_date = order.created_at | date:date_format | replace:order_date_month_original,order_date_month_text %}
+
+                    {% assign order_cancelled_month_original = order.cancelled_at | date: '%B' %}
+                    {% assign order_cancelled_month_downcase = order.cancelled_at | date: '%B' | downcase  %}
+                    {% assign order_cancelled_month_text = 'flits.months.' | append:order_cancelled_month_downcase | t %}	
+                    {% assign order_cancelled_date = order.cancelled_at | date:date_format | replace:order_cancelled_month_original,order_cancelled_month_text %}
+                    
+                    <div class="flits-order-row">
+                        <div class="flits-order-status-row">
+                            <div class="flits-row">
+                                <div class="flits-col-md-6 flits-text-left flits-order-name">{{ 'flits.order_page.order_number' | t }}: <span class='flits-order-details-value'>{{ order.name }}</span></div>
+                                <div class="flits-col-md-6 flits-text-right flits-sm-text-left flits-order-total-price" data-value='{{ order.total_price }}'>{{ 'flits.order_page.grand_total' | t }}: <span class='flits-order-details-value'>{{ order.total_price | money }}</span></div>
+                            </div>
+                        </div>
+                        <div class="flits-order-detail-row">
+                            <div class="flits-row">
+                                <div class="flits-col-md-6 flits-text-left flits-order-date">{{ 'flits.order_page.order_date' | t }}: <span class='flits-order-details-value'>{{ order_date }}</span></div>
+                                <div class="flits-col-md-6 flits-text-right flits-sm-text-left flits-order-total-items">{{ 'flits.order_page.total_items' | t }}: <span class='flits-order-details-value'>{{ order.line_items.size }}</span></div>
+                            </div>
+                            <div class="flits-row">
+                                {% if order.cancelled  %}
+                                <div class="flits-col-md-6 flits-text-left flits-order-cancel-status" data-value='{{ order.cancelled_at }}'>{{ 'flits.order_page.cancel_at' | t }}: <span class='flits-order-details-value'>{{ order_cancelled_date }}</span></div>                              
+                                {% else %}
+                                <div class="flits-col-md-6 flits-text-left flits-order-fulfillment-status" data-value='{{ order.fulfillment_status }}'>{{ 'flits.order_page.fulfillment_status' | t }}: <span class='flits-order-details-value'>{{ order.fulfillment_status_label }}</span></div>
+                                {% endif %}
+                                <div class="flits-col-md-6 flits-text-right flits-sm-text-left flits-order-payment-status" data-value='{{ order.financial_status }}'>{{ 'flits.order_page.payment_status' | t }}: <span class='flits-order-details-value'>{{ order.financial_status_label }}</span></div>
+                            </div>
+
+                        </div>
+                        <div class="flits-order-items-row">
+                            <script>
+                              if (typeof window.flits_orders == "undefined"){
+                                window.flits_orders = [];
+                              }
+                              window.flits_orders[{{order.id}}] = [];
+                            </script>
+                            {% assign order_line_item_price = 0 %}
+                            {% for item in order.line_items %}
+                            <script>
+                              window.flits_orders[{{order.id}}].push({
+                                variant_id:'{{ item.variant_id }}',
+                                quantity:'{{ item.quantity }}'
+                              });
+                            </script>
+                            <div class="flits-order-item">
+                                <div class="flits-row ">
+                                    <div class="flits-col-md-2 flits-col-sm-2 flits-col-xs-4 flits-order-item-image">
+                                        <img src="{{item.image | img_url: 'small'}}" class="flits-image">
+                                        <div class="flits-order-item-quantity">{{ item.quantity }}</div>
+                                    </div>
+                                    <div class="flits-col-md-10 flits-col-sm-10 flits-col-xs-8">
+                                        <div class="flits-row">
+                                            <a href="{{ item.url }}" target="_blank">
+                                                <div class="flits-col-md-12 flits-order-item-title" title="{{ item.title }}">
+                                                    {{ item.title }}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="flits-row flits-m-t-10">
+                                            <div class="flits-col-md-12 flits-order-item-price">
+                                                {{ item.price | money }}
+                                            </div>
+                                        </div>
+                                        {% if item.fulfillment and item.fulfillment.tracking_number != blank %}
+                                        <div class="flits-row flits-m-t-10">
+                                            <div class="flits-col-md-12 flits-line-item-track">
+                                                {{ 'flits.order_page.tracking_number' | t }} : <a href="{{ item.fulfillment.tracking_url }}" 
+                                                                                                  class="flits-order-tracking"
+                                                                                                  data-line-item-id="{{ item.id }}"
+                                                                                                  data-order-id = "{{ order.id }}"
+                                                                                                  data-tracking-number="{{ item.fulfillment.tracking_number }}"
+                                                                                                  target="_blank">{{ item.fulfillment.tracking_number }}</a>	                                                
+                                            </div>
+                                        </div>
+                                        {% if shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE and shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE == 1 %}
+                                        <div class="flits-m-t-10 flits-hidden flits_append_tracking" data-append-tracking-id="{{ item.id }}">
+
+                                        </div>
+                                        <div class="{% if shop.metafields.Flits.IS_ORDER_TRACKING_PAID and shop.metafields.Flits.IS_ORDER_TRACKING_PAID == 1 %}{% else %}flits-hidden{% endif %} flits_append_tracking" data-append-tracking-id="{{ item.id }}">
+                                            {% if shop.metafields.Flits.IS_ORDER_TRACKING_PAID and shop.metafields.Flits.IS_ORDER_TRACKING_PAID == 1 %}
+                                            {% render 'flits_order_tracking_snippet' with 'order_tracking', is_template:false %}
+                                            {% endif %}
+                                        </div>
+                                        {% endif%}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% assign order_line_item_price = order_line_item_price | plus: item.line_price %}
+                            {% endfor %}
+                            {% if shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE and shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE == 1 %}
+                            <div class="{% if shop.metafields.Flits.IS_ORDER_TRACKING_PAID and shop.metafields.Flits.IS_ORDER_TRACKING_PAID == 1 %}{% else %}flits-hidden{% endif %} flits_append_tracking" data-append-tracking-id="{{ order.id }}">
+                                {% if shop.metafields.Flits.IS_ORDER_TRACKING_PAID and shop.metafields.Flits.IS_ORDER_TRACKING_PAID == 1 %}
+                                {% render 'flits_order_tracking_snippet' with 'order_tracking', is_template:false %}
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="flits-order-action-row">
+                            <div class="flits-row">
+                                <div class="flits-col-md-12 flits-text-right">
+                                    {% if shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE and shop.metafields.Flits.IS_ORDER_TRACKING_ENABLE == 1 %}
+                                    <span class="flits-m-t-10 flits-hidden flits_append_tracking_btn" data-append-tracking-id="{{ order.id }}">
+                                    </span>
+                                    {% endif %}
+                                    <button class="flits-hidden flits-btn-inline flits-btn-primary flits-btn-custom flits-order-details-btn flits-btn" data-show-text="{{ 'flits.order_page.show_order_details' | t }}" data-hide-text="{{ 'flits.order_page.hide_order_details' | t }}">{{ 'flits.order_page.show_order_details' | t }}</button>
+                                    
+                                    {% if shop.metafields.Flits.IS_REORDER_ENABLE and shop.metafields.Flits.IS_REORDER_ENABLE == 1 %}
+                                    <button class="flits-btn-inline flits-btn-default flits-btn-custom flits-order-re-order-btn flits-btn" data-target="{{ order.id }}">{{ 'flits.order_page.re_order' | t }}</button>
+                                    {% endif %}
+
+                                    <div class="flits-hidden flits-order-line-items">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flits-order-address-details-row" style="display: none;">
+                            <div class="flits-row flits-m-t-15">
+                                <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-12 flits-order-shipping-address">
+                                    <h4 class="flits-text-left">{{ 'flits.order_page.shipping_address' | t }}</h4>
+                                    {{ order.shipping_address | format_address }}
+                                </div>
+                                <div class="flits-col-md-6  flits-col-sm-6 flits-col-xs-12 flits-sm-m-t-15  flits-order-billing-address">
+                                    <h4 class="flits-text-left">{{ 'flits.order_page.billing_address' | t }}</h4>
+                                    {{ order.billing_address | format_address }}
+                                </div>
+                            </div>
+                            <div class="flits-row flits-order-cost-breakup">
+                                <div class="flits-col-md-12">
+                                    <h4 class="flits-text-left">{{ 'flits.order_page.cost_breakup' | t }}</h4>
+                                    <div class="flits-row flits-order-subtotal">
+                                        <div class="flits-col-md-6  flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ 'flits.order_page.subtotal' | t }}</div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right">{{ order_line_item_price | money }}</div>
+                                    </div>
+                                    {% for discount in order.discounts %}
+                                    <div class="flits-row flits-order-discount">
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ 'flits.order_page.discount_code' | t }}: {{ discount.code }} </div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right">{{ discount.savings | money }}</div>
+                                    </div>
+                                    {% endfor %}
+                                    {% for tax_line in order.tax_lines %}
+                                    <div class="flits-row flits-order-tax">
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ tax_line.title }} {{ tax_line.rate | times: 100 }}%</div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right">{{ tax_line.price | money }}</div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="flits-row flits-order-shipping-price">
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ 'flits.order_page.shipping_and_handling' | t }}</div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right">{{ order.shipping_price | money }}</div>
+                                    </div>
+
+                                    <div class="flits-row flits-order-grand-total">
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ 'flits.order_page.grand_total' | t }}</div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right">{{ order.total_price | money }}</div>
+                                    </div>
+                                    <div class="flits-row flits-order-payment-type">
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-left">{{ 'flits.order_page.payment_type' | t }}</div>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-text-right flits-order-details-value">{{ order.transactions[0].gateway | replace: '_',' ' | capitalize }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% if paginate.pages > 1 %}
+                    <div class="flits-pagination-div">
+                        <div class="flits-pagination">
+                            {% if paginate.previous %}
+                            <a href="{{ paginate.previous.url }}#orders" title="{{ paginate.previous.title }}">&laquo;</a>
+                            {% else %}
+                            <a disabled=""><span>&laquo;</span></a>
+                            {% endif %}
+                            {% for part in paginate.parts %}
+                            {% if part.is_link %}
+                            <a href="{{ part.url }}#orders" title="">{{ part.title }}</a>
+                            {% else %}
+                            {% if part.title == paginate.current_page %}
+                            <a class="active"><span>{{ part.title }}</span></a>
+                            {% else %}
+                            <a><span>{{ part.title }}</span></a>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            {% if paginate.next %}
+                            <a href="{{ paginate.next.url }}#orders" title="{{ paginate.next.title }}">&raquo;</a>
+                            {% else %}
+                            <a disabled=""><span>&raquo;</span></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endpaginate %}
+                    {% else %}
+                    <div class="flits-order-empty">
+                        <div class="flits-empty-order-icon flits-text-center">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="100px" height="100px" viewBox="0 0 440 440" style="enable-background:new 0 0 440 440;" xml:space="preserve">
+                            <g>
+                            <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293
+                                  l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85
+                                  c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271
+                                  c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812
+                                  c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96
+                                  c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z
+                                  M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151
+                                  L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887
+                                  l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839
+                                  c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861
+                                  l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659
+                                  c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204
+                                  l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"
+                                  />
+                            </g>
+                            </svg>
+                        </div>
+                        <div class="flits-text-center flits-empty-order-msg">{{ 'flits.order_page.no_orders_view' | t }}</div>
+                        <div class="flits-text-center flits-empty-order-msg">{{ 'flits.order_page.marketing_line' | t }}</div>
+                        <div class="flits-text-center flits-m-t-15"><a class="flits-btn flits-btn-default flits-btn-custom" href="/collections/all">{{ 'flits.buttons.shop_now' | t }}</a></div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div id="flits-page-address" data-type="page" class="flits-hidden">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.my_addresses' | t }}
+                        </span>
+                    </div>
+                    <div class='flits-row'>
+                        <div class='flits-col-md-12 flits-text-right'>
+                            <button type="button" class="flits-btn flits-btn-danger flits-btn-custom flits-hidden flits-new-address-cancel-btn">{{ 'flits.buttons.cancel' | t }}</button>
+                            <button style='display:none;' type="button" class="flits-btn flits-btn-primary flits-btn-custom flits-new-address-btn flits-hidden">{{ 'flits.address_page.add_a_new_address' | t }}</button>  
+                        </div>
+                    </div>
+                    <div class='flits-hidden flits-new-address-form'>
+                        {% form 'customer_address', customer.new_address %}
+                        <input type="hidden" name="form_type" id="form_type" value="new">
+                        <h2 class="flits-address-form-title" data-original-text="{{ 'flits.address_page.add_a_new_address' | t }}">{{ 'flits.address_page.add_a_new_address' | t }}</h2>
+                        <div class='flits-row'>
+                            <div class='flits-col-md-6'>
+                                <label for="AddressFirstNameNew">{{ 'flits.address_page.first_name' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}">
+                            </div>
+                            <div class='flits-col-md-6 flits-sm-m-t-15'>
+                                <label for="AddressLastNameNew">{{ 'flits.address_page.last_name' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}">
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-12'>
+                                <label for="AddressAddress1New">{{ 'flits.address_page.address1' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}">
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-12'>
+                                <label for="AddressAddress2New">{{ 'flits.address_page.address2' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}">
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-4'>
+                                <label for="AddressCompanyNew">{{ 'flits.address_page.company' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}">
+                            </div>
+                            <div class='flits-col-md-4 flits-sm-m-t-15'>
+                                <label for="AddressZipNew">{{ 'flits.address_page.zip' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                            </div>
+                            <div class='flits-col-md-4 flits-sm-m-t-15'>
+                                <label for="AddressPhoneNew">{{ 'flits.address_page.phone' | t }}</label>
+                                <input class='flits-full-width' type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}">
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-4'>
+                                <label for="AddressCityNew">{{ 'flits.address_page.city' | t }}</label>
+                                <input class='flits-full-width' type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}">
+                            </div>
+                            <div class='flits-col-md-4 flits-sm-m-t-15'>
+                                <label for="AddressCountryNew">{{ 'flits.address_page.country' | t }}</label>
+                                <select class='flits-full-width' id="AddressCountryNew" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                            </div>
+                            <div class='flits-col-md-4  flits-sm-m-t-15' id="AddressProvinceContainerNew" style="display:none">
+                                <label for="AddressProvinceNew">{{ 'flits.address_page.province' | t }}</label>
+                                <select class='flits-full-width' id="AddressProvinceNew" name="address[province]" data-default="{{ form.province }}"></select>
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-12'>
+                                {{ form.set_as_default_checkbox }}
+                                <label class="flits-default-address-checkbox" for="address_default_address_new">{{ 'flits.address_page.set_as_default_address' | t }}</label>
+                            </div>
+                        </div>
+                        <div class='flits-row flits-m-t-15'>
+                            <div class='flits-col-md-12 flits-text-right'>
+                                <button type="button" class="flits-btn flits-btn-danger flits-btn-custom flits-new-address-cancel-btn flits-btn-inline flits-btn">{{ 'flits.address_page.cancel' | t }}</button>
+                                <button type='submit' data-add-text="{{ 'flits.address_page.add_address' | t }}" data-update-text="{{ 'flits.address_page.save_address' | t }}" class="flits-btn-inline flits-btn flits-btn-primary flits-btn-custom flits-btn">{{ 'flits.address_page.add_address' | t }}</button>
+                            </div>
+                        </div>
+                        {% endform %}
+                    </div>
+                    <div class='flits-addresses-row flits-m-t-15'>
+                        <ul class='flits-addresses-ul'>
+
+                            {% if customer.addresses.size != 0 %}
+                            <li class='flits-card-box flits-address-default' 
+                                data-phone="{{ customer.default_address.phone }}"
+                                data-phone="{{ customer.default_address.phone }}" 
+                                data-first-name="{{ customer.default_address.first_name }}" 
+                                data-last-name="{{ customer.default_address.last_name }}"
+                                data-company="{{ customer.default_address.company }}"
+                                data-address1="{{ customer.default_address.address1 }}"
+                                data-address2="{{ customer.default_address.address2 }}"
+                                data-zip="{{ customer.default_address.zip }}" 
+                                data-city="{{ customer.default_address.city }}" 
+                                data-province="{{ customer.default_address.province }}"
+                                data-country="{{ customer.default_address.country }}"
+                                data-id="{{ customer.default_address.id }}"
+                                data-default="true"
+                                >
+                                <span class="flits-remove-address-btn" data-form-id="{{ customer.default_address.id }}" data-confirm-message="{{ 'flits.address_page.delete_confirm' | t }}">X</span>
+                                <div class="flits-address">
+                                    <div class='flits-row'>
+                                        <div class='flits-col-md-12 flits-text-center'>
+                                            <strong>{{ 'flits.address_page.default' | t }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class='flits-address-details'>
+                                        <div class='flits-row flits-address-name-row'>
+                                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.first_name }} {{ customer.default_address.last_name }}">
+                                                {{ customer.default_address.first_name }} {{ customer.default_address.last_name }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-company-row'>
+                                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.company }}">
+                                                {{ customer.default_address.company }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row  flits-address1-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ customer.default_address.address1 }}">
+                                                {{ customer.default_address.address1 }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row  flits-address2-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ customer.default_address.address2 }}">
+                                                {{ customer.default_address.address2 }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-city-row'>
+                                            <div class='flits-col-md-12 flits-content' title="{{ customer.default_address.zip }} {{ customer.default_address.city }} {{ customer.default_address.province_code }}">
+                                                {{ customer.default_address.zip }} {{ customer.default_address.city }} {{ customer.default_address.province_code }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-country-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ customer.default_address.country }}">
+                                                {{ customer.default_address.country }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='flits-row flits-m-t-20 flits-text-center'>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-col-md-offset-3 flits-col-sm-offset-3 flits-col-xs-offset-3">
+                                            <button type="button" class="flits-btn-inline flits-btn-default flits-btn-custom flits-full-width flits-btn-small flits-edit-address-btn flits-btn" data-form-id="{{ customer.default_address.id }}">{{ 'flits.address_page.edit' | t }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% else %}
+
+                            {% endif%}
+                            {% for address in customer.addresses %}
+                            {% if address == customer.default_address %}
+                            {% continue; %}
+                            <!--<p><strong>{{ 'flits.address_page.default' | t }}</strong></p>-->
+                            {% endif %}
+                            <li class='flits-card-box' 
+                                data-phone="{{ address.phone }}" 
+                                data-first-name="{{ address.first_name }}" 
+                                data-last-name="{{ address.last_name }}"
+                                data-company="{{ address.company }}"
+                                data-address1="{{ address.address1 }}"
+                                data-address2="{{ address.address2 }}"
+                                data-zip="{{ address.zip }}" 
+                                data-city="{{ address.city }}" 
+                                data-province="{{ address.province }}"
+                                data-country="{{ address.country }}"
+                                data-id="{{ address.id }}"
+                                data-default="false"
+                                >
+                                <span class="flits-remove-address-btn" data-form-id="{{ address.id }}" data-confirm-message="{{ 'flits.address_page.delete_confirm' | t }}">X</span>
+                                <div class="flits-address">
+                                    <div class='flits-row'>
+                                        <div class='flits-col-md-12 flits-text-center'>
+                                            <strong>&nbsp;</strong>
+                                        </div>
+                                    </div>
+                                    <div class='flits-address-details'>
+                                        <div class='flits-row flits-address-name-row'>
+                                            <div class='flits-col-md-12 flits-content' title="{{ address.first_name }} {{ address.last_name }}">
+                                                {{ address.first_name }} {{ address.last_name }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-company-row'>
+                                            <div class='flits-col-md-12 flits-content' title="{{ address.company }}">
+                                                {{ address.company }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row  flits-address1-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ address.address1 }}">
+                                                {{ address.address1 }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row  flits-address2-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ address.address2 }}">
+                                                {{ address.address2 }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-city-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ address.zip }} {{ address.city }} {{ address.province_code }}">
+                                                {{ address.zip }} {{ address.city }} {{ address.province_code }}
+                                            </div>
+                                        </div>
+                                        <div class='flits-row flits-country-row'>
+                                            <div class='flits-col-md-12 flits-content'  title="{{ address.country }}">
+                                                {{ address.country }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='flits-row flits-m-t-20 flits-text-center'>
+                                        <div class="flits-col-md-6 flits-col-sm-6 flits-col-xs-6 flits-col-md-offset-3 flits-col-sm-offset-3 flits-col-xs-offset-3">
+                                            <button type="button" class="flits-btn-inline flits-btn flits-btn-default flits-btn-custom flits-btn flits-full-width flits-btn-small flits-edit-address-btn" data-form-id="{{ address.id }}">{{ 'flits.address_page.edit' | t }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            <li class='flits-card-box flits-new-address-li flits-new-address-btn'>
+                                <div class='flits-content'>
+                                    <div class="flits-icon-add-address">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
+                                        <g>
+                                        <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26
+                                              S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z"/>
+                                        <path d="M38.5,25H27V14c0-0.553-0.448-1-1-1s-1,0.447-1,1v11H13.5c-0.552,0-1,0.447-1,1s0.448,1,1,1H25v12c0,0.553,0.448,1,1,1
+                                              s1-0.447,1-1V27h11.5c0.552,0,1-0.447,1-1S39.052,25,38.5,25z"/>
+                                        </g>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        {{ 'flits.address_page.add_a_new_address' | t }}
+                                    </div> </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="flits-page-credits" data-type="page" class="flits-hidden">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.my_credits' | t }}
+                        </span>
+                    </div>
+                    <div class="flits-credit-page">
+                        <div class="flits-credit-balance">
+                            <div class="flits-row">
+                                <div class="flits-col-md-4 flits-text-center">
+                                    <div class="flits-card-box flits-earned-credits-div">
+                                        <div class="flits-earned-credits-text">{{ 'flits.credit_page.earned_credits' | t }}</div>
+                                        <div class="flits-earned-credits">0</div>
+                                    </div>
+                                </div>
+                                <div class="flits-col-md-4 flits-text-center">
+                                    <div class="flits-card-box flits-spent-credits-div">
+                                        <div class="flits-spent-credits-text">{{ 'flits.credit_page.spent_credits' | t }}</div>
+                                        <div class="flits-spent-credits">0</div>
+                                    </div>
+                                </div>
+                                <div class="flits-col-md-4 flits-text-center">
+                                    <div class="flits-card-box flits-current-credits-div">
+                                        <div class="flits-current-credits-text">{{ 'flits.credit_page.current_credits' | t }}</div>
+                                        <div class="flits-current-credits">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flits-credit-history flits-card-box">
+                        <div class="flits-hidden flits-credit-history-empty">
+                            <div class="flits-empty-history">
+                                <div class="flits-empty-history-icon flits-text-center">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="100px" height="100px" viewBox="0 0 440 440" style="enable-background:new 0 0 440 440;" xml:space="preserve">
+                                    <g>
+                                    <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293
+                                          l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85
+                                          c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271
+                                          c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812
+                                          c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96
+                                          c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z
+                                          M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151
+                                          L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887
+                                          l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839
+                                          c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861
+                                          l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659
+                                          c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204
+                                          l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"
+                                          />
+                                    </g>
+                                    </svg>
+                                </div>
+                                <div class="flits-text-center flits-empty-history-msg">{{ 'flits.credit_page.no_history_yet' | t }}</div>
+                                <div class="flits-text-center flits-empty-history-msg">{{ 'flits.credit_page.marketing_line' | t }}</div>
+                                <div class="flits-text-center flits-m-t-15"><a class="flits-btn flits-btn-custom flits-btn-primary" href="/collections/all">{{ 'flits.buttons.shop_now' | t }}</a></div>
+                            </div>
+                        </div>
+                        <div class="flits-hidden flits-credit-history-div">
+                            <h5 class="flits-credit-activity-title">{{ 'flits.credit_page.credits_activity' | t }}</h5>
+                            <ul class="flits-list-group flits-credit-log">
+                                <li class="flits-list-group-item flits-li-title" id="flits-credit-log-template">
+                                    <div class="flits-row">
+                                        <div class="flits-col-md-3 flits-credit-col">
+                                            {{ 'flits.credit_page.credits' | t }}
+                                        </div>
+                                        <div class="flits-col-md-6  flits-credit-comment-col flits-text-muted">
+                                            {{ 'flits.credit_page.reason_for_credits' | t }}
+                                        </div>
+                                        <div class="flits-col-lg-3  flits-credit-date-col">
+                                            {{ 'flits.credit_page.time' | t }}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="flits-page-recently-view" data-type="page" class="flits-hidden">
+                    <style>
+                        .flits-recently-products-ul{margin:0;text-align:left;list-style:none!important}.flits-recently-products-ul li{text-align:center;display:inline-block;vertical-align:middle;margin-top:10px;margin-right:5px;position:relative;-moz-transition:all .2s;-o-transition:all .2s;-webkit-transition:all .2s;transition:all .2s}.flits-recently-products-ul li.flits-card-box{padding:10px;border-color:#d3d3d3}.flits-recently-products-ul li:hover.flits-card-box{border-color:#000}@media (min-width:768px){.flits-recently-products-ul li{width:48%}}@media (min-width:992px){.flits-recently-products-ul li{width:32%}}@media (min-width:1200px){.flits-recently-products-ul li{width:23%}}@media only screen and (max-width:768px){.flits-recently-products-ul li{width:100%}}.flits-recently-products-ul li .flits-product-img-div .flits-product-img{width:100%;height:150px;margin:auto}.flits-product-quantity{position:relative;margin-bottom:1em;overflow:visible;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden}.flits-product-quantity input[type=text]{display:block;background:0 0;text-align:center;width:100%;padding:5px 25px;margin:0;border:1px solid #dedede}.flits-product-quantity-adjuster{cursor:pointer;position:absolute;display:block;top:0;bottom:0;padding:5px 0;width:20px;text-align:center;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-ms-transition:all .2s ease-out;-o-transition:all .2s ease-out;transition:all .2s ease-out}.flits-product-quantity-minus{left:0;border-right:1px solid #dedede}.flits-product-quantity-add{right:0;border-left:1px solid #dedede}.flits-product-variant-options{margin:0 0 20px;padding:8px 10px}.flits-product-variant-title{white-space:nowrap;overflow:hidden!important;text-overflow:ellipsis}
+                    </style>
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.recently_viewed_products' | t }}
+                        </span>
+                    </div>
+                    <div class="flits-recently-view-empty" id='flits-recently-view-empty'>
+                        <div class="flits-recently-view-icon flits-text-center">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="100px" height="100px" viewBox="0 0 440 440" style="enable-background:new 0 0 440 440;" xml:space="preserve">
+                            <g>
+                            <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293
+                                  l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85
+                                  c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271
+                                  c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812
+                                  c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96
+                                  c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z
+                                  M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151
+                                  L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887
+                                  l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839
+                                  c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861
+                                  l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659
+                                  c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204
+                                  l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"
+                                  />
+                            </g>
+                            </svg>
+                        </div>
+                        <div class="flits-text-center flits-empty-recently-view-msg">{{ 'flits.recently_viewed_product_page.no_products_view' | t }}</div>
+                        <div class="flits-text-center flits-empty-recently-view-msg">{{ 'flits.recently_viewed_product_page.marketing_line' | t }}</div>
+                        <div class="flits-text-center flits-m-t-15"><a class="flits-btn flits-btn-default flits-btn-custom" href="/collections/all">{{ 'flits.buttons.view_products' | t }}</a></div>
+                    </div>
+                    <ul id="flits-recently-products-ul" class='flits-recently-products-ul'></ul>
+                    <div class="flits-hidden">
+                        <li class="flits-card-box flits-recently-products-li-structure">
+                            <form action="/cart/add" method="post">
+                                <div class="flits-product-img-relative">
+                                    <div class="flits-row flits-text-center">
+                                        <div class="flits-col-md-12 flits-col-sm-12 flits-product-img-div">
+                                            <a target="_blank" class="flits-product-title-anchor">
+                                                <div class="flits-product-img filter-alabaster" style="background-image: attr('data-image-url');background-size: contain;background-repeat: no-repeat;background-position: center center;">
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flits-row flits-m-t-10">
+                                        <div class="flits-col-md-12 flits-col-sm-12 flits-product-variant-title base-BodyTitle flits-text-center">
+
+                                        </div>
+                                    </div>
+                                    <div class="flits-row flits-m-t-10 hide">
+                                        <div class="flits-col-md-12 flits-col-sm-12">
+                                            <select style="width:100%;" class="product-variant-options flits-product-variant-options" name="id">
+
+                                            </select>
+                                            <div class="flits-product-quantity">
+                                                <input type="text" class="flits-product-quantity-num flits-product-quantity" value="1" min="1" name="quantity">
+                                                <span class="flits-product-quantity-adjuster flits-product-quantity-add" >+</span>
+                                                <span class="flits-product-quantity-adjuster flits-product-quantity-minus">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flits-row flits-m-t-10">
+                                        <div class="flits-col-md-12 flits-col-sm-12 flits-product-variant-price flits-text-center">
+
+                                        </div>
+                                    </div>
+                                    <div class="flits-row flits-m-t-10">
+                                        <div class="flits-col-md-12 flits-col-sm-12">
+                                            <button type="submit" class="flits-btn flits-btn-default flits-btn-custom flits-btn-block flits-add-to-cart"
+                                                    data-flits-sold-out-text="{{ 'flits.buttons.sold_out' | t }}"
+                                                    data-flits-add-to-cart-text="{{ 'flits.buttons.add_to_cart' | t }}">	
+                                                {{ 'flits.buttons.add_to_cart' | t }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </div>
+                </div>
+                <div id="flits-page-security" data-type="page" class="flits-hidden">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">
+                            {{ 'flits.buttons.back' | t }}
+                        </span>
+                        <span class="flits-heading">
+                            {{ 'flits.heading.change_password' | t }}
+                        </span>
+                    </div>
+                    <form data-action="update_password" id="flits-form-change-password" method="post">
+                        <div class="flits-row">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.update_password_page.new_password' | t }}:</label>
+                                <input required="" type="password" name="password" style="width:100%" placeholder="{{ 'flits.update_password_page.enter_new_password_here' | t }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-15">
+                            <div class="flits-col-md-6">
+                                <label>{{ 'flits.update_password_page.confirm_new_password' | t }}:</label>
+                                <input required="" type="password" name="password_confirmation" style="width:100%" placeholder="{{ 'flits.update_password_page.confirm_your_password_here' | t }}">
+                            </div>
+                        </div>
+                        <div class="flits-row flits-m-t-10">
+                            <div class="flits-col-md-6">
+                                <button type="submit" data-type="flits" class='flits-btn-custom flits-btn-default flits-btn-inline btn-primary flits-btn' disabled>{{ 'flits.buttons.update_password' | t }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% assign total_pages = shop.metafields.Flits.total_pages %}
+
+                {% for i in (1..total_pages) %}
+                {% assign title_str = 'title_' | append: i %}
+                {% assign url_str = 'url_' | append:i %}
+                {% assign type_str = 'type_' | append:i %}
+                {% assign title = shop.metafields.Flits[title_str] | capitalize  %}
+                {% assign url = shop.metafields.Flits[url_str] %}
+                {% assign type =  shop.metafields.Flits[type_str] %}
+                {% if type != 'PAGE' %}
+
+                {% else %}
+
+                {% endif %}
+                <div id="flits-page-{{ url }}" data-type="page" class="flits-hidden">
+                    <div class="flits-page-heading">
+                        <span class="flits-back-icon flits-return-to-menu">{{ 'flits.buttons.back' | t }}</span>
+                        <span class="flits-heading">{{ title }}</span>
+                    </div>
+                    {{ pages[url].content }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flits-wishlist-extra-data flits-hidden">
+    <style>
+        .flits-wsl-table{margin-left:25px}.flits-wsl-table-border{border-bottom:1pt solid #c7c7c7;margin:15px}.flits-wsl-view-empty{top:50%;left:50%;position:absolute;-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.flits-wsl-view-empty svg{width:100px;height:100px}.flits-wsl-view-empty svg path{fill:#d3d3d3}.flits-wsl-view-empty .flits-empty-wsl-msg{color:gray}.flits-wishlist-ul{margin:0;text-align:left;list-style:none!important}.flits-wishlist-ul li{text-align:center;display:inline-block;vertical-align:middle;margin-top:10px;margin-right:5px;position:relative;-moz-transition:all .2s;-o-transition:all .2s;-webkit-transition:all .2s;transition:all .2s}.flits-wishlist-ul li.flits-card-box{padding:10px;border-color:#d3d3d3}.flits-wishlist-ul li span.flits-wsl-product-remove{cursor:pointer;position:absolute;top:-12px!important;right:-12px!important;border:1px solid gray;border-radius:50%;width:30px;height:30px;font-size:15px;padding-left:0!important;padding-top:5px!important;background:gray;color:#fff!important;z-index:10!important;opacity:0;-moz-transition:all .2s;-o-transition:all .2s;-webkit-transition:all .2s;transition:all .2s}@media only screen and (max-width:992px){.flits-wishlist-ul li span.flits-wsl-product-remove{opacity:1}}.flits-wishlist-ul li:hover.flits-card-box{border-color:#000}.flits-wishlist-ul li:hover span.flits-wsl-product-remove{border:1px solid #000;background:#000;opacity:1}.flits-wishlist-ul li .flits-wishlist .flits-wishlist-details{min-height:150px;width:100%}@media (min-width:768px){.flits-wishlist-ul li{width:48%}}@media (min-width:992px){.flits-wishlist-ul li{width:32%}}@media (min-width:1200px){.flits-wishlist-ul li{width:23%}}@media only screen and (max-width:768px){.flits-wishlist-ul li{width:100%}}.flits-wishlist-ul li .flits-product-img-div .flits-product-img{width:100%;height:150px;margin:auto}.flits-product-quantity{position:relative;margin-bottom:1em;overflow:visible;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden}.flits-product-quantity input[type=text]{display:block;background:0 0;text-align:center;width:100%;padding:5px 25px;margin:0;border:1px solid #dedede}.flits-product-quantity-adjuster{cursor:pointer;position:absolute;display:block;top:0;bottom:0;padding:5px 0;width:20px;text-align:center;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-ms-transition:all .2s ease-out;-o-transition:all .2s ease-out;transition:all .2s ease-out}.flits-product-quantity-minus{left:0;border-right:1px solid #dedede}.flits-product-quantity-add{right:0;border-left:1px solid #dedede}.flits-product-variant-options{margin:0 0 20px;padding:8px 10px}.flits-product-variant-title{white-space:nowrap;overflow:hidden!important;text-overflow:ellipsis}
+    </style>
+    <div class="flits-anchor">
+        {% if shop.metafields.Flits.IS_WISHLIST_ENABLE == 0 %}
+        {% else %}
+        <a disabled data-type="flits" data-href="#flits-page-wishlist" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.wishlist' | t }}</a>
+        {% endif %}
+    </div>
+    <div class="flits-div">
+        <div id="flits-page-wishlist" data-type="page" class="flits-hidden">
+            <div class="flits-page-heading">
+                <span class="flits-back-icon flits-return-to-menu">
+                    {{ 'flits.buttons.back' | t }}
+                </span>
+                <span class="flits-heading">
+                    {{ 'flits.heading.wishlisted_products' | t }}
+                </span>
+            </div>
+
+            <input type="hidden" name="token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}" id="flits-wsl-token"/>
+            <input type="hidden" name="wsl-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/wishlist" id="flits-wsl-url"/>
+            <input type="hidden" name="customer_id" value="{{ customer.id }}" id="flits-wsl-customer-id"/>
+
+            {% if customer.metafields.Flits.wishlisted_products and customer.metafields.Flits.wishlisted_products != "-1" %}
+            {% assign wishlist_empty_div = "display:none;" %}
+            {% assign wishlist_div = "display:block;" %}
+
+            {% else %}
+            {% assign wishlist_empty_div = "display:block;" %}
+            {% assign wishlist_div = "display:none;" %}
+            {% endif %}
+
+            <div class="flits-wsl-view-empty flits-hidden">
+                <div class="flits-empty-wsl-icon flits-text-center">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="100px" height="100px" viewBox="0 0 440 440" style="enable-background:new 0 0 440 440;" xml:space="preserve">
+                        <g>
+                            <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293
+                                  l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85
+                                  c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271
+                                  c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812
+                                  c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96
+                                  c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z
+                                  M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151
+                                  L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887
+                                  l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839
+                                  c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861
+                                  l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659
+                                  c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204
+                                  l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"
+                                  />
+                        </g>
+                    </svg>
+                </div>
+                <div class="flits-text-center flits-empty-wsl-msg">{{ 'flits.wishlisted_product_page.no_wishlist_view' | t }}</div>
+                <div class="flits-text-center flits-empty-wsl-msg">{{ 'flits.wishlisted_product_page.marketing_line' | t }}</div>
+                <div class="flits-text-center flits-m-t-15"><a class="flits-btn flits-btn-default flits-btn-custom" href="/collections/all">{{ 'flits.buttons.view_products' | t }}</a></div>
+            </div>
+            <ul class="flits-wsl-table flits-wishlist-ul flits-hidden"></ul>
+
+            <div class="flits-hidden">
+                <li class="flits-card-box flits-wsl-li-structure">
+                    <form action="/cart/add" method="post">
+                        <div class="flits-wsl-product-img-relative">
+                            <div class="flits-row flits-text-center">
+                                <div class="flits-col-md-12 flits-col-sm-12 flits-product-img-div">
+                                    <a target="_blank" class="flits-product-title-anchor">
+                                        <div class="flits-product-img" style="background-image: attr('data-image-url');background-size: contain;background-repeat: no-repeat;background-position: center center;">
+
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flits-row flits-m-t-10 flits-text-center">
+                                <div class="flits-col-md-12 flits-col-sm-12 flits-product-variant-title">
+
+                                </div>
+                            </div>
+                            <div class="flits-row flits-m-t-10">
+                                <div class="flits-col-md-12 flits-col-sm-12">
+                                    <select style="width:100%;" class="product-variant-options flits-product-variant-options" name="id">
+
+                                    </select>
+                                    <div class="flits-product-quantity">
+                                        <input type="text" class="flits-product-quantity-num flits-product-quantity" value="1" min="1" name="quantity">
+                                            <span class="flits-product-quantity-adjuster flits-product-quantity-add" >+</span>
+                                            <span class="flits-product-quantity-adjuster flits-product-quantity-minus">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flits-row flits-m-t-10 flits-text-center">
+                                <div class="flits-col-md-12 flits-col-sm-12 flits-product-variant-price">
+
+                                </div>
+                            </div>
+                            <div class="flits-row flits-m-t-10">
+                                <div class="flits-col-md-12 flits-col-sm-12">
+                                    <button type="submit" class="flits-btn flits-btn-default flits-btn-custom flits-btn-block flits-add-to-cart"
+                                            data-flits-sold-out-text="{{ 'flits.buttons.sold_out' | t }}"
+                                            data-flits-add-to-cart-text="{{ 'flits.buttons.add_to_cart' | t }}">	
+                                        {{ 'flits.buttons.add_to_cart' | t }}
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="flits-wsl-product-remove flits-remove-from-wsl-btn"
+                                  data-flits-product-id=""
+                                  data-flits-product-title=""
+                                  data-flits-product-handle=""
+                                  data-flits-customer-id="{{ customer.id }}"
+                                  data-flits-customer-email="{{ customer.email }}"
+                                  data-page="account-wsl-page"
+                                  title="{{ 'flits.wishlisted_product_page.remove_from_wishlist_btn_title' | t }}" aria-hidden="true">x</span>
+                        </div>
+                    </form>
+                </li>
+            </div>
+            <input type="hidden" name='flits-wishlist-current-page' value="1" id="flits-wishlist-current-page"/>	
+            <input type="hidden" name='flits-wishlist-size' value="0" id="flits-wishlist-size"/>	
+            <input type="hidden" name='flits-wishlist-limit' value="8" id="flits-wishlist-limit"/>	
+            <input type="hidden" name='flits-wishlist-total-page' value="0" id="flits-wishlist-total-page"/>
+            <div class="flits-pagination-div flits-m-t-10" style="display:none;">
+                <div class="flits-pagination">
+                    <a href="javascript:void(0);" class="flits-wsl-pagination-prev"><span>&laquo;</span></a>
+                    {% for i in (1..total_pages) %}
+                    <a href="javascript:void(0);" class="flits-wsl-pagination-page {% if i == 1 %}active{% endif %}" data-page="{{ i }}" title="">{{ i }}</a>
+                    {% endfor %}
+                    <a href="javascript:void(0);" class="flits-wsl-pagination-next"><span>&raquo;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if shop.metafields.Flits.IS_ADVANCE_DASHBOARD_ENABLE and shop.metafields.Flits.IS_ADVANCE_DASHBOARD_ENABLE == 1 %}{% render 'flits_advance_dashboard_snippet' with 'account_page_data' %}{% endif %}
+
+{% if shop.metafields.Flits.IS_HOW_TO_EARN_CREDIT_DISPLAY and shop.metafields.Flits.IS_HOW_TO_EARN_CREDIT_DISPLAY == 1 %}{% render 'flits_how_to_earn_credit_snippet' with 'account_page_data' %}{% endif %}
+
+{% if shop.metafields.Flits.IS_STORE_CREDIT_PAID and shop.metafields.Flits.IS_STORE_CREDIT_PAID == 1 %}{% render 'flits_refer_friend_snippet' with 'account_page_data' %}{% endif %} 

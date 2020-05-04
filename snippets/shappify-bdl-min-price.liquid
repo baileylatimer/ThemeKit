@@ -1,0 +1,10 @@
+{% assign shappify_min = shappify-bdl-min-price.price_max %}
+{% for variant in shappify-bdl-min-price.variants %}
+    {% if  variant.metafields.shappify_bundle.is_bundle == "true" %}{% else %}
+        {% if variant.price < shappify_min %}
+            {% assign shappify_min = variant.price %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{{ shappify_min | money }}

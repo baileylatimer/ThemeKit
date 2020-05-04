@@ -1,0 +1,51 @@
+
+
+{% if section.settings.show_payment_button %}
+  {% assign show_payment_button = true %}
+{% elsif show_payment_button_quickshop %}
+  {% assign show_payment_button = true %}
+{% else %}
+  {% assign show_payment_button = false %}
+{% endif %}
+
+{% assign variant = product.selected_or_first_available_variant %}
+
+<div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
+      id="product-form-{{ product.id }}"
+      data-product-form
+      data-money-format="{{ shop.money_format }}"
+      data-shop-currency="{{ shop.currency }}"
+      data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+      data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+      data-product="{{ product | json | escape }}"
+      {% if settings.limit_quantity or settings.display_inventory_left %}
+        data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+      {% endif %}
+      data-product-id="{{ product.id }}"
+      >
+  {% form 'product', product %}
+
+<div class="divider"></div>
+
+    <div class="purchase-details">
+
+
+      {% include 'components_pill_stock' %}
+
+      <div class="width-1-1">
+
+        <a href="{{ product.metafields.custom_fields["partners_url"] }}" target="_blank" type=""  class=" button button-cherry -hollow -{{ product.metafields.custom_fields["partners_platform"] }} ">
+            {% if  product.metafields.custom_fields["partners_platform"] == "kickstarter" %}
+                Pre-order on <img class="m0" src="https://www.dropbox.com/s/7yxniq64ov6n57n/Dark.svg?raw=1">
+            {% elsif product.metafields.custom_fields["partners_platform"] == "indiegogo" %}
+                Pre-order on <img class="m0" src="https://www.dropbox.com/s/pcqrw8rkpleoxpy/Dark.svg?raw=1">
+            {% else %}
+            {% endif %}
+        </a>
+    </div>
+    </div>
+
+{% endform %}
+</div>
+
+<div class="divider"></div>

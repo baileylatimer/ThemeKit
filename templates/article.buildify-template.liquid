@@ -1,0 +1,8 @@
+{% if article.metafields.bdf_devit["bdf_landing_layout"] != blank %}
+    {% layout 'buildify-layout' %}
+{% endif %}
+
+<!-- SKIP_ON_LANGSHOP_FOUND -->
+{{ article.content }}
+<!-- /SKIP_ON_LANGSHOP_FOUND -->
+

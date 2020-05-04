@@ -1,0 +1,13 @@
+
+{% layout none %}
+<div class="flits-product-data-div" style="display:block;">
+    <div class="flits-product-variant-data">
+        {
+        "product_id": {{ product.id }},
+        "variant_id" : {{ product.selected_or_first_available_variant.id  }}, 
+        "inventory_quantity" : {{ product.selected_or_first_available_variant.inventory_quantity }},
+        "inventory_management" : "{{ product.selected_or_first_available_variant.inventory_management }}",
+      	"inventory_policy" : "{{ product.selected_or_first_available_variant.inventory_policy }}"
+        }
+    </div>
+</div>

@@ -1,0 +1,288 @@
+
+{% case flits_snippet %}
+    {% when 'cart_use_credit_select' %}
+    <div style="display:none;">
+      <input type="hidden" name="flits-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}" id="flits-token">
+      <input type="hidden" name="flits-customer-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/{{ customer.id }}" id="flits-customer-url">
+      <input type="hidden" name="flits-cart-js-url" value="{{ 'flits-cart.js' | asset_url }}" id="flits-cart-js-url">
+      <input type="hidden" name="flits-shop-money-format" value="{{ shop.money_format }}" id="flits-shop-money-format">
+    </div>
+    <script>
+      window.flitsApp&&void 0!==window.flitsApp||(window.flitsApp={});
+      window.flitsApp.multilang_cart&&"undefined"!=typeofwindow.flitsApp.multilang_cart||(window.flitsApp.multilang_cart={});
+
+      window.flitsApp.multilang_cart.spent_rules = {
+        credit_cart_percentage:'{{ 'flits.cart_page.credit_cart_percentage' | t: credits: '##credits##',total_credits:'##total_credits##',percentage:'##percentage##' }}',
+        free_shipping_rule:'{{ 'flits.cart_page.free_shipping' | t }}',
+        select_store_credit_option:'{{ 'flits.cart_page.select_store_credit_option' | t }}',
+      };
+    </script>
+    <div class="flits-credit-code-div"  style="margin-bottom:10px;"></div>
+    {% when 'cart_use_credit' %}
+        <div style="margin:0px 0px 10px 0px;">
+            {% if shop.metafields.Flits.is_store_credit_enable == 0 %}
+            {% else %}
+                {% if customer and customer.metafields.Flits.total_credit > 0 %}
+                <div style="display:none;">
+                    <input type="hidden" name="flits-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}" id="flits-token">
+                    <input type="hidden" name="flits-customer-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/{{ customer.id }}" id="flits-customer-url">
+                    <input type="hidden" name="flits-cart-js-url" value="{{ 'flits-cart.js' | asset_url }}" id="flits-cart-js-url">
+                </div>
+                
+                <label for="flits-want-to-use-credit">
+                    <input type="checkbox" name="flits-want-to-use-credit" id="flits-want-to-use-credit"> 
+                    {% assign credits  = customer.metafields.Flits.total_credit | money %}
+
+                    {% assign cart_msg = 'flits.general.cart_page_msg' | t: credit:"####" %}
+                    {{ cart_msg | replace : '####', credits }}
+                </label>
+                {% else %}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% when 'style_css' %}
+		
+    	<style type="text/css">
+         
+          .flits-list-group-item.flits-bg-theme,
+          .flits-nav{
+              {% if shop.metafields.Flits.S_BG_CLR %}
+              	background-color: {{ shop.metafields.Flits.S_BG_CLR }} !important;
+              {% endif %}
+              {% if shop.metafields.Flits.S_T_CLR %}
+              color:{{ shop.metafields.Flits.S_T_CLR }} !important;
+              {% endif %}
+            }
+          .flits-page-heading{	          
+              {% if shop.metafields.Flits.S_BG_CLR %}		
+	          background-color: {{ shop.metafields.Flits.S_BG_CLR }} !important;		
+	       {% endif %}
+               {% if shop.metafields.Flits.S_T_CLR %}
+              color:{{ shop.metafields.Flits.S_T_CLR }} !important;
+              {% endif %}
+	   }
+          .flits-list-group-item.active, 
+          .flits-list-group-item.active:hover, 
+          .flits-list-group-item.active:focus{
+            {% if shop.metafields.Flits.S_M_A_T_CLR %}
+              color:{{ shop.metafields.Flits.S_M_A_T_CLR }} !important;
+              {% endif %}
+            {% if shop.metafields.Flits.S_M_A_BG_CLR %}
+            background-color: {{ shop.metafields.Flits.S_M_A_BG_CLR }} !important;
+            {% endif %}
+            {% if shop.metafields.Flits.S_M_A_B_CLR %}
+            border-color: {{ shop.metafields.Flits.S_M_A_B_CLR }} !important;
+            {% endif %}
+          } 
+          a.flits-list-group-item:hover,
+          a.flits-list-group-item:focus
+          {
+            {% if shop.metafields.Flits.S_M_H_BG_CLR %}
+            background-color: {{ shop.metafields.Flits.S_M_H_BG_CLR }} !important;
+            {% endif %}
+            {% if shop.metafields.Flits.S_M_H_T_CLR %}
+            color: {{  shop.metafields.Flits.S_M_H_T_CLR }} !important;
+            {% endif %}
+          }
+          .flits-pages{
+            {% if shop.metafields.Flits.C_T_CLR %}
+            color: {{  shop.metafields.Flits.C_T_CLR }} !important;
+            {% endif %}
+            {% if shop.metafields.Flits.C_BG_CLR %}
+            background-color: {{ shop.metafields.Flits.C_BG_CLR }} !important;
+            {% endif %}
+          }
+          .flits-content,
+          .flits-text-muted,
+          .flits-empty-history-msg,
+          .flits-empty-order-msg{
+              {% if shop.metafields.Flits.C_T_CLR %}
+            color: {{  shop.metafields.Flits.C_T_CLR }} !important;
+            {% endif %}
+          }
+          .flits-content,
+          .flits-text-muted,
+          .flits-empty-history-msg,
+          .flits-empty-order-msg{
+              {% if shop.metafields.Flits.C_T_CLR %}
+            color: {{  shop.metafields.Flits.C_T_CLR }} !important;
+            {% endif %}
+          }
+          @media only screen and (max-width: 992px){
+            .flits-wsl-view-empty {
+              position: relative !important;
+              top: 0% !important;
+              left: 0% !important; 
+              -moz-transform: translate(0%, 0%) !important;
+              -o-transform: translate(0%, 0%) !important;
+              -ms-transform: translate(0%, 0%) !important;
+              -webkit-transform: translate(0%, 0%) !important;
+              transform: translate(0%, 0%) !important;
+            }
+          }
+          @media only screen and (max-width: 600px){
+            .flits-order-details-btn {
+              margin-top: 10px !important;
+            }
+          }
+          .flits-nav-bar{
+          	z-index:2 !important;
+          }
+          .flits-page-content{
+          	z-index:1 !important;
+          }
+          
+          .flits-btn-custom.flits-btn-primary{
+            color: {{ settings.flits_primary_button_color }} !important;
+            background: {{ settings.flits_primary_button_background_color }} !important;
+            border-color: {{ settings.flits_primary_button_color }} !important;
+           }
+          .flits-btn-custom.flits-btn-primary:hover,
+          .flits-btn-custom.flits-btn-primary:focus,
+          .flits-btn-custom.flits-btn-primary:active
+          {
+            color: {{ settings.flits_primary_button_background_color }} !important;
+            background-color: {{ settings.flits_primary_button_color }} !important;
+          }
+
+          .flits-btn-custom.flits-btn-default{
+            color: {{ settings.flits_default_button_color }} !important;
+            background: {{ settings.flits_default_button_background_color }} !important;
+            border-color: {{ settings.flits_default_button_color }} !important;
+          }
+          .flits-btn-custom.flits-btn-default:hover,
+          .flits-btn-custom.flits-btn-default:focus,
+          .flits-btn-custom.flits-btn-default:active{
+            color: {{ settings.flits_default_button_background_color }} !important;
+            background-color: {{ settings.flits_default_button_color }} !important;
+          }
+
+          .flits-btn-custom.flits-btn-danger{
+            color: {{ settings.flits_danger_button_color }} !important;
+            background: {{ settings.flits_danger_button_background_color }} !important;
+            border-color: {{ settings.flits_danger_button_color }} !important;
+          }
+          .flits-btn-custom.flits-btn-danger:hover,
+          .flits-btn-custom.flits-btn-danger:focus,
+          .flits-btn-custom.flits-btn-danger:active{
+            color: {{ settings.flits_danger_button_background_color }} !important;
+            background-color: {{ settings.flits_danger_button_color }} !important;
+          }
+          .flits-credit-log-with-dropdown .flits-credit-col{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .flits-credit-log-with-dropdown .flits-credit-dropdown{
+            border: 1px solid #3d4245;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: end;
+          }
+          .flits-credit-details-row{
+            padding: 10px 15px 0px;;
+            color: gray !important;
+          }
+          .flits-credit-details-row a{
+            color: gray !important;
+          }
+          .flits-credit-details-row .flits-product-tag-div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+          .flits-credit-details-row .flits-product-tag-svg{
+            margin-right: 5px;
+          	width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: end;
+          }
+          .flits-credit-dropdown-rotate{
+            transform: rotate(180deg);
+          }
+          .flits-bordered-div{
+            border:1px solid #ddd;
+            border-radius:4px;
+          }
+          .flits-bold-text{
+            font-weight:bold;
+            color: #3d4246;
+          }
+          .flits-bold-text .flits-text-muted{
+            color: #3d4246 !important;
+          }
+          .flits-credit-log li.flits-list-group-item .flits-credit-details-row .flits-product-title {
+            text-align: center;
+          }
+          @media only screen and (max-width: 992px){
+            .flits-credit-log li.flits-list-group-item .flits-credit-details-row .flits-product-title {
+              text-align: left;
+            }
+          }
+          .flits-text-nowrap{
+            white-space:nowrap;overflow:hidden!important;text-overflow:ellipsis;
+          }
+          .flits-order-item-quantity{
+            {% if shop.metafields.Flits.S_BG_CLR %}
+            background-color: {{ shop.metafields.Flits.S_BG_CLR }} !important;
+            {% endif %}
+            {% if shop.metafields.Flits.S_T_CLR %}
+            color:{{ shop.metafields.Flits.S_T_CLR }} !important;
+            {% endif %}
+          }
+          .flits-template {
+          	display: none;
+          }
+        </style>
+    {% else %}
+        {% if template contains 'cart' %}
+        
+            {% if shop.metafields.Flits.is_cart_code_automatic == 0 or shop.metafields.Flits.is_store_credit_enable == 0 %}
+                <input type="hidden" value="0" name="flits-is-cart-automatic" id="flits-is-cart-automatic">
+            {% else %}
+                <input type="hidden" value="1" name="flits-is-cart-automatic" id="flits-is-cart-automatic">
+                <div style="display:none" id="flits-cart-automatic-code">
+                    {% comment %} {% render 'flits_snippet' with 'cart_use_credit_select' %} {% endcomment %}
+                    <div>
+                      {% render 'flits_snippet' with 'cart_use_credit_select' %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {{ 'flits-cart.js' | asset_url | script_tag}}
+        
+        {% elsif template contains 'customers/account' %}
+            {{ 'flits-recently-view.js' | asset_url | script_tag}}
+            {{ 'flits-account.js' | asset_url | script_tag}}
+        {% elsif template contains 'product' %}
+            {{ 'flits-recently-view.js' | asset_url | script_tag}}
+            <script>
+            window.flitsApp.recently_viewed_products_obj = new window.flitsApp.recently_viewed_products();
+            window.flitsApp.recently_viewed_products_obj.add_product('{{ product.handle }}');
+            </script>
+        {% else %}
+	{% endif %}
+            
+{% endcase %}
+
+{% if flits_snippet == blank %}{% render 'flits_social_login_snippet'%}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_wishlist_snippet' %}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_multilang_snippet' %}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_advance_dashboard_snippet' %}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_how_to_earn_credit_snippet' %}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_order_tracking_snippet' %}{% endif %}
+
+{% if flits_snippet == blank %}{% render 'flits_refer_friend_snippet' %}{% endif %}

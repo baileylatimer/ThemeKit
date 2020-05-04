@@ -1,0 +1,39 @@
+{% assign product_refs = product.metafields.custom_fields["banners_dialog_product"] | split: "|" %}
+
+
+<div class="banners banners--dialog width-100 flex-center dismiss-target mobile--true-flex">
+    <div class="wrapper--xl flex-column">
+        {% for product_handle in product_refs %}
+        {% assign product_ref = all_products[product_handle] %}
+        <div class="flex-left width-1-1 align-center"> 
+            <img src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
+            <p class="body-text--normal"> This product is no longer available. <b> Try the {{ product_ref.title }} instead? </b> </p>
+            
+        </div>
+        <div class="flex-right  width-1-1 align-center"> 
+            <a href="{{product_ref.url}}" itemprop="url" class="link--highlight"> Shop {{ product_ref.title }} </a>
+            <a class="clr-sub dismiss-trigger"> Dismiss </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="banners banners--dialog width-100 flex-center dismiss-target mobile--false-flex">
+    <div class="wrapper--xl flex m-auto">
+    
+        {% for product_handle in product_refs %}
+        {% assign product_ref = all_products[product_handle] %}
+        <div class="flex-left width-1-2 align-center">
+            <p class="body-text--normal"> This product is no longer available. <b> Try the {{ product_ref.title }} instead? </b> </p>
+            <img src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
+        </div>
+        <div class="flex-right  width-1-2 align-center">
+            
+            <a href="{{product_ref.url}}" itemprop="url" class="link--highlight"> Shop {{ product_ref.title }} </a>
+            <a class="clr-sub dismiss-trigger"> Dismiss </a>
+        
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+

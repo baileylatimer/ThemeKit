@@ -1,0 +1,45 @@
+<!-- ./snippets/buildify-item-styles.liquid -->
+{%- capture buildify_default_style_meta -%}bdf_default_style_data{%- endcapture -%}
+{%- if LANGSHOP_FOR_BUILDIFY_LANG -%}
+    {%- capture buildify_style_meta -%}bdf_{{ LANGSHOP_FOR_BUILDIFY_LANG }}_style_data{%- endcapture -%}
+{%- endif -%}
+
+{%- assign buildify_global_style_meta = shop.metafields.bdf_devit["bdf_global_style_data"] -%}
+{%- assign buildify_home_page_handle = shop.metafields.bdf_devit["bdf_frontend_handle"] -%}
+
+{%- if buildify_global_style_meta -%}
+    {{ buildify_global_style_meta }}
+{%- endif -%}
+
+{%- assign template_first_part = template | split: "." | first -%}
+{%- if template_first_part contains 'article' -%}
+    {%- if buildify_style_meta and article.metafields.bdf_devit[buildify_style_meta] -%}
+        {{ article.metafields.bdf_devit[buildify_style_meta] }}
+    {%- else -%}
+        {{ article.metafields.bdf_devit[buildify_default_style_meta] }}
+    {%- endif -%}
+{%- elsif template_first_part contains 'product' -%}
+    {%- if buildify_style_meta and product.metafields.bdf_devit[buildify_style_meta] -%}
+        {{ product.metafields.bdf_devit[buildify_style_meta] }}
+    {%- else -%}
+        {{ product.metafields.bdf_devit[buildify_default_style_meta] }}
+    {%- endif -%}
+{%- elsif template_first_part contains 'collection' -%}
+    {%- if buildify_style_meta and collection.metafields.bdf_devit[buildify_style_meta] -%}
+        {{ collection.metafields.bdf_devit[buildify_style_meta] }}
+    {%- else -%}
+        {{ collection.metafields.bdf_devit[buildify_default_style_meta] }}
+    {%- endif -%}
+{%- elsif template_first_part contains 'page' -%}
+    {%- if buildify_style_meta and page.metafields.bdf_devit[buildify_style_meta] -%}
+        {{ page.metafields.bdf_devit[buildify_style_meta] }}
+    {%- else -%}
+        {{ page.metafields.bdf_devit[buildify_default_style_meta] }}
+    {%- endif -%}
+{%- elsif template_first_part contains 'index' and pages[buildify_home_page_handle].content != blank -%}
+    {%- if buildify_style_meta and pages[buildify_home_page_handle].metafields.bdf_devit[buildify_style_meta] -%}
+        {{ pages[buildify_home_page_handle].metafields.bdf_devit[buildify_style_meta] }}
+    {%- else -%}
+        {{ pages[buildify_home_page_handle].metafields.bdf_devit[buildify_default_style_meta] }}
+    {%- endif -%}
+{%- endif -%}

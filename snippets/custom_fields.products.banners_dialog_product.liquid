@@ -1,0 +1,14 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/122039/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["banners_dialog_product"] != blank %}
+  <div class="custom-field custom-field__banners-dialog-product custom-field__type--product-reference">
+    <h3 class="custom-field--title">Banners / Dialog / Product</h3>
+    <div class="custom-field--value">  
+    {% assign product_ref = all_products[product.metafields.custom_fields["banners_dialog_product"]] %}
+    {{ product_ref.title | link_to: product_ref.url }}
+    </div>
+  </div>
+{% endif %}

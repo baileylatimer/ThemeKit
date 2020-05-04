@@ -1,0 +1,21 @@
+<div class="article-contact-links">
+  {% if staff_twitter_array[index] != '' %}
+    <a href="https://twitter.com/{{ staff_twitter_array[index] }}" title="{{ staff_first_name_array[index] }} {{ staff_last_name_array[index] }} on Twitter" rel="me" target="_blank" class="icon-twitter"></a>
+  {% endif %}
+
+  {% if staff_facebook_array[index] != '' %}
+    <a href="https://www.facebook.com/{{ staff_facebook_array[index] }}" title="{{ staff_first_name_array[index] }} {{ staff_last_name_array[index] }} on Facebook" rel="me" target="_blank" class="icon-facebook"></a>
+  {% endif %}
+
+  {% if staff_instagram_array[index] != '' %}
+    <a href="https://www.instagram.com/{{ staff_instagram_array[index] }}" title="{{ staff_first_name_array[index] }} {{ staff_last_name_array[index] }} on Instagram" rel="me" target="_blank" class="icon-instagram"></a>
+  {% endif %}
+
+  {% if staff_linkedin_array[index] != '' %}
+    <a href="https://www.linkedin.com/in/{{ staff_linkedin_array[index] }}" title="{{ staff_first_name_array[index] }} {{ staff_last_name_array[index] }} on LinkedIn" rel="me" target="_blank" class="icon-linkedin"></a>
+  {% endif %}
+
+  {% if staff_email_array[index] != '' %}
+    <a href="mailto:{{ staff_email_array[index] }}" title="Email {{ staff_first_name_array[index] }} {{ staff_last_name_array[index] }}" target="_blank" class="icon-email"></a>
+  {% endif %}
+</div>

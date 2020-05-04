@@ -1,0 +1,43 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/pages/configure/106497/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["cards"] != blank %}
+  <div class="custom-field custom-field__cards custom-field__type--field-collection">
+    <h3 class="custom-field--title">Cards</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign card_type_array = page.metafields.custom_fields["card_type"] | split: separator %}
+      {% assign card_category_array = page.metafields.custom_fields["card_category"] | split: separator %}
+      {% assign card_title_array = page.metafields.custom_fields["card_title"] | split: separator %}
+      {% assign card_image_array = page.metafields.custom_fields["card_image"] | split: separator %}
+      {% assign card_info_array = page.metafields.custom_fields["card_info"] | split: separator %}
+      {% assign card_link_array = page.metafields.custom_fields["card_link"] | split: separator %}
+      {% assign fc_keys = page.metafields.custom_fields["cards"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item--card fc-index--{{ index }}">
+          <div class="fc-field field__card-type">
+            {{ card_type_array[index] }}
+          </div>
+          <div class="fc-field field__card-category">
+            {{ card_category_array[index] }}
+          </div>
+          <div class="fc-field field__card-title">
+            {{ card_title_array[index] }}
+          </div>
+          <div class="fc-field field__card-image">
+            {{ card_image_array[index] }}
+          </div>
+          <div class="fc-field field__card-info">
+            {{ card_info_array[index] }}
+          </div>
+          <div class="fc-field field__card-link">
+            {{ card_link_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

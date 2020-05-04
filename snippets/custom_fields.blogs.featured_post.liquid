@@ -1,0 +1,29 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/blogs/configure/102675/edit
+{% endcomment %}
+{% if blog.metafields.custom_fields["featured_post"] != blank %}
+
+      {% assign article_blog_handle = blog.metafields.custom_fields["featured_post"] | split: "." %}
+      {% for article in blogs[article_blog_handle[0]].articles %}
+
+        {% if article.handle contains article_blog_handle[1] %}
+        <a href="{{ article.url }}" class="featured-article">
+            <div class="featured-article-image">
+                {% include 'image-element2', image: article.image, alt: image.alt %}
+            </div>
+            <div class="featured-article-content">
+                <h4 class="featured-article-type">{{ blog.title }}</h4>
+                <h2 class="base-IntroText featured-article-title">
+                {{ article.title }}
+                </h2>
+                <h3 class="base-BodyText featured-article-subtitle">{{ article.excerpt }}</h3>
+            </div>
+        </a>
+
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+{% endif %}

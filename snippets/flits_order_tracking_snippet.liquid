@@ -1,0 +1,152 @@
+
+{% case flits_order_tracking_snippet %}
+{% when 'order_tracking' %}
+<div class="flits-order-track-content {% if is_template == false %}flits-hidden{% endif %} {% if is_template %}flits-template{% endif %}" style="display:none">
+    <ul class="flits-order-track-ul" data-track-steps="4" data-flits-active="Ordered">
+        <li class="flits-order-track-li" data-flits-status="Ordered">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.ordered' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="InfoReceived">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.info_received' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="InTransit">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.intransit' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="OutForDelivery">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.out_for_delivery' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="Delivered">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.delivered' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="FailedAttempt">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.failed_attempt' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="Exception">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.exception' | t }}
+                </div>
+            </div>
+
+        </li>
+        <li class="flits-order-track-li" data-flits-status="Expired">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.expired' | t }}
+                </div>
+            </div>
+        </li>
+        <li class="flits-order-track-li" data-flits-status="Pending">
+            <div class="track-info">
+                <div class="track-circle">
+                    <div class="track-circle-inside">
+                        <div class='check-mark'>
+                            &#10004;
+                        </div>
+                    </div>
+                </div>
+                <div class="track-status">
+                    {{ 'flits.order_page.pending' | t }}
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+{% else %}
+{% if template contains 'customers/account' %}
+<script>
+    if (!window.flitsApp || typeof window.flitsApp == "undefined") {
+        window.flitsApp = {};
+
+    }
+    window.flitsApp.multilang.order_tracking = {
+        track_btn: "{{ 'flits.buttons.order_track' | t }}"
+    };
+</script>
+{{ 'flits-order-tracking.scss.css' | asset_url | stylesheet_tag }}
+{% if shop.metafields.Flits.IS_ORDER_TRACKING_PAID and shop.metafields.Flits.IS_ORDER_TRACKING_PAID == 1 %}
+{% render 'flits_order_tracking_snippet' with 'order_tracking',is_template:true %}
+{% endif %}
+{{ 'flits-order-tracking.js' | asset_url | script_tag}}
+{% endif %}
+{% endcase %}

@@ -1,0 +1,106 @@
+<!-- DO NOT REMOVE THE FOLLOWING COMMENT -->
+<!-- (c) Copyright 2014 Caroline Hill. All Rights Reserved. Contact Mlle Caroline Schnapp at mllegeorgesand@gmail.com -->
+<!-- DO NOT REMOVE THE ABOVE COMMENT -->
+
+{% if linklists.Signature-Required-Add-On.links.size > 0 and linklists.Signature-Required-Add-On.links.first.type == 'product_link' %}
+
+  <div id="Signature-Required-Add-On" style="clear: left; margin: 30px 0" class="clearfix rte">
+    <p>
+      <input type="hidden" name="attributes[gift-wrapping]" value="" />
+      <input id="Signature-Required-Add-On" type="checkbox" name="attributes[Signature-Required-Add-On]" value="yes" {% if cart.attributes.Signature-Required-Add-On %} checked="checked"{% endif %} style="float: none" />
+      <label for="Signature-Required-Add-On" style="display:inline; padding-left: 5px; float: none;">
+      For {{ linklists.Signature-Required-Add-On.links.first.object.price | money }} 
+      please wrap the products in this order.
+      </label>
+    </p>
+    <p>
+      <label style="display:block" for="Signature-note">Signature message (free and optional):</label>
+      <textarea name="attributes[Signature-note]" id="Signature-note">{{ cart.attributes.Signature-Required-Add-On }}</textarea>
+    </p>
+  </div>
+
+{% assign id = linklists.Signature-Required-Add-On.links.first.object.variants.first.id %}
+
+{% assign Signature-Required-Add-On = 0 %}
+{% for item in cart.items %}
+  {% if item.id == id %}
+    {% assign Signature-Required-Add-On = item.quantity %}
+  {% endif %}
+{% endfor %}
+
+<style>
+  #updates_{{ id }} { display: none; }
+</style>
+
+<script>
+
+Shopify.Cart = Shopify.Cart || {};
+
+Shopify.Cart.Signature = {};
+
+Shopify.Cart.Signature.set = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js', 
+    data: { updates: { {{ id }}: 1 }, attributes: { 'Signature-Required-Add-On': true } }, 
+    dataType: 'json',
+    success: function() { location.href = '/cart'; }
+  });
+}
+
+Shopify.Cart.Signature.remove = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js', 
+    data: { updates: { {{ id }}: 0 }, attributes: { 'Signature-Required-Add-On': '' } }, 
+    dataType: 'json',
+    success: function() { location.href = '/cart'; }
+  });
+}
+
+// If we have nothing but Signature items in the cart.
+{% if cart.items.size == 1 and Signature-Required-Add-On > 0 %}
+jQuery(function() {
+  Shopify.Cart.Signature.remove();
+});
+// If we have more than one gift-wrap item in the cart.
+{% elsif Signature-Required-Add-On > 1 %}
+jQuery(function() {
+  Shopify.Cart.Signature.set();
+});
+// If we have a Signature-Required-Add-On item in the cart but our Signature-Required-Add-On cart attribute has not been set.
+{% elsif Signature-Required-Add-On > 0 and cart.attributes.Signature == blank  %}
+jQuery(function() {
+  Shopify.Cart.Signature.set();
+});
+// If we have no gift-wrap item in the cart but our gift-wrapping cart attribute has been set.
+{% elsif Signature-Required-Add-On == 0 and cart.attributes.Signature != blank  %}
+jQuery(function() {
+  Shopify.Cart.signature.set();
+});
+{% endif %}
+
+// When the Signature checkbox is checked or unchecked.
+jQuery(function() {
+  jQuery('[name="attributes\[Signature-Required-Add-On\]"]').change(function() {
+    if (jQuery(this).is(':checked')) {
+      Shopify.Cart.Signature.set();    
+    }
+    else {
+      Shopify.Cart.Signature.remove();
+    }
+  });
+});
+ 
+</script>
+
+{% else %}
+
+<p style="clear: left; margin: 30px 0" class="rte">
+  You attempted to add a Signature tracking script to your shopping cart, but it won't work because you don't have 
+  a link list with handle <code>Signature-Required-Add-On</code> which, in turn, contains a link
+  to your gift-wrapping product. Please review the steps outlined 
+  <a href="http://docs.shopify.com/manual/configuration/store-customization/page-specific/cart-page/add-a-gift-wrap-option">here</a>.
+</p>
+
+{% endif %}

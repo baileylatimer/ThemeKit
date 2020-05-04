@@ -1,0 +1,77 @@
+{% include 'shogun-products', content: page %}
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="{{ page.metafields.custom_fields['page_intro_content_color'] }}-0 img--{{ page.metafields.custom_fields["image_style"] }}">
+      {% if page.metafields.custom_fields["page_intro_content_title"] != blank %}
+    <div class="mobile--true">
+      <div class="banner center page_banner collection_banner nav-shadow mobile--true mb60">
+        <div class="width-1-1 split-banner split-banner--img right">
+            <img src="{{ page.metafields.custom_fields['page_intro_content_image'] }}" alt="" class="lazyload blur-up" sizes="100vw">
+        </div>
+        <div class="width-1-1 split-banner split-banner--content left pattern-map">
+            <div id="bc-sf-filter-collection-description" class="section clearfix collection_description">
+            <h1> {{ page.metafields.custom_fields['page_intro_content_title'] }}</h1>
+            <h2 class="text-light">
+                {{ page.metafields.custom_fields['page_intro_content_description'] }}
+            </h2>
+            </div>
+        </div>
+    </div>
+      </div>
+      {% endif %}
+
+
+<div class="flex-center">
+      
+
+
+
+
+  {% if page.metafields.custom_fields["page_width"] != blank %}
+    <div class="sixteen columns page clearfix wrapper--{{ page.metafields.custom_fields['page_width'] }}">
+    {% else %}
+    <div class="sixteen columns page clearfix wrapper--sm">
+  {% endif %}
+
+
+  {% if page.metafields.custom_fields["page_intro_content_title"] != blank %}
+    <div class="mobile--false">
+      <div class="banner center page_banner collection_banner nav-shadow mobile--false mb60">
+        <div class="width-1-2 split-banner split-banner--img right">
+            <img src="{{ page.metafields.custom_fields['page_intro_content_image'] }}" alt="" class="lazyload blur-up" sizes="100vw">
+        </div>
+        <div class="width-1-2 split-banner split-banner--content left pattern-map">
+            <div id="bc-sf-filter-collection-description" class="section clearfix collection_description">
+            <h1> {{ page.metafields.custom_fields['page_intro_content_title'] }}</h1>
+            <h2 class="text-light">
+                {{ page.metafields.custom_fields['page_intro_content_description'] }}
+            </h2>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <h1>
+        {{ page.title }}
+      </h1>
+      <div class="feature_divider"></div>
+  {% endif %}
+
+
+
+      {% include 'page-video' %}
+      {% include 'page-cards' %}
+      {% include 'page-staff' %}
+
+
+      <div>
+        {% include 'page-multi-column', content: page.content %}
+      </div>
+
+      {% include 'next-page' %}
+    </div>
+
+  </div>
+</div>
+</div>
+</div>

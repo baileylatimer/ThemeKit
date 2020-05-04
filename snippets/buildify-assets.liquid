@@ -1,0 +1,57 @@
+<!-- ./snippets/buildify-assets.liquid -->
+
+<script type="text/javascript" id="buildify_no_conflict_jquery">
+    window.___$ = (typeof $ !== "undefined") ? $.noConflict() : false;
+    window.___jQuery = (typeof jQuery !== "undefined") ? jQuery.noConflict() : false;
+</script>
+
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' | script_tag }}
+{{ 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js' | script_tag }}
+<script type="text/javascript" id="buildify_no_conflict_jquery">
+    window.$b_jQuery = jQuery;
+    window.BuildifyTheme = {
+        'money_format': 					{{ shop.money_format | json }},
+        'money_with_currency_format': 	    {{ shop.money_with_currency_format  | json }},
+        'secure_url':						{{ shop.secure_url | json }}
+    };
+
+    window.$ = window.___$;
+    window.jQuery = window.___jQuery;
+</script>
+
+{{ 'https://platform.instagram.com/en_US/embeds.js' | script_tag }}
+{{ 'https://platform.twitter.com/widgets.js' | script_tag }}
+{{ 'https://apis.google.com/js/platform.js' | script_tag }}
+
+<!-- SKIP_ON_BUILDIFY_EDIT_MODE -->
+{%- if shop.metafields.bdf_devit_settings["bdf_theme_css_position"] == "footer" -%}
+    {%- include 'buildify-item-styles' -%}
+{%- endif  -%}
+
+<script type="text/javascript">
+
+    //Init config
+    window.buildifyFrontendConfig = {
+        "isEditMode": "",
+        "stretchedSectionContainer": "",
+        "is_rtl": "",
+        "urls": {
+            "assets": "\/"
+        },
+        "mode": {{ shop.metafields.bdf_devit_settings["bdf_building_mode"] | json }},
+        "selectors": {{ shop.metafields.bdf_devit_settings["bdf_building_mode_selectors"] }}
+    };
+
+</script>
+
+{{ 'buildify.js' | asset_url | script_tag }}
+
+<!-- /SKIP_ON_BUILDIFY_EDIT_MODE -->
+
+{%- if shop.metafields.bdf_devit_settings["bdf_theme_css_position"] == "footer" -%}
+    {% include 'buildify-global-styles' %}
+
+    <!-- SKIP_ON_BUILDIFY_EDIT_MODE_HEAD -->
+    {%- include 'buildify-item-styles' -%}
+    <!-- /SKIP_ON_BUILDIFY_EDIT_MODE_HEAD -->
+{%- endif  -%}

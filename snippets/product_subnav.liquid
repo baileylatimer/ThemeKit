@@ -1,0 +1,24 @@
+<div class="width-100">
+    <nav class="subnav" id="stickThis">
+        <div class="wrapper--xl flex m-auto">
+
+            <p class="subnav__link scrollLink base-BodyTitle text-dark pr20">{{ product.title }}</p>
+
+            <h2 class="subnav__link scrollLink product_type hide" href="#">{{ product.price | money }}</h2>
+
+            <aside class="subnav__menu float-left mobile--false">
+                <a class="subnav__link scrollLink active-tab clr-sub" href="#overview">Overview</a>
+                <a class="subnav__link scrollLink clr-sub" href="#features">Features</a>
+                {% if product.metafields.custom_fields["product_list__title"] != blank %}  
+                    <a class="subnav__link scrollLink clr-sub" href="#{{ product.metafields.custom_fields["product_list__title"] }}">{{ product.metafields.custom_fields["product_list__title"] }}</a>
+                {% else %}
+                    <a class="subnav__link scrollLink clr-sub" href="#related">Related</a>
+                {% endif %}
+                <a class="subnav__link scrollLink clr-sub" href="#reviews">Reviews</a>
+            </aside>
+
+            
+         
+        </div>
+    </nav>
+</div>

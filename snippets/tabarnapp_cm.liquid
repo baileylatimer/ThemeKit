@@ -1,0 +1,94 @@
+<script type='text/javascript'>
+//version 1.9.3
+(function(global){
+  global.tabarnapp_cm = {};
+  global.tabarnapp_cm.cart = {{ cart | json }};
+  global.tabarnapp_cm.customer = {};
+  {% if customer %}
+    global.tabarnapp_cm.customer.accepts_marketing = {{customer.accepts_marketing }};
+    global.tabarnapp_cm.customer.addresses = {{customer.addresses | json }};
+    global.tabarnapp_cm.customer.default_address = {{customer.default_address | json }};
+    global.tabarnapp_cm.customer.email = {{customer.email|json }};
+    global.tabarnapp_cm.customer.first_name = {{customer.first_name|json }};
+    global.tabarnapp_cm.customer.has_account = {{customer.has_account }};
+    global.tabarnapp_cm.customer.id = {{customer.id}};
+    global.tabarnapp_cm.customer.last_name = {{customer.last_name|json }};
+    global.tabarnapp_cm.customer.name = {{customer.name|json}};
+    global.tabarnapp_cm.customer.orders_count = {{customer.orders_count }};
+    {% if customer.accepts_marketing %}
+      {% assign acm = "accepts_marketing" | split: ", " %}
+    {% else %}
+      {% assign acm = "" | split: ", " %}
+    {% endif %}
+
+    global.tabarnapp_cm.customer.tags = {{customer.tags | concat: acm | json }};
+    global.tabarnapp_cm.customer.total_spent = {{customer.total_spent}};  
+    
+    global.tabarnapp_cm.customer.orders = [
+      {% for order in customer.orders %}
+       {
+        attributes: {{ order.attributes | json}},
+        cancelled: {{order.cancelled}},
+        created_at: "{{order.created_at}}",
+        discounts: {{order.discounts | json}},
+        email: {{order.email|json}},
+        financial_status: {{order.financial_status | json}},
+        fulfillment_status: {{order.fulfillment_status |json}},
+        name: {{order.name | json}},
+        note: {{order.note | json}},
+        order_number: {{order.order_number}},
+        shipping_price: {{order.shipping_price}},
+        subtotal_price: {{order.subtotal_price}},
+        tax_lines: {{order.tax_lines|json}},
+        tax_price: {{order.tax_price}},
+        total_price: {{order.total_price}},
+        tags: {{order.tags| json}},
+        line_items:[
+          {% for line_item in order.line_items %}
+            {
+              id: {{line_item.id | json}},
+              line_price : {{line_item.line_price | json}},
+              product_id : {{line_item.product_id | json}},
+              variant_id : {{line_item.variant_id | json}},
+              original_line_price : {{line_item.original_line_price | json}},
+            },
+          {% endfor %}
+        ],
+
+       },
+      {% endfor %}
+    ];
+  
+    global.tabarnapp_cm.customer.last_order = {};
+    {% if customer.last_order %}
+      {% assign order=customer.last_order %}
+       global.tabarnapp_cm.customer.last_order.attributes = {{ order.attributes | json}};
+       global.tabarnapp_cm.customer.last_order.cancelled = {{order.cancelled}};
+       global.tabarnapp_cm.customer.last_order.created_at = "{{order.created_at}}";
+       global.tabarnapp_cm.customer.last_order.discounts = {{order.discounts | json}};
+       global.tabarnapp_cm.customer.last_order.financial_status = {{order.financial_status | json}};
+       global.tabarnapp_cm.customer.last_order.fulfillment_status = {{order.fulfillment_status |json}};
+       global.tabarnapp_cm.customer.last_order.line_items =[
+          {% for line_item in order.line_items %}
+            {
+              id: {{line_item.id | json}},
+              line_price : {{line_item.line_price | json}},
+              product_id : {{line_item.product_id | json}},
+              variant_id : {{line_item.variant_id | json}},
+              original_line_price : {{line_item.original_line_price | json}},
+            },
+          {% endfor %}
+        ],
+       global.tabarnapp_cm.customer.last_order.name = {{order.name | json}};
+       global.tabarnapp_cm.customer.last_order.note = {{order.note | json}};
+       global.tabarnapp_cm.customer.last_order.order_number = {{order.order_number}};
+       global.tabarnapp_cm.customer.last_order.shipping_price = {{order.shipping_price}};
+       global.tabarnapp_cm.customer.last_order.subtotal_price = {{order.subtotal_price}};
+       global.tabarnapp_cm.customer.last_order.tax_lines = {{order.tax_lines|json}};
+       global.tabarnapp_cm.customer.last_order.tax_price = {{order.tax_price}};
+       global.tabarnapp_cm.customer.last_order.total_price = {{order.total_price}};
+       global.tabarnapp_cm.customer.last_order.tags = {{order.tags| json}};
+    {% endif %}
+  {% endif %}
+})(window);
+</script>

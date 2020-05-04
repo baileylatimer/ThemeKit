@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/104946/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["usb_ports"] != blank %}
+  <div class="custom-field custom-field__usb-ports custom-field__type--text">
+    <h3 class="custom-field--title">USB ports</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["usb_ports"] }}
+    </div>
+  </div>
+{% endif %}

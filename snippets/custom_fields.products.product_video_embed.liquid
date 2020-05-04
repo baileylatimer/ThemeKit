@@ -1,0 +1,16 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/104598/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["product_video_cover"] != blank %}
+    <div class="video-wrapper mb25">
+<img  id="video-cover" src='{{ product.metafields.custom_fields["product_video_cover"] }}' alt="Video title">
+	<iframe id="player" width="560" height="315" src='{{ product.metafields.custom_fields["product_video_embed"] }}' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<button id="play" class="play-btn">
+		<i class="material-icons">
+play_circle_outline
+</i>
+	</button>
+    </div>
+{% endif %}

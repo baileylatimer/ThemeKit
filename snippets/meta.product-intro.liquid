@@ -1,0 +1,34 @@
+
+{% if product-intro != blank %}
+
+    <div class="banner center page_banner intro_banner width-100 mobile--true mb25">
+        <div class="width-1-1 split-banner split-banner--img right">
+            {{ product.metafields.custom_fields["product_intro_content_img"] }}
+        </div>
+        
+        <div class="width-1-1 split-banner split-banner--content left pattern-map">
+            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-light">
+                <h1 id="bc-sf-filter-collection-title text-light-sub"> {{ product.metafields.custom_fields["product_intro_content_title"] }}</h1>
+                <h2 class="text-light">
+                {{ product.metafields.custom_fields["product_intro_content_text"] }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner center page_banner intro_banner width-100 mobile--false mb60">
+        <div class="width-1-2 split-banner split-banner--img right">
+            {{ product.metafields.custom_fields["product_intro_content_img"] }}
+        </div>
+        
+        <div class="width-1-2 split-banner split-banner--content left pattern-map flex-right">
+            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-light">
+                <h1 id="bc-sf-filter-collection-title text-light-sub"> {{ product.metafields.custom_fields["product_intro_content_title"] }}</h1>
+                <h2 class="text-light">
+                {{ product.metafields.custom_fields["product_intro_content_text"] }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

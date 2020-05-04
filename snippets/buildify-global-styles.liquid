@@ -1,0 +1,7 @@
+<!-- ./snippets/buildify-global-styles.liquid -->
+{%- if shop.metafields.bdf_devit_settings["bdf_building_mode"] == blank or shop.metafields.bdf_devit_settings["bdf_building_mode"] == "full" -%}
+    {{ 'buildify-full.css' | asset_url | stylesheet_tag }}
+{%- else -%}
+    {{ 'buildify.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' | stylesheet_tag }}

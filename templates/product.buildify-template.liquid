@@ -1,0 +1,8 @@
+{% if product.metafields.bdf_devit["bdf_landing_layout"] != blank %}
+    {% layout 'buildify-layout' %}
+{% endif %}
+
+<!-- SKIP_ON_LANGSHOP_FOUND -->
+{{ product.description }}
+<!-- /SKIP_ON_LANGSHOP_FOUND -->
+

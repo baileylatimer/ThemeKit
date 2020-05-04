@@ -1,0 +1,15 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/104532/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["cook_time"] != blank %}
+  <div class="custom-field custom-field__cook-time custom-field__type--text-list">
+    <h3 class="custom-field--title"><i class="material-icons">
+timer
+</i> Cook time</h3>
+    <div class="custom-field--value"> 
+      {{ product.metafields.custom_fields["cook_time"] }}
+    </div>
+  </div>
+{% endif %}

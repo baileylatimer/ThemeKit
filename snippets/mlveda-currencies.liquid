@@ -1,0 +1,213 @@
+{% if settings.mlvedaACS_enable %}
+
+{{ "//mlveda-shopifyapps.s3.amazonaws.com/multiCurrencyPricing/js/currencies.js" | script_tag }}
+{{ "/apps/MultiCurrency/New/jquery.currencies.min.js" | script_tag }}
+
+<script>
+var ACSCurrency = Currency;
+function mlvedaCreateCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else
+        var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function mlvedaReadCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+            c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function mlvedaEraseCookie(name) {
+    createCookie(name, "", -1);
+}
+
+function roundCurrency() {
+  {% if settings.mlvedaACS_roundDecimal %}
+    {% if settings.mlvedaACS_hideDecimal %}
+    {% else %}
+      $acs('.money').each(function(){
+        if (ACSCurrency.currentCurrency === "JOD" || ACSCurrency.currentCurrency === "KWD" || ACSCurrency.currentCurrency === "BHD") {
+          var moneyraw = parseFloat($acs(this).html().replace(/[^0-9]/g, ""), 10) / 10 ;
+        } 
+        else if( ACSCurrency.currentCurrency === "KRW" || ACSCurrency.currentCurrency === "JPY" || ACSCurrency.currentCurrency === "SEK" || ACSCurrency.currentCurrency === "HUF" || ACSCurrency.currentCurrency === "ISK") {
+          var moneyraw = parseFloat($acs(this).html().replace(/[^0-9]/g, ""), 10) * 100 ;
+        } else {
+          var moneyraw = parseFloat($acs(this).html().replace(/[^0-9]/g, ""), 10)  ;
+        }  
+        var moneyrounded = Math.ceil(moneyraw / 100) * 100;
+        if(ACSCurrency.format === "money_with_currency_format") {
+          var acuree = ACSCurrency.formatMoney(moneyrounded, ACSCurrency.moneyFormats[ACSCurrency.currentCurrency].money_with_currency_format)
+        }
+        else {
+          var acuree = ACSCurrency.formatMoney(moneyrounded, ACSCurrency.moneyFormats[ACSCurrency.currentCurrency].money_format)
+        }        $acs(this).html(acuree);
+      });
+    {% endif %}
+  {% endif %}
+}
+
+{% if settings.mlvedaACS_hideDecimal %}
+  var firstTimeSwitchFlag=0;
+{% endif %}
+
+var onetimecallflag = true;
+
+$acs('span.money span.money').each(function() {
+  $acs(this).parents('span.money').removeClass('money');
+});
+
+function mlvedaload() {
+
+{% if settings.mlvedaACS_currencyFormat %}
+ACSCurrency.format = '{{ settings.mlvedaACS_currencyFormat }}';
+{% endif %}
+
+var shopCurrency = '{{ shop.currency }}';
+
+/* Sometimes merchants change their shop currency, let's tell our JavaScript file */
+ACSCurrency.moneyFormats[shopCurrency].money_with_currency_format = {{ shop.money_with_currency_format | strip_html | json }};
+ACSCurrency.moneyFormats[shopCurrency].money_format = {{ shop.money_format | strip_html | json }};
+  
+{% if settings.mlvedaACS_hideDecimal %}
+if(firstTimeSwitchFlag==0) {
+  var local_supported_currencies = window.supported_currencies.split(" ");
+  for(var i=0; i<local_supported_currencies.length; i++)
+  {
+    if(local_supported_currencies[i] !== shopCurrency && local_supported_currencies[i] !== "JOD" && local_supported_currencies[i] !== "KWD" && local_supported_currencies[i] !== "BHD" && local_supported_currencies[i] !== "JPY" ) {
+      if(ACSCurrency.moneyFormats[local_supported_currencies[i]] && ACSCurrency.moneyFormats[local_supported_currencies[i]].money_with_currency_format.indexOf("amount_no_decimals") == -1) {
+        ACSCurrency.moneyFormats[local_supported_currencies[i]].money_with_currency_format = ACSCurrency.moneyFormats[local_supported_currencies[i]].money_with_currency_format.replace("amount","amount_no_decimals");
+        ACSCurrency.moneyFormats[local_supported_currencies[i]].money_format = ACSCurrency.moneyFormats[local_supported_currencies[i]].money_format.replace("amount","amount_no_decimals");
+      }
+    }
+  }
+  firstTimeSwitchFlag=1;
+}
+{% endif %}
+
+/* Default currency */
+var defaultCurrency = shopCurrency;
+  
+/* Cookie currency */
+var cookieCurrency = ACSCurrency.cookie.read();
+var resetCurrencyCookie = mlvedaReadCookie("resetCurrencyCookie");
+if (resetCurrencyCookie == null)
+{
+    cookieCurrency = null;
+    mlvedaCreateCookie("resetCurrencyCookie", 1, 365);
+}
+
+  if(cookieCurrency == null) {
+	if( window.temp_currency_array[0] !== window.mlvedadefaultcurrency && window.temp_currency_array[1] !== window.mlvedadefaultcurrency) {
+  	  cookieCurrency = "{{ settings.mlvedaACS_defaultCurrency }}";
+	}
+	else {
+  	  cookieCurrency = window.mlvedadefaultcurrency;
+	}
+  }
+
+/* Fix for customer account pages */
+$acs('span.money span.money').each(function() {
+  $acs(this).parents('span.money').removeClass('money');
+});
+
+/* Saving the current price */
+$acs('span.money').each(function() {
+if(!$acs(this).attr('data-currency-{{ shop.currency }}'))
+{
+  $acs(this).attr('data-currency-{{ shop.currency }}', $acs(this).html());
+}
+});
+
+// If there's no cookie.
+if (cookieCurrency == null) {
+  if (shopCurrency !== defaultCurrency) {
+    ACSCurrency.convertAll(shopCurrency, defaultCurrency);
+  }
+  else {
+    ACSCurrency.currentCurrency = defaultCurrency;
+  }
+}
+// If the cookie value does not correspond to any value in the currency dropdown.
+else if ($acs('[name=currencies]').length && $acs('[name=currencies] option[value=' + cookieCurrency + ']').length === 0) {
+  ACSCurrency.currentCurrency = shopCurrency;
+  ACSCurrency.cookie.write(shopCurrency);
+}
+else if (cookieCurrency === shopCurrency) {
+  ACSCurrency.currentCurrency = shopCurrency;
+}
+else {
+  ACSCurrency.convertAll(shopCurrency, cookieCurrency);
+  $acs(".mlvedaCartNote").css("display","inline");
+  roundCurrency();
+}
+
+$acs('[name=currencies]').val(ACSCurrency.currentCurrency).change(function() {
+  var newCurrency = $acs(this).val();
+  ACSCurrency.convertAll(ACSCurrency.currentCurrency, newCurrency);
+  $acs('.selected-currency').text(ACSCurrency.currentCurrency);
+  if(newCurrency != shopCurrency) {
+    roundCurrency();
+    $acs(".mlvedaCartNote").css("display","inline");
+  } else {
+    $acs(".mlvedaCartNote").css("display","none");
+  }});
+
+var original_selectCallback = window.selectCallback;
+var selectCallback = function(variant, selector) {
+  original_selectCallback(variant, selector);
+  ACSCurrency.convertAll(shopCurrency, $acs('[name=currencies]').val());
+  $acs('.selected-currency').text(ACSCurrency.currentCurrency);
+};
+
+$acs('.selected-currency').text(ACSCurrency.currentCurrency);
+
+  if(onetimecallflag) {
+  $acs('.single-option-selector').change(function() {
+    mlvedaload();
+  });
+
+  $acs('.swatch').change(function() {
+    mlvedaload();
+  });
+
+  $acs('.single-option-radio').change(function() {
+    mlvedaload();
+  });
+
+  $acs(document).ajaxComplete(function(event, xhr, settings) {
+     if(settings.url.indexOf("cart.js")!=-1) {
+       setTimeout(function() {
+         mlvedaload();
+       }, 1000);
+     }
+   });
+
+
+//$acs(".pick_currency:visible").css("height",$acs(".pick_currency").parent(":visible").height());
+//$acs(".pick_currency:visible").css("line-height",$acs(".pick_currency").parent(":visible").height());
+//$acs("[name=currencies]:visible").css("height",$acs(".pick_currency").parent(":visible").height());
+//$acs("[name=currencies]:visible").css("line-height",$acs(".pick_currency").parent(":visible").height());
+
+  {% if settings.mlvedaACS_displayFlag == true %}
+  $acs("#currencies").niceSelect();
+  $acs("#currencies1").niceSelect();
+  {% endif %}
+
+  onetimecallflag = false;
+  }
+}
+</script>
+
+{% endif %}

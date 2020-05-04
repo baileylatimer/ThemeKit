@@ -1,0 +1,80 @@
+<a name="pagecontent" id="pagecontent"></a>
+
+<main class="wh100 f-r-c full-container filter-map--white ">
+    <div class="f-cl-c align-end register full-left animated fadeInUp"></div>
+    <div class="f-cl-c align-start full-right animated fadeInUp">
+
+        {% comment %}
+        Card begins
+        {% endcomment %}
+        <div class="card--lg f-cl-c">
+            <div class="clearfix card card--body p40 mt20 card--lg animated fadeInUp f-cl-c" id="customer">
+                <img onclick="window.open('/', '_self')" class="pointer mobile--false width-1-2" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Shine-Light.png?v=1583518253"/>
+                <h5 class="text-center">{{ 'customer.register.title' | t }}</h5>
+                <div class="divider"></div>
+
+                <!-- Create Customer -->
+                <div id="create-customer">
+
+                    {% form 'create_customer' %}
+                    {{ form.errors | default_errors }}
+
+                    <div id="first_name" class="clearfix large_form">
+                        <label for="first_name" class="login">{{ 'customer.register.first_name' | t }}</label>
+                        <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30" />
+                    </div>
+
+                    <div id="last_name" class="clearfix large_form">
+                        <label for="last_name" class="login">{{ 'customer.register.last_name' | t }}</label>
+                        <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30" />
+                    </div>
+
+                    <div id="email" class="clearfix large_form">
+                        <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+                        <input type="email" value="" name="customer[email]" id="email" class="large" size="30" />
+                    </div>
+
+                    <div id="password" class="clearfix large_form">
+                        <label for="password" class="login">{{ 'customer.register.password' | t }}</label>
+                        <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
+                    </div>
+
+                    {% if section.settings.text %}
+                        {{ section.settings.text }}
+                    {% endif %}
+                {% comment %}
+                    <div class="acceptsMarketing">
+                        <input type="checkbox" id="customer[accepts_marketing]" name="customer[accepts_marketing]">
+                        <p for="customer[accepts_marketing]">{{ 'customer.register.accepts_marketing' | t }}</p>
+                    </div>
+                {% endcomment %}
+                    <div class="action_bottom">
+                        <input class="btn button -shine action_button width-1-1" type="submit" value="{{ 'customer.register.sign_up' | t }}" />
+                    </div>
+
+                    {% endform %}
+                </div><!-- /#create-customer -->
+            </div>
+        </div>
+        {% comment %}
+            Card ends
+        {% endcomment %}
+        <p class="ml60 right" style="padding-top: 8px;">
+            {{ 'customer.register.returning_customer_label' | t }} {{ 'customer.register.sign_in_html' | t | customer_login_link }}
+        </p>
+  </div>
+</main>
+
+{% schema %}
+  {
+    "name": "Register",
+    "class": "register-section",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      }
+    ]
+  }
+{% endschema %}

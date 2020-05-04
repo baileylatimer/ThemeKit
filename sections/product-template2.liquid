@@ -1,0 +1,955 @@
+{% comment %}
+** Product - default view **
+- Product template
+{% endcomment %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content">
+  <div class="sixteen columns">
+    {% if collection.previous_product or collection.next_product or section.settings.product_breadcrumb %}
+      <div class="clearfix breadcrumb-collection">
+        {% if collection.previous_product or collection.next_product %}
+          <div class="nav_arrows breadcrumb_text">
+            {% if collection.previous_product %}
+              <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="breadcrumb_link"><span class="icon-left-arrow"> {{ 'products.general.previous_product_html' | t }}</span></a>
+            {% endif %}
+            {% if collection.previous_product and collection.next_product %}<span class="breadcrumb-divider"> | </span>{% endif %}
+
+            {% if collection.next_product %}
+              <a href="{{collection.next_product}}" title="{{ 'products.general.next_product_html' | t }}" class="breadcrumb_link">{{ 'products.general.next_product_html' | t }} <span class="icon-right-arrow"></span></a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.product_breadcrumb %}
+          <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+            <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
+            <span class="breadcrumb-divider">/</span>
+            <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+              {% if collection %}
+                <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ collection.title }}</span></a>
+              {% else %}
+                <a href="/collections/all" title="{{ collections.all.title }}" class="breadcrumb_link"><span>{{ collections.all.title }}</span></a>
+              {% endif %}
+            </span>
+            <span class="breadcrumb-divider">/</span>
+            {{ product.title }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %}Check to see if sidebar should be enabled{% endcomment %}
+  {% if section.blocks.size > 0 %}
+    {% assign sidebar = true %}
+  {% else %}
+    {% assign sidebar = false %}
+  {% endif %}
+
+  <div class="product clearfix">
+    {% if sidebar %}
+      {% include 'sidebar' %}
+      <div class="twelve columns">
+    {% else %}
+      <div class="sixteen columns">
+    {% endif %}
+
+    <div  class="product-{{ product.id }}"
+          data-free-text="{{ settings.free_price_text }}"
+          >
+      <div class="section product_section clearfix js-product_section {% if section.settings.product_images_position == 'right' %}align_right--images{% endif %}" itemscope itemtype="http://schema.org/Product">
+
+        <div class="{% if sidebar %}seven{% else %}nine{% endif %} columns {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
+          {% include 'product-images' %}
+        </div>
+
+        <div class="{% if sidebar %}five{% else %}seven{% endif %} columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+
+          {% assign collection_handles = product.collections | map: 'handle' %}
+          {% assign variant = product.selected_or_first_available_variant %}
+
+          {% if product.available %}
+            {% if settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
+              <div class="sale_banner_product">{{ 'collections.general.sale' | t }}</div>
+            {% endif %}
+          {% endif %}
+          {% if collection_handles contains 'new' %}
+            <div class="new_banner_product">{{ 'collections.general.new' | t }}</div>
+          {% endif %}
+          {% if collection_handles contains 'pre-order' %}
+            <div class="preorder_banner_product">{{ 'collections.general.pre_order' | t }}</div>
+          {% endif %}
+
+           {% if section.settings.display_vendor %}
+            <p class="vendor">
+              <span itemprop="brand" class="vendor">{{ product.vendor | link_to_vendor }}</span>
+            </p>
+          {% endif %}
+
+          {% if variant.sku != blank and section.settings.display_sku %}
+            <p class="sku">
+              <span itemprop="sku">{{ variant.sku }}</span>
+            </p>
+          {% endif %}
+          <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
+            {% if settings.enable_shopify_product_badges and settings.enable_shopify_review_comments %}
+            <div id="review-click">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </div>
+            {% endif %}
+          <div class="feature_divider"></div>
+
+          {% assign product_tags = product.tags | join: ' ' %}
+          {% if product_tags contains 'meta-size-chart-' %}
+            {% for tag in product.tags %}
+              {% if tag contains 'meta-size-chart-' %}
+                <a href="#size-chart{{product.id}}" class="size_chart" data-remodal-target="size-chart{{product.id}}" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+                {% include 'popup-size-chart', product_id: product.id %}
+              {% endif %}
+            {% endfor %}
+          {% elsif settings.size_chart != blank %}
+            <a href="#size-chart" class="size_chart" data-remodal-target="size-chart" data-no-instant>{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+          {% endif %}
+
+
+          {% if collection_handles contains 'coming-soon' %}
+            <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
+          {% else %}
+            <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+              <meta itemprop="seller" content="{{ shop.name | escape }}" />
+              <link itemprop="availability" href="http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}">
+              <meta itemprop="itemCondition" content="New" />
+
+              <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+              <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+                <span class="current_price {% if product.available == false %}hidden{% endif %}">
+                  {% if variant.price > 0 %}
+                    <span class="money">{{ variant.price | money }}</span>
+                  {% else %}
+                    {{ settings.free_price_text }}
+                  {% endif %}
+                </span>
+              </span>
+              <span class="was_price">
+                {% if variant.price < variant.compare_at_price and variant.available %}
+                  <span class="money">{{ variant.compare_at_price | money }}</span>
+                {% endif %}
+              </span>
+
+              {% if section.settings.display_savings %}
+                <span class="sale savings">
+                  {% if variant.price < variant.compare_at_price and variant.available %}
+                    {{ 'products.product.savings' | t }}  {{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                  {% endif %}
+                </span>
+               <p class="affirm-as-low-as" data-amount="{{product.price}}"></p> 
+              {% endif %}
+            </p>
+
+            {% include 'product-notify-me' %}
+          {% endif %}
+
+          {% if section.settings.product_description_position == "top" %}
+            {% if product.description != blank %}
+             <div class="description" itemprop="description">
+               {{ product.description | split: '<!-- split -->' | first }}
+             </div>
+           {% endif %}
+          {% endif %}
+
+          {% unless collection_handles contains 'coming-soon' %}
+            {% include 'product-form' with 'product' %}
+          {% endunless %}
+
+          {% if section.settings.product_description_position == "bottom" %}
+            {% if product.description != blank %}
+             <div class="description bottom" itemprop="description">
+              {{ product.description | split: '<!-- split -->' | first }}
+             </div>
+            {% endif %}
+          {% endif %}
+
+          {% if settings.enable_shopify_review_comments and settings.review_position == "next_to_gallery" %}
+            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          {% endif %}
+
+          {% if section.settings.display_collections or section.settings.display_tags or section.settings.display_type %}
+            <div class="product_links">
+              {% if section.settings.display_collections %}
+                <p>
+                  <span class="label">{{ 'products.product.collections' | t }}:</span>
+                  <span>
+                   {% for col in product.collections %}
+                     <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %}
+                   {% endfor %}
+                  </span>
+                </p>
+              {% endif %}
+
+              {% if section.settings.display_type %}
+                <p>
+                  <span class="label">{{ 'products.product.product_types' | t }}:</span>
+                  <span>{{ product.type | link_to_type }}</span>
+                </p>
+              {% endif %}
+
+              {% if section.settings.display_tags %}
+                <p>
+                 {% for tag in product.tags %}
+                   {% if forloop.first %}
+                     <span class="label">{{ 'products.product.tags' | t }}:</span>
+                   {% endif %}
+
+                   {% unless tag contains 'meta-' %}
+                     <span>
+                       <a href="/collections/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+                       </span>
+                   {% endunless %}
+                 {% endfor %}
+                </p>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="meta">
+            {% if section.settings.display_social_buttons %}
+              {% include "social-buttons" with "product" %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if product.description contains "<!-- split -->"  %}
+        <br class="clear" />
+        <div class="section clearfix">
+          <div class="description">
+            {{ product.description | split: '<!-- split -->' | last }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if settings.enable_shopify_review_comments and settings.review_position == "below_gallery" %}
+        <div class="shopify-reviews">
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if sidebar %}
+
+            {% if section.settings.display_related_products %}
+              {% include 'related-products' %}
+            {% endif %}
+            {% if section.settings.display_recently_viewed %}
+              {% include 'recently-viewed' %}
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+
+          </div>
+        </div>
+      </div>
+   
+<section id="new_product">
+  <h1>Easy And Delicious</h1>
+  <h2>MEALS IN AS LITTLE AS 20 MIN</h2>
+
+  <div id="video_holder">
+    <video id="video" src="{{ 'gosun_teaser.mp4' | asset_url }}" type="video/mp4" poster="{{ 'GoSun-Sport-Glamping-Table_FullRes_Cropped.jpg' | asset_url }}"></video>
+    <div id="playbtn">See The Stove In Action&nbsp;&nbsp;&nbsp;&#9654;</div>
+  </div>
+
+  
+    <script>
+    $('#video').parent().click(function () {
+    if($(this).children("#video").get(0).paused){
+        $(this).children("#video").get(0).play();
+        $(this).children("#playbtn").fadeOut();
+    }else{
+       $(this).children("#video").get(0).pause();
+        $(this).children("#playbtn").fadeIn();
+    }
+});
+    
+  </script>
+  
+  <h1>Spotty Clouds?</h1>
+  <h2 style="margin-bottom: 20px;">No Problem!</h2>
+  
+  <a href="#HowItWorks" id="big_button" style="margin-bottom: 65px;">HOW IT WORKS</a>
+  
+  <img src="{{ 'oven_hero.jpg' | asset_url }}" style="max-width: 100%;">
+  
+  <h1>Completely Unparalleled</h1>
+  <h2>Solar Cooking Technology</h2>
+  
+  <div class="triad">
+    <img src="{{ 'triad1.jpg' | asset_url }}">
+    <h4>ALL SEASONS</h4>
+    <p>No weather is too cold or windy for the stove’s near perfect vacuum tube insualtion. If there’s Sun, you’re in business.</p>
+   </div>
+
+  <div class="triad margin">
+    <img src="{{ 'triad2.jpg' | asset_url }}">
+    <h4>PORTABLE</h4>
+    <p>Sets up in seconds and clamshells into a slim package weighing 7.5 lbs. Perfect for RVing, camping or just relaxing in the backyard.</p>
+   </div>
+
+  <div class="triad">
+    <img src="{{ 'triad3.jpg' | asset_url }}">
+    <h4>COOL TO TOUCH</h4>
+    <p>No fire hazard here. Perfect for cooking with children and keeping the kitchen cool during the Summer.</p>
+  </div>
+  
+    <h1>Bake, Roast, and Steam</h1>
+  <h2 style="margin-bottom: 65px;">Heating To 550°F, Nothing's Off Limits</h2>
+	
+  <div id="explore">
+    <a href="https://www.gosunstove.com/blogs/recipes/tagged/gosun-sport-recipe" target="_blank">Explore recipes</a>
+    <img src="{{ 'gosunsport_table_spread_1240.jpg' | asset_url }}" style="max-width: 100%; margin-bottom: 0px;">
+  </div>
+  
+<a name="HowItWorks"></a> 
+    <h1 style="margin-bottom: 20px;">How It Works</h1>
+  <img src="{{ 'howitworks2.png' | asset_url }}" style="text-align: center; max-width: 100%;">
+
+  
+  <div class="triad">
+    <img src="{{ 'Icons4.png' | asset_url }}">
+    <h4>SUNLIGHT</h4>
+    <p>Sunlight is focused by the compound parabolic reflectors onto the tube, heating the inner cooking chamber.</p>
+   </div>
+
+  <div class="triad margin">
+    <img src="{{ 'Icons5.png' | asset_url }}">
+    <h4>VACUUM</h4>
+    <p>The vacuum tube acts as a near-perfect insulator, converting more than 80% of the Sun's rays into useable heat.</p>
+   </div>
+
+  <div class="triad">
+    <img src="{{ 'Icons6.png' | asset_url }}">
+    <h4>SOLAR HEAT</h4>
+    <p>The heat inside mimics that of an oven, building up to 550°F/ 280°C.</p>
+  </div>  
+  <div style= padding-top:50px;>
+  </div>
+ <div> 
+  <img id="badge" style= padding-left:50px; src="{{ 'badge2.png' | asset_url }}"><div id="guarantee">
+    <h3>The Gosun 30 Day Guarantee</h3>
+
+    <p>We stand by our stoves. If you’re not satisfied, just return your stove within 30 days for a full refund. 
+</p>
+     <div style= padding-top:30px;>
+  </div>
+   </div>
+    <div class="testimonials">
+    <h2>More Than 10,000 Stoves Sold</h2>
+	<div>
+      <img src="{{ 'TestimonialPic1.png' | asset_url }}">
+      <p><b>“The kids love it when we take the stove camping. It's so easy to use even they can use it!”</b></p>
+      <p>- Laura, CA</p>
+    </div>
+    <div>
+      <img src="{{ 'TestimonialPic2.png' | asset_url }}">
+      <p><b>Perfect for fishing and RVing. I can just pop it open, load it up, and it cooks while I "work".</b></p>
+      <p>- Mark, NC</p>
+    </div>
+    <div>
+      <img src="{{ 'TestimonialPic3.png' | asset_url }}">
+      <p><b>It was surprisingly delicious! Flavors come out richer than normal. My favorite way to cook vegetables!</b></p>
+      <p>- Nancy, OH</p>
+    </div>
+  </div>
+   
+   <h1>Get The Full Package</h1>
+  <h2 style="margin-bottom: 65px;">Meet the Sport ProPack</h2>
+	
+  <div id="explore">
+    <a href="https://www.gosunstove.com/products/gosun-pro-pack" target="_blank">Learn More</a>
+    <img src="{{ 'SportCarryingCase_Nature.jpg' | asset_url }}" style="max-width: 100%; margin-bottom: 0px;">
+  </div>
+ 
+  	<section id="accordion">
+     
+          <div>
+            <input type="radio" name="accordion" id="check_1" />
+            <label for="check_1">FAQ<span></span></label>
+            <article>
+<p><strong>What can the GoSun Sport cook?</strong></p>
+<p><span>Bake, roast, steam and fry, the GoSun Sport is a versatile cooker! For some culinary inspiration check out the <a href="https://www.gosunstove.com/blogs/recipes" target="_blank" title="GoSun Recipe Blog">GoSun Recipe Blog</a>.</span></p>
+              <p><strong>Can the GoSun Sport boil water?</strong></p>
+<p><span>GoSun does no recommend boiling water in the Sport directly against he tube. We are however currently in the final stages of manufacturing the GoSun Brew, our water boiling insert, fit for the GoSun Sport. To be kept in the loop about the GoSun, join our mailing list at the bottom of this page.<br /></span></p>
+              <p><strong>How much Sun do I need to cook?</strong></p>
+<p><span>You might be surprised how little Sun is needed to finish a meal. As a rule of thumb, the stove will cook quickly if you can see a defined shadow from your hand even when overcast, windy and in some cases rainy. If thick clouds are spotty, cooking is still possible, though it will take longer as the stove builds up heat during the sunny periods. We suggest using a weather tracking app like My Radar to help plan and set you up for success!</span></p>
+              <p><strong> How do I know when my food is done?</strong></p>
+<p><span>Many foods will finish cooking when the internal temperature of the food hits near 212°F/100°C. This means that steam is a strong indicator of a dish's progress. Noticing smell is another easy and surprisingly intuitive way to judging your food's progress, just make sure not to burn your nose! Give it a couple tries and you'll be a pro.  </span></p>
+            </article>
+
+          </div>
+          <div>
+          <input type="radio" name="accordion" id="check_2" />
+          <label for="check_2">Product Specs<span></span></label>
+            <article>
+              <b>Dry Weight:</b> 7 lbs (3.18kg)<br>
+              <b>Oven Volume:</b> 40oz (1.2L) fluid or up to 3 lbs (1.4kg) of food<br>
+              <b>Oven Dimensions:</b> 2.7” (7.0cm) outside diameter, 2.1” (5.4cm) inside diameter , 24” (61cm) length<br>
+              <b>Unit Open Size:</b> 24” (61cm) long x 16” (41cm) tall x 12” (30cm) wide<br>
+              <b>Unit Closed Size:</b> 24” (61cm) long x 8” (20cm) tall x 5” (13cm) wide<br>
+              <b>Estimated Power Output:</b> 200 Watts in full sunlight<br>
+              <b>Maximum Temperature:</b> 550°F (288°C)<br>
+              <b>Working Temperature:</b> 200°F (93°C) – 450°F (232°C)<br>
+            </article>
+        </div>
+        <div>
+            <input type="radio" name="accordion" id="check_3" />
+            <label for="check_3">Package Includes<span></span></label>
+            <article>
+            	<ul>
+<li><strong style="line-height: 1.5;">GoSun Sport Solar Stove:</strong><span style="line-height: 1.5;"> </span><span style="line-height: 1.5;"> With industry grade annodized aluminum reflectors and stainless steel legs that function as carrying handles</span></li>
+<li><strong style="line-height: 1.5;">Stainless Steel Cooking Tray:</strong><span style="line-height: 1.5;"> Including detachable handle that threads onto inside of tray for compact storage </span></li>
+<li><strong style="line-height: 1.5;">Scrubby Cleaning Tool:</strong><span style="line-height: 1.5;"> Designed for the occasonal easy cleanup </span></li>
+<li><strong style="line-height: 1.5;">Starter Cookbooklet:</strong><span style="line-height: 1.5;"> Outlining basic stratgies for cooking a valiety of dishes</span></li>
+<li><strong style="line-height: 1.5;">User's Manual:</strong><span style="line-height: 1.5;"> Always a good thing to have</span></li> 
+            </article>
+        </div>
+        <div>
+            <input type="radio" name="accordion" id="check_4" />
+            <label for="check_4">Cook Times<span></span></label>
+            <article>
+          		<img style="max-width: 100%;" alt="Solar Stove Grill Cooker GoSun Sport Cook Times" src="//cdn.shopify.com/s/files/1/0789/1333/files/Cooktimes_ForWeb-02.png">
+            </article>
+        </div>
+    </section>
+  
+</section>
+      
+      
+      
+      
+<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+  {% if settings.display_related_products %}
+    {% capture limit %}{{ settings.products_per_row | plus: 1 }}{% endcapture %}
+
+    {% if collection and collection.all_products_count > 1 %}
+      {% assign col = collection.handle %}
+    {% else %}
+      {% assign col = product.collections.last.handle %}
+    {% endif %}
+
+    {% for tag in product.tags %}
+      {% if tag contains 'meta-related-collection-' %}
+        {% assign col = tag | remove: 'meta-related-collection-' %}
+        {% assign collection = collections[col] %}
+        {% capture limit %}{{ collection.products_count | plus: 1 }}{% endcapture %}
+      {% endif %}
+    {% endfor %}
+
+    {% if col and collections[col].all_products_count > 0 %}
+      {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
+        <br class="clear" />
+        <h4 class="title center">{{ 'products.product.related_items' | t }}</h4>
+        <div class="feature_divider"></div>
+
+        {% assign skip_product = product %}
+        {% assign products = collections[col].products %}
+        {% assign products_per_row = settings.products_per_row %}
+        {% include 'product-loop' with settings.product_sidebar %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+</div>
+    </div>
+      {% if section.settings.display_related_products %}
+        {% include 'related-products' %}
+      {% endif %}
+      {% if section.settings.display_recently_viewed %}
+        {% include 'recently-viewed' %}
+      {% endif %}
+
+    {% endif %}
+
+{% schema %}
+
+{
+  "name": "Product",
+  "class": "product-template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product gallery"
+    },
+    {
+      "type": "checkbox",
+      "id": "gallery_arrows",
+      "label": "Show arrows on product gallery",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "activate_zoom",
+      "label": "Magnify product images on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_product_lightbox",
+      "label": "Enable product gallery popup",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "activate_autoplay",
+      "label": "Enable product gallery slideshow"
+    },
+    {
+      "type": "select",
+      "id": "slideshow_animation",
+      "label": "Gallery transition",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "radio",
+      "id": "product_images_position",
+      "label": "Gallery position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "product_thumbs",
+      "label": "Show product gallery thumbnails",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "thumbnail_position",
+      "label": "Thumbnail position",
+      "default": "bottom-thumbnails",
+      "options": [
+        {
+          "value": "left-thumbnails",
+          "label": "Left"
+        },
+        {
+          "value": "bottom-thumbnails",
+          "label": "Bottom"
+        },
+        {
+          "value": "right-thumbnails",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Product info"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_breadcrumb",
+      "label": "Show breadcrumb links"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_vendor",
+      "label": "Show vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_sku",
+      "label": "Show SKU"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_savings",
+      "label": "Show price savings",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_collections",
+      "label": "Show collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_type",
+      "label": "Show type"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_tags",
+      "label": "Show tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_social_buttons",
+      "label": "Show social media share icons",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "product_description_position",
+      "label": "Description position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Above product form"
+        },
+        {
+          "value": "bottom",
+          "label": "Below product form"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Related products"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_related_products",
+      "label": "Show related products ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006909487-Related-Products))",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "related_products_style",
+      "label": "Layout",
+      "default": "grid",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Slider"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "related_products_limit",
+      "label": "Product limit",
+      "default": "12",
+    "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        },
+        {
+          "value": "12",
+          "label": "12"
+        },
+        {
+          "value": "15",
+          "label": "15"
+        },
+        {
+          "value": "20",
+          "label": "20"
+        },
+        {
+          "value": "24",
+          "label": "24"
+        },
+        {
+          "value": "48",
+          "label": "48"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "products_per",
+      "label": "Products per row",
+      "default": "3",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Recently viewed products"
+    },
+    {
+      "type": "paragraph",
+      "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_recently_viewed",
+      "label": "Show recently viewed products",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "rv_title",
+      "label": "Title",
+      "default": "Recently Viewed Items"
+    },
+    {
+      "type": "radio",
+      "id": "rv_products_style",
+      "label": "Layout",
+      "default": "grid",
+      "options": [
+        {
+          "value": "slider",
+          "label": "Slider"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "rv_max_display",
+      "label": "Products limit",
+      "default": "4",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        },
+        {
+          "value": "7",
+          "label": "7"
+        },
+        {
+          "value": "8",
+          "label": "8"
+        },
+        {
+          "value": "9",
+          "label": "9"
+        },
+        {
+          "value": "10",
+          "label": "10"
+        },
+        {
+          "value": "11",
+          "label": "11"
+        },
+        {
+          "value": "12",
+          "label": "12"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "rv_per",
+      "label": "Products per row",
+      "default": "4",
+      "options": [
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Create a sidebar by adding content blocks."
+    },
+    {
+      "type": "checkbox",
+      "id": "toggle",
+      "label": "Toggle sidebar content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_by_collection",
+      "name": "Collection list",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
+    },
+    {
+      "type": "recently_viewed",
+      "name": "Recently viewed products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
+        },
+        {
+          "type": "text",
+          "id": "sidebar_rv_title",
+          "label": "Title",
+          "default": "Recently Viewed"
+        },
+        {
+          "type": "select",
+          "id": "sidebar_rv_per",
+          "label": "Products limit",
+          "default": "3",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "filter_by_tag",
+      "name": "Tag list",
+      "limit": 1
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        }
+      ]
+    },
+    {
+      "type": "filter_by_type",
+      "name": "Type list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_vendor",
+      "name": "Vendor list",
+      "limit": 1
+    }
+  ],
+  "default": {
+    "settings": {
+
+    }
+  }
+}
+
+{% endschema %}

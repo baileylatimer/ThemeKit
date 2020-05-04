@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/pages/configure/106952/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["image_style"] != blank %}
+  <div class="custom-field custom-field__image-style custom-field__type--text">
+    <h3 class="custom-field--title">Image Style</h3>
+    <div class="custom-field--value">
+      {{ page.metafields.custom_fields["image_style"] }}
+    </div>
+  </div>
+{% endif %}

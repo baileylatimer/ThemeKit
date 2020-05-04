@@ -1,0 +1,46 @@
+{% comment %}
+
+  ###                                                                ###
+  ### DO NOT MODIFY THIS FILE, IT WILL BE AUTOMATICALLY OVERWRITTEN. ###
+  ### Documentation is listed below for your reference.              ###
+  ###                                                                ###
+
+  This snippet allows you manipulate Shopify CDN image URLs to provide dynamic cropping and sizing.
+  It provides similar functionality to the "img_url" filter seen here: https://www.shopify.com/partners/blog/img-url-filter
+
+  You can pass in an image URL or an <img> tag.
+  Image URLs that do not use Shopify's CDN will not be able to use the crop/size/scale/format modifiers.
+
+  #
+  # Basic usage:
+  #
+
+  # Print an image tag with alt and class attributes.
+  {% include 'cf-image' with image: IMAGE, tag_alt: "My alt text", tag_class: "my-image-class" %}
+
+  # Print a modified image that is cropped and scaled.
+  {% include 'cf-image' with image: IMAGE, size: "400x100", crop: "top", format: 'pjpg', scale: 2, tag_alt: "My alt text", tag_class: "my-image-class" %}
+
+  The "cf-image" snippet accepts the following parameters:
+  - image: The image URL or an image tag. Can be provided from a metafield value.
+  - size: Size dimensions, such as 100x100, x200, or 300x.
+  - crop: Accepts top, center, bottom, left, and right.
+  - scale: Either 2 or 3.
+  - format: Accepts jpg or pjpg (for a progressive jpeg image).
+  - print: Defaults to "tag". Accepts url, tag, or none. Setting to "none" will not render anything automatically (see Advanced Usage below).
+  - tag_alt: Alt text for the image tag.
+  - tag_class: CSS class for the image tag.
+
+  #
+  # Advanced usage:
+  #
+
+  If you want to use the image tag or url without printing it automatically simple do:
+  {% include 'cf-image' with image: IMAGE, print: "none", size: "1920x1080", crop: "center" %}
+
+  You will then be able to get the image URL in the {{ cf_image }} variable in the next line.
+  <div style="background-image:url('{{ cf_image }}');" class="bg"></div>
+
+  Created by: Bonify, LLC (c) 2019 (appsupport@bonify.io)
+
+{% endcomment %}{%assign x0d='<div>'%}{%assign x0e='</div>'%}{%assign x0f='cf-image error:'%}{%assign x0g='No image provided'%}{%assign x0h='Scale must be either 2 or 3'%}{%assign x0i='Crop must be either center, top, bottom, left, or right'%}{%assign x0j='Format must be either jpg or pjpg'%}{%assign x0k='Print must be either tag or url'%}{%assign x0l='center'%}{%assign x0m='top'%}{%assign x0n='bottom'%}{%assign x0o='left'%}{%assign x0p='right'%}{%assign x0q='jpg'%}{%assign x0r='pjpg'%}{%assign x0s='tag'%}{%assign x0t='url'%}{%assign x0u='none'%}{%assign x0v='"'%}{%assign x0w='src='%}{%assign x0x='alt='%}{%assign x0y='class='%}{%assign x0z='cdn.shopify.com'%}{%assign x0AA='?'%}{%assign x0BB='_'%}{%assign x0CC='_crop_'%}{%assign x0DD='@'%}{%assign x0EE='x'%}{%assign x0FF='.progressive'%}{%assign x0GG=image%}{%assign x0HH=size%}{%assign x0II=crop%}{%assign x0JJ=scale%}{%assign x0KK=format%}{%assign x0LL=print%}{%assign x0MM=tag_alt%}{%assign x0NN=tag_class%}{%assign x0A=x0d%}{%assign x0B=x0e%}{%assign x0C=x0f%}{%assign x0D=x0g%}{%assign x0E=x0h%}{%assign x0F=x0i%}{%assign x0G=x0j%}{%assign x0H=x0k%}{%assign x0I=""%}{%assign x0J=0%}{%assign x0K=x0J|plus:1%}{%assign x0L=x0K|plus:x0K%}{%assign x0M=x0L|plus:x0K%}{%assign x0N=x0M|plus:x0K%}{%assign x0O=x0J|minus:x0N%}{%assign x0P=false%}{%assign x0Q=true%}{%assign x0R=x0P%}{%assign x0S=x0P%}{%assign x0T=x0P%}{%if x0GG==blank%}{{x0D|prepend:x0C|prepend:x0A|append:x0B}}{%assign x0T=x0Q%}{%endif%}{%if x0JJ!=blank and x0JJ<x0L or x0JJ>x0M%}{{x0E|prepend:x0C|prepend:x0A|append:x0B}}{%assign x0T=x0Q%}{%endif%}{%if x0II!=blank and x0II!=x0l and x0II!=x0m and x0II!=x0n and x0II!=x0o and x0II!=x0p%}{{x0F|prepend:x0C|prepend:x0A|append:x0B}}{%assign x0T=x0Q%}{%endif%}{%if x0KK!=blank and x0KK!=x0q and x0KK!=x0r%}{{x0G|prepend:x0C|prepend:x0A|append:x0B}}{%assign x0T=x0Q%}{%endif%}{%if x0LL!=blank and x0LL!=x0s and x0LL!=x0t and x0LL!=x0u%}{{x0H|prepend:x0C|prepend:x0A|append:x0B}}{%assign x0T=x0Q%}{%endif%}{%if x0T==x0P%}{%assign x0U=x0GG|split:x0v%}{%if x0U[x0K]%}{%assign x0R=x0Q%}{%endif%}{%if x0R%}{%assign x0V=x0J%}{%for x0c in x0U%}{%assign x0W=x0V|plus:x0K%}{%if x0c contains x0w%}{%assign x0X=x0U[x0W]%}{%endif%}{%if x0c contains x0x%}{%assign x0MM=x0U[x0W]%}{%endif%}{%if x0c contains x0y%}{%assign x0NN=x0U[x0W]%}{%endif%}{%assign x0V=x0W%}{%endfor%}{%else%}{%assign x0X=x0GG%}{%endif%}{%if x0X contains x0z%}{%assign x0S=x0Q%}{%endif%}{%assign x0Y=x0X%}{%assign x0Y=x0Y|split:x0AA%}{%if x0Y[x0K]!=blank%}{%assign x0Z=x0Y[1]|prepend:x0AA%}{%assign x0X=x0X|replace_first:x0Z,x0I%}{%endif%}{%assign x0a=x0X%}{%assign x0b=x0X%}{%assign x0a=x0a|slice:x0O,x0N%}{%assign x0b=x0b|replace_first:x0a,x0I%}{%if x0S%}{%if x0HH!=blank%}{%assign x0b=x0b|append:x0BB|append:x0HH%}{%endif%}{%if x0II!=blank%}{%assign x0b=x0b|append:x0CC|append:x0II%}{%endif%}{%if x0JJ!=blank%}{%assign x0b=x0b|append:x0DD|append:x0JJ|append:x0EE%}{%endif%}{%if x0KK==x0r%}{%assign x0b=x0b|append:x0FF%}{%endif%}{%endif%}{%assign x0X=x0b|append:x0a%}{%if x0Y[x0K]!=blank%}{%assign x0X=x0X|append:x0AA|append:x0Y[x0K]%}{%endif%}{%if x0LL==blank or x0LL==x0s%}{{x0X|img_tag:x0MM,x0NN}}{%assign x0X=blank%}{%endif%}{%if x0LL==x0t%}{{x0X}}{%assign x0X=blank%}{%endif%}{%endif%}{%assign cf_image=x0X%}{%assign image=blank%}{%assign size=blank%}{%assign crop=blank%}{%assign scale=blank%}{%assign format=blank%}{%assign print=blank%}{%assign tag_alt=blank%}{%assign tag_class=blank%}

@@ -1,0 +1,24 @@
+
+
+
+<div class="article-wrapper-sm">
+	<h6 class="article-type article-title--sm">Bundle includes:</h6>
+	<div class="grid grid--1-4">
+		{% assign product_refs = product.metafields.custom_fields["bundle_includes_items"] | split: "|" %}
+		{% for product_handle in product_refs %}
+		<article class="article-tile article-tile--sm width-1-1 ">
+            {% assign product_ref = all_products[product_handle] %}
+            <a href="{{product_ref.url}}" itemprop="url">
+                
+                <div class="article-media article-media--sm lazyload" style="background-image: url('{{product_ref | img_url: '100x100'}};" title="{{ product_ref.title }}">
+                </div>
+
+                <div class="article-tile-content article-tile-content--sm text-dark">
+                    <p>{{ product_ref.title }}</p>
+                </div>
+            </a>
+		</article>
+		{% endfor %}
+	</div>
+</div>
+<div class="clearfix"></div>

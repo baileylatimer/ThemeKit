@@ -1,0 +1,33 @@
+{% if product.metafields.custom_fields["available_year"] != blank %}
+    <div class="pill pill--stock mb20 clr-sub width-1-2 ">
+        <span class="icon"><i class="material-icons">schedule</i></span>
+        <p> Available&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} </p>
+    </div> 
+{% elsif collection_handles contains 'retired' %}
+    <div class="pill pill--stock mb20 clr-sub width-1-2">
+        <span class="icon"><i class="material-icons">beach_access</i></span>
+        <p>	Retired – This product won't be returning </p>
+    </div>
+{% elsif collection_handles contains 'back-order' %} 
+    <div class="pill pill--stock mb20 alert width-1-2">
+        <span class="icon"><i class="material-icons clr-sub">error_outline</i></span>
+        <p> Out of stock - Check again soon </p>
+    </div> 
+{% elsif variant.inventory_quantity <= settings.inventory_threshold %}
+    {% if variant.inventory_quantity >= 1 %}
+        <div class="pill pill--stock mb20 alert width-1-2">
+            <span class="icon"><i class="material-icons">error_outline</i></span>
+            <p>	Only {{ variant.inventory_quantity }} left - Order soon </p>
+        </div>
+      {% else %}
+      <div class="pill pill--stock mb20 alert width-1-2">
+        <span class="icon"><i class="material-icons clr-sub">error_outline</i></span>
+        <p> Out of stock - Check again soon </p>
+    </div> 
+    {% endif %}
+{% else %}
+    <div class="pill pill--stock mb20 success width-1-2">
+        <span class="icon"><i class="material-icons">check_circle_outline</i></span>
+        <p>	In stock - Available now </p>
+    </div>
+{% endif %}

@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/products/configure/104597/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["product_video_cover"] != blank %}
+  <div class="custom-field custom-field__product-video-cover custom-field__type--image">
+    <h3 class="custom-field--title">Product Video: Cover</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: product.metafields.custom_fields["product_video_cover"], print: 'url' %}
+    </div>
+  </div>
+{% endif %}

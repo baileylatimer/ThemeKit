@@ -1,0 +1,1 @@
+{% if product-description-slider-page %}{% assign description = product-description-slider-page | replace: "<h5></h5>", "" %}{% else %}{% assign description = page.content | replace: "<h5></h5>", "" %}{% endif %}{{ description }}<input type="hidden" id="scroll_to_accordion" value="1"/>

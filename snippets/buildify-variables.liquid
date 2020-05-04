@@ -1,0 +1,64 @@
+{%- assign CONTENT_FOR_LAYOUT = BUILDIFY_CONTENT_FOR_LAYOUT -%}
+
+{%- comment -%}Buildify home page{%- endcomment -%}
+{%- assign buildify_home_page_handle = shop.metafields.bdf_devit["bdf_frontend_handle"] -%}
+{%- if template == 'index' and pages[buildify_home_page_handle].content != blank -%}
+
+    <!-- SKIP_ON_LANGSHOP_FOUND -->
+    {%- assign CONTENT_FOR_LAYOUT = pages[buildify_home_page_handle].content -%}
+    <!-- /SKIP_ON_LANGSHOP_FOUND -->
+
+    
+
+{%- endif -%}
+
+{%- comment -%}Global variables{%- endcomment -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.name"></var>', shop.name -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.email"></var>', shop.email -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.summary"></var>', shop.address.summary -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.street"></var>', shop.address.street -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.city"></var>', shop.address.city -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.province"></var>', shop.address.province -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.province_code"></var>', shop.address.province_code -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.country"></var>', shop.address.country -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.country_upper"></var>', shop.address.country_upper -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.address.zip"></var>', shop.address.zip -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.collections_count"></var>', shop.collections_count -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.currency"></var>', shop.currency -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.description"></var>', shop.description -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.password_message"></var>', shop.password_message -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="shop.products_count"></var>', shop.products_count -%}
+
+{%- comment -%}Article variables{%- endcomment -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.title"></var>', article.title -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.author"></var>', article.author -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.comments_count"></var>', article.comments_count -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.user.bio"></var>', article.user.bio -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.user.email"></var>', article.user.email -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.user.first_name"></var>', article.user.first_name -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="article.user.last_name"></var>', article.user.last_name -%}
+
+{%- comment -%}Collection variables{%- endcomment -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="collection.title"></var>', collection.title -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="collection.all_products_count"></var>', collection.all_products_count -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="collection.current_type"></var>', collection.current_type -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="collection.current_vendor"></var>', collection.current_vendor -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="collection.products_count"></var>', collection.products_count -%}
+
+
+{%- comment -%}Page variables{%- endcomment -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="page.title"></var>', page.title -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="page.author"></var>', page.author -%}
+
+{%- comment -%}Product variables{%- endcomment -%}
+{%- capture product_price -%}{{ product.price | money }}{%- endcapture -%}
+{%- capture product_price_min -%}{{ product.price_min | money }}{%- endcapture -%}
+{%- capture product_price_max -%}{{ product.price_max | money }}{%- endcapture -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.title"></var>', product.title -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.type"></var>', product.type -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.vendor"></var>', product.vendor -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.price"></var>', product_price -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.price_min"></var>', product_price_min -%}
+{%- assign CONTENT_FOR_LAYOUT = CONTENT_FOR_LAYOUT | replace: '<var data-variable="product.price_max"></var>', product_price_max -%}
+
+{{ CONTENT_FOR_LAYOUT }}

@@ -1,0 +1,63 @@
+
+<div class="article-wrapper-lg">
+	<h2 class="text-dark center title m10">{{ product.metafields.custom_fields["product_list__title"] }}</h2>
+	<div class="grid grid--1-4">
+		{% assign product_refs = product.metafields.custom_fields["product_list__products"] | split: "|" %}
+		{% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
+		{% for product_handle in product_refs %}
+		<article class="article-tile article-tile--lg width-1-1 ">
+            {% assign product_ref = all_products[product_handle] %}
+            <a href="{{product_ref.url}}" itemprop="url">
+
+				<figure class="product-media">
+					<div class="article-violator article-violator--top">
+						{% if violator != blank %}
+						<div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product_ref.metafields.custom_fields["violator_tag_type"] }}">{{ product_ref.metafields.custom_fields["violator_tag_text"] }}</div>
+						{% endif %}
+						<div class="right mr20" onclick="return false">
+						{% render 'flits_wishlist_snippet' with 'flits_collection_page_wsl_btn', product:product %}
+						</div> 
+					</div>
+					<div class="article-media article-media--sm lazyload" style="background-image: url('{{product_ref | img_url: '800x800'}};" title="{{ product_ref.title }}"></div>
+				</figure>
+
+				<div class="product-details">
+					<h3 class="article-title base-BodyTitle text-dark" itemprop="name">{{ product_ref.title }}</h3>
+					<h6 class="article-type">{{ product_ref.type}}</h6>
+					{% if collection_handles contains 'coming-soon' %}
+						<span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+					{% else %}
+				
+					<span class="price {% if product_ref.compare_at_price_max > product_ref.price %}sale{% endif %}">
+						{% if product_ref.available %}
+							{% if product.price_min > 0 %}
+								<span class="money">{{ product_ref.price_min | money }}</span>
+							{% else %}
+								{{ settings.free_price_text }}
+							{% endif %}
+						{% else %}
+							<span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+						{% endif %}
+						{% if product.compare_at_price_max > product.price %}
+							<span class="was_price">
+							<span class="money">{{ product_ref.compare_at_price_min | money }}</span>
+							</span>
+						{% endif %}
+					</span>
+				
+					{% if product_ref.available %}
+						{% if settings.sale_banner_enabled and product_ref.compare_at_price_max > product_ref.price %}
+							<span class="thumbnail_banner violator--discount">Save ${{ product_ref.compare_at_price_min | minus: product_ref.price_min | money_without_currency }}</span>
+						{% else %}
+							<span class="article-violator"></span>
+						{% endif %}
+					{% endif %}
+					{% endif %}
+				</div>
+			</a>
+		</article>
+		{% endfor %}
+	</div>
+</div>
+
+

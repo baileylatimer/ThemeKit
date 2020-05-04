@@ -1,0 +1,377 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+@import "//app/scss/bundle";
+
+
+
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+@mixin no-wrap() {
+  white-space: -moz-nowrap; /* Firefox */
+  white-space: -o-nowrap; /* Opera */
+  white-space: nowrap; /* Chrome */
+}
+
+/* #Layout - Size 
+================================================== */
+@mixin size($width: null, $height: null) {
+  width: $width;
+  height: $height;
+}
+@mixin sizeMax($width: null, $height: null) {
+  max-width: $width;
+  max-height: $height;
+}
+@mixin sizeMin($width: null, $height: null) {
+  min-width: $width;
+  min-height: $height;
+}
+
+/* #Layout - Display
+================================================== */
+@mixin flexBox($direction, $justify, $align) {
+  display: flex !important;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flexSelf($align) {
+  align-self: $align;
+}
+
+/* #Layout - Position
+================================================== */
+@mixin absolute($top, $right, $bottom, $left) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/* #Layout - Margin 
+================================================== */
+@mixin centerMargin() {
+  margin: 0 auto;
+}
+@mixin marginAll($margin) {
+  margin: $margin;
+}
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+/* #Layout - Padding 
+================================================== */
+@mixin paddingAll($padding) {
+  padding: $padding;
+}
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+
+/* #Typography- Size
+================================================== */
+@mixin text-sm() {
+  font-size: 12px !important;
+}
+
+/* #Typography - Color
+================================================== */
+@mixin textColor($color) {
+  @if $color == light {
+    color: $color-text-dark;
+  } @else if $color == dark {
+    color: $color-text-dark;
+  }
+}
+@mixin textStyle($color, $decoration: null) {
+  @include textColor($color);
+  @if $decoration == ul {
+    text-decoration: underline !important;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Animation
+// -----------------------------------------------------------------------------
+@mixin animate($duration) {
+  @if $duration == fast {
+    transition: all 0.2s ease;
+  } @else if $duration == slow {
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+}
+}
+
+
+// -----------------------------------------------------------------------------
+// Media Queries
+// -----------------------------------------------------------------------------
+@mixin xs {
+  @media (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+} // Tiny devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+} // Small devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+} // Medium devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+} // Large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+} // Extra large device
+
+@mixin lg-max {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+} // Large devices (max)
+@mixin md-max {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+} // Medium devices (max)
+@mixin sm-max {
+  @media (max-width: #{465px}) {
+    @content;
+  }
+} // Small devices (max)
+
+
+@mixin gradient() {
+  background-repeat: repeat-x;
+  background-image: linear-gradient(to bottom, rgba(49, 49, 47, 0.95), #262625);
+}
+
+
+// -----------------------------------------------------------------------------
+// Shadows
+// -----------------------------------------------------------------------------
+
+/* #Shadows - Base
+================================================== */
+@mixin box-shadow($top, $right, $bottom, $blur, $color) {
+  -webkit-box-shadow: $top $right $bottom $blur $color !important;
+  -moz-box-shadow: $top $right $bottom $blur $color !important;
+  box-shadow: $top $right $bottom $blur $color !important;
+}
+
+/* #Shadows - Card
+================================================== */
+@mixin card-shadow() {
+  @include box-shadow(0, 0.5rem, 1rem, -0.5rem, $palette-shade-100);
+  &:hover {
+    box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+  }
+}
+
+/* #Shadows - Menu
+================================================== */
+@mixin shadow-menu() {
+  @include box-shadow(0, 2px, 6px, 0, $palette-shade-200);
+}
+
+/* #Shadows - Nav
+================================================== */
+@mixin shadow-nav() {
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05),
+    0 1px 3px 0 rgba(63, 63, 68, 0.15);
+}
+.shadow-nav {
+  @include shadow-nav();
+  &:hover {
+    @include shadow-menu();
+  }
+}
+/* #Shadows - Forms [inset]
+================================================== */
+@mixin form-shadow() {
+  box-shadow:  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.14) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px
+ }
+
+/* #Shadows - Article 
+================================================== */
+@mixin article-shadow() {
+  box-shadow: 0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 35px rgba(50,50,93,.1),0 8px 15px rgba(0,0,0,.07);
+  }
+}
+
+@mixin shadow-100() {
+  box-shadow: 0 6px 12px -2px rgba(50,50,93,.25),0 3px 7px -3px rgba(0,0,0,.3);
+}
+
+
+
+
+/* #Transform - Skew [rotate]
+================================================== */
+@mixin transform-skew() {
+transform: translate(-60px,-50%) rotate(12deg);
+}
+// -----------------------------------------------------------------------------
+// Corners
+// -----------------------------------------------------------------------------
+@mixin rounded($radius: 4px) {
+  -webkit-border-radius: $radius !important;
+  -moz-border-radius: $radius !important;
+  border-radius: $radius !important;
+  -ms-border-radius: $radius !important;
+  -o-border-radius: $radius !important;
+}
+
+@mixin rounded-bottom() {
+  border-radius: 0 0 4px 4px !important;
+}
+
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+/* #Buttons - [Hover]
+================================================== */
+@mixin btn-hover() {
+  color: white;
+  box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+}
+/* #Buttons - [Transition]
+================================================== */
+@mixin btn-transition() {
+  transition-delay: 0s !important;
+  transition-duration: .28s !important;
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
+}
+
+/* #Button - Default
+================================================== */
+@mixin btn() {
+  @include rounded();
+  cursor: pointer !important;
+  height: 36px;
+  letter-spacing: .04em;
+  line-height: 36px;
+  font-size: 14px;
+  color: $white !important;
+  min-width: 88px;
+  padding: 0 16px;
+  @include btn-transition(); 
+  @include btn-shadow ();
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+
+// -----------------------------------------------------------------------------
+// Cards
+// -----------------------------------------------------------------------------
+
+/* #Cards - Base
+================================================== */
+
+@mixin card() {
+  @include rounded();
+  border: 1px solid $color-border-light;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  @include btn-transition();
+}
+/* #Cards - Hover
+================================================== */
+@mixin card-hover() {
+  border: none;
+  box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+}
+
+@mixin hover-zoom() {
+  transform: scale(1.06) translatex(1px) translatey(-1px)!important;
+    filter: none !important;
+}
+
+// -----------------------------------------------------------------------------
+// Borders
+// -----------------------------------------------------------------------------
+
+/* #Border - Light
+================================================== */
+@mixin border-light() {
+  border: 1px solid $white !important;
+  @include rounded();
+  color: $white !important;
+  background-color: transparent;
+}
+
+
+
+// -----------------------------------------------------------------------------
+// Media
+// -----------------------------------------------------------------------------
+/* #Media - Filters
+================================================== */
+@mixin filter-alabaster() {
+  filter: brightness(.97) !important;
+  -webkit-filter: brightness(.97) !important;
+}
+@mixin filter-egg() {
+  filter: brightness(.95) !important;
+  -webkit-filter: brightness(.95) !important;
+}
+@mixin filter-banner() {
+  filter: brightness(.7) !important;
+  -webkit-filter: brightness(.7) !important;
+}
+@mixin filter-dim() {
+  filter: brightness(0.85) contrast(0.75) saturate(1.15) !important;
+}
+
+/* #Media - Image size
+================================================== */
+@mixin thumbnail() {
+  object-fit: cover;
+  object-position: 50% 50%;
+  max-width: 200px;
+}
+@mixin clip-transition {
+  transition: 0.4s cubic-bezier(1, -1, 0, 2);
+}
+@mixin clip-circle(){
+  @include clip-transition();
+  clip-path: circle(50% at 50% 50%);
+}
+
+
+

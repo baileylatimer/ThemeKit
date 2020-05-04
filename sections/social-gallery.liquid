@@ -1,0 +1,107 @@
+<div class="article-wrapper-lg wrapper--xl">
+
+  <div class="grid grid--1-2 cards cards--social mobile--true-grid"> 
+    {% for block in section.blocks %}
+        {% if block.settings.image != blank %}
+            <article class="article-tile article-tile--md width-1-1">
+                <a href="{{ block.settings.link }}" target="_blank" itemprop="url">
+                  <div class="article-media transition--blur-up lazyautosizes lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '300x' }} );" title="{{ alt | escape }}">
+                  </div>
+                  <span><i class="fab fa-instagram" aria-hidden="true"></i> </span>
+                </a>
+              </article>
+          {% endif %}
+      {% endfor %}
+    </div>
+
+  <div class="grid grid--1-4 cards cards--social mobile--false-grid"> 
+    {% for block in section.blocks %}
+        {% if block.settings.image != blank %}
+            <article class="article-tile article-tile--md width-1-1">
+                <a href="{{ block.settings.link }}" target="_blank" itemprop="url">
+                  <div class="article-media transition--blur-up lazyautosizes lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '300x' }} );" title="{{ alt | escape }}">
+                  </div>
+                  <span><i class="fab fa-instagram" aria-hidden="true"></i> </span>
+                </a>
+              </article>
+          {% endif %}
+      {% endfor %}
+      </div>
+
+  </div>
+{% schema %}
+  {
+    "name": "Social Gallery",
+    "class": "image-gallery-section",
+    "max_blocks": 8,
+    "settings": [
+            {
+        "type": "range",
+        "id": "grid-size",
+        "label": "Images per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 4,
+        "info": "Vertical masonry and classic only"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_lightbox",
+        "label": "Enable lightbox",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "800 x 800px recommended"
+          },
+            {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+        ]
+      }
+    ],
+     "presets": [
+      {
+        "name": "Social Gallery",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

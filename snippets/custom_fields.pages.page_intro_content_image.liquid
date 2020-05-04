@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/pages/configure/106523/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["page_intro_content_image"] != blank %}
+  <div class="custom-field custom-field__page-intro-content-image custom-field__type--image">
+    <h3 class="custom-field--title">Page Intro: Content [Image]</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: page.metafields.custom_fields["page_intro_content_image"], print: 'url' %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,138 @@
+{% if type == 'block' %}
+  {% assign id = block.id %}
+  {% assign wide_display = block.settings.wide_display %}
+  {% assign image = block.settings.image %}
+  {% assign title = block.settings.title %}
+  {% assign subtitle = block.settings.subtitle %}
+  {% assign caption_background = block.settings.caption_background %}
+  {% assign caption_background_transparency = block.settings.caption_background_transparency %}
+  {% assign text_position = block.settings.text_position %}
+  {% assign text_align = block.settings.text_align %}
+  {% assign button1 = block.settings.button1 %}
+  {% assign button1_link = block.settings.button1_link %}
+  {% assign button1_highlight = block.settings.button1_highlight %}
+  {% assign button2 = block.settings.button2 %}
+  {% assign button2_link = block.settings.button2_link %}
+  {% assign button2_highlight = block.settings.button2_highlight %}
+{% else %}
+  {% assign id = section.id %}
+  {% assign wide_display = section.settings.wide_display %}
+  {% assign image = section.settings.image %}
+  {% assign title = section.settings.title %}
+  {% assign subtitle = section.settings.subtitle %}
+  {% assign caption_background = section.settings.caption_background %}
+  {% assign caption_background_transparency = section.settings.caption_background_transparency %}
+  {% assign text_position = section.settings.text_position %}
+  {% assign text_align = section.settings.text_align %}
+  {% assign button1 = section.settings.button1 %}
+  {% assign button1_link = section.settings.button1_link %}
+  {% assign button1_highlight = section.settings.button1_highlight %}
+  {% assign button2 = section.settings.button2 %}
+  {% assign button2_link = section.settings.button2_link %}
+  {% assign button2_highlight = section.settings.button2_highlight %}
+{% endif %}
+
+
+<section id="banner-{{id}}" class="banner full-width--{{ wide_display }} center page_banner collection_banner nav-shadow mobile--true mb25">
+    <div class="width-1-1 split-banner split-banner--img right"> 
+        {% if image != nil %}
+                {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+        {% endif %}
+    {% unless button1_link != blank and button2_link != blank %}
+        {% if button1_link != blank and button1 == blank %}
+            <a href="{{ button1_link }}" class="split-banner--button">
+                {{ button1 }}
+            </a>
+        {% endif %}
+        {% if button2_link != blank and button2 == blank %}
+            <a href="{{ button2_link }}" class="banner-full-link">
+                {{ button2 }}
+            </a>
+        {% endif %}
+    {% endunless %}
+    </div>
+    {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
+        <div class="width-1-1 split-banner split-banner--content left olive">
+            <div id="bc-sf-filter-collection-description" class="section clearfix banner_description"> 
+                
+                {% if title != blank %}
+                    <h1 class="split-banner--headline">
+                        {{ title }}
+                    </h1>
+                {% endif %}
+                {% if subtitle != blank %}
+                    <div class="split-banner--text">
+                        <h2> Shop clean, powerful, and portable solar products for any adventure.</h2>
+                    </div>
+                {% endif %}
+                <div class="split-banner--action">
+                    {% if button1 != blank %}
+                        <a {% if button1_link != blank %}href="{{ button1_link }}"{% endif %} class="split-banner--button">
+                            {{ button1 }}
+                        </a>
+                        {% endif %}
+                        {% if button2 != blank %}
+                        <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="split-banner--button">
+                            {{ button2 }}
+                        </a>
+                    {% endif %}
+                </div>           
+            </div>
+        </div>
+    {% endunless %}
+</section>
+
+
+<section id="banner-{{id}}" class="banner full-width--{{ wide_display }} center page_banner collection_banner nav-shadow mobile--false mb25">
+    <div class="width-1-2 split-banner split-banner--img right"> 
+        {% if image != nil %}
+                {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+        {% endif %}
+    {% unless button1_link != blank and button2_link != blank %}
+        {% if button1_link != blank and button1 == blank %}
+            <a href="{{ button1_link }}" class="split-banner--button">
+                {{ button1 }}
+            </a>
+        {% endif %}
+        {% if button2_link != blank and button2 == blank %}
+            <a href="{{ button2_link }}" class="banner-full-link">
+                {{ button2 }}
+            </a>
+        {% endif %}
+    {% endunless %}
+    </div>
+    {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
+        <div class="width-1-2 split-banner split-banner--content left olive">
+            <div id="bc-sf-filter-collection-description" class="section clearfix banner_description"> 
+                
+                {% if title != blank %}
+                    <h1 class="split-banner--headline">
+                        {{ title }}
+                    </h1>
+                {% endif %}
+                {% if subtitle != blank %}
+                    <div class="split-banner--text">
+                        <h2> Shop clean, powerful, and portable solar products for any adventure.</h2>
+                    </div>
+                {% endif %}
+                <div class="split-banner--action btn-group">
+                    {% if button1 != blank %}
+                        <a {% if button1_link != blank %}href="{{ button1_link }}"{% endif %} class="button -hollow -white split-banner--button">
+                            {{ button1 }}
+                        </a>
+                        {% endif %}
+                        {% if button2 != blank %}
+                        <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -hollow -white split-banner--button">
+                            {{ button2 }}
+                        </a>
+                    {% endif %}
+                </div>           
+            </div>
+        </div>
+    {% endunless %}
+</section>
+

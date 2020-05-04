@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/patricksherwin.myshopify.com/blogs/configure/105087/edit
+{% endcomment %}
+{% if blog.metafields.custom_fields["featured_video_embed"] != blank %}
+  <div class="custom-field custom-field__featured-video-embed custom-field__type--text">
+    <h3 class="custom-field--title">Featured Video: Embed</h3>
+    <div class="custom-field--value">
+      {{ blog.metafields.custom_fields["featured_video_embed"] }}
+    </div>
+  </div>
+{% endif %}

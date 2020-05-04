@@ -1,0 +1,204 @@
+
+{% case flits_social_login_snippet %}
+    {% when 'social_login' %}
+        <style>
+        .flits-btn {
+            width:150px !important;
+          display: inline-block;
+          margin-bottom: 0;
+          font-weight: 400;
+          text-align: left;
+          vertical-align: middle;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          white-space: nowrap;
+          outline: none;
+          padding: 6px 12px;
+          font-size: 14px;
+          line-height: 1.42857;
+          border-radius: 4px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        .flits-btn.flits-btn-block {
+          width: 100% !important;
+        }
+        .flits-btn:focus, .flits-btn.focus, .flits-btn:active:focus, .flits-btn:active.focus, .flits-btn.active:focus, .flits-btn.active.focus {
+          /*  outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;*/
+          outline: none;
+        }
+        .flits-btn:hover, .flits-btn:focus, .flits-btn.focus {
+          color: #333;
+          text-decoration: none;
+        }
+        .flits-btn:active, .flits-btn.active {
+          outline: 0;
+          background-image: none;
+          -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        }
+        .flits-btn:after, .flits-btn:before{
+            content: " ";
+            display: table; 
+        }
+        .flits-btn:after{
+            clear: both;
+        }
+        .flits-btn.disabled, .flits-btn[disabled], fieldset[disabled] .flits-btn {
+          cursor: not-allowed;
+          opacity: 0.65;
+          filter: alpha(opacity=65);
+          -webkit-box-shadow: none;
+          box-shadow: none;
+        }
+
+        .flits-btn-facebook {
+          color: #ffffff !important;
+          background-color: #3b5998 !important;
+        }
+
+        .flits-btn-twitter {
+          color: #ffffff !important;
+          background-color: #00aced !important;
+        }
+
+        .flits-btn-googleplus {
+          color: #ffffff !important;
+          background-color: #dd4b39 !important;
+        }
+        .flits-btn-amazon {
+            color: #000000 !important;
+            background-color: #ff9900 !important;
+        }
+        a.flits-btn {
+          margin-top:10px;  
+          opacity: 1;
+        }
+        a.flits-btn:hover, a.flits-btn:focus, a.flits-btn:active {
+          opacity: 1;
+        }
+        .flits-btn-label{
+            background: rgba(0, 0, 0, 0.05);
+            display: inline-block;
+            padding: 7px 15px;
+            border-radius: 3px 0 0 3px;
+            margin: -7px -13px;
+            margin-right: 12px;
+            float:left;
+        }
+        
+        .flits-icon-facebook,
+        .flits-icon-google,
+        .flits-icon-twitter,
+        .flits-icon-amazon{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            fill: currentColor;
+        }
+        .flits-social-login-loading{
+      		position:fixed;
+          	bottom:0;
+          	right:0;
+          	left:0;
+          	top:0;
+          	z-index:1000;
+          	background:rgba(0,0,0,0.5);
+      	}
+        .flits-loading-icon{
+			position:absolute;
+          	top:50%;
+          	left:50%;
+          	transform:translate(-50%,-50%);
+        }
+        .flits-social-login-error{
+            color:red !important;
+            /*font-weight: bold;*/
+            text-align: center;
+                margin-top: 10px;
+        }
+        </style>
+        <div style="display:none;">
+            <input type="hidden" name="flits-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}" id="flits-token">
+            <input type="hidden" name="flits-reset-pass-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/reset-password" id="flits-reset-pass-url">
+            <div id="flits-social-login-div" style="display:none;">
+                <div>
+                        <div style="text-align: center;">
+                        {% if shop.metafields.Flits.IS_SOCIAL_LOGIN_ENABLE == 1 %}
+                            {% if  shop.metafields.Flits.IS_FACEBOOK_ENABLE == 1 %}
+                                <a href="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/facebook/auth/login?token={{ shop.metafields.Flits.SHOP_TOKEN }}" class="flits-btn flits-btn-facebook"> 
+                                    <span class="flits-btn-label">
+                                        <img class="flits-icon-facebook" src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNGRkZGRkYiID4gICAgPHBhdGggZD0iTTEzLDcuNDI5VjEwaDMuNUwxNiwxM2gtM3Y5SDl2LTlIN3YtM2wyLjAxMiwwLjAwOFY3LjQzNmMwLTIuODU3LDEuMTQzLTQuNDI5LDQuNDI5LTQuNDI5TDE3LDN2M2gtMi41NzEgQzEzLjE0Myw2LDEzLDYuNDI5LDEzLDcuNDI5eiI+PC9wYXRoPjwvc3ZnPg=='/>
+                                    </span>
+                                    <span>
+                                        {{ 'flits.social_login_page.facebook' | t }}
+                                    </span>
+                                </a>
+                            {% endif %}
+                            {% if shop.metafields.Flits.IS_GOOGLE_ENABLE == 1 %}
+                                <a href="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/google/auth/login?token={{ shop.metafields.Flits.SHOP_TOKEN }}" class="flits-btn flits-btn-googleplus">
+                                    <span class="flits-btn-label">
+                                        <img class="flits-icon-google" src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTAgNTAiIGZpbGw9IiNGRkZGRkYiID48ZyBpZD0ic3VyZmFjZTEiPjxwYXRoIHN0eWxlPSIgIiBkPSJNIDE3LjE4NzUgMTAuOTM3NSBDIDkuNDIxODc1IDEwLjkzNzUgMy4xMjUgMTcuMjM0Mzc1IDMuMTI1IDI1IEMgMy4xMjUgMzIuNzY1NjI1IDkuNDIxODc1IDM5LjA2MjUgMTcuMTg3NSAzOS4wNjI1IEMgMjQuOTUzMTI1IDM5LjA2MjUgMzEuMjUgMzIuNzY1NjI1IDMxLjI1IDI1IEMgMzEuMjUgMjQuMDM1MTU2IDMxLjE0NDUzMSAyMy4wOTM3NSAzMC45NjA5MzggMjIuMTg3NSBMIDMwLjg4MjgxMyAyMS44NzUgTCAxNy4xODc1IDIxLjg3NSBMIDE3LjE4NzUgMjYuNTYyNSBMIDI2LjU2MjUgMjYuNTYyNSBDIDI1LjgxNjQwNiAzMC45OTYwOTQgMjEuODMyMDMxIDM0LjM3NSAxNy4xODc1IDM0LjM3NSBDIDEyLjAwNzgxMyAzNC4zNzUgNy44MTI1IDMwLjE3OTY4OCA3LjgxMjUgMjUgQyA3LjgxMjUgMTkuODIwMzEzIDEyLjAwNzgxMyAxNS42MjUgMTcuMTg3NSAxNS42MjUgQyAxOS41MzEyNSAxNS42MjUgMjEuNjY3OTY5IDE2LjQ5MjE4OCAyMy4zMTI1IDE3LjkxNDA2MyBMIDI2LjY3MTg3NSAxNC42MjUgQyAyNC4xNzE4NzUgMTIuMzM1OTM4IDIwLjg0Mzc1IDEwLjkzNzUgMTcuMTg3NSAxMC45Mzc1IFogTSAzOS4wNjI1IDE3LjE4NzUgTCAzOS4wNjI1IDIxLjg3NSBMIDM0LjM3NSAyMS44NzUgTCAzNC4zNzUgMjUgTCAzOS4wNjI1IDI1IEwgMzkuMDYyNSAyOS42ODc1IEwgNDIuMTg3NSAyOS42ODc1IEwgNDIuMTg3NSAyNSBMIDQ2Ljg3NSAyNSBMIDQ2Ljg3NSAyMS44NzUgTCA0Mi4xODc1IDIxLjg3NSBMIDQyLjE4NzUgMTcuMTg3NSBaICI+PC9wYXRoPjwvZz48L3N2Zz4='/>
+                                    </span>
+                                    <span>
+                                        {{ 'flits.social_login_page.google' | t }}
+                                    </span>
+                                </a>
+                            {% endif %}
+                            {% if shop.metafields.Flits.IS_TWITTER_ENABLE == 1 %}
+                                <a href="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/twitter/auth/login?token={{ shop.metafields.Flits.SHOP_TOKEN }}" class="flits-btn flits-btn-twitter">
+                                    <span class="flits-btn-label">
+                                       <img class="flits-icon-twitter" src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjYgMjYiIGZpbGw9IiNGRkZGRkYiID48ZyBpZD0ic3VyZmFjZTEiPjxwYXRoIHN0eWxlPSIgIiBkPSJNIDI1Ljg1NTQ2OSA1LjU3NDIxOSBDIDI0LjkxNDA2MyA1Ljk5MjE4OCAyMy45MDIzNDQgNi4yNzM0MzggMjIuODM5ODQ0IDYuNDAyMzQ0IEMgMjMuOTIxODc1IDUuNzUgMjQuNzU3ODEzIDQuNzIyNjU2IDI1LjE0ODQzOCAzLjQ5NjA5NCBDIDI0LjEzMjgxMyA0LjA5NzY1NiAyMy4wMDc4MTMgNC41MzUxNTYgMjEuODEyNSA0Ljc2OTUzMSBDIDIwLjg1NTQ2OSAzLjc1IDE5LjQ5MjE4OCAzLjExMzI4MSAxNy45ODA0NjkgMy4xMTMyODEgQyAxNS4wODIwMzEgMy4xMTMyODEgMTIuNzMwNDY5IDUuNDY0ODQ0IDEyLjczMDQ2OSA4LjM2MzI4MSBDIDEyLjczMDQ2OSA4Ljc3MzQzOCAxMi43NzczNDQgOS4xNzU3ODEgMTIuODY3MTg4IDkuNTU4NTk0IEMgOC41MDM5MDYgOS4zMzk4NDQgNC42MzY3MTkgNy4yNDYwOTQgMi4wNDY4NzUgNC4wNzAzMTMgQyAxLjU5Mzc1IDQuODQ3NjU2IDEuMzM1OTM4IDUuNzUgMS4zMzU5MzggNi43MTQ4NDQgQyAxLjMzNTkzOCA4LjUzNTE1NiAyLjI2MTcxOSAxMC4xNDA2MjUgMy42NzE4NzUgMTEuMDgyMDMxIEMgMi44MDg1OTQgMTEuMDU0Njg4IDIgMTAuODIwMzEzIDEuMjkyOTY5IDEwLjQyNTc4MSBDIDEuMjkyOTY5IDEwLjQ0OTIxOSAxLjI5Mjk2OSAxMC40Njg3NSAxLjI5Mjk2OSAxMC40OTIxODggQyAxLjI5Mjk2OSAxMy4wMzUxNTYgMy4xMDE1NjMgMTUuMTU2MjUgNS41MDM5MDYgMTUuNjQwNjI1IEMgNS4wNjI1IDE1Ljc2MTcxOSA0LjYwMTU2MyAxNS44MjQyMTkgNC4xMjEwOTQgMTUuODI0MjE5IEMgMy43ODEyNSAxNS44MjQyMTkgMy40NTMxMjUgMTUuNzkyOTY5IDMuMTMyODEzIDE1LjczMDQ2OSBDIDMuODAwNzgxIDE3LjgxMjUgNS43MzgyODEgMTkuMzM1OTM4IDguMDM1MTU2IDE5LjM3NSBDIDYuMjQyMTg4IDIwLjc4NTE1NiAzLjk3NjU2MyAyMS42MjEwOTQgMS41MTU2MjUgMjEuNjIxMDk0IEMgMS4wODk4NDQgMjEuNjIxMDk0IDAuNjc1NzgxIDIxLjU5NzY1NiAwLjI2NTYyNSAyMS41NTA3ODEgQyAyLjU4NTkzOCAyMy4wMzkwNjMgNS4zNDc2NTYgMjMuOTA2MjUgOC4zMTI1IDIzLjkwNjI1IEMgMTcuOTY4NzUgMjMuOTA2MjUgMjMuMjUgMTUuOTA2MjUgMjMuMjUgOC45NzI2NTYgQyAyMy4yNSA4Ljc0MjE4OCAyMy4yNDYwOTQgOC41MTU2MjUgMjMuMjM0Mzc1IDguMjg5MDYzIEMgMjQuMjYxNzE5IDcuNTU0Njg4IDI1LjE1MjM0NCA2LjYyODkwNiAyNS44NTU0NjkgNS41NzQyMTkgIj48L3BhdGg+PC9nPjwvc3ZnPg=='/> 
+                                    </span>
+                                    <span>
+                                        {{ 'flits.social_login_page.twitter' | t }}
+                                    </span>
+                                </a>
+                            {% endif %}
+                            {% if shop.metafields.Flits.IS_AMAZON_ENABLE == 1 %}
+                                <a href="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/amazon/auth/login?token={{ shop.metafields.Flits.SHOP_TOKEN }}" class="flits-btn flits-btn-amazon">
+                                    <span class="flits-btn-label">
+                                       <img class="flits-icon-amazon" src='data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAwIiBoZWlnaHQ9IjIyNzMiIHZpZXdCb3g9IjAgMCAxMTAwIDEwMDAiPg0KCTxwYXRoIGQ9Ik0yIDc3NmMzLjMzMy01LjMzMyA4LjY2Ni01LjY2NyAxNi0xIDE2Ni42NjYgOTYuNjY3IDM0OCAxNDUgNTQ0IDE0NSAxMzAuNjY2IDAgMjU5LjY2Ni0yNC4zMzMgMzg3LTczIDMuMzMzLTEuMzMzIDguMTY2LTMuMzMzIDE0LjUtNiA2LjMzMy0yLjY2NyAxMC44MzMtNC42NjcgMTMuNS02IDEwLTQgMTcuODMzLTIgMjMuNSA2IDUuNjY2IDggMy44MzMgMTUuMzMzLTUuNSAyMi0xMiA4LjY2Ny0yNy4zMzQgMTguNjY3LTQ2IDMwLTU3LjMzNCAzNC0xMjEuMzM0IDYwLjMzMy0xOTIgNzktNzAuNjY3IDE4LjY2Ny0xMzkuNjY3IDI4LTIwNyAyOC0xMDQgMC0yMDIuMzM0LTE4LjE2Ny0yOTUtNTQuNUMxNjIuMzMzIDkwOS4xNjcgNzkuMzMzIDg1OCA2IDc5MmMtNC0zLjMzMy02LTYuNjY3LTYtMTAgMC0yIC42NjYtNCAyLTZ6bTMwMS0yODVjMC00NiAxMS4zMzMtODUuMzMzIDM0LTExOCAyMi42NjYtMzIuNjY3IDUzLjY2Ni01Ny4zMzMgOTMtNzQgMzYtMTUuMzMzIDgwLjMzMy0yNi4zMzMgMTMzLTMzIDE4LTIgNDcuMzMzLTQuNjY3IDg4LTh2LTE3YzAtNDIuNjY3LTQuNjY3LTcxLjMzMy0xNC04Ni0xNC0yMC0zNi0zMC02Ni0zMGgtOGMtMjIgMi00MSA5LTU3IDIxcy0yNi4zMzQgMjguNjY3LTMxIDUwYy0yLjY2NyAxMy4zMzMtOS4zMzQgMjEtMjAgMjNsLTExNS0xNGMtMTEuMzM0LTIuNjY3LTE3LTguNjY3LTE3LTE4IDAtMiAuMzMzLTQuMzMzIDEtNyAxMS4zMzMtNTkuMzMzIDM5LjE2Ni0xMDMuMzMzIDgzLjUtMTMyQzQ1MS44MzMgMTkuMzMzIDUwMy42NjYgMy4zMzMgNTYzIDBoMjVjNzYgMCAxMzUuMzMzIDE5LjY2NyAxNzggNTlhMTkwLjUyIDE5MC41MiAwIDAgMSAxOC41IDIxLjVjNS42NjYgNy42NjcgMTAuMTY2IDE0LjUgMTMuNSAyMC41IDMuMzMzIDYgNi4zMzMgMTQuNjY3IDkgMjYgMi42NjYgMTEuMzMzIDQuNjY2IDE5LjE2NyA2IDIzLjUgMS4zMzMgNC4zMzMgMi4zMzMgMTMuNjY3IDMgMjggLjY2NiAxNC4zMzMgMSAyMi44MzMgMSAyNS41djI0MmMwIDE3LjMzMyAyLjUgMzMuMTY3IDcuNSA0Ny41czkuODMzIDI0LjY2NyAxNC41IDMxYzQuNjY2IDYuMzMzIDEyLjMzMyAxNi41IDIzIDMwLjUgNCA2IDYgMTEuMzMzIDYgMTYgMCA1LjMzMy0yLjY2NyAxMC04IDE0LTU1LjMzNCA0OC04NS4zMzQgNzQtOTAgNzgtOCA2LTE3LjY2NyA2LjY2Ny0yOSAyLTkuMzM0LTgtMTcuNS0xNS42NjctMjQuNS0yM3MtMTItMTIuNjY3LTE1LTE2LTcuODM0LTkuODMzLTE0LjUtMTkuNWMtNi42NjctOS42NjctMTEuMzM0LTE2LjE2Ny0xNC0xOS41LTM3LjMzNCA0MC42NjctNzQgNjYtMTEwIDc2LTIyLjY2NyA2LjY2Ny01MC42NjcgMTAtODQgMTAtNTEuMzM0IDAtOTMuNS0xNS44MzMtMTI2LjUtNDcuNVMzMDMgNTQ5IDMwMyA0OTF6bTE3Mi0yMGMwIDI2IDYuNSA0Ni44MzMgMTkuNSA2Mi41UzUyNSA1NTcgNTQ3IDU1N2MyIDAgNC44MzMtLjMzMyA4LjUtMSAzLjY2Ni0uNjY3IDYuMTY2LTEgNy41LTEgMjgtNy4zMzMgNDkuNjY2LTI1LjMzMyA2NS01NCA3LjMzMy0xMi42NjcgMTIuODMzLTI2LjUgMTYuNS00MS41IDMuNjY2LTE1IDUuNjY2LTI3LjE2NyA2LTM2LjUuMzMzLTkuMzMzLjUtMjQuNjY3LjUtNDZ2LTI1Yy0zOC42NjcgMC02OCAyLjY2Ny04OCA4LTU4LjY2NyAxNi42NjctODggNTMuNjY3LTg4IDExMXptNDIwIDMyMmMxLjMzMy0yLjY2NyAzLjMzMy01LjMzMyA2LTggMTYuNjY2LTExLjMzMyAzMi42NjYtMTkgNDgtMjMgMjUuMzMzLTYuNjY3IDUwLTEwLjMzMyA3NC0xMSA2LjY2Ni0uNjY3IDEzLS4zMzMgMTkgMSAzMCAyLjY2NyA0OCA3LjY2NyA1NCAxNSAyLjY2NiA0IDQgMTAgNCAxOHY3YzAgMjMuMzMzLTYuMzM0IDUwLjgzMy0xOSA4Mi41LTEyLjY2NyAzMS42NjctMzAuMzM0IDU3LjE2Ny01MyA3Ni41LTMuMzM0IDIuNjY3LTYuMzM0IDQtOSA0LTEuMzM0IDAtMi42NjctLjMzMy00LTEtNC0yLTUtNS42NjctMy0xMSAyNC42NjYtNTggMzctOTguMzMzIDM3LTEyMSAwLTcuMzMzLTEuMzM0LTEyLjY2Ny00LTE2LTYuNjY3LTgtMjUuMzM0LTEyLTU2LTEyLTExLjMzNCAwLTI0LjY2Ny42NjctNDAgMi0xNi42NjcgMi0zMiA0LTQ2IDYtNCAwLTYuNjY3LS42NjctOC0yLTEuMzM0LTEuMzMzLTEuNjY3LTIuNjY3LTEtNCAwLS42NjcuMzMzLTEuNjY3IDEtM3oiLz4NCjwvc3ZnPg=='/> 
+                                    </span>
+                                    <span>
+                                        {{ 'flits.social_login_page.amazon' | t }}
+                                    </span>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="flits-social-login-error" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flits-social-login-loading" style="display:none;">
+            <div class='flits-loading-icon'>
+                <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;">
+                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#ffffff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(288 50 50)">
+                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="0.5s" begin="0s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </svg>
+            </div>
+	</div>
+     {% else %}
+     
+        {% if template contains 'customers/login' %}
+            {% if shop.metafields.Flits.IS_SOCIAL_LOGIN_ENABLE == 1 %}
+                {% render 'flits_social_login_snippet' with 'social_login' %}
+                {{ 'flits-social-login.js' | asset_url | script_tag}}
+            {% endif %}
+        {% elsif template contains 'customers/register' %}
+            {% if shop.metafields.Flits.IS_SOCIAL_LOGIN_ENABLE == 1 %}
+                {% render 'flits_social_login_snippet' with 'social_login' %}
+                {{ 'flits-social-login.js' | asset_url | script_tag}}
+            {% endif %}
+        {% else %}
+	{% endif %}
+
+{% endcase %}

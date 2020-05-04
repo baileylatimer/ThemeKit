@@ -1,0 +1,306 @@
+{% if type == 'block' %}
+  {% assign id = block.id %}
+  {% assign wide_display = block.settings.wide_display %}
+  {% assign image = block.settings.image %}
+  {% assign title = block.settings.title %}
+  {% assign subtitle = block.settings.subtitle %}
+  {% assign caption_background = block.settings.caption_background %}
+  {% assign caption_background_transparency = block.settings.caption_background_transparency %}
+  {% assign text_position = block.settings.text_position %}
+  {% assign text_align = block.settings.text_align %}
+  {% assign button1 = block.settings.button1 %}
+  {% assign button1_link = block.settings.button1_link %}
+  {% assign button1_highlight = block.settings.button1_highlight %}
+  {% assign button2 = block.settings.button2 %}
+  {% assign button2_link = block.settings.button2_link %}
+  {% assign button2_highlight = block.settings.button2_highlight %}
+     {% assign background_color = section.settings.background_color %}
+{% else %}
+  {% assign id = section.id %}
+  {% assign wide_display = section.settings.wide_display %}
+  {% assign image = section.settings.image %}
+  {% assign title = section.settings.title %}
+  {% assign subtitle = section.settings.subtitle %}
+  {% assign caption_background = section.settings.caption_background %}
+  {% assign caption_background_transparency = section.settings.caption_background_transparency %}
+  {% assign text_position = section.settings.text_position %}
+  {% assign text_align = section.settings.text_align %}
+  {% assign button1 = section.settings.button1 %}
+  {% assign button1_link = section.settings.button1_link %}
+  {% assign button1_highlight = section.settings.button1_highlight %}
+  {% assign button2 = section.settings.button2 %}
+  {% assign button2_link = section.settings.button2_link %}
+  {% assign button2_highlight = section.settings.button2_highlight %}
+   {% assign background_color = section.settings.background_color %}
+{% endif %}
+
+{% if background_color == "wood" %}
+<div class="banner center page_banner intro_banner width-100 mb25 mobile--true">
+    <div class="width-1-1 split-banner split-banner--img right">
+         {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+    </div>
+      
+    <div class="width-1-1 split-banner split-banner--content left pattern-map wood-300">
+        <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-dark">
+            {% if title != blank %}
+              
+                <h1 id="bc-sf-filter-collection-title text-dark-sub"> {{ title }}</h1>
+            {% endif %}
+            {% if subtitle != blank %}
+                <h2 class="text-dark body-text body-text--large">
+                    {{ subtitle }}
+                </h2>
+            {% endif %}
+
+            {% if button1 != blank %}
+                <div class="split-banner--action btn-group"> 
+                  <a href="{{ button1_link }}" class="button -hollow -shade split-banner--button">
+                    {{ button1 }}
+                  </a>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="banner center page_banner intro_banner width-100 mb25 mobile--false">
+    <div class="width-1-2 split-banner split-banner--img right">
+         {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+    </div>
+      
+    <div class="width-1-2 split-banner split-banner--content left pattern-map wood-300 flex-right">
+        <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-dark">
+            {% if title != blank %}
+                <h1 id="bc-sf-filter-collection-title text-dark-sub"> {{ title }}</h1>
+            {% endif %}
+            {% if subtitle != blank %}
+                <h2 class="text-dark body-text body-text--large">
+                    {{ subtitle }}
+                </h2>
+            {% endif %}
+
+            {% if button1 != blank %}
+                <div class="split-banner--action btn-group"> 
+                  <a href="{{ button1_link }}" class="button -hollow -shade split-banner--button">
+                    {{ button1 }}
+                  </a>
+                </div>
+            {% endif %}
+             
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% else %}
+<div class="banner center page_banner intro_banner width-100 mb25 mobile--true">
+    <div class="width-1-1 split-banner split-banner--img right">
+         {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+    </div>
+      
+    <div class="width-1-1 split-banner split-banner--content left pattern-map {{ background_color }}">
+        <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-light">
+            {% if title != blank %}
+              
+                <h1 id="bc-sf-filter-collection-title text-light-sub"> {{ title }}</h1>
+            {% endif %}
+            {% if subtitle != blank %}
+                <h2 class="text-light body-text body-text--large">
+                    {{ subtitle }}
+                </h2>
+            {% endif %}
+
+            {% if button1 != blank %}
+                <div class="split-banner--action btn-group"> 
+                  <a href="{{ button1_link }}" class="button -hollow -light split-banner--button">
+                    {{ button1 }}
+                  </a>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="banner center page_banner intro_banner width-100 mb25 mobile--false">
+    <div class="width-1-2 split-banner split-banner--img right">
+         {% include 'image-element2', image: image, alt: image.alt, stretch_width: true %}
+    </div>
+      
+    <div class="width-1-2 split-banner split-banner--content left pattern-map {{ background_color }} flex-right">
+        <div id="bc-sf-filter-collection-description" class="section clearfix intro_description text-lg text-light">
+            {% if title != blank %}
+                <h1 id="bc-sf-filter-collection-title text-light-sub"> {{ title }}</h1>
+            {% endif %}
+            {% if subtitle != blank %}
+                <h2 class="text-light body-text body-text--large">
+                    {{ subtitle }}
+                </h2>
+            {% endif %}
+
+            {% if button1 != blank %}
+                <div class="split-banner--action btn-group"> 
+                  <a href="{{ button1_link }}" class="button -hollow -light split-banner--button">
+                    {{ button1 }}
+                  </a>
+                </div>
+            {% endif %}
+             
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Split Content",
+  "class": "image-with-text-overlay-section under-menu",
+  "settings": [
+       {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background color",
+      "options": [
+        {
+          "value": "grape",
+          "label": "Grape"
+        },
+        {
+          "value": "olive",
+          "label": "Olive"
+        },
+        {
+          "value": "leaf",
+          "label": "Leaf"
+        },
+        {
+          "value": "pumpkin",
+          "label": "Pumpkin"
+        },
+        {
+          "value": "honey",
+          "label": "Honey"
+        },
+        {
+          "value": "mint",
+          "label": "Mint"
+        },
+        {
+          "value": "tundra",
+          "label": "Tundra"
+        },
+        {
+          "value": "wood-300",
+          "label": "Wood"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1800 x 1000px recommended"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button1",
+      "label": "First button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "First button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button1_highlight",
+      "label": "Highlight first button"
+    },
+    {
+      "type": "text",
+      "id": "button2",
+      "label": "Second button label"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Second button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button2_highlight",
+      "label": "Highlight second button"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Content",
+      "category": "Image",
+      "settings": {
+        "image": "",
+        "title": "Your Headline",
+        "text_position": "left",
+        "text_align": "left"
+      }
+    }
+  ]
+}
+
+{% endschema %}

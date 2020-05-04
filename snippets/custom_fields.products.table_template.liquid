@@ -1,0 +1,76 @@
+{% assign tables = shop.metafields.custom_fields["product_table_properties"] | split: '|'%}
+		
+{% if tables != blank %}
+
+<div class="width-1-1 product-grid-padding-desktop mobile--true">
+    <h3>Specs</h3>
+    <div class="overflow-container">
+        <table class="table table-striped two-up">
+            <tbody>
+
+                <tr>
+                    <th class='table-head toggle' id="width-1-1" colspan='2'> 
+                    {{ product.title }}
+                    </th>
+                </tr>
+
+                {% for info in tables %}
+                {% assign table_item = info | split: '='%}
+                {% assign human_name = table_item[0] %}
+                {% assign machine_name = table_item[1] %}
+                {% if product.metafields.custom_fields[machine_name] != blank %}
+                    <tr>
+                        <th>
+                        {{ human_name }}
+                        </th>
+                        <th>
+                        {{ product.metafields.custom_fields[machine_name] }}
+                        </th>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>  
+    </div>
+</div>
+
+
+
+
+
+<div class="width-1-2 product-grid-padding-mobile pl50 mobile--false">
+    <h3>Specs</h3>
+    <div class="overflow-container">
+        <table class="table table-striped two-up">
+            <tbody>
+
+                <tr>
+                    <th class='table-head toggle' id="width-1-1" colspan='2'> 
+                    {{ product.title }}
+                    </th>
+                </tr>
+
+                {% for info in tables %}
+                {% assign table_item = info | split: '='%}
+                {% assign human_name = table_item[0] %}
+                {% assign machine_name = table_item[1] %}
+                {% if product.metafields.custom_fields[machine_name] != blank %}
+                    <tr>
+                        <th>
+                        {{ human_name }}
+                        </th>
+                        <th>
+                        {{ product.metafields.custom_fields[machine_name] }}
+                        </th>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>  
+    </div>
+</div>
+
+
+
+
+{% endif %}

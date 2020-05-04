@@ -1,0 +1,7 @@
+{% layout none %}
+    <div class="js-forms form-holder-{{ product.id }}" style="display: none">
+        {% unless collection_handles contains 'coming-soon' %}
+          {% include 'product-notify-me' %}
+          {% include 'product-form' %}
+        {% endunless %}
+    </div>

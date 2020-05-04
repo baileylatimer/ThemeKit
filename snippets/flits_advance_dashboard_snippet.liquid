@@ -1,0 +1,137 @@
+
+{% case flits_advance_dashboard_snippet  %}
+{% when  'account_page_data' %}
+<div class="flits-hidden flits-top-products-from-orders-extra-data">
+  <style></style>
+  <div class="flits-anchor">
+    <a disabled data-type="flits" data-href="#flits-page-top-ordered-products" data-toggle='page' class="flits-list-group-item flits-bg-theme">{{ 'flits.navigation.top_ordered_products' | t }}</a>
+  </div>
+  <div class="flits-div">
+    <div id="flits-page-top-ordered-products" data-type="page" class="flits-hidden">
+      <div class="flits-page-heading">
+        <span class="flits-back-icon flits-return-to-menu">
+         {{ 'flits.buttons.back' | t }}
+        </span>
+        <span class="flits-heading">
+          {{ 'flits.heading.top_ordered_products' | t }}
+        </span>
+      </div>
+      <div class="flits-top-products-empty" style="display:none;">
+        <div class="flits-empty-order-icon flits-text-center">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="100px" height="100px" viewBox="0 0 440 440" style="enable-background:new 0 0 440 440;" xml:space="preserve">
+            <g>
+              <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293
+                       l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85
+                       c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271
+                       c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812
+                       c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96
+                       c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z
+                       M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151
+                       L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887
+                       l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839
+                       c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861
+                       l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659
+                       c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204
+                       l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"
+                    />
+            </g>
+          </svg>
+        </div>
+        <div class="flits-text-center flits-empty-order-msg">{{ 'flits.order_page.no_orders_view' | t }}</div>
+        <div class="flits-text-center flits-empty-order-msg">{{ 'flits.order_page.marketing_line' | t }}</div>
+        <div class="flits-text-center flits-m-t-15"><a class="flits-btn flits-btn-default flits-btn-custom" href="/collections/all">{{ 'flits.buttons.shop_now' | t }}</a></div>
+      </div>
+      <div class='flits-loading-icon'>
+        <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;">
+          <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#ffffff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(288 50 50)">
+            <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="0.5s" begin="0s" repeatCount="indefinite"></animateTransform>
+          </circle>
+        </svg>
+      </div>
+      <div class="flits-top-products-content" style="display:none;">
+        <div class="flits-row">
+          <div class="flits-col-md-6  flits-m-t-10">
+            <input class="flits-search" />
+          </div>
+          <div class="flits-col-md-6 flits-m-t-10">
+            <div class="flits-dropdown flits-right">
+              <button class="flits-dropbtn flits-btn flits-btn-default flits-btn-custom flits-btn-block"><span class="flits-filter-text">{{ 'flits.top_ordered_products_page.filter' | t }}</span> <span class="flits-drop-down-icon"></span></button>
+              <div class="flits-dropdown-content">
+                <span data-type="none" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.filter' | t }}" data-sort="flits-count">{{ 'flits.top_ordered_products_page.none' | t }}</span>
+                <span data-type="sort" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.number_of_order_low_to_high' | t }}" data-sort-type="asc" data-sort="flits-count">{{ 'flits.top_ordered_products_page.number_of_order_low_to_high' | t }}</span>
+                <span data-type="sort" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.number_of_order_high_to_low' | t }}" data-sort-type="desc" data-sort="flits-count">{{ 'flits.top_ordered_products_page.number_of_order_high_to_low' | t }}</span>
+                <span data-type="sort" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.sort_by_price_low_to_high' | t }}" data-sort-type="asc" data-sort="flits-product-item-price">{{ 'flits.top_ordered_products_page.sort_by_price_low_to_high' | t }}</span>
+                <span data-type="sort" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.sort_by_price_high_to_low' | t }}" data-sort-type="desc" data-sort="flits-product-item-price">{{ 'flits.top_ordered_products_page.sort_by_price_high_to_low' | t }}</span>
+                <span data-type="days" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.last_30_days' | t }}" data-sort="flits-product-days-filter" data-days='30'>{{ 'flits.top_ordered_products_page.last_30_days' | t }}</span>
+                <span data-type="days" class="flits-drop-down-item flits-products-filter" data-text="{{ 'flits.top_ordered_products_page.last_60_days' | t }}" data-sort="flits-product-days-filter" data-days='60'>{{ 'flits.top_ordered_products_page.last_60_days' | t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>       
+        <div class="flits-products-items-row-default flits-hidden">
+          <div class="flits-product-item">
+            
+              <div class="flits-row ">
+                <div class="flits-col-md-2 flits-col-sm-2 flits-col-xs-4 flits-product-item-image">
+                  <img  class="flits-image">
+                </div>
+
+                <div class="flits-col-md-10 flits-col-sm-10 flits-col-xs-8">
+				<a class="flits-product-link" target="_blank">
+                  <div class="flits-row">
+                    <div class="flits-col-md-12 flits-product-item-title" title="">
+
+                    </div>
+                  </div>
+                  </a>	
+                  <div class="flits-row flits-m-t-10">
+                    <div class="flits-col-md-6">
+                      <div class="flits-row">
+                        <div class="flits-col-md-12 flits-product-item-price">
+
+                        </div>
+                      </div>
+                      <div class="flits-row flits-m-t-10">
+                        <div class="flits-col-md-12 flits-product-item-count">
+                          <span>{{ 'flits.top_ordered_products_page.number_of_order' | t }}</span><span class="flits-count"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flits-col-md-6">
+                      <form action="/cart/add" method="POST">
+                      <div class="flits-row">
+                        <div class="flits-col-md-6 flits-m-t-10 flits-col-xs-12 flits-col-sm-12 flits-product-variant"></div>
+                        <div class="flits-col-md-6 flits-m-t-10 flits-col-xs-12 flits-col-sm-12">
+                        	<input type="number" name="quantity" value="1" class="flits-full-width flits-p-8" placeholder="quantity">
+                        </div>
+                      </div>
+                      <div class="flits-row flits-m-t-10">
+                        <div class="flits-col-md-12 flits-col-sm-12">
+                          <button type="submit" class="flits-btn flits-btn-primary flits-btn-custom flits-btn-block flits-wsl-add-to-cart">{{ 'flits.buttons.add_to_cart' | t }}</button>
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+          </div>
+        </div>
+        <div class="list"></div>
+        <div class="flits-pagination-ul flits-m-t-10">
+          <div class="flits-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+{% if template contains "customers/account" %}
+	{% if shop.metafields.Flits.IS_ADVANCE_DASHBOARD_ENABLE and shop.metafields.Flits.IS_ADVANCE_DASHBOARD_ENABLE == 1 %}
+      {{ 'flits-advance-dashboard.js' | asset_url | script_tag}}
+	{% endif %}
+{% endif %}
+{% endcase %}
