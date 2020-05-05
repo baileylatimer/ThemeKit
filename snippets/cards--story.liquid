@@ -1,0 +1,83 @@
+
+
+<article class="story nine columns alpha article_image large-down--one-half">
+    <a href="{{ article.url }}" class="story__img">
+      <figure class="">
+        {% include 'image-element', image: article.image, alt: image.alt %}
+      </figure>
+    </a>
+  
+    <div class="story__content">
+        <div class="margin-bottom-xs">
+            {% for tag in article.tags %}
+                <a href="{{ shop.url }}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}" class="story__category">
+                <i>{{ tag }}</i>
+            {% endfor %}
+            </a>
+        </div>
+        
+        <div class="text-component">
+            <h2 class="story__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+        </div>
+        
+        <div class="story__author margin-top-sm">
+            
+            {% if section.settings.blog_author %}
+                <address class="story__author-name"><a href="#0" rel="author">{{ 'blogs.article.by_author' | t: author: article.author }}</a></address>
+            {% endif %}
+
+            {% if section.settings.blog_date %}
+                <p class="story__meta">
+                    {{ article.published_at | date: format: "month_day_year" }}
+                    , &mdash; 
+                    {% if section.settings.read_time %}
+                        {% include 'include-read-time' %}
+                    {% endif %}
+                </p>
+            {% endif %}
+
+        
+        
+        </div>
+    </div>
+</article>
+  
+  
+
+
+
+
+
+
+
+
+<article class="padding-y-lg">
+    <header class="container max-width-xs margin-bottom-lg">
+      <div class="text-component text-center line-height-lg v-space-md margin-bottom-md">
+        <h1 class="text-xxxl">{{ article.title }}</h1>
+
+       
+            <p class="excerpt color-contrast-medium text-md">{{ a.excerpt }}</p>
+      
+      </div>
+  
+      <div class="flex justify-center">
+        <div class="author author--meta">
+          <a href="#0" class="author__img-wrapper">
+            <img src="../../../app/assets/img/author-img-1.jpg" alt="Author picture">
+          </a>
+  
+          <div class="author__content text-component v-space-xxs">
+            <h4 class="text-base"><a href="#0" rel="author">Olivia Gribben</a></h4>
+            <p class="text-sm color-contrast-medium"><time>May 15</time> &mdash; 5 min read</p>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <figure class="container max-width-lg margin-bottom-lg">
+      <img src="../../../app/assets/img/article-img-1.jpg" alt="Image description">
+    </figure>
+  
+    <div class="container max-width-adaptive-sm">
+      <div class="text-component line-height-lg v-space-md">

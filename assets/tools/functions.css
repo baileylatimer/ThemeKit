@@ -1,0 +1,4 @@
+/**
+ * Returns the transition properties in the correct format
+ * This function is used by @mixin transition($transitions...)
+ */

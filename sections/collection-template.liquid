@@ -1,18 +1,14 @@
-
-
 <a name="pagecontent" id="pagecontent"></a>
 
+<!-- START / Mobile  -->
+  <!-- Banner / 2-Columns -->
+    {% if section.settings.featured_collection_image %}
+    {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
+    {% assign sizes = sizes | split: ',' %}
 
-{% comment %}
-    ----- Hero Banner [Mobile] -----
-	{% endcomment %}   
-  {% if section.settings.featured_collection_image %}
-  {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
-  {% assign sizes = sizes | split: ',' %}
-
-<span class='{{ collection.metafields.custom_fields["theme_color"] }}-0'>
-  <div class="banner center page_banner collection_banner mobile--true dark-overlay-{{ section.settings.image_darken }}">
-    <div class="width-1-1 split-banner split-banner--img right">
+  <span class='{{ collection.metafields.custom_fields["theme_color"] }}-0'>
+    <div class="banner center page_banner collection_banner mobile--true dark-overlay-{{ section.settings.image_darken }}">
+      <div class="width-1-1 split-banner split-banner--img right">
         <img
             {% if collection.image %}
                 src="{{ collection.image | img_url: sizes.first }}"
@@ -36,281 +32,99 @@
                         {{ collection.products.first.featured_image | product_img_url: size }}
                         {%- endif -%}
                         {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
-                    {%- endfor -%}
-            " />
+                    {%- endfor -%}" />
+      </div>
+
+        {% if collection.description != blank %}
+        <div class="width-1-1 split-banner split-banner--content left pattern-map ">
+          <div class="section clearfix collection_description">
+            <h1> Shop {{ collection.title }}</h1>
+            <span class="text-md">{{ collection.description }}</span>
+          </div>
+        </div>
+        {% endif %}
     </div>
+  {% endif %}
 
-      {% if collection.description != blank %}
-      <div class="width-1-1 split-banner split-banner--content left pattern-map ">
-        <div id="bc-sf-filter-collection-description" class="section clearfix collection_description">
-        <h1 id="bc-sf-filter-collection-title"> Shop {{ collection.title }}</h1>
-          {{ collection.description }}
-        </div>
-        </div>
-      {% endif %}
-  </div>
-{% endif %}
-
-
-
-
-
-<div class="container">
-  {% paginate collection.products by section.settings.pagination_limit %}
-
-
-
-  
-  
-
-    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-  
-  
+  <div class="container">
+    {% paginate collection.products by section.settings.pagination_limit %}
+    {% comment %}Check to see if sidebar should be enabled{% endcomment %}  
     {% assign sidebar = true %}
-  
-    	{% comment %}
-    ----- Static Info [Mobile] -----
 
-      		<div class="sidebar-info mobile--true">
-            <div class="info-item">
-            <span class="icon">
-              <i class="material-icons">local_shipping</i>
-            </span>
-             <b>Free Shipping</b> on Orders $49+
-          </div>
-
-          <div class="info-item">
-            <span class="icon">
-              <i class="material-icons">verified_user</i>
-            </span>
-             <a title="Warranty Policy | GoSun" href="/pages/warranty"> <b>1-Year</b>  Warranty and Money-Back Guarantee</a>
-          </div>
+  <!-- Navigation / Sidebar -->
+    <div class="hide">
+      <div id="bc-sf-filter-tree-mobile">{% include 'bc-sf-filter-skeleton', type: 'button' %}
+        <div class="sidebar-menu">  
+          <ul class="toggle_list">
+            <h3 class="base-BodyUppercase"><span> Our Picks </span></h3>
+            <li><a class=" parent-link--true" data-no-instant="" href="/collections/todays-deals">Today's Deals</a></li>             
+            <li><a href="/collections/best-sellers">Best Sellers</a></li>                         
+            <li><a href="/collections/new">New Arrivals</a></li>                                        
+          </ul>    
+          <ul class="toggle_list">
+            <h3 class="base-BodyUppercase"><span> Category </span></h3>
+            <li><a class=" parent-link--true" data-no-instant="" href="/collections/solar-ovens">Solar Ovens</a></li>             
+            <li><a href="/collections/solar-coolers">Solar Coolers</a></li>                         
+            <li><a href="/collections/solar-chargers">Solar Chargers</a></li>                         
+            <li><a href="/collections/solar-lighting">Solar Lighting</a></li>             
+            <li><a href="/collections/accessories">Accessories</a></li>                          
+            <li><a href="/collections/bundles">Bundles</a></li>              
+          </ul>    
+          <ul class="toggle_list">
+            <h3 class="base-BodyUppercase"><span> Activity </span></h3>
+            <li><a href="/collections/beach-boat">Beach & Boat</a></li>             
+            <li><a href="/collections/camp-rv">Camp & RV</a></li>             
+            <li><a href="/collections/bbq-events">BBQ & Events</a></li>
+            <li><a href="/collections/off-grid-emergency">Off-Grid & Emergency</a></li>             
+          </ul>  
+          <ul class="toggle_list">
+            <li class="shop-all"><a href="/collections/all">Shop all</a></li>           
+          </ul>    
         </div>
-	{% endcomment %} 
-        
-
-
-
-
-<div class="hide">
-    <div id="bc-sf-filter-tree-mobile">{% include 'bc-sf-filter-skeleton', type: 'button' %}
-  
-  <div class="sidebar-menu">  
-           {% comment %}
-           <h3  id="bc-sf-filter-collection-title"><span> {{ collection.title }}</span></h3>
-           {% endcomment %} 
+      </div>
+    </div>
+    <div class="sidebar four columns">
+      <div class="sidebar-wrap">       
+        <div class="sidebar-content">
+          <div class="sidebar-menu">           
             <ul class="toggle_list">
-             <h3 class="base-BodyUppercase"><span> Our Picks </span></h3>
-             
-             <li>
-             	<a class=" parent-link--true" data-no-instant="" href="/collections/todays-deals">Today's Deals</a>
-             </li>             
-             <li>
-             	<a href="/collections/best-sellers">Best Sellers</a>
-             </li>                         
-             <li>
-             	<a href="/collections/new">New Arrivals</a>
-             </li>                                        
-           </ul>    
-           
-           <ul class="toggle_list">
-             
-             <h3 class="base-BodyUppercase"><span> Category </span></h3>
-             
-             <li>
-             	<a class=" parent-link--true" data-no-instant="" href="/collections/solar-ovens">Solar Ovens</a>
-             </li>             
-             <li>
-             	<a href="/collections/solar-coolers">Solar Coolers</a>
-             </li>                         
-             <li>
-             	<a href="/collections/solar-chargers">Solar Chargers</a>
-             </li>                         
-             <li>
-             	<a href="/collections/solar-lighting">Solar Lighting</a>
-             </li>             
-             <li>
-             	<a href="/collections/accessories">Accessories</a>
-             </li>                          
-             <li>
-             	<a href="/collections/bundles">Bundles</a>
-             </li>              
-
-           </ul>    
-
-            <ul class="toggle_list">
-              <h3 class="base-BodyUppercase"><span> Activity </span></h3>
-              <li>
-                <a href="/collections/beach-boat">Beach & Boat</a>
-              </li>             
-              
-              <li>
-                <a href="/collections/camp-rv">Camp & RV</a>
-              </li>             
-              
-              <li>
-                <a href="/collections/bbq-events">BBQ & Events</a>
-              </li>
-              
-              <li>
-                <a href="/collections/off-grid-emergency">Off-Grid & Emergency</a>
-              </li>             
+              <h3 class="base-BodyUppercase"><span> Our Picks </span></h3>
+              <li><a class=" parent-link--true" data-no-instant="" href="/collections/todays-deals">Today's Deals</a></li>             
+              <li><a href="/collections/best-sellers">Best Sellers</a></li>                         
+              <li><a href="/collections/new">New Arrivals</a></li>                                        
             </ul>  
             <ul class="toggle_list">
-              <li class="shop-all">
-                <a href="/collections/all">Shop all</a>
-              </li>           
-            </ul>    
-
-        </div>
-  </div>
-</div>
-  
-    <div class="sidebar four columns">
-      <div class="sidebar-wrap">
-        
-        
-	{% comment %}
-    ----- Static Info [Desktop] -----
-    
-      		<div class="sidebar-info mobile--false">
-          <div class="info-item">
-            <span class="icon">
-              <i class="material-icons">local_shipping</i>
-            </span>
-             <b>Free Shipping</b> on Orders $49+
-          </div>
-
-          <div class="info-item">
-            <span class="icon">
-              <i class="material-icons">verified_user</i>
-            </span>
-             <a title="Warranty Policy | GoSun" href="/pages/warranty"> <b>1-Year</b>  Warranty and Money-Back Guarantee</a>
-          </div>
-        </div>
-        
-	{% endcomment %} 
-        
-
-        
-        
-<div class="sidebar-content">
-
-	{% comment %}
-    ----- Static Menu -----
-	{% endcomment %}       
-  
-         <div class="sidebar-menu">
-           
-           {% comment %}
-           <h3  id="bc-sf-filter-collection-title"><span> {{ collection.title }}</span></h3>
-           {% endcomment %} 
-           
-          <ul class="toggle_list">
-             <h3 class="base-BodyUppercase"><span> Our Picks </span></h3>
-               
-             <li>
-             	<a class=" parent-link--true" data-no-instant="" href="/collections/todays-deals">Today's Deals</a>
-             </li>             
-             <li>
-             	<a href="/collections/best-sellers">Best Sellers</a>
-             </li>                         
-             <li>
-             	<a href="/collections/new">New Arrivals</a>
-             </li>                                        
-           </ul>  
-
-           <ul class="toggle_list">
-             
-             <h3 class="base-BodyUppercase"><span> Category </span></h3>
-             
-             <li>
-             	<a class=" parent-link--true" data-no-instant="" href="/collections/solar-ovens">Solar Ovens</a>
-             </li>
-             
-             <li>
-             	<a href="/collections/solar-coolers">Solar Coolers</a>
-             </li>             
-             
-             <li>
-             	<a href="/collections/solar-power">Solar Power</a>
-             </li>             
-             
-             <li>
-             	<a href="/collections/solar-lighting">Solar Lighting</a>
-             </li>
-             
-             <li>
-             	<a href="/collections/accessories">Accessories</a>
-             </li>             
-             
-             <li>
-             	<a href="/collections/bundles">Bundles</a>
-             </li> 
-
-           
-           </ul>   
-
+              <h3 class="base-BodyUppercase"><span> Category </span></h3>
+              <li><a class=" parent-link--true" data-no-instant="" href="/collections/solar-ovens">Solar Ovens</a></li>
+              <li><a href="/collections/solar-coolers">Solar Coolers</a></li>             
+              <li><a href="/collections/solar-power">Solar Power</a></li>             
+              <li><a href="/collections/solar-lighting">Solar Lighting</a></li>
+              <li><a href="/collections/accessories">Accessories</a></li>             
+              <li><a href="/collections/bundles">Bundles</a></li> 
+            </ul>   
             <ul class="toggle_list">
               <h3 class="base-BodyUppercase"><span> Activity </span></h3>
-              <li>
-                <a href="/collections/beach-boat">Beach & Boat</a>
-              </li>             
-              
-              <li>
-                <a href="/collections/camp-rv">Camp & RV</a>
-              </li>             
-              
-              <li>
-                <a href="/collections/bbq-events">BBQ & Events</a>
-              </li>
-              
-              <li>
-                <a href="/collections/off-grid-emergency">Off-Grid & Emergency</a>
-              </li>             
+              <li><a href="/collections/beach-boat">Beach & Boat</a></li>             
+              <li><a href="/collections/camp-rv">Camp & RV</a></li>             
+              <li><a href="/collections/bbq-events">BBQ & Events</a></li>
+              <li><a href="/collections/off-grid-emergency">Off-Grid & Emergency</a></li>             
             </ul>    
-
             <ul class="toggle_list">
-              <li class="shop-all">
-                <a href="/collections/all"><b>Shop all ➞</b></a>
-              </li>           
+              <li class="shop-all"><a href="/collections/all"><b>Shop all ➞</b></a></li>           
             </ul>    
-
-        </div>
-
-
-
-	{% comment %}
-    ----- Dynamic Menu [AJAX]-----
-	{% endcomment %} 
-
-      <div class="hide">
-        <div id="bc-sf-filter-tree">
-          {% comment %} Include placeholder template {% endcomment %}
-          {% include 'bc-sf-filter-tree-placeholder' %}
+          </div>
         </div>
       </div>
-
-      </div>
-
     </div>
-  </div>
-  
     <div class="twelve columns">
-
-
-
-	{% comment %}
-    ----- Hero Banner [Desktop] -----
-	{% endcomment %}       
-
-
-{% if section.settings.featured_collection_image %}
-  {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
-  {% assign sizes = sizes | split: ',' %}
-
-  <div class="banner center page_banner collection_banner mobile--false dark-overlay-{{ section.settings.image_darken }}">
-    <div class="width-1-2 split-banner split-banner--img right">
+<!-- END / Mobile  -->
+  
+<!-- START / Desktop  -->
+  {% if section.settings.featured_collection_image %}
+    {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
+    {% assign sizes = sizes | split: ',' %}
+    <div class="banner center page_banner collection_banner mobile--false dark-overlay-{{ section.settings.image_darken }}">
+      <div class="width-1-2 split-banner split-banner--img right">
         <img
             {% if collection.image %}
                 src="{{ collection.image | img_url: sizes.first }}"
@@ -334,21 +148,18 @@
                         {{ collection.products.first.featured_image | product_img_url: size }}
                         {%- endif -%}
                         {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
-                    {%- endfor -%}
-            " />
-        </div>
+                    {%- endfor -%}" />
+      </div>
       {% if collection.description != blank %}
         <div class="width-1-2 split-banner split-banner--content left pattern-map">
-            <div id="bc-sf-filter-collection-description" class="section clearfix collection_description">
-            <h1 id="bc-sf-filter-collection-title"> Shop {{ collection.title }}</h1>
-            {{ collection.description }}
-            </div>
+          <div class="section clearfix collection_description">
+            <h1> Shop {{ collection.title }}</h1>
+            <span class="text-md">{{ collection.description }}</span>
+          </div>
         </div>
       {% endif %}
-  </div>
-{% endif %}
-
-
+    </div>
+  {% endif %}
 
   <div class="section clearfix width-1-1 mobile--true">
     {% if section.settings.collection_sort %}
@@ -365,8 +176,9 @@
     {% endif %}
   </div>
 
-
   <div class="section clearfix width-1-3 mobile--false float-right">
+
+    
     {% if section.settings.collection_sort %}
       <select class="sort_by" id="sort-by" data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
         <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
@@ -380,27 +192,19 @@
       </select>
     {% endif %}
   </div>
-
-
-
-
-
-
-
-      {% comment %} Remove collection-matrix class to prevent conflict infinite loading between app & theme {% endcomment %}
-      <div id="bc-sf-filter-products" itemtype="http://schema.org/ItemList" class="product-list clearfix equal-columns--clear equal-columns--outside-trim" data-bc-sort="{{ collection.default_sort_by }}">
-        {% assign products_per_row = section.settings.products_per_row %}
-        {% include 'product-loop', sidebar: sidebar %}
-      </div>
-
-      <div class="twelve columns">
-        <div class="section clearfix">
-          <div class="paginate" id="bc-sf-filter-bottom-pagination"></div>
-          <div id="bc-sf-filter-load-more"></div>
-        </div>
-      </div>
-
+    {% comment %} Remove collection-matrix class to prevent conflict infinite loading between app & theme {% endcomment %}
+    <div id="bc-sf-filter-products" itemtype="http://schema.org/ItemList" class="product-list clearfix equal-columns--clear equal-columns--outside-trim" data-bc-sort="{{ collection.default_sort_by }}">
+      {% assign products_per_row = section.settings.products_per_row %}
+      {% include 'product-loop', sidebar: sidebar %}
     </div>
+
+  <div class="twelve columns">
+    <div class="section clearfix">
+      <div class="paginate" id="bc-sf-filter-bottom-pagination"></div>
+      <div id="bc-sf-filter-load-more"></div>
+    </div>
+  </div>
+</div>
   {% endpaginate %}
 
 </div>

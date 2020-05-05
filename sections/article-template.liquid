@@ -5,121 +5,126 @@
 {% endcomment %}
 
 
-
+<div class="bg-contrast-lower">
 <a name="pagecontent" id="pagecontent"></a>
+  <div class="container main content flex-center position-relative z-index-1  padding-y-lg">
+  {% paginate article.comments by 100 %}
 
-<div class="container main content flex-center">
-{% paginate article.comments by 100 %}
+    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
+    {% if section.blocks.size > 0 %}
+      {% assign sidebar = true %}
+    {% else %}
+      {% assign sidebar = false %}
+    {% endif %}
 
-  {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-  {% if section.blocks.size > 0 %}
-    {% assign sidebar = true %}
-  {% else %}
-    {% assign sidebar = false %}
-  {% endif %}
-
-  <div class="twelve columns {% if sidebar == false %}{% endif %} medium-down--one-whole equal-columns--outside-trim wrapper--sm" >
-    <div class="section clearfix">
-      <div class="clearfix breadcrumb">
-        {% if section.settings.blog_breadcrumb %}
-          <div class="breadcrumb_text left" itemscope itemtype="http://schema.org/BreadcrumbList">
-            <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a><meta itemprop="position" content="1" /></span>
-            &nbsp;<span class="icon-slash">/</span>
-            <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ blog.url }}" title="{{ blog.title | escape }}" itemprop="item"><span itemprop="name">{{ blog.title }}</span></a><meta itemprop="position" content="2" /></span>
-          </div>
-        {% endif %}
-        {% if section.settings.blog_pagination %}
-          <div class="article-pagination right">
-            {% if blog.next_article %}
-              {{ 'blogs.article.previous_article_html' | t | link_to: blog.next_article }}
-            {% endif %}
-            {% if blog.previous_article and blog.next_article %}
+    <div class="" >
+      <div class="section clearfix">
+        <div class="clearfix breadcrumb">
+          {% if section.settings.blog_breadcrumb %}
+            <div class="breadcrumb_text left" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a><meta itemprop="position" content="1" /></span>
               &nbsp;<span class="icon-slash">/</span>
-            {% endif %}
-            {% if blog.previous_article %}
-              {{ 'blogs.article.next_article_html' | t | link_to: blog.previous_article }}
-            {% endif %}
-          </div>
-        {% endif %}
-      </div>
-
-      {% unless article.image and section.settings.banner_enabled %}
-        <h1 class="align_left article_title">
-          {{ article.title }}
-        </h1>
-        <div class="feature_divider"></div>
-      {% endunless %}
-
-       
-
-        <div class="article_content clearfix">
-
-
-        {% if article.image and section.settings.banner_enabled %}
-          <div class="">
-              <h1 class="">{{ article.title }}</h1>
+              <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ blog.url }}" title="{{ blog.title | escape }}" itemprop="item"><span itemprop="name">{{ blog.title }}</span></a><meta itemprop="position" content="2" /></span>
             </div>
+          {% endif %}
+          {% if section.settings.blog_pagination %}
+            <div class="article-pagination right">
+              {% if blog.next_article %}
+                {{ 'blogs.article.previous_article_html' | t | link_to: blog.next_article }}
+              {% endif %}
+              {% if blog.previous_article and blog.next_article %}
+                &nbsp;<span class="icon-slash">/</span>
+              {% endif %}
+              {% if blog.previous_article %}
+                {{ 'blogs.article.next_article_html' | t | link_to: blog.previous_article }}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
 
+        {% unless article.image and section.settings.banner_enabled %}
+          <h1 class="align_left article_title">
+            {{ article.title }}
+          </h1>
+        {% endunless %}
+        
+        <div class="container max-width-adaptive-md">
+          <article class="t-article-v4 bg padding-md padding-x-lg@md padding-y-xl@md">
             
-             <p class="blog_meta">
-          {% if section.settings.blog_byline %}
-            <span><a href="/search?type=article&q={{ article.author }}">{{ a.author }}{{ 'blogs.article.by_author' | t: author: article.author }}</a></span>
-          {% endif %}
+          
+              {% if article.image and section.settings.banner_enabled %}
+                <div class="text-component text-center line-height-lg v-space-xxl max-width-xs margin-x-auto">
+                  <h1 class="text-xxxl">{{ article.title }}</h1>
 
-          {% if section.settings.blog_date %}
-            <span>{{ article.published_at | date: format: "month_day_year" }}</span>
-          {% endif %}
+                  {% if article.excerpt != blank %}
+                    <p class="text-lg color-contrast-medium text-md">{{ article.excerpt }}</p>
+                   {% endif %}
 
-          {% if section.settings.read_time %}
-            {% include 'include-read-time' %}
-          {% endif %}
+                    <p class="blog_meta text-sm text-uppercase letter-spacing-lg color-contrast-medium">
+                        {% if section.settings.blog_byline %}
+                          <span><a href="/search?type=article&q={{ article.author }}">{{ a.author }}{{ 'blogs.article.by_author' | t: author: article.author }}</a></span>
+                        {% endif %}
 
-          {% if section.settings.blog_tags %}
-            <div class="blog_meta tags">
-              {% for tag in article.tags %}
-                <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span>
-              {% endfor %}
-            </div>
-          {% endif %}
+                        {% if section.settings.blog_date %}
+                          <span>{{ article.published_at | date: format: "month_day_year" }}</span>
+                        {% endif %}
 
-          {% if section.settings.blog_comment_count %}
-            {% if settings.disqus_enabled %}
-              <span>
-                <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.id }}" class="disqus-comment-count">{{ 'blogs.counts.comments_with_count' | t: count: 0 }}</a>
-              </span>
-            {% elsif article.comments_enabled? and article.comments_count > 0 %}
-              <span>
-                <a href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
-              </span>
-            {% endif %}
-          {% endif %}
-        </p>
+                        {% if section.settings.read_time %}
+                          {% include 'include-read-time' %}
+                        {% endif %}
 
+                        {% if section.settings.blog_tags %}
+                          <div class="blog_meta tags">
+                            {% for tag in article.tags %}
+                              <span><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" title="{{ blog.title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a></span>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
 
+                        {% if section.settings.blog_comment_count %}
+                          {% if settings.disqus_enabled %}
+                            <span>
+                              <a href="{{ article.url }}#disqus_thread" data-disqus-identifier="{{ article.id }}" class="disqus-comment-count">{{ 'blogs.counts.comments_with_count' | t: count: 0 }}</a>
+                            </span>
+                          {% elsif article.comments_enabled? and article.comments_count > 0 %}
+                            <span>
+                              <a href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
+                            </span>
+                          {% endif %}
+                        {% endif %}
+                    </p>
 
-          <div class="banner center page_banner dark-overlay-{{section.settings.image_darken}} mt40">
-            {% include 'image-element', image: article.image, alt: article.image.alt, stretch_width: true %}
+                </div>
+
+                <div class="t-article-v4__divider margin-y-lg" aria-hidden="true"><span></span></div>
+            </article>
           </div>
-        {% endif %}
+      
 
+            <figure class="container max-width-lg margin-bottom-lg mt40">
+              {% include 'image-element', image: article.image, alt: article.image.alt, stretch_width: true %}
+            </figure>
 
-
-          {% if article.image and section.settings.banner_enabled == false %}
-            <p>
-              {% include 'image-element', image: article.image, alt: article.image.alt %}
-            </p>
           {% endif %}
 
+            {% if article.image and section.settings.banner_enabled == false %}
+              <p>
+                {% include 'image-element', image: article.image, alt: article.image.alt %}
+              </p>
+            {% endif %}
+
+          <div class="container max-width-adaptive-md">
+            <section class="text-component line-height-lg v-space-md mt40">
+              {{ article.content }}
+            </section>
+
+           </div>
 
 
-        <div class="scott-fix-h1 mt40">
-          {{ article.content }}
 
-        </div>
 
-        </div>
-
-      
+    <div class="container max-width-adaptive-md">
+        
         <div class="author_share_wrap">
           {% if section.settings.blog_author %}
             <div class="blog_author">
@@ -304,18 +309,21 @@
               </span>
               {% endif %}
             </div>
+
+            
             </div>
           {% endunless %}
         {% endfor %}
       </div>
     {% endif %}
     
+    </div>  
+
+    {% include "blog-sidebar", blog_handle: blog.handle %}
+  {% endpaginate %}
   </div>
-
-  {% include "blog-sidebar", blog_handle: blog.handle %}
-{% endpaginate %}
 </div>
-
+</div>
 {% schema %}
 
 {

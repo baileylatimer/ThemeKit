@@ -120,9 +120,11 @@
             <h4 class="toggle">{{ 'blogs.sidebar.categories' | t }}<span class="right icon-down-arrow"></span></h4>
             <ul class="toggle_list">
               {% for tag in blogs[blog_handle].all_tags %}
-                <li>
-                  <a href="{{ shop.url}}/blogs/{{ blogs[blog_handle].handle }}/tagged/{{ tag | handleize }}" title="{{ blogs[blog_handle].title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a>
-                </li>
+                {% if tag contains 'Recipes' %}
+                  <li>
+                    <a href="{{ shop.url}}/blogs/{{ blogs[blog_handle].handle }}/tagged/{{ tag | handleize }}" title="{{ blogs[blog_handle].title }} {{ 'blogs.general.tagged' | t }} {{ tag | escape }}">{{ tag }}</a>
+                  </li>
+                {% endif %}
               {% endfor %}
             </ul>
 
