@@ -55,7 +55,7 @@
       </div>
     {% endunless %}
 
-    <div class="eight columns section_select medium-down--one-whole">
+    <div class="eight columns section_select medium-down--one-whole  ">
       {% if section.settings.blog_tags %}
           <select name="tag_filter" id="blog_filter" class="blog_filter">
             <option {% unless current_tags %}selected="selected"{% endunless %} value="{{ blog.url }}">{{ 'blogs.general.view_all' | t }}</option>
@@ -77,6 +77,7 @@
     {% include 'featured_video' %}
 
   {% comment %}Check to see if sidebar should be enabled{% endcomment %}
+ 
   {% if section.blocks.size > 0 %}
     {% assign sidebar = true %}
   {% else %}
@@ -84,7 +85,7 @@
   {% endif %}
 
 
-  <div class="{% if sidebar %}twelve medium-down--one-whole {% else %}sixteen{% endif %} columns equal-columns--outside-trim equal-columns--clear">
+  <div class="{% if sidebar %} twelve medium-down--one-whole {% else %}sixteen{% endif %} columns equal-columns--outside-trim equal-columns--clear">
     
     
   
@@ -127,7 +128,7 @@
               </div>
               
               <div class="text-component">
-                  <h2 class="story__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                  <h4 class="story__title"><a href="{{ article.url }}">{{ article.title }}</a></h4>
               </div>
               
               <div class="story__author margin-top-sm">
@@ -168,7 +169,9 @@
     {% endfor %}
   </div>
 
+  <div class="hide">
   {% include "blog-sidebar", blog_handle: blog.handle %}
+</div>
 
   <br class="clear" />
   <div class="sixteen columns">

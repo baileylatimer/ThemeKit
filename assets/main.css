@@ -189,16 +189,16 @@ img, video, svg {
   .max-width-adaptive-xl {
     max-width: 90rem; } }
 
-:not(.article-wrapper-lg) .grid {
+.grid {
   --gap: 0px;
   --offset: var(--gap);
   display: flex;
   flex-wrap: wrap; }
-  :not(.article-wrapper-lg) .grid > * {
+  .grid > * {
     flex-basis: 100%;
     max-width: 100%; }
   @supports (--css: variables) {
-    :not(.article-wrapper-lg) .grid > *[class*="offset-"] {
+    .grid > *[class*="offset-"] {
       margin-left: var(--offset); } }
 
 [class*="gap-xxxxs"], [class*="gap-xxxs"], [class*="gap-xxs"], [class*="gap-xs"], [class*="gap-sm"], [class*="gap-md"], [class*="gap-lg"], [class*="gap-xl"], [class*="gap-xxl"], [class*="gap-xxxl"], [class*="gap-xxxxl"], [class*="grid-gap-"], [class*="flex-gap-"] {
@@ -818,7 +818,7 @@ img, video, svg {
 
 :root {
   --font-primary: 'cp', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  --text-base-size: 1em;
+  --text-base-size: 1.25em;
   --text-scale-ratio: 1.2;
   --text-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
@@ -830,13 +830,14 @@ img, video, svg {
   --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
   --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
   --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+  --letter-spacing-tight: -0.03em;
   --body-line-height: 1.4;
   --heading-line-height: 1.2;
   --font-primary-capital-letter: 1; }
   @media (min-width: 64rem) {
     :root {
-      --text-base-size: 1.25em;
-      --text-scale-ratio: 1.25; } }
+      --text-base-size: 1.5em;
+      --text-scale-ratio: 1.5; } }
 
 body {
   font-size: var(--text-base-size, 1em);
@@ -845,9 +846,10 @@ body {
 
 h1, h2, h3, h4 {
   color: var(--color-contrast-higher, #1c1c21);
-  line-height: var(--heading-line-height, 1.2); }
+  line-height: var(--heading-line-height, 1.2);
+  letter-spacing: var(--letter-spacing-tight); }
 
-.text-xxxl {
+.text-xxxxl {
   font-size: var(--text-xxxxl, 3em); }
 
 .text-xxxl {
@@ -855,6 +857,12 @@ h1, h2, h3, h4 {
 
 h1, .text-xxl {
   font-size: var(--text-xxl, 2.074em); }
+  h1::before, .text-xxl::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((var(--font-secondary-capital-letter) - var(--heading-line-height)) * 0.5em); }
 
 h2, .text-xl {
   font-size: var(--text-xl, 1.728em); }
@@ -5282,7 +5290,7 @@ html:not(.js) .no-js\:is-hidden {
   .text-dark h1, .text-dark h2, .text-dark h3, .text-dark h4, .text-dark h5, .text-dark h6, .text-dark li, .text-dark li a, .text-dark a {
     color: #212121 !important; }
   .text-dark p {
-    color: #616161 !important; }
+    color: var(--color-contrast-medium-h) !important; }
 
 .text-light {
   color: #fff !important; }
@@ -5295,6 +5303,9 @@ html:not(.js) .no-js\:is-hidden {
 
 .link--highlight {
   color: #843043 !important; }
+
+.base-BodyUppercase {
+  color: #757575 !important; }
 
 /* #Classes - Patterns
   ================================================== */
@@ -5555,8 +5566,6 @@ b,
       letter-spacing: -0.03em; } }
 
 .body-text--caption {
-  font-size: 18px;
-  line-height: 23px;
   text-transform: uppercase; }
 
 .button, .btn, button, .banners a {
@@ -5629,8 +5638,7 @@ input, textarea {
   transition: color .1s; }
 
 .base-BodyUppercase {
-  font-weight: 600;
-  text-transform: capitalize;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .025em !important;
   font-size: 12px; }
@@ -5849,8 +5857,7 @@ h2.product_type {
   font-weight: 700; }
 
 .pill p, .thumbnail_banner {
-  font-weight: 600;
-  text-transform: capitalize;
+  font-weight: 500;
   font-size: 14px;
   margin: 0;
   white-space: nowrap; }
@@ -6630,7 +6637,7 @@ a:focus {
 :root {
   --font-primary: 'cp', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   --text-base-size: 1em;
-  --text-scale-ratio: 1.2;
+  --text-scale-ratio: 1.25;
   --text-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
   --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
@@ -6638,6 +6645,8 @@ a:focus {
   --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
   --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
   --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+  --text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+  --letter-spacing-tight: -0.03em;
   --body-line-height: 1.4;
   --heading-line-height: 1.2;
   --font-primary-capital-letter: 1; }
@@ -6647,7 +6656,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-primary);
-  font-weight: 700; }
+  font-weight: 900; }
 
 .font-primary {
   font-family: var(--font-primary); }
@@ -8159,7 +8168,7 @@ a.collection-info__caption .product-details {
   background: #fcfcfc;
   flex-grow: 1;
   width: 100%;
-  padding-bottom: var(--space-unit); }
+  padding: var(--space-unit); }
 
 .article-title {
   margin: 10px 0 0;
@@ -8197,11 +8206,13 @@ a.collection-info__caption .product-details {
 .cards--staff .article-tile .article-a {
   background: transparent; }
   .cards--staff .article-tile .article-a:hover .article-tile-content {
-    display: flex !important; }
+    display: flex !important;
+    transform: scale(1.08);
+    transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .cards--staff .article-tile-content {
   background: #fff;
-  padding-bottom: 15px;
+  padding: var(--space-unit);
   display: none !important;
   position: absolute;
   width: 100%;
@@ -8211,20 +8222,16 @@ a.collection-info__caption .product-details {
   @media (min-width: 768px) {
     .cards--staff .article-tile-content {
       top: 220px;
-      height: 220px; } }
-
-.cards--staff h6.article-type {
-  text-align: center; }
+      height: auto; } }
 
 .cards--staff .article-blurb {
-  padding: 10px 15px 0; }
+  padding: var(--space-unit) 0; }
 
 .cards--staff .article-contact-links {
   display: flex !important;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding-top: 15px; }
+  width: 100%; }
   .cards--staff .article-contact-links a {
     padding: 5px;
     background: transparent; }
@@ -8385,9 +8392,6 @@ a.collection-info__caption .product-details {
 .cart_info {
   padding: 40px 0 10px;
   margin-bottom: 0px; }
-  @media (max-width: 768px) {
-    .cart_info {
-      display: none !important; } }
 
 .cart_text {
   display: none; }
@@ -8470,6 +8474,8 @@ a.collection-info__caption .product-details {
 
 .toggle_list {
   padding: 0; }
+  .toggle_list li:nth-child(2) {
+    margin-top: var(--space-sm) !important; }
 
 .toggle_list a {
   max-width: 100% !important;
@@ -10053,8 +10059,7 @@ div.dropdown.menu, .cart_content {
   text-transform: uppercase !important;
   color: #616161;
   cursor: default !important;
-  font-weight: 600;
-  text-transform: capitalize;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .025em !important;
   font-size: 12px;

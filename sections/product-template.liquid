@@ -113,7 +113,7 @@
           <div class="product_name--container">
             <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
             <h2 class="product_type">{{ product.type }}</h2>
-            <div class="article-violator article-violator--top tooltip-trigger js-tooltip-trigger" title="5 masks and various dry food" data-tooltip-class="tooltip--lg">
+            <div class="mt10 article-violator article-violator--top tooltip-trigger js-tooltip-trigger" title="5 masks and various dry food" data-tooltip-class="tooltip--lg">
               {% if violator != blank %}
                 <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
               {% endif %}
@@ -179,8 +179,9 @@
             </p>
           {% endif %}
 
+          <!-- START / Reviews --> 
           <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-type="{{ product.type }}" style="display: block;"></span>
-                  
+          <!-- End / Reviews --> 
                   
           {% if collection_handles contains 'coming-soon' %}
             {% elsif product.metafields.custom_fields["partners_platform"] != blank %}
@@ -188,15 +189,22 @@
             {% else %}
               {% include 'product-form' with 'product' %}
           {% endif %}
+          
+          <div class="pill clr-sub">
+          <!-- START / Affirm --> 
+            <p class="affirm-as-low-as mtn25" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
+          <!-- END / Affirm --> 
+          </div>
 
- 
+          <div class="divider"></div>
+
 
           <div class="info-item--product">
             <span class="icon">
               <i class="material-icons-outlined">verified_user</i>
             </span>
-            <a title="Warranty Policy | GoSun" href="/pages/warranty">
-              1-year warranty and money-back guarantee</a>
+            <a title="Warranty Policy | GoSun" href="/pages/help-center">
+              Easy, hassle-free returns</a>
           </div>
           
           {% if product.price >= 5000 %}
@@ -204,18 +212,9 @@
                 <span class="icon">
                     <i class="material-icons-outlined">local_shipping</i>
                 </span>
-                <a>This item qualifies for free shipping</a>
+                <a>Fast, FREE shipping</a>
             </div>
           {% endif %}
-
-          {% if product.price >= 20000 %}
-          <div class="info-item--product">
-              <span class="icon">
-                  <i class="material-icons-outlined">local_hospital</i>
-              </span>
-              <a>This item includes 5 FREE face masks</a>
-          </div>
-        {% endif %}
 
           <div class="divider"></div>     
           {{ product.description }}

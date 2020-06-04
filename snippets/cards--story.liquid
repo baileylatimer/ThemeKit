@@ -56,9 +56,9 @@
       <div class="text-component text-center line-height-lg v-space-md margin-bottom-md">
         <h1 class="text-xxxl">{{ article.title }}</h1>
 
-       
-            <p class="excerpt color-contrast-medium text-md">{{ a.excerpt }}</p>
-      
+        {% if a.excerpt != blank %}
+            <p class="excerpt color-contrast-medium text-md">{{ article.excerpt }}</p>
+        {% endif %}
       </div>
   
       <div class="flex justify-center">

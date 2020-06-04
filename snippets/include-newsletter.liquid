@@ -39,7 +39,7 @@
         <div class="container">
           <div class="{% if newsletter_section_text_align == "center" %}offset-by-three{% elsif newsletter_section_text_align == "right" %} offset-by-six{% endif %} ten columns section_form">
             {% if newsletter_title != blank %}
-              <h2 class="width-100 text-dark title">{{ newsletter_title }}</h2>
+              <h2 class="width-100 text-dark title  mb10">{{ newsletter_title }}</h2>
             {% endif %}
             {% if newsletter_text != blank %}
               <div class="newsletter-text">{{ newsletter_text }}</div>

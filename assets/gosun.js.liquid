@@ -148,3 +148,13 @@ window.addEventListener('load', async () => {
 });
 
 
+/* Banner H2 to P */
+
+// Select the 'a' tag to be replaced and call the replaceWith method
+$('.collection_description h2').replaceWith(function(){
+  // Execute a callback to generate contents of the replacement
+  // The $('<div>') part creates a div
+  return $('<p>', {
+      html: this.innerHTML // This takes the html of the 'a' tag and copies it to the new div
+  });
+});

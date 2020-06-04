@@ -45,7 +45,7 @@
     </div>
     {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
         <div class="width-1-1 split-banner split-banner--content {{ background_color }} pattern-map">
-            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description banner_description"> 
+            <div class="section clearfix intro_description banner_description text-component"> 
                 
                 {% if title != blank %}
                     <h1 class="split-banner--headline">
@@ -53,9 +53,7 @@
                     </h1>
                 {% endif %}
                 {% if subtitle != blank %}
-                    <div class="split-banner--text body-text body-text--large">
-                        <h4> {{ subtitle }}</h4>
-                    </div>
+                  <div class="split-banner--text text-lg"> {{ subtitle }}</div>
                 {% endif %}
                 <div class="split-banner--action">
                     {% if button1 != blank %}
@@ -68,7 +66,6 @@
         </div>
     {% endunless %}
 </section>
-
 
 
 
@@ -96,16 +93,14 @@
             <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} pattern-map">
         {% endif %}
         
-            <div id="bc-sf-filter-collection-description" class="section clearfix intro_description banner_description"> 
+            <div class="section clearfix intro_description banner_description  text-component"> 
                 {% if title != blank %}
                     <h1 class="split-banner--headline">
                         {{ title }}
                     </h1>
                 {% endif %}
                 {% if subtitle != blank %}
-                    <div class="body-text body-text--large">
-                        <h4> {{ subtitle }}</h4>
-                    </div>
+                  <div class="split-banner--text text-lg"> {{ subtitle }}</div>
                 {% endif %}
                 <div class="split-banner--action btn-group">
                     {% if button1 != blank %}

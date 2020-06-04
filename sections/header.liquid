@@ -223,6 +223,13 @@
                 <span class="cart_count">{{ cart.item_count }}</span>
               </div>
           </a>
+
+
+          {% assign shipping_value = 4900 %}
+          {% assign cart_total = cart.total_price %}
+          {% assign shipping_value_left = shipping_value | minus: cart_total %}
+
+          
           {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
             <div class="cart_content animated fadeInRight">
               <div class="cart_info">   
@@ -230,7 +237,13 @@
                   <span class="icon">
                     <i class="material-icons-outlined">local_shipping</i>
                   </span>
-                  <b>Free Shipping</b>&nbsp; on Orders $49+ (US only)
+                  <p>
+                    {% if shipping_value_left > 0 %}
+                    You're&nbsp;{{ shipping_value_left | money }}&nbsp;away from free shipping!  
+                    {% else %}
+                      You've got free shipping!
+                    {% endif %}
+                  </p>
                 </div>
               </div>
               <hr>
@@ -239,9 +252,7 @@
                 <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
               </div>
               <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}{% endif %}">
-                <a class="cart_content__continue-shopping secondary_button">
-                  {{ 'cart.general.continue_shopping_link_html' | t }}
-                </a>
+              
                 <ul class="cart_items js-cart_items clearfix">
                   {% assign total_saving = 0 %}
                   {% for item in cart.items %}
@@ -360,11 +371,7 @@
           </li>
         {% endif %}
 
-        {% if customer %}
-          <li class="text-light pt10 tab--shine base-BodyUppercase">
-            Shine Points: <b><span class="sweettooth-points-balance"></span></b>
-          </li>
-        {% endif %}
+   
        
         {% if shop.customer_accounts_enabled %}
           <li>

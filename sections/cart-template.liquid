@@ -114,18 +114,7 @@
 
 
 
-    <tr class="total-line total-line--shipping">
-<th class="total-line__name" scope="row">
-<span>
-  Shipping
-</span>
-</th>
-<td class="total-line__price">
-<span class="order-summary__small-text" data-checkout-total-shipping-target="0">
-  Calculated at next step
-</span>
-</td>
-</tr>
+
 
 
     <tr class="total-line total-line--taxes " data-checkout-taxes="">
@@ -135,8 +124,26 @@
 </td>
 </tr>
 
+<tr class="total-line total-line--shipping">
+  <th class="total-line__name" scope="row">
+  <span>
+    Shipping
+  </span>
+  </th>
+  <td class="total-line__price">
+  <span class="order-summary__small-text" data-checkout-total-shipping-target="0">
+    {% if cart.total_price >= 4900 %}
+    <p class="money">Free</p>
+    
+    {% else %}
+    Calculated at next step
+    {% endif %}
+  </span>
+  </td>
+  </tr>
+
 <tr class="total-line total-line--subtotal">
-  <th class="total-line__name" scope="row">Your savings</th>
+  <th class="total-line__name" scope="row">Discounts</th>
   <td class="total-line__price">
   <span class="order-summary__emphasis" >
     {{ total_saving | money }}

@@ -416,6 +416,15 @@ var cart = {
 
 selectCallback = function(variant, selector) {
 
+    //Affirm Promos: Monthly Payment Messaging, dynamic pricing embed code
+  //
+  //NOTE: This Affirm embed code is only needed if you are using product variants.
+  //'selectCallback' might not be in your product.liquid template if product variants are not used or supported.
+  //If you are using product variants in your shop, use the following code to dynamically update your Monthly Payment Messaging when the customer selects a different product variant.
+  
+  $('.affirm-as-low-as').attr('data-amount',variant.price);
+  affirm.ui.refresh();
+
   var $product = $('.product-' + selector.product.id);
   var $notify_form = $('.notify-form-' + selector.product.id);
   var $productForm = $('.product_form, .shopify-product-form', $product);
