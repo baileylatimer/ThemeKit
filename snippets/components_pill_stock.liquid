@@ -1,7 +1,7 @@
 {% if product.metafields.custom_fields["available_year"] != blank %}
     <div class="pill pill--stock mb20 clr-sub width-1-2 ">
         <span class="icon"><i class="material-icons">schedule</i></span>
-        <p> Available&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} </p>
+        <p> Ships&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} </p>
     </div> 
 {% elsif collection_handles contains 'retired' %}
     <div class="pill pill--stock mb20 clr-sub width-1-2">

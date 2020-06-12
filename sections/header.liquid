@@ -237,15 +237,20 @@
                   <span class="icon">
                     <i class="material-icons-outlined">local_shipping</i>
                   </span>
+                  
                   <p>
-                    {% if shipping_value_left > 0 %}
-                    You're&nbsp;{{ shipping_value_left | money }}&nbsp;away from free shipping!  
-                    {% else %}
-                      You've got free shipping!
-                    {% endif %}
+                    <!-- Free Shipping Calculator 
+                      {% if shipping_value_left > 0 %}
+                      You're&nbsp;{{ shipping_value_left | money }}&nbsp;away from free shipping!  
+                      {% else %}
+                        You've got free shipping!
+                      {% endif %}
+                      -->
+                     Free US shipping over $49
                   </p>
                 </div>
               </div>
+             
               <hr>
 
               <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">

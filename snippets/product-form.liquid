@@ -62,7 +62,7 @@
   
     <div class="width-1-1 flex">
       
-      {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}Backorder: Add to cart{% elsif collection_handles contains 'retired' %}Sold out{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+      {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}Add to cart{% elsif collection_handles contains 'retired' %}Sold out{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
       {% unless product.available %}
         <button class="button btn -disabled" >
           <span class="text"> Sold Out</span>
