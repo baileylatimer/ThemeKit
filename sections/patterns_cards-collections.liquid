@@ -1,6 +1,6 @@
 <div class="article-wrapper-lg wrapper--xl pb80">
 
-  <div class="grid grid--1-1 cards cards--activity mobile--true-grid"> 
+  <div class="grid-h grid-h--1-1 cards cards--activity mobile--true-grid"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
         <article class="article-tile article-tile--md width-1-1 text-light">
@@ -15,7 +15,7 @@
       {% endfor %}
     </div>
 
-  <div class="grid grid--2-2 cards cards--activity mobile--false-grid"> 
+  <div class="grid-h grid-h--2-2 cards cards--activity mobile--false-grid"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
         <article class="article-tile article-tile--md width-1-1 text-light">
@@ -41,7 +41,7 @@
     "settings": [
             {
         "type": "range",
-        "id": "grid-size",
+        "id": "grid-h-size",
         "label": "Images per row",
         "min": 2,
         "max": 4,

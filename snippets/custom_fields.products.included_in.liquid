@@ -8,7 +8,7 @@
 
 <div class="article-wrapper-sm">
 	<h6 class="article-type article-title--sm">Included in</h6>
-	<div class="grid grid--1-4">
+	<div class="grid-h grid-h--1-4">
 		{% assign product_refs = product.metafields.custom_fields["included_in_items"] | split: "|" %}
 		{% for product_handle in product_refs %}
 		<article class="article-tile article-tile--sm width-1-1 ">

@@ -1,7 +1,7 @@
 
 <div class="article-wrapper-lg">
 	<h2 class="text-dark center title m10">{{ product.metafields.custom_fields["product_list__title"] }}</h2>
-	<div class="grid grid--1-4">
+	<div class="grid-h grid-h--1-4">
 		{% assign product_refs = product.metafields.custom_fields["product_list__products"] | split: "|" %}
 		{% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
 		{% for product_handle in product_refs %}
