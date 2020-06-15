@@ -29,10 +29,12 @@
 {% else %}
   {% assign feature_image = false %}
 {% endif %}
-
 {% assign promo_link = section.settings.promo_link %}
 
-<!-- ---- START CONTENT ---- -->
+
+
+
+<!------ START HEADER ------>
 
   <!-- Header / Small Screens -->
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
@@ -116,11 +118,10 @@
   </div>
 </header>
 
-
-
   <!-- Header / Large Screens -->
 <header class="{% if feature_image %}feature_image{% endif %} {% if section.settings.logo_home != nil %}secondary_logo--true{% endif %}">
   <div class="header {% if feature_image and settings.header_background == false %}is-absolute {% endif %} header-fixed--{{ section.settings.fixed_header }} {% if settings.header_background %}header-background--solid{% endif %}">
+    <!-- Announcement Bar -->
     {% if section.settings.promo_text != blank %}
       {% if section.settings.promo_external %}
         <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_blank')">
@@ -136,17 +137,15 @@
             {{ section.settings.promo_text }}
             </p>
         </div>
-
-
       </div>
       <div class="promo_banner-close"></div>
       </div>
     {% endif %}
+    <!-- Utility Bar -->
     <div class="top_bar clearfix">
       {% if section.settings.social_icons_header %}
         {% include 'social-icons' %}
       {% endif %}
-
       <!-- Phone Number -->
       <ul class="menu left">
         {% if section.settings.phone_number != blank %}           
@@ -163,7 +162,6 @@
           {% endfor %}
         {% endif %}
       </ul>
-
       <!-- Cart -->
       {% if section.settings.show_cart %}
         <div class="cart_container">
@@ -308,7 +306,7 @@
                   -->
                 </div>
               </div>
-            </div>
+        </div>
           {% endunless %}
     </div>
       {% endif %}
@@ -335,8 +333,10 @@
       </ul>
     </div>
 
+    <!-- Menu Bar -->
     <div class="main_nav_wrapper">
       <div class="main_nav clearfix menu-position--{{ section.settings.menu_position }} logo-align--{{ section.settings.logo_position }}">
+        <!-- Logo -->
         {% capture logo %}
           <div class="logo text-align--{{ section.settings.logo_alignment }}">
             <a href="{{ shop.url }}" title="{{ shop.name }}">
@@ -351,24 +351,36 @@
             </a>
           </div>
         {% endcapture %}
-
         {% assign vertical_menu = section.settings.vertical_menu %}
-
+        <!-- Menu / Left -->
         {% capture menu_left %}
           {% if vertical_menu %}
             {% include 'vertical-menu' with section.settings.main_linklist %}
           {% else %}
             {% include 'menu' with section.settings.main_linklist %}
           {% endif %}
-        {% endcapture %}
 
+            <!-- Sale Link -->
+            {% if section.settings.sale_text != blank %}
+            <li class="link-sale sublink">
+              <a href="{{ section.settings.sale_url }}">
+                <span class="icon">
+                  <i class="material-icons-outlined"> {{ section.settings.sale_icon }}</i>
+                </span>
+                {{ section.settings.sale_text }}
+              </a>
+            </li>
+          {% endif %}
+
+        {% endcapture %}
+        <!-- Menu / Right -->
         {% capture menu_right %}
           {% if vertical_menu %}
             {% include 'vertical-menu' with section.settings.main_linklist2 %}
           {% else %}
             {% include 'menu' with section.settings.main_linklist2 %}
           {% endif %}
-
+          <!-- Search Bar -->
           {% if section.settings.search_enabled %}
             <li class="search_container" data-autocomplete-{{ settings.enable_autocomplete }}>
               <form action="/search" class="search_form">
@@ -385,6 +397,7 @@
           {% endif %}
         {% endcapture %}
 
+        <!-- Layout (All together now) -->
         {% if section.settings.logo_position == "left" or section.settings.menu_position == "block" %}
           {{ logo }}
           <div class="nav">
@@ -406,6 +419,7 @@
             </ul>
           </div>
         {% endif %}
+        <!-- Search Bar / Second instance - Investigate this -->
         {% if section.settings.search_enabled %}
           <div class="dropdown_container center" data-dropdown="search">
             <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
@@ -426,7 +440,7 @@
   </div>
 </header>
 
-<!-- ---- END CONTENT ---- -->
+<!------ END HEADER ------>
 
 
 
@@ -488,7 +502,6 @@
   {% endif %}
 
 </style>
-
 
 <!-- JSON -->
 {% schema %}
@@ -569,7 +582,7 @@
       "label": "Menu",
       "info": "This menu won't show drop-down items"
     },
-    {
+      {
       "type": "checkbox",
       "id": "show_cart",
       "label": "Show cart",
@@ -627,6 +640,59 @@
      "type": "header",
      "content": "Menus"
     },
+    {
+      "type": "checkbox",
+      "id": "sale_link",
+      "label": "Show sale link",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "sale_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "fireplace",
+          "label": "Fire"
+        },
+        {
+          "value": "local_atm",
+          "label": "Sale"
+        },
+        {
+          "value": "local_shipping",
+          "label": "Shipping"
+        },
+        {
+          "value": "public",
+          "label": "Planet"
+        },
+                {
+          "value": "card_giftcard",
+          "label": "Gift"
+        }
+      ],
+      "default": "card_giftcard"
+    },
+
+    {
+      "type": "richtext",
+      "id": "sale_text",
+      "label": "Tagline",
+      "info": "Maximum character limit is 170"
+    },
+    {
+      "type": "url",
+      "id": "sale_url",
+      "label": "Your link"
+    },
+    {
+      "type": "checkbox",
+      "id": "sale_external",
+      "label": "Open link in new tab",
+      "default": false
+    },
+
     {
       "type": "link_list",
       "id": "main_linklist",

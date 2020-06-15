@@ -9825,6 +9825,15 @@ li.nav-title {
 #mobile_menu {
   height: 100% !important; }
 
+/* Sale */
+.link-sale {
+  padding-left: 20px;
+  color: #FFEFE1 !important; }
+  .link-sale a, .link-sale i {
+    color: #FFEFE1 !important; }
+  .link-sale .icon {
+    padding-top: 0px; }
+
 div.is-absolute {
   position: relative !important; }
 
@@ -9873,7 +9882,7 @@ div.is-absolute {
   .nav ul.menu {
     padding-top: 6px !important; }
 
-.dropdown_link--vertical:hover, .dropdown_link:hover, .top_link:hover {
+.dropdown_link--vertical:hover, .dropdown_link:hover, .top_link:hover, .sublink:hover {
   opacity: .7 !important; }
 
 .vertical-menu li {
