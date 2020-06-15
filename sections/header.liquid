@@ -2,11 +2,39 @@
 ** Header - default view **
 - Static section
 {% endcomment %}
+{% if template contains "index" %}
+  {% assign feature_image = true %}
+{% elsif template contains "collection" %}
+  {% assign feature_image = true %}
+{% elsif template contains "blog" %}
+  {% assign feature_image = true %}
+{% elsif template contains "article" %}
+  {% assign feature_image = true %}
+{% elsif template contains "contact" %}
+  {% assign feature_image = true %}
+{% elsif template contains "product" %}
+  {% assign feature_image = true %}
+{% elsif template contains "gallery" %}
+  {% assign feature_image = true %}
+{% elsif template contains "banner" %}
+  {% assign feature_image = true %}
+{% elsif template contains "details" %}
+  {% assign feature_image = true %}
+{% elsif template contains "faq" %}
+  {% assign feature_image = true %}
+{% elsif template contains "search" %}
+  {% assign feature_image = true %}
+{% elsif template contains "cart" %}
+  {% assign feature_image = true %}
+{% else %}
+  {% assign feature_image = false %}
+{% endif %}
 
 {% assign promo_link = section.settings.promo_link %}
 
+<!-- ---- START CONTENT ---- -->
 
-{% comment %}Mobile navigation{% endcomment %}
+  <!-- Header / Small Screens -->
 <header id="header" class="mobile_nav-fixed--{{ section.settings.fixed_header }}">
   {% if section.settings.promo_text != blank %}
     <div class="promo_banner wood-300 pattern-map">
@@ -19,11 +47,11 @@
             {{ section.settings.promo_text }}
             </p>
         </div>
-
       </div>
       <div class="promo_banner-close"></div>
     </div>
   {% endif %}
+  <!-- Hamburger Menu -->
   <div class="top_bar clearfix">
     <a class="mobile_nav dropdown_link" data-dropdown-rel="menu" data-no-instant="true">
       <div>
@@ -53,8 +81,8 @@
         </div>
       {% endif %}
     </div>
-
   </div>
+  <!-- Search Bar -->
   {% if section.settings.search_enabled %}
     <div class="dropdown_container center" data-dropdown="search">
       <div class="dropdown">
@@ -81,134 +109,53 @@
             {% include 'mobile-menu' with section.settings.main_linklist2 %}
             {% include 'mobile-menu' with section.settings.top_bar_menu %}
         </ul>
-      <!-- /* Main Menu -->
       
-      <!-- Secondary Menu 
-        <ul class="secondary-menu mobile-about">
-          <li class="nav-title"><a href="#">Learn</a></li>
-          <li class="mobile-about-item"><a data-class="Recipes" href="/pages/recipes"> Recipes</a></li>
-          <li class="mobile-about-item"><a data-class="Blog" href="/blogs/news"> Blog</a></li>
-          <li class="mobile-about-item"><a data-class="Our Story" href="/blogs/our-story"> Our Story</a></li>
-        </ul>
-   
-
-
-        <ul class="support-menu mobile-about">
-          <li class="nav-title"><a href="#">Support</a></li>
-          <li class="mobile-about-item"><a data-class="FAQ" href="https://gosun.zendesk.com/hc/en-us/"> FAQ</a></li>
-          <li class="mobile-about-item"><a data-class="Blog" href="/blogs/news"> Blog</a></li>
-          <li class="mobile-about-item"><a data-class="Our Story" href="/blogs/recipes"> Our Story</a></li>
-        </ul>
-       
-
-      
-        <ul class="contact-menu">  
-          <li class="nav-title"><a href="#">Contact us</a></li>
-            {% if section.settings.phone_number != blank %}
-              <li><a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">Call</a></li>
-            {% endif %}
-             <li class="mobile-about-item"><a data-class="Email" href="mailto:support@gosunstove.com">Email</a></li>
-        </ul>
-      
-
-      
-        <ul class="login-menu">  
-            {% if shop.customer_accounts_enabled %}
-              {% if customer %}
-                <li>
-                  <a href="/account" data-no-instant>{{ customer.name }}</a>
-                </li>
-                <li data-no-instant>
-                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                </li>
-              {% else %}
-                <li data-no-instant>
-                  {{ 'layout.customer.log_in' | t | customer_login_link }}
-                </li>
-              {% endif %}
-            {% endif %}
-            {% if settings.show_multiple_currencies %}
-              <li>
-                {% include 'currencies-switcher' %}
-              </li>
-            {% endif %}
-        </ul>
-       Login Menu -->
-
       
       </div>
     </div>
   </div>
 </header>
 
-{% if template contains "index" %}
-  {% assign feature_image = true %}
-{% elsif template contains "collection" %}
-  {% assign feature_image = true %}
-{% elsif template contains "blog" %}
-  {% assign feature_image = true %}
-{% elsif template contains "article" %}
-  {% assign feature_image = true %}
-{% elsif template contains "contact" %}
-  {% assign feature_image = true %}
-{% elsif template contains "product" %}
-  {% assign feature_image = true %}
-{% elsif template contains "gallery" %}
-  {% assign feature_image = true %}
-{% elsif template contains "banner" %}
-  {% assign feature_image = true %}
-{% elsif template contains "details" %}
-  {% assign feature_image = true %}
-{% elsif template contains "faq" %}
-  {% assign feature_image = true %}
-{% elsif template contains "search" %}
-  {% assign feature_image = true %}
-{% elsif template contains "cart" %}
-  {% assign feature_image = true %}
-{% else %}
-  {% assign feature_image = false %}
-{% endif %}
 
-{% comment %}Main navigation{% endcomment %}
+
+  <!-- Header / Large Screens -->
 <header class="{% if feature_image %}feature_image{% endif %} {% if section.settings.logo_home != nil %}secondary_logo--true{% endif %}">
   <div class="header {% if feature_image and settings.header_background == false %}is-absolute {% endif %} header-fixed--{{ section.settings.fixed_header }} {% if settings.header_background %}header-background--solid{% endif %}">
     {% if section.settings.promo_text != blank %}
-
-    {% if section.settings.promo_external %}
-      <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_blank')">
-    {% else %}
-      <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_self')">
-    {% endif %}
-        <div class="promo_banner__content">
-          <div class="info-item info-item--banner">
-            <span class="icon">
-              <i class="material-icons-outlined"> {{ section.settings.promo_icon }}</i>
-            </span>
-            <p>
-             {{ section.settings.promo_text }}
-             </p>
-          </div>
-
-
+      {% if section.settings.promo_external %}
+        <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_blank')">
+      {% else %}
+        <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_self')">
+      {% endif %}
+      <div class="promo_banner__content">
+        <div class="info-item info-item--banner">
+          <span class="icon">
+            <i class="material-icons-outlined"> {{ section.settings.promo_icon }}</i>
+          </span>
+          <p>
+            {{ section.settings.promo_text }}
+            </p>
         </div>
-        <div class="promo_banner-close"></div>
+
+
+      </div>
+      <div class="promo_banner-close"></div>
       </div>
     {% endif %}
     <div class="top_bar clearfix">
       {% if section.settings.social_icons_header %}
         {% include 'social-icons' %}
       {% endif %}
+
+      <!-- Phone Number -->
       <ul class="menu left">
-        {% if section.settings.phone_number != blank %}
-                   
-      <li class="info-item info-item--top-bar">
+        {% if section.settings.phone_number != blank %}           
+          <li class="info-item info-item--top-bar">
             <span class="icon">
               <i class="material-icons-outlined">call</i>
             </span>
             <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
-        </li>
-
-
+          </li>
         {% endif %}
         {% if section.settings.top_bar_menu != blank %}
           {% for link in linklists[section.settings.top_bar_menu].links %}
@@ -216,19 +163,19 @@
           {% endfor %}
         {% endif %}
       </ul>
+
+      <!-- Cart -->
       {% if section.settings.show_cart %}
         <div class="cart_container">
           <a href="/cart" class="mln15 material-icons-outlined {% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
-              <div class="cart_count-bubble"> 
-                <span class="cart_count">{{ cart.item_count }}</span>
-              </div>
+            <div class="cart_count-bubble"> 
+              <span class="cart_count">{{ cart.item_count }}</span>
+            </div>
           </a>
 
-
-          {% assign shipping_value = 4900 %}
+          {% assign shipping_value = 0 %}
           {% assign cart_total = cart.total_price %}
           {% assign shipping_value_left = shipping_value | minus: cart_total %}
-
           
           {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
             <div class="cart_content animated fadeInRight">
@@ -237,7 +184,6 @@
                   <span class="icon">
                     <i class="material-icons-outlined">local_shipping</i>
                   </span>
-                  
                   <p>
                     <!-- Free Shipping Calculator 
                       {% if shipping_value_left > 0 %}
@@ -246,18 +192,15 @@
                         You've got free shipping!
                       {% endif %}
                       -->
-                     Free US shipping over $49
+                     Free, no contact delivery
                   </p>
                 </div>
               </div>
-             
               <hr>
-
               <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
                 <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
               </div>
               <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}{% endif %}">
-              
                 <ul class="cart_items js-cart_items clearfix">
                   {% assign total_saving = 0 %}
                   {% for item in cart.items %}
@@ -293,12 +236,12 @@
                               {% endfor %}
                             {% endif %}
                           </div>
-                        </a>
-                        <div class="left product-quantity-box">
-                          <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
-                          <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
-                          <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
-                        </div>
+                      </a>
+                      <div class="left product-quantity-box">
+                        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                        <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                      </div>
                       </div>
 
                       <strong class="right price">
@@ -311,14 +254,13 @@
                     </li>
                   {% endfor %}
                 </ul>
-                <hr />
+                <hr>
                 <ul>
                   <li class="cart_subtotal js-cart_subtotal">
-                  <span class="base-BodyUppercase">{{ 'layout.general.subtotal' | t }}</span>
-                    <span class="right">
-                      <span class="money">{{ cart.total_price | money }}</span>
-                    </span>
-                    
+                    <span class="base-BodyUppercase">{{ 'layout.general.subtotal' | t }}</span>
+                      <span class="right">
+                        <span class="money">{{ cart.total_price | money }}</span>
+                      </span>
                   </li>
                   {% if settings.display_savings %}
                     <li class="cart_savings sale js-cart_savings">
@@ -327,11 +269,11 @@
                         <span class="right">
                           <span class="money">{{ total_saving | money }}</span>
                         </span>
-                        
                       {% endif %}
                     </li>
                   {% endif %}
                   <li>
+                    
                     {% if settings.display_special_instructions and settings.go_to_checkout %}
                       <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
                     {% endif %}
@@ -339,12 +281,12 @@
                     {% if settings.display_tos_checkbox and settings.go_to_checkout %}
                       <p class="tos">
                         <input type="checkbox" class="tos_agree" id="sliding_agree" required />
-                          <label class="tos_label">
-                            {{ 'cart.general.agree_to_terms_html' | t }}
-                          </label>
-                          {% if settings.tos_page != blank %}
-                            <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
-                          {% endif %}
+                        <label class="tos_label">
+                          {{ 'cart.general.agree_to_terms_html' | t }}
+                        </label>
+                        {% if settings.tos_page != blank %}
+                          <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                        {% endif %}
                       </p>
                     {% endif %}
 
@@ -359,14 +301,16 @@
 
               <div class="cart_info btm0 mb25 width-1-1"> 
                 <div class="info-item clr-sub"> 
+                  <!-- 
                   <p> Int'l: Incoterms are DAP (Delivery at Place) 
                   <br>Customer is responsible for all duties and taxes.
                   </p>
+                  -->
                 </div>
               </div>
             </div>
           {% endunless %}
-        </div>
+    </div>
       {% endif %}
 
       <ul class="menu right">
@@ -376,8 +320,6 @@
           </li>
         {% endif %}
 
-   
-       
         {% if shop.customer_accounts_enabled %}
           <li>
             <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
@@ -484,16 +426,21 @@
   </div>
 </header>
 
+<!-- ---- END CONTENT ---- -->
+
+
+
+
+
+<!-- Styling -->
 <style>
   .main_nav div.logo a {
     padding-top: {{ section.settings.logo_top_padding }}px;
     padding-bottom: {{ section.settings.logo_top_padding }}px;
   }
-
   div.logo img {
     max-width: {{ section.settings.logo_display_width }}px;
   }
-
   .nav {
     {% if section.settings.menu_position == "block" %}
       width: 100%;
@@ -542,8 +489,9 @@
 
 </style>
 
-{% schema %}
 
+<!-- JSON -->
+{% schema %}
 {
   "name": "Header",
   "class": "header-section",
