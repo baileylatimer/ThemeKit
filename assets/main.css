@@ -9873,8 +9873,7 @@ div.is-absolute {
   width: 100%;
   z-index: 999999; }
   .main_nav_wrapper .logo, .main_nav_wrapper .primary_logo, .main_nav_wrapper .secondary_logo {
-    width: 100px;
-    margin-top: 8px; }
+    width: 100px; }
 
 .nav {
   height: 60px;
