@@ -198,24 +198,23 @@
 
           <div class="divider"></div>
 
+          {% if product.price >= 00 %}
+            <div class="info-item--product">
+                <span class="icon">
+                    <i class="material-icons-outlined">local_shipping</i>
+                </span>
+                <a>FREE shipping and FREE returns</a>
+            </div>
+          {% endif %}
 
           <div class="info-item--product">
             <span class="icon">
               <i class="material-icons-outlined">verified_user</i>
             </span>
             <a title="Warranty Policy | GoSun" href="/pages/help-center">
-              Easy, hassle-free returns</a>
+              1-year warranty</a>
           </div>
           
-          {% if product.price >= 5000 %}
-            <div class="info-item--product">
-                <span class="icon">
-                    <i class="material-icons-outlined">local_shipping</i>
-                </span>
-                <a>This item qualifies for FREE shipping</a>
-            </div>
-          {% endif %}
-
           <div class="divider"></div>     
           {{ product.description }}
         </div>

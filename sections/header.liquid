@@ -43,7 +43,7 @@
       <div class="promo_banner__content">
         <div class="info-item info-item--banner">
           <span class="icon">
-            <i class="material-icons-outlined">local_atm</i>
+            <i class="material-icons-outlined">{{ section.settings.promo_icon }}</i>
           </span>
           <p>
             {{ section.settings.promo_text }}
@@ -182,7 +182,7 @@
                   <span class="icon">
                     <i class="material-icons-outlined">local_shipping</i>
                   </span>
-                  <p>
+                  <b>
                     <!-- Free Shipping Calculator 
                       {% if shipping_value_left > 0 %}
                       You're&nbsp;{{ shipping_value_left | money }}&nbsp;away from free shipping!  
@@ -190,8 +190,8 @@
                         You've got free shipping!
                       {% endif %}
                       -->
-                     Free, no contact delivery
-                  </p>
+                      FREE shipping and FREE returns
+                  </b>
                 </div>
               </div>
               <hr>
