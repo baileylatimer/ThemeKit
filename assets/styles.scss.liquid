@@ -1570,7 +1570,6 @@ body.is-active {
     }
     > a, > a:visited, > a:active {
       display: block;
-      font-size: 25px;
       outline: 0;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
@@ -1923,7 +1922,7 @@ select.currencies,
   font-family: {{ settings.nav__font.family }}, {{ settings.nav__font.fallback_families }};
   font-weight: {{ settings.nav__font.weight }};
   font-style: {{ settings.nav__font.style }};
-  font-size: {{ settings.nav_font_size }}px;
+
   text-transform: {{ settings.nav_font_style }};
   color: {{ settings.nav_color }};
   padding-top: 12px;
@@ -2435,9 +2434,9 @@ input[type="submit"].guest_button, input[type="button"].guest_button {
 .dropdown_content p,
 .mobile-mega-menu p {
   font-family: {{ settings.nav__font.family }}, {{ settings.nav__font.fallback_families }};
-  font-size: {{ settings.nav_font_size }}px;
+ 
   font-style: {{ settings.nav__font.style }};
-  color: {{ settings.nav_color }};
+ 
   padding-top: 12px;
   padding-bottom: 12px;
   position: relative;
@@ -2451,6 +2450,7 @@ input[type="submit"].guest_button, input[type="button"].guest_button {
 
 }
 
+/*
 .dropdown_content p,
 .dropdown_content a,
 .dropdown_content a:hover,
@@ -2458,6 +2458,7 @@ input[type="submit"].guest_button, input[type="button"].guest_button {
   font-size: {{ settings.mega_text_font_size }}px;
   letter-spacing: {{ settings.mega_text_letter_spacing }}px;
 }
+*/
 
 .dropdown_column__menu + .dropdown_column__menu {
   margin-top: 10px;
@@ -7237,10 +7238,13 @@ img.footer-logo {
   }
 }
 
-.footer a,
-.footer a:visited {
+.footer a {
   color: {{ settings.sub_footer_link_color }};
   font-size: {{ settings.footer_font_size }}px;
+}
+
+.footer a:visited {
+  color: {{ settings.sub_footer_link_color }};
 }
 
 .footer a:hover,
@@ -8467,7 +8471,7 @@ html.remodal-is-locked {
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 799px) and (max-width: 959px) {
   .nav a,
-  .nav a:visited,
+  .nav a,:visited
   .menu a:hover,
   .nav a:active,
   .nav a:focus {

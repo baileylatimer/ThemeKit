@@ -819,7 +819,7 @@ img, video, svg {
 :root {
   --font-primary: 'cp', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   --text-base-size: 1.25em;
-  --text-scale-ratio: 1.2;
+  --text-scale-ratio: 1.25;
   --text-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
   --text-md: calc(
@@ -8438,9 +8438,8 @@ a.collection-info__caption .product-details {
 /* Typography
 ================================================== */
 /* Tags */
-.bc-sf-filter-option-value,
-.bc-sf-filter-block-title h3, .sidebar-menu ul h3 {
-  font-size: var(--text-sm); }
+.sidebar-menu h3 {
+  font-size: var(--text-md); }
 
 .bc-sf-filter-option-block .bc-sf-filter-block-content .bc-sf-filter-option-box li a {
   overflow: hidden;
@@ -9749,7 +9748,7 @@ Usage: codyhouse.co/license
     opacity: .72 !important; }
 
 .footer p {
-  font-size: 14px !important;
+  font-size: var(--text-sm);
   line-height: 1em !important;
   margin-top: 0; }
 
@@ -9771,7 +9770,7 @@ Usage: codyhouse.co/license
   margin-top: 70px;
   margin-bottom: -30px; }
   .footer_credits a {
-    font-size: 14px !important;
+    font-size: var(--text-sm);
     color: #c69aa5 !important; }
 
 .payment_methods, .footer-logo {
@@ -9861,7 +9860,8 @@ div.is-absolute {
   ================================================== */
 .main_nav {
   background-color: #843043 !important;
-  height: 60px; }
+  height: 60px;
+  width: 100%; }
 
 .main_nav_wrapper {
   background-color: #843043 !important;
@@ -9877,8 +9877,13 @@ div.is-absolute {
     margin-top: 8px; }
 
 .nav {
-  width: auto !important; }
+  height: 60px;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between; }
   .nav ul.menu {
+    height: 100%;
     padding-top: 6px !important; }
 
 .dropdown_link--vertical:hover, .dropdown_link:hover, .top_link:hover, .sublink:hover {
@@ -9911,20 +9916,12 @@ div.is-absolute {
 .menu li.search_container {
   width: 280px !important;
   margin-left: 40px; }
-  @media (min-width: 1280px) {
-    .menu li.search_container {
-      margin-left: 400px; } }
 
 /* Main / Links 
     ================================================== */
 /* Make full height */
 .menu a, .menu a:visited, .menu a:active, #header span.menu_title, .menu a span, select.currencies, .mini_cart span {
   height: 100%; }
-
-.nav {
-  height: 60px; }
-  .nav ul.menu {
-    height: 100%; }
 
 .vertical-menu li {
   height: 100%; }
@@ -10083,9 +10080,6 @@ div.dropdown.menu, .cart_content {
 
 .mega-menu .image-element__wrap {
   width: 120px; }
-
-.dropdown_content a, .dropdown_content p {
-  font-size: var(--text-sm); }
 
 /* #Main Nav - [2-column links]
   ================================================== */

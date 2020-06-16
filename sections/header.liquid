@@ -335,7 +335,7 @@
 
     <!-- Menu Bar -->
     <div class="main_nav_wrapper">
-      <div class="main_nav clearfix menu-position--{{ section.settings.menu_position }} logo-align--{{ section.settings.logo_position }}">
+      <div class=" main_nav clearfix menu-position--{{ section.settings.menu_position }} logo-align--{{ section.settings.logo_position }} max-width-xxxl">
         <!-- Logo -->
         {% capture logo %}
           <div class="logo text-align--{{ section.settings.logo_alignment }}">
@@ -399,12 +399,16 @@
 
         <!-- Layout (All together now) -->
         {% if section.settings.logo_position == "left" or section.settings.menu_position == "block" %}
-          {{ logo }}
+          
           <div class="nav">
-            <ul class="menu {{ section.settings.menu_alignment }} clearfix">
+            <ul class="menu clearfix">
+              {{ logo }}
               {{ menu_left }}
+            </ul>
+            <ul class="menu clearfix">
               {{ menu_right }}
             </ul>
+          
           </div>
         {% else %}
           <div class="nav">
