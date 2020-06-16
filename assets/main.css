@@ -5617,11 +5617,11 @@ input, textarea {
 
 .base-BodyCaption {
   margin-top: -5px !important;
-  font-size: 14px !important;
+  font-size: var(--text-sm);
   color: #616161; }
 
 .base-BodyBlurb {
-  font-size: 14px !important;
+  font-size: var(--text-sm);
   line-height: 21px;
   color: #212121; }
   @media (max-width: 768px) {
@@ -5661,7 +5661,7 @@ h2.title-below {
   text-shadow: none !important; }
   @media (max-width: 992px) {
     .caption .subtitle {
-      font-size: 14px !important; } }
+      font-size: var(--text-sm); } }
 
 .text-center {
   text-align: center;
@@ -5674,7 +5674,7 @@ h2.title-below {
   ================================================== */
 td {
   font-weight: 300;
-  font-size: 14px;
+  font-size: var(--text-sm);
   line-height: 22.4px; }
 
 /* #Pages - Headings/Body
@@ -5782,9 +5782,8 @@ ul:not(.menu .center) .sublink a:not(.parent-link--true) {
   ================================================== */
 .promo_banner p {
   margin-top: 0;
-  display: block;
   line-height: 1;
-  font-size: 14px; }
+  font-size: var(--text-sm); }
 
 /* Footer
   ================================================== */
@@ -5834,7 +5833,7 @@ h2.product_type {
 /* Sale numbers
   ================================================== */
 .was_price span.money {
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 300 !important;
   padding-left: 3px;
   text-decoration: none; }
@@ -6095,7 +6094,7 @@ a.mobile_nav {
 /* Cart quantity icons - was too large */
 .icon-plus:before,
 .icon-minus:before {
-  font-size: 14px !important; }
+  font-size: var(--text-sm); }
 
 /* Button with Icon */
 .info-item {
@@ -7869,7 +7868,7 @@ div.section.collection_description {
 .purchase-details {
   margin-bottom: 40px; }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   .product--overview {
     max-width: 400px;
     margin-left: 90px; } }
@@ -8375,7 +8374,7 @@ a.collection-info__caption .product-details {
 .cart_container .cart_content {
   height: calc(100vh - 80px);
   max-height: 100vh !important;
-  font-size: 14px; }
+  font-size: var(--text-sm); }
 
 /* #Cart - Message
 ================================================== */
@@ -8441,7 +8440,7 @@ a.collection-info__caption .product-details {
 /* Tags */
 .bc-sf-filter-option-value,
 .bc-sf-filter-block-title h3, .sidebar-menu ul h3 {
-  font-size: 14px !important; }
+  font-size: var(--text-sm); }
 
 .bc-sf-filter-option-block .bc-sf-filter-block-content .bc-sf-filter-option-box li a {
   overflow: hidden;
@@ -8556,7 +8555,7 @@ a.collection-info__caption .product-details {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding: 15px 0;
   margin-bottom: var(--space-unit);
-  font-size: 14px !important;
+  font-size: var(--text-sm);
   list-style: none !important; }
   .sidebar-menu ul h3 {
     padding: 10px 30px 0;
@@ -8658,7 +8657,7 @@ button#bc-sf-filter-tree-mobile-button {
 
 .stamped-form-custom-question > label {
   text-transform: none;
-  font-size: 14px; }
+  font-size: var(--text-sm); }
 
 .new-review-form .stamped-form-custom-option-scale label div {
   color: rgba(0, 0, 0, 0.35); }
@@ -9912,7 +9911,7 @@ div.is-absolute {
 .menu li.search_container {
   width: 280px !important;
   margin-left: 40px; }
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     .menu li.search_container {
       margin-left: 400px; } }
 
@@ -10059,9 +10058,6 @@ div.dropdown.menu, .cart_content {
   height: 40px !important; }
   .promo_banner:hover {
     cursor: pointer; }
-  @media (max-width: 768px) {
-    .promo_banner {
-      display: none !important; } }
 
 /* Hide extra text on mobile */
 #header > div:nth-child(1) > div:nth-child(1) > p:nth-child(2) {
@@ -10089,7 +10085,7 @@ div.dropdown.menu, .cart_content {
   width: 120px; }
 
 .dropdown_content a, .dropdown_content p {
-  font-size: 14px !important; }
+  font-size: var(--text-sm); }
 
 /* #Main Nav - [2-column links]
   ================================================== */
@@ -10098,7 +10094,7 @@ div.dropdown.menu, .cart_content {
   @media (min-width: 768px) {
     .mega-menu-2 .dropdown, .mega-menu-3 .dropdown, .mega-menu-4 .dropdown {
       margin-right: 41% !important; } }
-  @media (min-width: 1200px) {
+  @media (min-width: 1280px) {
     .mega-menu-2 .dropdown, .mega-menu-3 .dropdown, .mega-menu-4 .dropdown {
       margin-right: 51% !important; } }
 
