@@ -20,6 +20,7 @@
       <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com" />
       <link rel="preconnect dns-prefetch" href="https://v.shopify.com" />
       <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com" />
+      <link rel="canonical" href="{{ canonical_url }}" />
       {% if settings.enable_shopify_review_comments %}
         <link rel="preconnect dns-prefetch" href="https://productreviews.shopifycdn.com" />
       {% endif %}
@@ -27,23 +28,35 @@
   
 
     <!----------- STYLE ----------->
-      <!-- Stylesheets for Turbo 4.1.5 -->
+      <!-- Stylesheets for Turbo 4.1.5 
+      <link rel="preload" href="{{'app.js' | asset_url }}" as="script" type="text/javascript" >
+      -->
+      
+      <!-- Stylesheets for GoSun | Sol Design System // by Latimer Design  
+      <link rel="preload" href="{{ 'styles.scss.css' | asset_url }}" as="style" type="text/css" />
+      -->  
       {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
-
-      <!-- Stylesheets for GoSun | Sol Design System // by Latimer Design -->
       {{ 'main.css' | asset_url | stylesheet_tag }}
-      {{ 'fonts.scss.css' | asset_url | stylesheet_tag }} 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css">
+      {{ 'fonts.scss.css' | asset_url | stylesheet_tag }}
+      
+      
 
+      {% if template contains 'product' %}
+        <!-- Fancybox / Gallery Lightbox -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css">
+      {% endif %}
+
+      
       <!-- Icons -->
-      <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
       <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
       <script src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script>   
 
-      <!-- Custom Fonts -->
+      <!-- Custom Fonts 
       {% if settings.logo_font contains 'Google' or settings.headline_font contains 'Google' or settings.nav_font contains 'Google' or settings.slideshow_subtitle_font contains 'Google' or settings.regular_font contains 'Google' %}
         <link href="//fonts.googleapis.com/css?family=.|{% if settings.logo_font contains 'Google' %}{{ settings.logo_font | replace: 'Google_', '' | replace: "'", "" }}:light,normal,bold|{% endif %}{% if settings.headline_font contains 'Google' %}{{ settings.headline_font | replace: 'Google_', '' | replace: "'", "" }}:light,normal,bold|{% endif %}{% if settings.nav_font contains 'Google' %}{{ settings.nav_font | replace: 'Google_', '' | replace: "'", "" }}:light,normal,bold|{% endif %}{% if settings.slideshow_subtitle_font contains 'Google' %}{{ settings.slideshow_subtitle_font | replace: 'Google_', '' | replace: "'", "" }}:light,normal,bold|{% endif %}{% if settings.regular_font contains 'Google' %}{{ settings.regular_font | replace: 'Google_', '' | replace: "'", "" }}:light,normal,bold{% endif %}" rel="stylesheet" type="text/css" />
       {% endif %}
+      -->
     <!----------- End STYLE ----------->
 
     
@@ -84,37 +97,15 @@
       <!-- Bing Verification -->	
       <meta name="msvalidate.01" content="C9498BD5F84A663C4AFCC7D08EDF5C4B" />    
     <!----------- End GOOGLE ----------->
-        
-    <!----------- APPS ----------->
-<!-- Affirm -->
-<script>
-  _affirm_config = {
-     public_api_key:  "S9J7IDC3Q5NEL25G",
-     script:          "https://cdn1.affirm.com/js/v2/affirm.js"
-  };
-  (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
-  // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
-  </script>
-  <!-- End Affirm -->
-  
+
+  <!----------- APPS ----------->
+      <!-- Bugsnag -->
+      <script src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
+      <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script>
+
       <!-- Klaviyo -->
         <script type="text/javascript" async 
         src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=hhNY44"></script>
-      <!-- Smartlook Website Visitor Recording Tool  -->
-        <script type="text/javascript">
-            window.smartlook||(function(d) {
-            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-            c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
-            })(document);
-            smartlook('init', '74ecf49129adcbef4004c46d0b09eda4983d98cc');
-        </script>
-      <!-- Currency Switcher -->
-        <script>
-          window.mlvedaShopCurrency = "{{ shop.currency }}";
-          window.shopCurrency = "{{ shop.currency }}";
-          window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
-        </script>
         
       <!-- Hotjar Tracking Code for gosun.co -->
         <script>
@@ -127,18 +118,25 @@
               a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         </script>
-      <!-- Install this snippet AFTER the Hotjar tracking code. -->
-        <script>
-          var userId = your_user_id || null; // Replace your_user_id with your own if available.
-          window.hj('identify', userId, {
-              'Signed up': '2019—06-20Z', // Signup date in ISO-8601 format.
-              // Add your own custom attributes here. Some examples:
-              // 'Last purchase category': 'Electronics', // Send strings with quotes around them.
-              // 'Total purchases': 15, // Send numbers without quotes.
-              // 'Last purchase date': '2019-06-20Z', // Send dates in ISO-8601 format. 
-              // 'Last refund date': null, // Send null when no value exists for a user.
-          });
-          </script>
+     
+
+          {% if template contains 'product'%}
+          <!-- Affirm -->
+            <script>
+              _affirm_config = {
+                public_api_key:  "S9J7IDC3Q5NEL25G",
+                script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+              };
+              (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+              // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
+            </script>
+                  <!-- Currency Switcher -->
+              <script>
+                window.mlvedaShopCurrency = "{{ shop.currency }}";
+                window.shopCurrency = "{{ shop.currency }}";
+                window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+              </script>
+            {% endif %}
     <!----------- End APPS ----------->
     
     <script>
@@ -154,7 +152,7 @@
     </script>    
 
     {% if page_description %}
-      <meta name="description" content="{% if template contains 'search' %} {{ page_title }} - {{ shop.name }} {% else %}{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}{% endif %}" />
+      <meta name="description" content="{% if template contains 'search' %} {{ page_title }} | {{ shop.name }} {% else %}{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}{% endif %}" />
     {% endif %}
 
     <!----------- FAVICON ----------->
@@ -172,8 +170,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
       {% endif %}
     <!----------- End FAVICON ----------->
-
-    <link rel="canonical" href="{{ canonical_url }}" />
+   
 
     {% if template contains 'customer' %}
       {{ "shopify_common.js" | shopify_asset_url | script_tag }}
@@ -187,9 +184,6 @@
     {{ content_for_header }}
 
     {% include 'shogun-head' %}
-
-
-
   </head>
 
     {% if template contains "index" %}
@@ -304,8 +298,10 @@
       <!----------- End SCRIPTS ----------->
     
       <!----------- APPS ----------->
+      {% if template contains 'product' or 'collection'%}
         <!-- Currency Switcher / Accounts -->{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %} {% include 'smile-initializer' %}
         <!-- EasyVideo / Products -->{% include 'easyvideo' %}
+      {% endif %}
         <!-- Flits / Accounts -->{% render 'flits_snippet' %}
         <!-- AfterShip / Shipping --><div id="as-root"></div><script>(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t);r.id=n;r.src="https://button.aftership.com/all.js";i.parentNode.insertBefore(r,i)})(document,"script","aftership-jssdk")</script>
       <!----------- End APPS ----------->
@@ -328,6 +324,7 @@
     {% if settings.show_multiple_currencies %}
       {% include 'currencies' %}
     {% endif %}
+    
     
     <!-- Start of gosun Zendesk Widget script 
     <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> 

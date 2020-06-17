@@ -8,14 +8,9 @@
 
 {% section 'product-template' %}
 
-{% comment %}
-Klaviyo Product Favorite Code
-{% endcomment %}
-
-  
+<!-- Klaviyo Product Favorite -->  
 <script text="text/javascript">
   var _learnq = _learnq || [];
-
   var item = {
     Name: {{ product.title|json }},
     ProductID: {{ product.id|json }},
@@ -26,10 +21,6 @@ Klaviyo Product Favorite Code
     Price: {{ product.price|money|json }},
     CompareAtPrice: {{ product.compare_at_price_max|money|json }}
   }; 
-  
-
-  
-  
   _learnq.push(['track', 'Viewed Product', item]);
   _learnq.push(['trackViewedItem', {
     Title: item.Name,
@@ -44,14 +35,12 @@ Klaviyo Product Favorite Code
     }
   }]);
 </script>
+<!-- END Klaviyo Product Favorite -->  
 
 
 {{product.metafields.shogun.below}}
 
-<div class="bold-brain-widget" data-widget-id="bold-brain-widget-ccFqWQbKNZvlgKEh"></div>
-
 {% comment %}START / Static {% endcomment %}
-
 <section class="width-100 section--page">
 {% if product.metafields.custom_fields["product_list__title"] != blank %}
     <figure class="container" id="{{ product.metafields.custom_fields["product_list__title"] }}">{% include 'include-products' %}</figure>
