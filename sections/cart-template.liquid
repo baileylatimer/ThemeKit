@@ -5,12 +5,14 @@
 <div class="container main content">
   <a name="pagecontent" id="pagecontent"></a>
   
-  <div class="section clearfix">
-    <div class="sixteen columns">
-      <h1>{{ 'cart.general.title' | t }}</h1>
-      <div class="feature_divider"></div>
+  
+  <div class="sixteen columns margin-bottom-lg">
+    <div class="text-component">
+      <h3>Your cart: {{ cart.total_price | money }}</h3>
+      <p>Not ready to check out?&nbsp;<a href="/collections/todays-deals">Continue shopping.</a></p>
     </div>
   </div>
+  
   
   {% if cart.item_count == 0 %}
     <div class="sixteen columns">
@@ -24,7 +26,7 @@
     </div>
   {% else %}
   
-  <form action="#cart" method="post" id="cart_form">
+  <div action="#cart" method="post" id="cart_form">
     <div class="section clearfix">
       <div class="eleven columns medium-down--one-whole cart-items">
         {% assign total_saving = 0 %}
@@ -42,9 +44,9 @@
               </a>
             </div>
             <div class="eleven columns omega cart_content_info">
-              <h3>
+              <h5>
                 <a href="{{ item.url }}">{{ item.product.title }}</a>
-              </h3>
+              </h5>
               {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                 <p class="meta">
                   {% for option in item.product.options %}
@@ -95,17 +97,41 @@
 
       <div class="five columns medium-down--one-whole">
         <div class="section clearfix">
+
+
+          <div class="cart__gift bg-contrast-lower radius-md padding-md flex-column flex items-left">              
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">verified_user</i>
+              <p>1-year limited warranty</p>
+            </div>
+
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">local_shipping</i>
+              <p>FREE shipping and FREE returns</p>
+            </div>
+
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">monetization_on</i>
+              <!-- START / Affirm --> 
+              <p class="affirm-as-low-as" data-page-type="cart" data-amount="{{cart.total_price}}" data-affirm-type="text" data-learnmore-show="true"></p>
+              <!-- END / Affirm --> 
+            </div>
+          </div>
+
+
           <div class="subtotal">
             <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
               <table class="total-line-table">
 
                 <tbody class="total-line-table__tbody">
+                  <!--
                   <tr class="total-line total-line--taxes " data-checkout-taxes="">
                     <th class="total-line__name" scope="row">Taxes</th>
                     <td class="total-line__price">
                       <span class="order-summary__emphasis" >Calculated at next step</span>
                     </td>
                   </tr>
+                  -->
                   <tr class="total-line total-line--shipping">
                     <th class="total-line__name" scope="row">
                       <span> Shipping </span>
@@ -113,21 +139,23 @@
                     <td class="total-line__price">
                       <span class="order-summary__small-text" data-checkout-total-shipping-target="0">
                         {% if cart.total_price >= 0 %}
-                        <p class="money">Free (US only)</p>
+                        <p class="money">FREE</p>
                         {% else %}
                         Calculated at next step
                         {% endif %}
                       </span>
                     </td>
                   </tr>
-                  <tr class="total-line total-line--subtotal">
-                    <th class="total-line__name" scope="row">Discounts</th>
-                    <td class="total-line__price">
-                    <span class="order-summary__emphasis" >
-                      {{ total_saving | money }}
-                    </span>
-                  </td>
-                  </tr>
+                  {% if total_saving > 0 %}
+                    <tr class="total-line total-line--subtotal">
+                      <th class="total-line__name" scope="row">Discounts</th>
+                      <td class="total-line__price">
+                      <span class="order-summary__emphasis" >
+                        {{ total_saving | money }}
+                      </span>
+                    </td>
+                    </tr>
+                  {% endif %}
                 </tbody>
 
                 <tfoot class="total-line-table__footer">
@@ -179,28 +207,28 @@
         {{ section.settings.cart_message }}
       </div>
       {% endif %}
-
-      <div class="order-summary__section"></div>
-
       <p>
-      <button type="submit" class="button action_button add_to_cart" id="checkout" name="checkout">{% if settings.show_lock_icon %}<span class="buttonicon-lock"></span>{% endif %}{{ 'cart.general.checkout' | t }}</button>
+        <button type="submit" class="button action_button add_to_cart" id="checkout" name="checkout">{% if settings.show_lock_icon %}<span class="buttonicon-lock"></span>{% endif %}{{ 'cart.general.checkout' | t }}</button>
       </p>
-
     </div>
-    <div class="order-summary__section">
-    {% if content_for_additional_checkout_buttons %}
-      <p class="text-center clr-sub"> - Or checkout with -</p>
-      <div class="additional-checkout-buttons">
-        {{ content_for_additional_checkout_buttons }}
+
+    <!--
+      <div>
+      {% if content_for_additional_checkout_buttons %}
+        <p class="text-center clr-sub"> - Or checkout with -</p>
+        <div class="additional-checkout-buttons">
+          {{ content_for_additional_checkout_buttons }}
+        </div>
+      {% endif %}
       </div>
-    {% endif %}
-    </div>
-
+    --> 
+    <!--
     {% if cart.item_count > 0 %}
     <div class="featured-links">
       <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}" class="secondary_button">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
     </div>
     {% endif %}
+    -->
     </div>
   </div>
 </div>
@@ -208,9 +236,13 @@
 </form>
 {% endif %}
 
-<!-- Searchanize / Upsell -->
-<div class="searchanise-recommendations" id="8V6J7G4Q2J6H0Y8"></div>
 
+<section class="products-gallery padding-y-lg white">
+  <div class="container max-width-adaptive-lg">
+    <!-- Searchanize / Upsell -->
+    <div class="searchanise-recommendations" id="8V6J7G4Q2J6H0Y8"></div>
+  </div>
+</section>
 
 <!--SteelHouse Tracking Pixel-->
       <!-- INSTALL ON ALL PAGES OF SITE-->
