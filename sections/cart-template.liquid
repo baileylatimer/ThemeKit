@@ -8,8 +8,12 @@
   
   <div class="sixteen columns margin-bottom-lg">
     <div class="text-component">
-      <h3>Your cart: {{ cart.total_price | money }}</h3>
+      {% if cart.item_count == 0 %}
+      <h3>Your cart</h3>
+      {% else %}
+      <h2>Your cart</h2>
       <p>Not ready to check out?&nbsp;<a href="/collections/todays-deals">Continue shopping.</a></p>
+      {% endif %}
     </div>
   </div>
   
@@ -26,7 +30,7 @@
     </div>
   {% else %}
   
-  <div action="#cart" method="post" id="cart_form">
+  <form action="#cart" method="post" id="cart_form">
     <div class="section clearfix">
       <div class="eleven columns medium-down--one-whole cart-items">
         {% assign total_saving = 0 %}
@@ -91,7 +95,9 @@
               </div>
             </div>
           </div>
-          <div class="divider"></div>
+          {% if cart.item_count >= 2 %}
+            <div class="divider"></div>
+          {%  endif %}
         {% endfor %}
       </div>
 
@@ -231,28 +237,31 @@
     -->
     </div>
   </div>
-</div>
-</div>
-</form>
+ 
+  </form>
 {% endif %}
+</div>
+
+{% if cart.item_count >= 1 %}
+  <section class="products-gallery padding-y-lg white">
+    <div class="container max-width-adaptive-lg">
+      <!-- Searchanize / Upsell -->
+      <div class="searchanise-recommendations" id="8V6J7G4Q2J6H0Y8"></div>
+    </div>
+  </section>
+{%  endif %}
 
 
-<section class="products-gallery padding-y-lg white">
-  <div class="container max-width-adaptive-lg">
-    <!-- Searchanize / Upsell -->
-    <div class="searchanise-recommendations" id="8V6J7G4Q2J6H0Y8"></div>
-  </div>
-</section>
+
 
 <!--SteelHouse Tracking Pixel-->
       <!-- INSTALL ON ALL PAGES OF SITE-->
       <script type="text/javascript">
-      (function(){"use strict";var e=null,b="4.0.0",
-      n="13060",
-      additional="",
-      t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.steelhousemedia.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
-      </script>
-</div>
+        (function(){"use strict";var e=null,b="4.0.0",
+        n="13060",
+        additional="",
+        t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.steelhousemedia.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
+        </script>
 
 
 {% schema %}
