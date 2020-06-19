@@ -165,7 +165,7 @@
       "product_types": "Type",
       "tags": "Category",
       "size_chart": "Size Guide",
-      "savings": "You Save",
+      "savings": "You save",
       "products_tagged": "Products tagged {{ tag }}",
       "items_left_count": {
         "one": "left",
@@ -392,7 +392,7 @@
       "empty_cart": "There are no items in your cart.",
       "cart_note": "Order Notes",
       "subtotal": "Subtotal",
-      "savings": "Total Savings",
+      "savings": "You save",
       "pick_a_currency": "Pick a currency",
       "social": "Follow",
       "close_window": "Close",

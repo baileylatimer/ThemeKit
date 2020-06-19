@@ -177,22 +177,8 @@
           
           {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
             <div class="cart_content animated fadeInRight">
-              <div class="cart_info">   
-                <div class="info-item">
-                  <span class="icon">
-                    <i class="material-icons-outlined">local_shipping</i>
-                  </span>
-                  <b>
-                    <!-- Free Shipping Calculator 
-                      {% if shipping_value_left > 0 %}
-                      You're&nbsp;{{ shipping_value_left | money }}&nbsp;away from free shipping!  
-                      {% else %}
-                        You've got free shipping!
-                      {% endif %}
-                      -->
-                      FREE shipping and FREE returns
-                  </b>
-                </div>
+              <div class="cart_info bg-contrast-lower">
+                <h2>Your cart</h2>
               </div>
               <hr>
               <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
@@ -253,6 +239,10 @@
                   {% endfor %}
                 </ul>
                 <hr>
+
+
+
+
                 <ul>
                   <li class="cart_subtotal js-cart_subtotal">
                     <span class="base-BodyUppercase">{{ 'layout.general.subtotal' | t }}</span>
@@ -260,18 +250,36 @@
                         <span class="money">{{ cart.total_price | money }}</span>
                       </span>
                   </li>
+                  <li class="margin-bottom-xl">
+                    <span class="base-BodyUppercase">Shipping</span>
+                    <span class="right">
+                      <span class="money">FREE</span>
+                    </span>
+                  </li>
                   {% if settings.display_savings %}
-                    <li class="cart_savings sale js-cart_savings">
-                      {% if total_saving > 0 %}
-                      <span class="base-BodyUppercase">{{ 'layout.general.savings' | t }}</span>
-                        <span class="right">
-                          <span class="money">{{ total_saving | money }}</span>
-                        </span>
-                      {% endif %}
-                    </li>
-                  {% endif %}
+                  <li class="cart_savings sale js-cart_savings margin-top-sm  margin-bottom-lg">
+                    {% if total_saving > 0 %}
+                      <span class="thumbnail_banner violator--discount right">
+                        <span class="money"></span>You save {{ total_saving | money }}</span>
+                      </span>
+                    {% endif %}
+                  </li>
+                {% endif %}
+
+                  <div class="btm0 cart_bottom">
+                    <!--
+                  <li class="cart_subtotal js-cart_subtotal flex justify-between">
+                    <h3>Your total</h3>
+                      <h3 class="money right">{{ cart.total_price | money }}</h3>
+                  </li>
+                  -->
+
+
+       
+                  
+
+
                   <li>
-                    
                     {% if settings.display_special_instructions and settings.go_to_checkout %}
                       <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
                     {% endif %}
@@ -293,19 +301,16 @@
                     {% else %}
                       <button type="submit" class="button action_button add_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
                     {% endif %}
+
+                    <div class="pill color-contrast-high margin-top-md margin-bottom-lg">
+                      <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">monetization_on</i>
+                      <p class="affirm-as-low-as" data-page-type="cart" data-amount="{{cart.total_price}}" data-affirm-type="text" data-learnmore-show="true"></p>
+                    </div>
+
                   </li>
+                </div>
                 </ul>
               </form>
-
-              <div class="cart_info btm0 mb25 width-1-1"> 
-                <div class="info-item clr-sub"> 
-                  <!-- 
-                  <p> Int'l: Incoterms are DAP (Delivery at Place) 
-                  <br>Customer is responsible for all duties and taxes.
-                  </p>
-                  -->
-                </div>
-              </div>
         </div>
           {% endunless %}
     </div>

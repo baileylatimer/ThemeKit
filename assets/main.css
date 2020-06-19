@@ -8015,6 +8015,10 @@ Usage: codyhouse.co/license
     outline: 2px solid hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
     outline-offset: 2px; }
 
+.cart__gift {
+  width: 100%;
+  height: 100%; }
+
 .cart__gift-message {
   width: 100%;
   margin-top: var(--space-xxs);
@@ -8564,6 +8568,10 @@ a.collection-info__caption .product-details {
   max-height: 100vh !important;
   font-size: var(--text-sm); }
 
+.cart_bottom {
+  width: 100%;
+  max-width: 379px; }
+
 /* #Cart - Message
 ================================================== */
 .cart_info {
@@ -8584,21 +8592,9 @@ a.collection-info__caption .product-details {
 .price .money {
   font-weight: 400; }
 
-/* Subtotal */
-.cart_subtotal .money {
-  font-size: 34px;
-  font-weight: 500; }
-
 /* Checkout button */
 .add_to_cart.action_button {
   font-weight: 700; }
-
-.cart_subtotal.js-cart_subtotal {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px; }
 
 /* Layout
 ================================================== */

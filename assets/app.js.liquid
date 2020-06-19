@@ -484,12 +484,14 @@ $(function() {
           '<span>{{ 'layout.general.subtotal' | t }}</span>';
 
       if(total_savings > 0 ) {
-        cart_savings_html = '<span class="right"><span class="money">' + Shopify.formatMoney(total_savings - discounted_price_total, $('body').data('money-format')) + '</span></span>' +
-            '<span>{{ 'layout.general.savings' | t }}</span>';
+        cart_savings_html = '<span class="thumbnail_banner violator--discount right margin-top-sm margin-bottom-lg">' + '{{ 'layout.general.savings' | t }} &nbsp;' + Shopify.formatMoney(total_savings - discounted_price_total, $('body').data('money-format')) + '</span>';
       } else {
         cart_savings_html = "";
       }
     }
+
+
+
 
     $('.js-cart_items').html(cart_items_html);
     $('.js-cart_subtotal').html(cart_action_html);
