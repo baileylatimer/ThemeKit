@@ -189,34 +189,26 @@
             {% else %}
               {% include 'product-form' with 'product' %}
           {% endif %}
-          
-          <div class="pill clr-sub">
-          <!-- START / Affirm --> 
-            <p class="affirm-as-low-as mtn25" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
-          <!-- END / Affirm --> 
-          </div>
 
-          <div class="divider"></div>
-
-          {% if product.price >= 00 %}
-            <div class="info-item--product">
-                <span class="icon">
-                    <i class="material-icons-outlined">local_shipping</i>
-                </span>
-                <a>FREE shipping and FREE returns</a>
+          <!-- START / Value Proposition --> 
+          <div class="cart__gift bg-contrast-lower radius-md padding-md flex-column flex items-left margin-bottom-md">              
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">verified_user</i>
+              <p>1-year limited warranty</p>
             </div>
-          {% endif %}
-
-          <div class="info-item--product">
-            <span class="icon">
-              <i class="material-icons-outlined">verified_user</i>
-            </span>
-            <a title="Warranty Policy | GoSun" href="/pages/help-center">
-              1-year warranty</a>
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">local_shipping</i>
+              <p>FREE shipping and FREE returns</p>
+            </div>
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">monetization_on</i>
+              <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
+            </div>
           </div>
+          <!-- END / Value Proposition --> 
           
-          <div class="divider"></div>     
           {{ product.description }}
+
         </div>
       </div>
     </section>
