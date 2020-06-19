@@ -49,8 +49,7 @@
       
       <!-- Icons -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
-      <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
-      <script src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script>   
+  
 
       <!-- Custom Fonts 
       {% if settings.logo_font contains 'Google' or settings.headline_font contains 'Google' or settings.nav_font contains 'Google' or settings.slideshow_subtitle_font contains 'Google' or settings.regular_font contains 'Google' %}
@@ -100,7 +99,7 @@
 
   <!----------- APPS ----------->
       <!-- Bugsnag -->
-      <script src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
+      <script defer src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
       <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script>
 
       <!-- Klaviyo -->
@@ -119,10 +118,10 @@
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         </script>
      
-
+        {% unless template contains 'index' %}
           {% if template contains 'product' or 'cart' %}
           <!-- Affirm -->
-            <script>
+          <script defer >
               _affirm_config = {
                 public_api_key:  "S9J7IDC3Q5NEL25G",
                 script:          "https://cdn1.affirm.com/js/v2/affirm.js"
@@ -131,12 +130,13 @@
               // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
             </script>
                   <!-- Currency Switcher -->
-              <script>
+              <script defer >
                 window.mlvedaShopCurrency = "{{ shop.currency }}";
                 window.shopCurrency = "{{ shop.currency }}";
                 window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
               </script>
             {% endif %}
+          {%  endunless %}
     <!----------- End APPS ----------->
     
     <script>
@@ -295,6 +295,8 @@
         <script src="{{ 'utilities.js' | asset_url }}"></script>
         <script src="{{ 'app.js' | asset_url }}"></script>
         <script rel="preconnect" src="{{ 'gosun.js' | asset_url }}"></script>
+        <script defer src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+        <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script> 
       <!----------- End SCRIPTS ----------->
     
       <!----------- APPS ----------->
@@ -325,21 +327,6 @@
       {% include 'currencies' %}
     {% endif %}
     
-    
-    <!-- Start of gosun Zendesk Widget script 
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> 
-    const waitForWidgetInitialised = async () =>
-      new Promise(resolve => {
-        zE(() => {
-          $zopim(() => {
-            $zopim.livechat.hideAll();
-            resolve(true);
-          });
-        });
-      });
-    </script>
-     End of gosun Zendesk Widget script -->
-
   </body>
 </html>
 {% endcapture %}
