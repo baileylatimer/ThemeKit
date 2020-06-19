@@ -93,7 +93,7 @@ img, video, svg {
   max-width: 100%; }
 
 [data-theme] {
-  background-color: var(--color-bg, #f7f7f7);
+  background-color: var(--color-bg, white);
   color: var(--color-contrast-high, #313135); }
 
 :root {
@@ -1810,6 +1810,12 @@ html:not(.js) .no-js\:is-hidden {
 .text-capitalize {
   text-transform: capitalize; }
 
+.text-titlecase {
+  text-transform: lowercase; }
+
+.text-titlecase::first-letter {
+  text-transform: uppercase; }
+
 .letter-spacing-sm {
   letter-spacing: -0.05em; }
 
@@ -1920,6 +1926,9 @@ html:not(.js) .no-js\:is-hidden {
 
 .color-inherit {
   color: inherit; }
+
+.white {
+  background-color: white; }
 
 .color-bg {
   color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), var(--color-o, 1)); }
@@ -5245,7 +5254,7 @@ html:not(.js) .no-js\:is-hidden {
   background: #c75724 !important; }
 
 .leaf {
-  background: #686936 !important; }
+  background: #4b4c22 !important; }
 
 .honey {
   background: #eaaa00 !important; }
@@ -5263,7 +5272,7 @@ html:not(.js) .no-js\:is-hidden {
   background: #ffd9b8 !important; }
 
 .ocean {
-  background: #0491e5 !important; }
+  background: #0B4D6B !important; }
 
 .cherry-900 {
   background: #d9120f !important; }
@@ -5314,7 +5323,7 @@ html:not(.js) .no-js\:is-hidden {
   background-blend-mode: multiply !important; }
 
 .pattern-light {
-  background-image: url("https://cdn.shopify.com/s/files/1/0789/1333/files/Transparent_Light-2.png?v=1584905972") !important;
+  background-image: url("https://cdn.shopify.com/s/files/1/0789/1333/files/Transparent_Light_min.png?v=1592582698") !important;
   background-blend-mode: multiply !important; }
 
 .stripe--dark {
@@ -5635,7 +5644,11 @@ input, textarea {
   margin: 0 0 10px !important;
   line-height: 32px !important;
   color: #212121;
-  transition: color .1s; }
+  transition: color .1s;
+  -webkit-transition: color .1s;
+  -moz-transition: color .1s;
+  -ms-transition: color .1s;
+  -o-transition: color .1s; }
 
 .base-BodyUppercase {
   font-weight: 500;
@@ -5673,9 +5686,7 @@ h2.title-below {
 /* #Table- Cells
   ================================================== */
 td {
-  font-weight: 300;
-  font-size: var(--text-sm);
-  line-height: 22.4px; }
+  font-weight: 300; }
 
 /* #Pages - Headings/Body
   ================================================== */
@@ -5745,7 +5756,7 @@ h6.article-type {
       font: 400 14px cp; } }
 
 .money {
-  font: 600 16px cp; }
+  font-weight: 500; }
 
 .thumbnail .price {
   display: inline-block !important; }
@@ -7862,6 +7873,184 @@ div.section.collection_description {
 */
 .product_gallery_nav .gallery-cell {
   max-width: 60px; }
+
+.link-fx-5 {
+  display: inline-block;
+  padding: 4px 0;
+  text-decoration: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4' viewBox='0 0 16 4'%3E%3Cpath d='M0,3.5c4,0,4-3,8-3s4,3,8,3' fill='none' stroke='%232a6df4' opacity='0.5' stroke-miterlimit='10'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: 0px 100%;
+  background-size: 0; }
+  .link-fx-5:hover {
+    background-size: 16px 4px;
+    animation: link-fx-5-animation .4s linear infinite; }
+
+@keyframes link-fx-5-animation {
+  from {
+    background-position: 0px 100%; }
+  to {
+    background-position: 16px 100%; } }
+
+/* -------------------------------- 
+
+File#: _1_product-card
+Title: Product Card
+Descr: A selection of product information used as teasers for further content
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.prod-card {
+  position: relative; }
+
+.prod-card__img-link {
+  text-decoration: none;
+  display: block; }
+  .prod-card__img-link:hover .prod-card__img {
+    opacity: 0.85; }
+
+.prod-card__img {
+  transition: opacity .2s; }
+  .prod-card__img img {
+    display: block;
+    width: 100%; }
+
+.prod-card__badge {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95);
+  padding: var(--space-xxs) var(--space-sm);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-contrast-medium);
+  font-weight: 500; }
+
+.prod-card__content {
+  padding: var(--space-sm); }
+  .prod-card__content a {
+    color: inherit; }
+
+.prod-card__price--old {
+  color: var(--color-accent);
+  text-decoration: line-through; }
+  .prod-card__price--old::before {
+    content: 'original price';
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%); }
+
+.prod-card__price--new {
+  text-decoration: none; }
+  .prod-card__price--new::before {
+    content: 'discounted price';
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%); }
+
+/* -------------------------------- 
+
+File#: _2_cart
+Title: Cart
+Descr: Cart template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --cart-product-image-size: 96px; }
+  @media (min-width: 768px) {
+    :root {
+      --cart-product-image-size: 128px; } }
+
+.cart {
+  position: relative;
+  z-index: 1; }
+
+.cart__product {
+  border-bottom: 1px solid var(--color-contrast-lower); }
+  .cart__product:first-child {
+    border-top: 1px solid var(--color-contrast-lower); }
+
+.cart__product-img {
+  width: var(--cart-product-image-size);
+  flex-shrink: 0; }
+  .cart__product-img a, .cart__product-img img {
+    display: block;
+    width: 100%; }
+  .cart__product-img a {
+    overflow: hidden;
+    transition: opacity .2s; }
+  .cart__product-img a:hover {
+    opacity: 0.85; }
+
+.cart__product-info {
+  flex-grow: 1;
+  display: grid;
+  grid-gap: var(--space-xs); }
+
+.cart__product-tot {
+  display: grid;
+  grid-gap: var(--space-xs); }
+
+.cart__select {
+  font-size: var(--text-sm);
+  width: 6em; }
+
+.cart__remove-btn {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  cursor: pointer; }
+  .cart__remove-btn:hover {
+    text-decoration: underline; }
+  .cart__remove-btn:focus {
+    outline: 2px solid hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
+    outline-offset: 2px; }
+
+.cart__gift-message {
+  width: 100%;
+  margin-top: var(--space-xxs);
+  margin-bottom: var(--space-sm);
+  display: none; }
+
+.cart__gift .radio:checked ~ .cart__gift-message {
+  display: block; }
+
+@media (min-width: 425px) {
+  .cart__product-info {
+    grid-template-columns: 1fr auto;
+    grid-gap: var(--space-md);
+    justify-content: space-between;
+    align-items: start; }
+  .cart__product-tot {
+    text-align: right; }
+  .cart__select {
+    margin-left: auto; } }
+
+@media (min-width: 576px) {
+  .cart__product, .cart__product-info {
+    align-items: center; }
+  .cart__product-tot {
+    grid-template-columns: auto minmax(6em, auto);
+    grid-gap: var(--space-sm); }
+  .cart__select {
+    align-self: start; } }
+
+@media (min-width: 768px) {
+  .cart__subtotal {
+    position: sticky;
+    top: var(--space-md);
+    background-color: var(--color-contrast-lower);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm); } }
 
 /* Button spacing */
 .purchase-details {
@@ -10550,7 +10739,14 @@ img.logo__image.logo__image--small {
 .order-summary__section {
   padding-top: var(--space-unit);
   padding-bottom: 20px;
-  border-top: 1px solid rgba(175, 175, 175, 0.34); }
+  border-bottom: 1px solid #e4e6e8; }
+  .order-summary__section:after {
+    content: "";
+    display: block;
+    bottom: -2px;
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid #fff; }
 
 /* #Checkout / Product List
 ================================================== */
@@ -10752,6 +10948,12 @@ Usage: codyhouse.co/license
       background-position: center bottom;
       height: 100vh; } }
 
+.snize-recommendation-title {
+  text-transform: lowercase !important; }
+
+.snize-recommendation-title::first-letter {
+  text-transform: uppercase !important; }
+
 .grape-0 .split-banner--content {
   background-color: #843043; }
 
@@ -10793,24 +10995,24 @@ Usage: codyhouse.co/license
   background-color: #f4f0ea; }
 
 .ocean-0 .split-banner--content {
-  background-color: #05a3eb; }
+  background-color: #5D82A6; }
 
 .ocean-0 .subnav:before {
   background-color: #0177dd; }
 
 .ocean-0 .subnav__link.active-tab {
-  color: #05a3eb;
-  background-color: #e1f4fd; }
+  color: #5D82A6;
+  background-color: #E8F3FF; }
   .ocean-0 .subnav__link.active-tab:hover {
-    color: #05a3eb;
-    background-color: #e1f4fd; }
+    color: #5D82A6;
+    background-color: #E8F3FF; }
 
 .ocean-0 .prod-desc li:before {
   color: #50bff1; }
 
 .ocean-0 .toggle:hover {
-  color: #05a3eb;
-  background-color: #e1f4fd; }
+  color: #5D82A6;
+  background-color: #E8F3FF; }
 
 .tundra-0 .split-banner--content {
   background-color: #205e71; }
