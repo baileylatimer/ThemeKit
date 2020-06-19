@@ -5254,7 +5254,7 @@ html:not(.js) .no-js\:is-hidden {
   background: #c75724 !important; }
 
 .leaf {
-  background: #686936 !important; }
+  background: #4b4c22 !important; }
 
 .honey {
   background: #eaaa00 !important; }
@@ -5272,7 +5272,7 @@ html:not(.js) .no-js\:is-hidden {
   background: #ffd9b8 !important; }
 
 .ocean {
-  background: #0491e5 !important; }
+  background: #0B4D6B !important; }
 
 .cherry-900 {
   background: #d9120f !important; }
@@ -10995,24 +10995,24 @@ Usage: codyhouse.co/license
   background-color: #f4f0ea; }
 
 .ocean-0 .split-banner--content {
-  background-color: #05a3eb; }
+  background-color: #5D82A6; }
 
 .ocean-0 .subnav:before {
   background-color: #0177dd; }
 
 .ocean-0 .subnav__link.active-tab {
-  color: #05a3eb;
-  background-color: #e1f4fd; }
+  color: #5D82A6;
+  background-color: #E8F3FF; }
   .ocean-0 .subnav__link.active-tab:hover {
-    color: #05a3eb;
-    background-color: #e1f4fd; }
+    color: #5D82A6;
+    background-color: #E8F3FF; }
 
 .ocean-0 .prod-desc li:before {
   color: #50bff1; }
 
 .ocean-0 .toggle:hover {
-  color: #05a3eb;
-  background-color: #e1f4fd; }
+  color: #5D82A6;
+  background-color: #E8F3FF; }
 
 .tundra-0 .split-banner--content {
   background-color: #205e71; }
