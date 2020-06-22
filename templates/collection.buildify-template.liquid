@@ -1,8 +1,63 @@
-{% if collection.metafields.bdf_devit["bdf_landing_layout"] != blank %}
-    {% layout 'buildify-layout' %}
-{% endif %}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+{% include 'shogun-products', content: collection %}
+{{collection.metafields.shogun.above}}
 
-<!-- SKIP_ON_LANGSHOP_FOUND -->
-{{ collection.description }}
-<!-- /SKIP_ON_LANGSHOP_FOUND -->
 
+
+<div class="grid gap-sm margin-auto">
+    <div class="col-9@lg">
+        <div itemtype="http://schema.org/ItemList" class="">
+            
+            {% include 'product-loop', sidebar: sidebar %}
+        </div>
+    </div>
+</div>
+
+{{collection.metafields.shogun.below}} 
+
+
+<!-- 4 info points -->
+<section class="position-relative z-index-1 padding-y-xxl">
+    <div class="container max-width-adaptive-lg">
+      <ul class="grid gap-lg">
+        <li class="col-6@sm col-3@md">
+          <div class="text-component text-center text-sm@md">
+            <svg class="icon icon--lg color-contrast-medium" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-linejoin="miter"><line x1="31" y1="38" x2="17" y2="38"></line><polyline points="29 13 40 13 46 24 46 37.999 41 38"></polyline><polyline points="7 38 2 38 2 5 29 5 29 28"></polyline><circle cx="36" cy="38" r="5" stroke="var(--color-contrast-high)"></circle><circle cx="12" cy="38" r="5" stroke="var(--color-contrast-high)"></circle><polyline points="34 18 34 24 40 24" stroke="var(--color-contrast-high)"></polyline></g></svg>
+            <h4 class="font-primary font-medium">Free Delivery</h4>
+            <p class="color-contrast-medium">Free shipping for orders over $50</p>
+          </div>
+        </li>
+
+        <li class="col-6@sm col-3@md">
+          <div class="text-component text-center text-sm@md">
+            <svg class="icon icon--lg color-contrast-medium" viewBox="0 0 48 48" aria-hidden="true"><g stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" stroke="currentColor" fill="none" stroke-miterlimit="10"><line x1="24" y1="11" x2="24" y2="37" stroke="var(--color-contrast-high)"></line><path d="M30,15.41c-2.912-1.6-12.085-2.8-12.085,2.719,0,6.6,11.648,4.271,11.648,10.095s-7.571,5.387-12.813,3.493" stroke="var(--color-contrast-high)"></path><polygon points="41.85 41.85 34.5 42.9 35.55 35.55 41.85 41.85" stroke-linecap="butt"></polygon><polygon points="12.45 12.45 13.5 5.1 6.15 6.15 12.45 12.45" stroke-linecap="butt"></polygon><path d="M38.849,38.849A21,21,0,0,0,24,3" stroke-linecap="butt"></path><path d="M9.151,9.151A21,21,0,0,0,24,45" stroke-linecap="butt"></path></g></svg>
+            <h4 class="font-primary font-medium">Refunds</h4>
+            <p class="color-contrast-medium">30 days money back guarantee</p>
+          </div>
+        </li>
+
+        <li class="col-6@sm col-3@md">
+          <div class="text-component text-center text-sm@md">
+            <svg class="icon icon--lg color-contrast-medium" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" stroke="currentColor"><polygon points=" 46,2 22,2 22,23 31,16 46,16 " stroke="var(--color-contrast-high)"></polygon><path d="M20,43.672 c0-1.208-0.529-2.357-1.476-3.108C17.078,39.416,14.57,38,11,38s-6.078,1.416-7.524,2.564C2.529,41.315,2,42.464,2,43.672V46h18 V43.672z"></path><circle cx="11" cy="28" r="5"></circle><path d="M46,43.672 c0-1.208-0.529-2.357-1.476-3.108C43.078,39.416,40.57,38,37,38s-6.078,1.416-7.524,2.564C28.529,41.315,28,42.464,28,43.672V46h18 V43.672z"></path> <circle cx="37" cy="28" r="5"></circle></g></svg>
+            <h4 class="font-primary font-medium">Refer a Friend</h4>
+            <p class="color-contrast-medium">Earn a 10% commission</p>
+          </div>
+        </li>
+
+        <li class="col-6@sm col-3@md">
+          <div class="text-component text-center text-sm@md">
+            <svg class="icon icon--lg color-contrast-medium" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" stroke="currentColor"><polyline points="19 9 3 9 3 45 39 45 39 29"></polyline><polygon points="23 32 13 35 16 25 38 3 45 10 23 32" stroke="var(--color-contrast-high)"></polygon></g></svg>
+            <h4 class="font-primary font-medium">Get Help Buying</h4>
+            <p class="color-contrast-medium">Have a question? <a class="color-contrast-high" href="#0">Contact Us</a></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+
+
+  
