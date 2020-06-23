@@ -3,11 +3,12 @@
     <div class="video-wrapper">
         <img  id="video-cover" src='{{ page.metafields.custom_fields["page_video_cover"] }}' alt="{{ page.metafields.custom_fields["page_video_title"] }}">
         <iframe id="player" width="560" height="315" src='{{ page.metafields.custom_fields["page_video_embed"] }}' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <button id="play" class="play-btn">
-            <i class="material-icons">
-            play_circle_outline
-            </i>
-	    </button>
+        <div id="play" class="btn-wrap">
+            <div class="play-btn">
+              <div class="play-icon"></div>
+            </div>
+            <div class="play-btn-pulse"></div>
+          </div>
     </div>
     <h2 class="video-header"> <b>Watch: &nbsp;</b> {{ page.metafields.custom_fields["page_video_title"] }} </h2>
     
