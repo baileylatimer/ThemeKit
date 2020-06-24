@@ -1804,7 +1804,14 @@ html:not(.js) .no-js\:is-hidden {
   white-space: nowrap; }
 
 .text-uppercase {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  transform: scale(1, 0.93);
+  -webkit-transform: scale(1, 0.93);
+  -moz-transform: scale(1, 0.93);
+  -ms-transform: scale(1, 0.93);
+  -o-transform: scale(1, 0.93); }
 
 .text-capitalize {
   text-transform: capitalize; }
@@ -6885,7 +6892,6 @@ Usage: codyhouse.co/license
   height: 100%;
   padding: 20px 40px;
   margin: 0px;
-  text-align: left;
   padding-left: 6%;
   padding-right: 10%; }
   @media (min-width: 992px) {
@@ -6893,9 +6899,6 @@ Usage: codyhouse.co/license
       max-width: calc(.5 * 1250px);
       width: 60%;
       height: 100%; } }
-  .intro_description p {
-    color: #fff;
-    letter-spacing: -0.03em; }
 
 .banner img {
   position: relative; }
