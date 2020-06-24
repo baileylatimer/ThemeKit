@@ -135,7 +135,7 @@
           </span>
           <p>
             {{ section.settings.promo_text }}
-            </p>
+          </p>
         </div>
       </div>
       <div class="promo_banner-close"></div>
@@ -170,11 +170,9 @@
               <span class="cart_count">{{ cart.item_count }}</span>
             </div>
           </a>
-
           {% assign shipping_value = 0 %}
           {% assign cart_total = cart.total_price %}
           {% assign shipping_value_left = shipping_value | minus: cart_total %}
-          
           {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
             <div class="cart_content animated fadeInRight">
               <div class="cart_info bg-contrast-lower">
@@ -226,22 +224,18 @@
                         <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
                         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
                       </div>
-                      </div>
+            </div>
 
                       <strong class="right price">
                         {% if item.price < item.variant.compare_at_price %}
                           <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
                         {% endif %}
-
                         <span class="money">{{ item.price | money }}</span>
                       </strong>
                     </li>
                   {% endfor %}
                 </ul>
                 <hr>
-
-
-
 
                 <ul>
                   <li class="cart_subtotal js-cart_subtotal">
@@ -273,11 +267,6 @@
                       <h3 class="money right">{{ cart.total_price | money }}</h3>
                   </li>
                   -->
-
-
-       
-                  
-
 
                   <li>
                     {% if settings.display_special_instructions and settings.go_to_checkout %}
@@ -313,29 +302,29 @@
               </form>
         </div>
           {% endunless %}
+        <ul class="menu right">
+          {% if settings.show_multiple_currencies %}
+            <li>
+              {% include 'currencies-switcher' %}
+            </li>
+          {% endif %}
+  
+          {% if shop.customer_accounts_enabled %}
+            <li>
+              <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
+            </li>
+          {% endif %}
+  
+          <li class="info-item info-item--top-bar pointer" onclick="window.open('/account?p=1#wishlist', '_self')">
+            <span class="icon">
+              <i class="material-icons-outlined">favorite_border</i>
+            </span>
+          </li>
+        </ul>
     </div>
       {% endif %}
 
-      <ul class="menu right">
-        {% if settings.show_multiple_currencies %}
-          <li>
-            {% include 'currencies-switcher' %}
-          </li>
-        {% endif %}
 
-        {% if shop.customer_accounts_enabled %}
-          <li>
-            <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
-          </li>
-        {% endif %}
-
-        <li class="info-item info-item--top-bar pointer" onclick="window.open('/account?p=1#wishlist', '_self')">
-          <span class="icon">
-            <i class="material-icons-outlined">favorite_border</i>
-          </span>
-       </li>
-
-      </ul>
     </div>
 
     <!-- Menu Bar -->
