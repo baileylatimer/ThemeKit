@@ -297,7 +297,7 @@
                     {% endif %}
 
                     {% if settings.go_to_checkout %}
-                      <button type="submit" class="button action_button add_to_cart" id="go_to_checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                      <button type="submit" class="button action_button add_to_cart" id="checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
                     {% else %}
                       <button type="submit" class="button action_button add_to_cart" id="go_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
                     {% endif %}
