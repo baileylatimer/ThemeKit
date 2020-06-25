@@ -161,6 +161,7 @@
             </span>
             <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
           </li>
+          
         {% endif %}
         {% if section.settings.top_bar_menu != blank %}
           {% for link in linklists[section.settings.top_bar_menu].links %}
