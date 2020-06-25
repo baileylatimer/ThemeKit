@@ -52,9 +52,9 @@
                 <p class="color-contrast-medium text-uppercase">{{ overline }}</p>
             {% endif %}
             {% if title != blank %}
-                <h1 class="split-banner--headline">
-                  {{ title }}
-                </h1>
+            <h1 class="split-banner--headline">
+              {{ title }}
+            </h1>
             {% endif %}
             {% if subtitle != blank %}
               <div class="color-contrast-high text-lg"> {{ subtitle }}</div>
@@ -92,12 +92,14 @@
             <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} pattern-map">
         {% endif %}
         
-            <div class="section clearfix intro_description banner_description text-component left"> 
+            <div class="section clearfix intro_description banner_description text-component {% if banner_columns == "3" %} center {% endif %} {% if banner_columns == "2" %} left {% endif %}"> 
               {% if overline != blank %}
                 <p class="color-contrast-medium text-uppercase">{{ overline }}</p>
               {% endif %}
               {% if title != blank %}
-                  <h1 class="split-banner--headline">{{ title }}</h1>
+              <h1 class="split-banner--headline">
+                {{title}}
+              </h1>
               {% endif %}
                 {% if subtitle != blank %}
                   <div class="color-contrast-high text-lg"> {{ subtitle }}</div>
