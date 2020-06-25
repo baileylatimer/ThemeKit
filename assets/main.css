@@ -902,7 +902,7 @@ u {
 .text-component div {
   font-size: calc((100%)* 1.2);
   line-height: calc(var(--body-line-height) * var(--line-height-multiplier, 1));
-  margin-bottom: var(--space-lg); }
+  margin-bottom: var(--space-md); }
 
 .text-component h1, .text-component h2, .text-component h3, .text-component h4 {
   line-height: calc(var(--heading-line-height) * var(--line-height-multiplier, 1));

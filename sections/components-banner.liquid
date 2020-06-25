@@ -61,7 +61,7 @@
             {% endif %}
             <div class="split-banner--action">
               {% if button1 != blank %}
-                <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }}   split-banner--button">
                   {{ button1 }}
                 </a>
               {% endif %}
@@ -106,12 +106,12 @@
                 {% endif %}
                 <div class="split-banner--action btn-group">
                   {% if button1 != blank %}
-                    <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                    <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }}   split-banner--button">
                         {{ button1 }}
                     </a>
                     {% endif %}
                     {% if button2 != blank %}
-                    <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
+                    <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -{{ text_color }}   split-banner--button">
                         {{ button2 }}
                     </a>
                   {% endif %}
@@ -130,7 +130,7 @@
            
     {% unless button1_link != blank %}
         {% if button1_link != blank and button1 == blank %}
-            <a href="#" class="button -{{ text_color }} -hollow split-banner--button ">
+            <a href="#" class="button -{{ text_color }}  split-banner--button ">
                 {{ button1 }}
             </a>
         {% endif %}
