@@ -137,6 +137,10 @@
               </script>
             {% endif %}
           {%  endunless %}
+
+          {% unless template contains 'index' or 'checkout' %}
+            <!-- Zendesk / Support --> <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> </script>
+          {% endunless %}
     <!----------- End APPS ----------->
     
     <script>

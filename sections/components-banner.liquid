@@ -6,6 +6,7 @@
   {% assign id = block.id %}
   {% assign wide_display = block.settings.wide_display %}
   {% assign image = block.settings.image %}
+  {% assign overline = block.settings.overline %}
   {% assign title = block.settings.title %}
   {% assign subtitle = block.settings.subtitle %}
   {% assign caption_background = block.settings.caption_background %}
@@ -19,6 +20,7 @@
   {% assign id = section.id %}
   {% assign wide_display = section.settings.wide_display %}
   {% assign image = section.settings.image %}
+  {% assign overline = section.settings.overline %}
   {% assign title = section.settings.title %}
   {% assign subtitle = section.settings.subtitle %}
   {% assign caption_background = section.settings.caption_background %}
@@ -31,7 +33,7 @@
 {% endif %}
 
 {% if section.settings.hero_external %}
-        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--true mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
+        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} page_banner tri_banner nav-shadow mobile--true mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
     {% else %}
         <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} page_banner tri_banner nav-shadow mobile--true mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_self')" {% endif %}>
 {% endif %}
@@ -44,47 +46,44 @@
         {% endif %}
     </div>
     {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
-        <div class="width-1-1 split-banner split-banner--content {{ background_color }} pattern-map">
-            <div class="section clearfix intro_description banner_description text-component"> 
-                
-                {% if title != blank %}
-                    <h1 class="split-banner--headline">
-                        {{ title }}
-                    </h1>
-                {% endif %}
-                {% if subtitle != blank %}
-                  <div class="split-banner--text text-lg"> {{ subtitle }}</div>
-                {% endif %}
-                <div class="split-banner--action">
-                    {% if button1 != blank %}
-                        <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
-                            {{ button1 }}
-                        </a>
-                        {% endif %}
-                </div>           
-            </div>
-        </div>
+      <div class="width-1-1 split-banner split-banner--content {{ background_color }} pattern-map">
+          <div class="section clearfix intro_description banner_description text-component center align-center"> 
+            {% if overline != blank %}
+                <p class="color-contrast-medium text-uppercase">{{ overline }}</p>
+            {% endif %}
+            {% if title != blank %}
+            <h1 class="split-banner--headline">
+              {{ title }}
+            </h1>
+            {% endif %}
+            {% if subtitle != blank %}
+              <div class="color-contrast-high text-lg"> {{ subtitle }}</div>
+            {% endif %}
+            <div class="split-banner--action">
+              {% if button1 != blank %}
+                <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }}   split-banner--button">
+                  {{ button1 }}
+                </a>
+              {% endif %}
+            </div>           
+          </div>
+      </div>
     {% endunless %}
 </section>
 
 
 
-
-
-
-
-
 {% if section.settings.hero_external %}
-        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
-    {% else %}
-        <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} center page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_self')" {% endif %}>
+  <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_blank')" {% endif %}>
+{% else %}
+  <section id="banner-{{id}}" class="text-{{ text_color }} banner full-width--{{ wide_display }} page_banner tri_banner nav-shadow mobile--false mb25  pointer" {% if button1_link != blank %} onclick="window.open('{{ button1_link }}', '_self')" {% endif %}>
 {% endif %}
 
-    {% if banner_columns == "3" %}
-        <div class="width-1-3 split-banner split-banner--img left no-filter"> 
-            <img src="https://cdn.shopify.com/s/files/1/0789/1333/files/Sport_Picnic.jpg?19330" alt="Senior citizen cooks chicken recipe in GoSun Sport Solar Oven">
-        </div>
-    {% endif %}
+  {% if banner_columns == "3" %}
+    <div class="width-1-3 split-banner split-banner--img left no-filter"> 
+      <img src="https://cdn.shopify.com/s/files/1/0789/1333/files/Sport_Picnic.jpg?19330" alt="Senior citizen cooks chicken recipe in GoSun Sport Solar Oven">
+    </div>
+  {% endif %}
 
     {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
         {% if banner_columns == "3" %}
@@ -93,26 +92,29 @@
             <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} pattern-map">
         {% endif %}
         
-            <div class="section clearfix intro_description banner_description  text-component"> 
-                {% if title != blank %}
-                    <h1 class="split-banner--headline">
-                        {{ title }}
-                    </h1>
-                {% endif %}
+            <div class="section clearfix intro_description banner_description text-component {% if banner_columns == "3" %} center {% endif %} {% if banner_columns == "2" %} left {% endif %}"> 
+              {% if overline != blank %}
+                <p class="color-contrast-medium text-uppercase">{{ overline }}</p>
+              {% endif %}
+              {% if title != blank %}
+              <h1 class="split-banner--headline">
+                {{title}}
+              </h1>
+              {% endif %}
                 {% if subtitle != blank %}
-                  <div class="split-banner--text text-lg"> {{ subtitle }}</div>
+                  <div class="color-contrast-high text-lg"> {{ subtitle }}</div>
                 {% endif %}
                 <div class="split-banner--action btn-group">
-                    {% if button1 != blank %}
-                        <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
-                            {{ button1 }}
-                        </a>
-                        {% endif %}
-                        {% if button2 != blank %}
-                        <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -{{ text_color }} -hollow  split-banner--button">
-                            {{ button2 }}
-                        </a>
+                  {% if button1 != blank %}
+                    <a {% if button1_link != blank %}href="#"{% endif %} class="button -{{ text_color }}   split-banner--button">
+                        {{ button1 }}
+                    </a>
                     {% endif %}
+                    {% if button2 != blank %}
+                    <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="button -{{ text_color }}   split-banner--button">
+                        {{ button2 }}
+                    </a>
+                  {% endif %}
                 </div>           
             </div>
         </div>
@@ -128,7 +130,7 @@
            
     {% unless button1_link != blank %}
         {% if button1_link != blank and button1 == blank %}
-            <a href="#" class="button -{{ text_color }} -hollow split-banner--button ">
+            <a href="#" class="button -{{ text_color }}  split-banner--button ">
                 {{ button1 }}
             </a>
         {% endif %}
@@ -145,6 +147,44 @@
   "name": "Banner",
   "class": "image-with-text-overlay-section under-menu",
   "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "670x380 recommended"
+    },
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button1",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_external",
+      "label": "Open link in new tab",
+      "default": false
+    },
     {
       "type": "select",
       "id": "background_color",
@@ -219,39 +259,6 @@
           "label": "3"
         }
       ]
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image",
-      "info": "670x380 recommended"
-    },
-
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading"
-    },
-    {
-      "type": "richtext",
-      "id": "subtitle",
-      "label": "Description"
-    },
-    {
-      "type": "text",
-      "id": "button1",
-      "label": "Button label"
-    },
-    {
-      "type": "url",
-      "id": "button1_link",
-      "label": "Button link"
-    },
-    {
-      "type": "checkbox",
-      "id": "hero_external",
-      "label": "Open link in new tab",
-      "default": false
     }
     
   ],

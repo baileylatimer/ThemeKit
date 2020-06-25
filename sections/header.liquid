@@ -43,7 +43,10 @@
       <div class="promo_banner__content">
         <div class="info-item info-item--banner">
           <span class="icon">
+            <img src="https://cdn.shopify.com/s/files/1/0789/1333/files/united-states-of-america.png?v=1593021893">
+            {% comment %}
             <i class="material-icons-outlined">{{ section.settings.promo_icon }}</i>
+             {% endcomment %}
           </span>
           <p>
             {{ section.settings.promo_text }}
@@ -131,11 +134,14 @@
       <div class="promo_banner__content">
         <div class="info-item info-item--banner">
           <span class="icon">
-            <i class="material-icons-outlined"> {{ section.settings.promo_icon }}</i>
+            <img src="https://cdn.shopify.com/s/files/1/0789/1333/files/united-states-of-america.png?v=1593021893">
+            {% comment %}
+            <i class="material-icons-outlined">{{ section.settings.promo_icon }}</i>
+            {% endcomment %}
           </span>
           <p>
             {{ section.settings.promo_text }}
-            </p>
+          </p>
         </div>
       </div>
       <div class="promo_banner-close"></div>
@@ -155,6 +161,7 @@
             </span>
             <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
           </li>
+          
         {% endif %}
         {% if section.settings.top_bar_menu != blank %}
           {% for link in linklists[section.settings.top_bar_menu].links %}
@@ -170,11 +177,9 @@
               <span class="cart_count">{{ cart.item_count }}</span>
             </div>
           </a>
-
           {% assign shipping_value = 0 %}
           {% assign cart_total = cart.total_price %}
           {% assign shipping_value_left = shipping_value | minus: cart_total %}
-          
           {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
             <div class="cart_content animated fadeInRight">
               <div class="cart_info bg-contrast-lower">
@@ -226,22 +231,18 @@
                         <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
                         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
                       </div>
-                      </div>
+            </div>
 
                       <strong class="right price">
                         {% if item.price < item.variant.compare_at_price %}
                           <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
                         {% endif %}
-
                         <span class="money">{{ item.price | money }}</span>
                       </strong>
                     </li>
                   {% endfor %}
                 </ul>
                 <hr>
-
-
-
 
                 <ul>
                   <li class="cart_subtotal js-cart_subtotal">
@@ -274,11 +275,6 @@
                   </li>
                   -->
 
-
-       
-                  
-
-
                   <li>
                     {% if settings.display_special_instructions and settings.go_to_checkout %}
                       <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
@@ -297,9 +293,9 @@
                     {% endif %}
 
                     {% if settings.go_to_checkout %}
-                      <button type="submit" class="button action_button add_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                      <button type="submit" class="button action_button add_to_cart" id="checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
                     {% else %}
-                      <button type="submit" class="button action_button add_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+                      <button type="submit" class="button action_button add_to_cart" id="go_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
                     {% endif %}
 
                     <div class="pill color-contrast-high margin-top-md margin-bottom-lg">
@@ -313,29 +309,29 @@
               </form>
         </div>
           {% endunless %}
+        <ul class="menu right">
+          {% if settings.show_multiple_currencies %}
+            <li>
+              {% include 'currencies-switcher' %}
+            </li>
+          {% endif %}
+  
+          {% if shop.customer_accounts_enabled %}
+            <li>
+              <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
+            </li>
+          {% endif %}
+  
+          <li class="info-item info-item--top-bar pointer" onclick="window.open('/account?p=1#wishlist', '_self')">
+            <span class="icon">
+              <i class="material-icons-outlined">favorite_border</i>
+            </span>
+          </li>
+        </ul>
     </div>
       {% endif %}
 
-      <ul class="menu right">
-        {% if settings.show_multiple_currencies %}
-          <li>
-            {% include 'currencies-switcher' %}
-          </li>
-        {% endif %}
 
-        {% if shop.customer_accounts_enabled %}
-          <li>
-            <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
-          </li>
-        {% endif %}
-
-        <li class="info-item info-item--top-bar pointer" onclick="window.open('/account?p=1#wishlist', '_self')">
-          <span class="icon">
-            <i class="material-icons-outlined">favorite_border</i>
-          </span>
-       </li>
-
-      </ul>
     </div>
 
     <!-- Menu Bar -->
