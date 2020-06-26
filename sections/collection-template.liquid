@@ -177,7 +177,6 @@
   </div>
 
   <div class="section clearfix width-1-3 mobile--false float-right">
-
     
     {% if section.settings.collection_sort %}
       <select class="sort_by" id="sort-by" data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
@@ -198,6 +197,14 @@
       {% include 'product-loop', sidebar: sidebar %}
     </div>
 
+    {% assign currentCollection = collection.url %}
+    {%- comment -%}// show collection next / prev links - 
+    first we have to find the current collection in the linklist and then grab its index in the for loop. 
+    Then we grab the next and prev based on that number
+    {%- endcomment -%}
+
+
+
   <div class="twelve columns">
     <div class="section clearfix">
       <div class="paginate" id="bc-sf-filter-bottom-pagination"></div>
@@ -208,60 +215,54 @@
   {% endpaginate %}
 
 </div>
+<section class="bg-contrast-lower width-100 padding-xxl  margin-top-xxl">
+  <h3 class="center">More to explore.</h3>
+  <!-- Previous/Next Links -->
+  <ul class="pn-links grid  margin-top-md">
+    {% for link in linklists['collection-nav'].links %}
+      {% if link.url == currentCollection %}
+        {% assign currentIndex = forloop.index %}
+        {% assign previousIndex = currentIndex | minus:1 %}
+        {% assign nextIndex = currentIndex | plus:1 %}
+      {% endif %}
+      {% endfor %}
+      {% for link in linklists['collection-nav'].links %}
+        {% if forloop.index == previousIndex %}
+        <li class="pn-links__item col-6@md">
+          <a class="pn-links__link justify-center justify-between@md" href="{{ link.url }}">
+            <svg class="pn-links__icon icon icon--lg flip-x" viewBox="0 0 48 48">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="37" y1="14" x2="47" y2="24" />
+                <line x1="47" y1="24" x2="37" y2="34" />
+                <line x1="47" y1="24" x2="1.5" y2="24" />
+              </g>
+            </svg>
+            <span class="margin-left-sm">
+              <i class="sr-only">Previous: </i>{{ link.title }}
+            </span>
+          </a>
+        </li>
+        {% elsif forloop.index == nextIndex %}
+        <li class="pn-links__item col-6@md">
+          <a class="pn-links__link justify-center justify-between@md" href="{{ link.url }}">
+            <span class="margin-right-sm">
+              <i class="sr-only">Previous: </i>{{ link.title }}
+            </span>
+            <svg class="pn-links__icon icon icon--lg" viewBox="0 0 48 48">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="37" y1="14" x2="47" y2="24" />
+                <line x1="47" y1="24" x2="37" y2="34" />
+                <line x1="47" y1="24" x2="1.5" y2="24" />
+              </g>
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+</section>
 </span>
-<script>
-  // Declare bcSfFilterConfig variable
-  var bcSfFilterConfig = {
-    label: {
-      sorting: {% assign temp = 'collections.sorting.title' | t  %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Sorting" {% endunless %},
-      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Best Selling" {% endunless %},
-      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Featured" {% endunless %},
-      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Alphabetically, A-Z" {% endunless %},
-      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Alphabetically, Z-A" {% endunless %},
-      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Lowest Price" {% endunless %},
-      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Highest Price" {% endunless %},
-      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Date, Old to New" {% endunless %},
-      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Date, New to Old" {% endunless %},
-      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "% Off" {% endunless %},
-      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing'  %} "{{ temp }}" {% else %} "Relevance" {% endunless %},
 
-      
-      sale: {{ 'collections.general.sale' | t | json }},
-      sold_out: {{ 'products.product.sold_out' | t | json }},
-      new: {{ 'collections.general.new' | t | json }},
-      coming_soon: {{ 'collections.general.coming_soon' | t | json }},
-      pre_order: {{ 'collections.general.pre_order' | t | json }},
-      quick_shop: {{ 'collections.general.quick_shop' | t | json }},
-      free_price: {{ settings.free_price_text | json }},
-      from_price: {{ 'products.general.from' | t | json }},
-      view_detail: {{ 'collections.general.view_product_details_html' | t | escape | json }},
-      breadcrumb_page: {{ 'general.breadcrumbs.page' | t | json }},
-      load_more: {{ 'collections.general.load_more' | t | json }},
-      paginate_prev: {{ 'shopify.pagination.previous' | t | json }},
-      paginate_next: {{ 'shopify.pagination.next' | t | json }},
-    },
-    custom: {
-           
-      sidebar: {% if sidebar %} {{ sidebar | json }} {% else %} false {% endif %},
-      products_per_page: {% if section.settings.pagination_limit %} {{ section.settings.pagination_limit | json }} {% else %} 20 {% endif %},
-      products_per_row:  {% if section.settings.products_per_row %} {{ section.settings.products_per_row }} {% else %} 4 {% endif %},
-      mobile_products_per_row: {% if settings.mobile_products_per_row %} {{ settings.mobile_products_per_row | json }} {% else %} '1' {% endif %},
-      secondary_image: {% if settings.collection_secondary_image %} {{ settings.collection_secondary_image | json }} {% else %} false {% endif %},
-      sale_banner_enabled: {% if settings.sale_banner_enabled %} {{ settings.sale_banner_enabled | json }} {% else %} false {% endif %},
-      image_loading_style: {% if settings.image_loading_style %} {{ settings.image_loading_style | json }} {% else %} '' {% endif %},
-      vendor_enable: {% if settings.display_vendor %} {{ settings.display_vendor | json }} {% else %} false {% endif %},
-      quick_shop_enabled: {% if settings.quick_shop_enabled %} {{ settings.quick_shop_enabled | json }} {% else %} false {% endif %},
-      collection_swatches: {% if settings.collection_swatches %} {{ settings.collection_swatches | json }} {% else %} false {% endif %},
-      description_words: {% if settings.description_words %} {{ settings.description_words | json }} {% else %} 25 {% endif %},
-      loader_image_url: "{{ 'loader.gif' | asset_url }}",
-      thumbnail_hover_enabled: {% if settings.thumbnail_hover_enabled %} {{ settings.thumbnail_hover_enabled | json }} {% else %} false {% endif %},
-      enable_shopify_collection_badges: {% if settings.enable_shopify_collection_badges %} {{ settings.enable_shopify_collection_badges | json }} {% else %} false {% endif %},
-      enable_shopify_review_comments: {% if settings.enable_shopify_review_comments %} {{ settings.enable_shopify_review_comments | json }} {% else %} false {% endif %},
-      align_height: {% if settings.align_height %} {{ settings.align_height | json }} {% else %} false {% endif %},
-      collection_height: {% if settings.collection_height %} {{ settings.collection_height | plus: 0 }} {% else %} 0 {% endif %},
-    }
-  };
-</script>
 
 {% schema %}
 
