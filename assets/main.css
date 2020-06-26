@@ -10228,6 +10228,8 @@ li.nav-title {
   color: #FFEFE1 !important; }
   .link-sale a, .link-sale i {
     color: #FFEFE1 !important; }
+  .link-sale p {
+    margin-top: 0 !important; }
   .link-sale .icon {
     padding-top: 0px; }
 
@@ -10563,36 +10565,6 @@ header {
 .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
   padding-bottom: 40px !important; }
 
-/* #SubNav Bar - Base Styles 
-================================================== */
-.subnav {
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
-  z-index: 99;
-  height: 65px;
-  overflow: hidden;
-  position: fixed; }
-  @media (max-width: 768px) {
-    .subnav {
-      display: flex !important;
-      top: 60px !important; } }
-  .subnav__link {
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 600;
-    margin: 0;
-    padding: 21px 12px; }
-    @media (max-width: 768px) {
-      .subnav__link {
-        white-space: break-spaces;
-        padding: 0;
-        max-width: 160px; } }
-
-.subnav__link:not(.base-BodyTitle):hover, .shogun-tab-box:hover {
-  background: #f7f7f7;
-  color: #212121; }
-
 /* Pages / Support */
 .shogun-tab-box {
   color: #212121 !important;
@@ -10617,21 +10589,47 @@ header {
       color: #843043 !important;
       caret-color: transparent; }
 
-/* #Sticky - Custom buy button
-  ================================================== */
-/* Product nav - position below main nav */
+/* #SubNav Bar - Base Styles 
+================================================== */
 .subnav {
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+  background-color: #fff;
+  z-index: 99;
+  height: 65px;
+  overflow: hidden;
+  position: fixed;
   width: 100vw !important;
   /* Product nav - over cart */ }
+  @media (max-width: 768px) {
+    .subnav {
+      display: flex !important;
+      top: 60px !important; } }
   .subnav:before {
     z-index: 99 !important; }
   .subnav .purchase-details__buttons {
     margin-top: 0; }
   .subnav button {
-    padding: 18px !important;
-    width: 450px;
-    height: 100%; }
+    height: 100%;
+    width: var(--space-lg); }
+  .subnav__link {
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    margin: 0;
+    padding: 21px 12px; }
+    @media (max-width: 768px) {
+      .subnav__link {
+        white-space: break-spaces;
+        padding: 0;
+        max-width: 160px; } }
 
+.subnav__link:not(.base-BodyTitle):hover, .shogun-tab-box:hover {
+  background: #f7f7f7;
+  color: #212121; }
+
+/* #Sticky - Custom buy button
+  ================================================== */
+/* Product nav - position below main nav */
 /* Hide custom buy button  */
 .sticky-fade {
   display: none !important; }
