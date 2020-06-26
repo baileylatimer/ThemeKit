@@ -34,12 +34,16 @@ function sticktothetop() {
       $('#stickThis').addClass('stick');
       $('#stick-here').height($('#stickThis').outerHeight());
       $('.sticky-fade').fadeIn("fast");
+      /*
       $('.purchase-details__buttons').addClass('sticky-buy');
+      */
   } else {
       $('#stickThis').removeClass('stick');
       $('#stick-here').height(0);
       $('.sticky-fade').fadeOut("fast");
+      /*
       $('.purchase-details__buttons').removeClass('sticky-buy');
+      */
   }
 }
 $(function(){
