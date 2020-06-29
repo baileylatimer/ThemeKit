@@ -164,6 +164,35 @@ $('.collection_description h2').replaceWith(function(){
 });
 
 
+$('.add-to-cart__text').text(function (i, text)
+{
+    return text.replace('&lt;', '<').replace('&gt;', '>');
+});
+
+
+// Select the 'a' tag to be replaced and call the replaceWith method
+$('<span class="add-to-cart__text">+</span>').replaceWith(function(){
+  // Execute a callback to generate contents of the replacement
+  // The $('<div>') part creates a div
+  return $('<span class="icon"> <i class="material-icons-outlined">add_circle_outline</i></span>', {
+      html: this.innerHTML // This takes the html of the 'a' tag and copies it to the new div
+  });
+});
+
+
+
+
+
+
+/* #Upsell */
+$(function() {
+  $(".productbox").addClass("choice-img bg radius-md col-6@xs col-4@sm col-3@md js-choice-img js-tab-focus");
+});
+
+
+
+
+
 
 // Utility function
 function Util () {};

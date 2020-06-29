@@ -5502,11 +5502,10 @@ hr {
 .button, .btn, button, .banners a {
   white-space: nowrap;
   display: inline-block;
-  height: 40px !important;
+  height: 56px !important;
   line-height: 40px !important;
-  font-size: 16px !important;
+  font-size: 20px;
   font-weight: 700 !important;
-  text-transform: uppercase !important;
   letter-spacing: .02em !important; }
 
 body {
@@ -7085,8 +7084,7 @@ a.highlight-true, a.highlight-true:hover {
   box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
   padding: 10px 50px;
   margin-bottom: 10px;
-  color: #fff !important;
-  text-transform: uppercase; }
+  color: #fff !important; }
   .btn-custom:hover {
     background: #f49795;
     transition: all 0.2s ease-out; }
@@ -7106,7 +7104,6 @@ a.highlight-true, a.highlight-true:hover {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17) !important;
   padding: 15px 50px;
   color: #fff !important;
-  text-transform: uppercase;
   width: 100%;
   z-index: 19;
   margin-top: 30px; }
@@ -7253,7 +7250,6 @@ a.highlight-true, a.highlight-true:hover {
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
   font-size: 15px !important;
   font-weight: 500 !important;
-  text-transform: uppercase !important;
   letter-spacing: .025em !important; }
 
 #stamped-button-submit {
@@ -8270,6 +8266,82 @@ Usage: codyhouse.co/license
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH"; }
+
+/* -------------------------------- 
+
+File#: _1_choice-images
+Title: Choice Images
+Descr: Selectable images that behave like radio/checkbox buttons
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --choice-img-input-size: 100px;
+  --choice-img-input-icon-size: 26px; }
+
+.compareprice {
+  display: none; }
+
+.launchtip_add_to_cart {
+  background: var(--color-contrast-lower); }
+
+.add-to-cart__text {
+  font-weight: 400;
+  font-size: 16px; }
+
+.LaunchTipAddToCartForm {
+  /*
+    border-radius: 50%;
+    overflow: hidden;
+    height: 50px;
+    width: 50px;
+    */ }
+
+.choice-img, .productbox {
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: var(--space-sm); }
+  .choice-img:hover, .productbox:hover {
+    cursor: pointer;
+    box-shadow: var(--shadow-sm); }
+  .choice-img img, .productbox img {
+    filter: brightness(0.94) !important;
+    -webkit-filter: brightness(0.94) !important; }
+  .choice-img .title, .productbox .title {
+    font-weight: 500; }
+
+.choice-img[aria-checked="true"] {
+  transition: transform .3s;
+  box-shadow: var(--shadow-sm), 0 0 0 2px var(--color-primary); }
+
+.choice-img__input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(1px, -1px);
+  background-color: var(--color-primary);
+  width: var(--choice-img-input-size);
+  height: var(--choice-img-input-size);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 85%);
+  pointer-events: none;
+  opacity: 0; }
+  .choice-img__input .icon {
+    position: absolute;
+    top: calc(var(--choice-img-input-size)/4 - var(--choice-img-input-icon-size)/2);
+    right: calc(var(--choice-img-input-size)/4 - var(--choice-img-input-icon-size)/2);
+    font-size: var(--choice-img-input-icon-size);
+    color: var(--color-white); }
+    .choice-img__input .icon > * {
+      transition: stroke-dashoffset .3s;
+      stroke-dasharray: 18;
+      stroke-dashoffset: 18; }
+
+.choice-img[aria-checked="true"] .choice-img__input {
+  opacity: 1; }
+  .choice-img[aria-checked="true"] .choice-img__input .icon > * {
+    stroke-dashoffset: 0; }
 
 /* Button spacing */
 .purchase-details {

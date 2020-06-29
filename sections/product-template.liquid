@@ -2,12 +2,7 @@
     ** Product - default view **
     - Product template
 {% endcomment %}
-<a name="pagecontent" id="pagecontent"></a>
-
-
-<span id="stick-here"></span>
-
-
+<a name="pagecontent" id="pagecontent"></a><span id="stick-here"></span>
 
 {% comment %}START / Page {% endcomment %}
 <main class="{{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
@@ -126,6 +121,9 @@
           <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-type="{{ product.type }}" style="display: block;"></span>
           <!-- End / Reviews --> 
                   
+          <div class="divider"></div>
+          
+
           {% if collection_handles contains 'coming-soon' %}
             {% elsif product.metafields.custom_fields["partners_platform"] != blank %}
               {% include 'components_buttons_partners' with 'product' %}

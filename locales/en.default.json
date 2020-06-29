@@ -120,7 +120,7 @@
       "load_more": "Load More Products",
       "new": "New",
       "coming_soon": "Coming Soon",
-      "pre_order": "Pre-Order: Add to Cart",
+      "pre_order": "Pre-order: Add to cart",
       "sale": "Sale",
       "view_all": "View All",
       "view_product_details_html": "View full details"
@@ -157,7 +157,7 @@
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "quantity": "Qty",
-      "add_to_cart": "Add to Cart",
+      "add_to_cart": "Add to cart",
       "add_to_cart_success": "Added",
       "vendor": "Vendor",
       "related_items": "Customers also shopped for",
