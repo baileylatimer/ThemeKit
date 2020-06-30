@@ -8284,7 +8284,8 @@ Usage: codyhouse.co/license
 
 .launchtip_add_to_cart {
   background: var(--color-contrast-lower);
-  margin-bottom: 0 !important; }
+  margin-bottom: 0 !important;
+  width: 65px; }
 
 .add-to-cart__text {
   font-weight: 400;
