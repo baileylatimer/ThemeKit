@@ -5505,8 +5505,8 @@ hr {
   height: 56px !important;
   line-height: 40px !important;
   font-size: 20px;
-  font-weight: 700 !important;
-  letter-spacing: .02em !important; }
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important; }
 
 body {
   letter-spacing: -0.03em; }
@@ -8283,7 +8283,8 @@ Usage: codyhouse.co/license
   display: none; }
 
 .launchtip_add_to_cart {
-  background: var(--color-contrast-lower); }
+  background: var(--color-contrast-lower);
+  margin-bottom: 0 !important; }
 
 .add-to-cart__text {
   font-weight: 400;
@@ -8307,8 +8308,8 @@ Usage: codyhouse.co/license
     cursor: pointer;
     box-shadow: var(--shadow-sm); }
   .choice-img img, .productbox img {
-    filter: brightness(0.94) !important;
-    -webkit-filter: brightness(0.94) !important; }
+    filter: brightness(0.97) !important;
+    -webkit-filter: brightness(0.97) !important; }
   .choice-img .title, .productbox .title {
     font-weight: 500; }
 

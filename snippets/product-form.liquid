@@ -60,7 +60,7 @@
 
   <section class="purchase-details">
 
-    {% include 'components_pill_stock' %}
+    
   
     <div class="width-1-1 flex">
       
@@ -87,6 +87,8 @@
       
       {% endunless %}
     </div>
+    
+    {% include 'components_pill_stock' %}
 
     {% unless product.available %}
     {% else %}
