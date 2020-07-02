@@ -1,0 +1,80 @@
+
+
+    <section class="marquee width-100 stripe--dark">
+      <div class="marquee-content"><a class="marquee-block padding-left-md padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Inc.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066"/></a>
+      </div>
+      <div class="marquee-content"><a class="marquee-block padding-left-md padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Inc.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066"/></a>
+      </div>
+    </section>
+  
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Marquee Logo List",
+   
+    "settings": [
+            {
+        "type": "range",
+        "id": "grid-h-size",
+        "label": "Images per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 4,
+        "info": "Vertical masonry and classic only"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "800 x 800px recommended"
+          },
+            {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Activity name",
+          "default": "Activity name"
+        }
+        ]
+      }
+    ],
+     "presets": [
+      {
+        "name": "Marquee Logo List",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

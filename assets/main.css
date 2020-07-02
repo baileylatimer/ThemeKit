@@ -8351,6 +8351,44 @@ Usage: codyhouse.co/license
   .choice-img[aria-checked="true"] .choice-img__input .icon > * {
     stroke-dashoffset: 0; }
 
+.marquee {
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 100%;
+  height: 200px; }
+  .marquee:hover .marquee-content {
+    animation-play-state: paused; }
+  .marquee:hover .marquee-logo {
+    filter: grayscale(1) contrast(0) blur(1px); }
+
+.marquee-block {
+  padding-left: 4em;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  cursor: pointer; }
+  .marquee-block:hover .marquee-logo {
+    filter: unset; }
+
+.marquee-logo {
+  filter: grayscale(1) contrast(0); }
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  animation: slide-left 20s linear infinite; }
+
+@keyframes slide-left {
+  from {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
 /* Button spacing */
 .purchase-details {
   margin-bottom: 40px; }
