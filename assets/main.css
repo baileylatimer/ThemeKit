@@ -8363,13 +8363,13 @@ Usage: codyhouse.co/license
   .marquee:hover .marquee-logo {
     filter: grayscale(1) contrast(0) blur(1px); }
 
-.marquee-block {
+a.marquee-block {
   padding-left: 4em;
   height: 100%;
   width: 100%;
   display: flex;
-  cursor: pointer; }
-  .marquee-block:hover .marquee-logo {
+  cursor: default !important; }
+  a.marquee-block:hover .marquee-logo {
     filter: unset; }
 
 .marquee-logo {
