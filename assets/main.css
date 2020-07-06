@@ -7440,13 +7440,8 @@ td {
       top: -2px !important; } }
 
 .thumbnail_banner, .sale_banner_product {
-  height: auto !important;
+  height: var(--space-lg) !important;
   width: auto !important;
-  -webkit-border-radius: 8px !important;
-  -moz-border-radius: 8px !important;
-  border-radius: 8px !important;
-  -ms-border-radius: 8px !important;
-  -o-border-radius: 8px !important;
   line-height: var(--space-unit) !important;
   padding: 0 12px !important;
   display: flex !important;
