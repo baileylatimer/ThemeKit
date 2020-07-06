@@ -78,12 +78,12 @@
               <meta itemprop="image" content="{{ product.featured_image | img_url: '800x' }}"/>
                 <img  src="{{ image_100x }}"
                       alt="{{ image_alt | escape }}"
-                      class=" lazyload {{ settings.image_loading_style }}"
+                      class="transition--blur-up lazyload {{ settings.image_loading_style }}"
                       data-index="{{ forloop.index0 }}"
                       data-image-id="{{ image_id }}"
                       data-sizes="{% if section.settings.enable_product_lightbox %}100vw{% else %}auto{% endif %}"
                       data-aspectratio="{{ original_image_height }}/{{ original_image_width }}"
-                      data-src="{{ image_2000x }}"
+                      data-src="{{ image_600x }}"
                       srcset=" {{ image_200x }} 200w,
                                     {{ image_400x }} 400w,
                                     {{ image_600x }} 600w,
@@ -103,8 +103,6 @@
   {% if section.settings.product_thumbs %}
     {% if product.images.size > 1 and image_width != 'full' %}
    
-   
-
         <div class="product_gallery_nav product_gallery_nav--left product-{{ product.id }}-gallery-nav">
         {% for image_item in image_list %}
           {% assign image = image_item | split: "`~`" %}
@@ -119,7 +117,7 @@
           {% capture image_2000x %}{{ image[8] }}{% endcapture %}
           <div class="gallery-cell" data-title="{{ image_alt | escape }}">
             <img  
-              src="{{ image_400x }}"
+              src="{{ image_100x }}"
               alt="{{ image_alt | escape }}"
               data-index="{{ forloop.index0 }}"
               data-image-id="{{ image_id }}"
