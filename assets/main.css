@@ -5371,10 +5371,10 @@ span.item-pricing,
   color: #757575 !important; }
 
 .violator--discount {
-  background: #EFFEED;
-  border: 2px solid #EFFEED;
+  background: var(--color-success-lighter);
+  border: 2px solid var(--color-success-lighter);
   color: #fff;
-  color: #00C986; }
+  color: var(--color-success-darker); }
 
 .violator--attribute {
   background: #e4ecee;
@@ -5397,10 +5397,20 @@ h2.product_type {
   ================================================== */
 /* Free shipping */
 .info-item--product a {
-  color: #212121 !important; }
+  color: var(--color-contrast-high) !important; }
 
 .price .money {
-  color: #212121 !important; }
+  color: var(--color-contrast-high) !important; }
+
+.modal_price .money, .thumbnail .was_price span.money, .was_price span.money {
+  color: #616161; }
+
+/* New price */
+.sale span.money {
+  color: var(--color-success-darker) !important; }
+
+.sold_out {
+  color: var(--color-error-darker); }
 
 /* #Layout - Size 
 ================================================== */
@@ -5769,13 +5779,6 @@ h2.product_type {
   font-weight: 300 !important;
   padding-left: 3px;
   text-decoration: none; }
-
-.modal_price .money, .thumbnail .was_price span.money, .was_price span.money {
-  color: #616161; }
-
-/* New price */
-.sale span.money {
-  font-weight: 700; }
 
 .pill p, .thumbnail_banner {
   font-weight: 500;
@@ -6201,10 +6204,10 @@ a.mobile_nav {
   --color-warning-lighter-h: 46;
   --color-warning-lighter-s: 100%;
   --color-warning-lighter-l: 81%;
-  --color-success-darker: hsl(94, 48%, 36%);
+  --color-success-darker: hsl(94, 48%, 33%);
   --color-success-darker-h: 94;
   --color-success-darker-s: 48%;
-  --color-success-darker-l: 36%;
+  --color-success-darker-l: 33%;
   --color-success-dark: hsl(94, 48%, 46%);
   --color-success-dark-h: 94;
   --color-success-dark-s: 48%;
@@ -6217,10 +6220,10 @@ a.mobile_nav {
   --color-success-light-h: 94;
   --color-success-light-s: 48%;
   --color-success-light-l: 66%;
-  --color-success-lighter: hsl(94, 48%, 76%);
+  --color-success-lighter: hsl(94, 48%, 87%);
   --color-success-lighter-h: 94;
   --color-success-lighter-s: 48%;
-  --color-success-lighter-l: 76%;
+  --color-success-lighter-l: 87%;
   --color-error-darker: hsl(349, 75%, 31%);
   --color-error-darker-h: 349;
   --color-error-darker-s: 75%;
@@ -7445,19 +7448,23 @@ td {
   -ms-border-radius: 8px !important;
   -o-border-radius: 8px !important;
   line-height: var(--space-unit) !important;
-  padding: 0 12px !important; }
+  padding: 0 12px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center; }
 
 /* Collection Violators
 ================================================== */
 .violator {
   border-color: transparent !important;
-  max-width: 92% !important; }
+  max-width: 92% !important;
+  height: 24px !important; }
   @media (min-width: 768px) {
     .violator {
       max-width: 70% !important; } }
   .violator--discount {
     border-radius: 30px !important;
-    height: 24px !important; }
+    margin-left: var(--space-sm); }
   .violator--attribute {
     border-radius: 4px 0 !important;
     border-color: transparent !important;
