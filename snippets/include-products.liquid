@@ -22,7 +22,7 @@
 				</figure>
 
 				<div class="product-details">
-					<h3 class="article-title base-BodyTitle text-dark" itemprop="name">{{ product_ref.title }}</h3>
+					<h4 class="article-title base-BodyTitle" itemprop="name">{{ product_ref.title }}</h4>
 					<h6 class="article-type">{{ product_ref.type}}</h6>
 					{% if collection_handles contains 'coming-soon' %}
 						<span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
@@ -46,11 +46,13 @@
 					</span>
 				
 					{% if product_ref.available %}
+					{% unless product.compare_at_price == product.price %}
 						{% if settings.sale_banner_enabled and product_ref.compare_at_price_max > product_ref.price %}
 							<span class="thumbnail_banner violator--discount">Save ${{ product_ref.compare_at_price_min | minus: product_ref.price_min | money_without_currency }}</span>
 						{% else %}
 							<span class="article-violator"></span>
 						{% endif %}
+					{% endunless %}
 					{% endif %}
 					{% endif %}
 				</div>

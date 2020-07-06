@@ -11004,7 +11004,7 @@ section.homepage-video, .testimonial-block, #banner-1560450172476, #shopify-sect
 
 /* Hide percent, declutter */
 .sale.savings, .sale_banner_product {
-  display: none; }
+  display: none !important; }
 
 /* Images
 ================================================== */
