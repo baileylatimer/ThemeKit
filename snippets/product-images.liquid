@@ -75,7 +75,7 @@
               </div>
             {% else %}
               <div class="image__container" style="max-width: {{original_image_width}}" >
-              <meta itemprop="image" content="{{ product.featured_image | img_url: '800x' }}"/>
+              <meta itemprop="image" content="{{ product.featured_image | img_url: '600x' }}"/>
                 <img  src="{{ image_100x }}"
                       alt="{{ image_alt | escape }}"
                       class="transition--blur-up lazyload {{ settings.image_loading_style }}"
@@ -87,9 +87,9 @@
                       srcset=" {{ image_200x }} 200w,
                                     {{ image_400x }} 400w,
                                     {{ image_600x }} 600w,
-                                    {{ image_800x }} 800w,
-                                    {{ image_1200x }} 1200w,
-                                    {{ image_2000x }} 2000w"
+                                    {{ image_600x }} 800w,
+                                    {{ image_600x }} 1200w,
+                                    {{ image_600x }} 2000w"
                        />
               </div>
             {% endif %}
