@@ -152,17 +152,20 @@
       {% if section.settings.social_icons_header %}
         {% include 'social-icons' %}
       {% endif %}
-      <!-- Phone Number -->
+     
       <ul class="menu left">
-        {% if section.settings.phone_number != blank %}           
+        <!-- Phone Number -->
+        {% if section.settings.phone_number != blank %}     
+          {% if section.settings.phone_position == "left" %}    
           <li class="info-item info-item--top-bar">
             <span class="icon">
               <i class="material-icons-outlined">call</i>
             </span>
-            <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
+            <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}">{{ section.settings.phone_number }}</a>
           </li>
-          
+          {% endif %}
         {% endif %}
+         <!-- End Phone Number -->
         {% if section.settings.top_bar_menu != blank %}
           {% for link in linklists[section.settings.top_bar_menu].links %}
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
@@ -310,6 +313,20 @@
         </div>
           {% endunless %}
         <ul class="menu right">
+          
+        <!-- Phone Number -->
+        {% if section.settings.phone_number != blank %}     
+          {% if section.settings.phone_position == "right" %}    
+          <li class="info-item info-item--top-bar">
+            <span class="icon">
+              <i class="material-icons-outlined">call</i>
+            </span>
+            <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}">{{ section.settings.phone_number }}</a>
+          </li>
+          {% endif %}
+        {% endif %}
+         <!-- End Phone Number -->
+
           {% if settings.show_multiple_currencies %}
             <li>
               {% include 'currencies-switcher' %}
@@ -736,6 +753,22 @@
     },
     {
       "type": "select",
+      "id": "phone_position",
+      "label": "Phone position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
       "id": "logo_position",
       "label": "Logo position",
       "info": "Applies when menu position has been set to 'Inline with logo'",
@@ -768,6 +801,7 @@
       ],
       "default": "center"
     },
+    
     {
       "type": "select",
       "id": "menu_position",
