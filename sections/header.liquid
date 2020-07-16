@@ -419,7 +419,7 @@
         {% if section.settings.logo_position == "left" or section.settings.menu_position == "block" %}
           
           <div class="nav">
-            <ul class="menu clearfix">
+            <ul class="menu flex justify-center align-center clearfix">
               {{ logo }}
               {{ menu_left }}
             </ul>
@@ -475,7 +475,7 @@
     padding-bottom: {{ section.settings.logo_top_padding }}px;
   }
   div.logo img {
-    max-width: {{ section.settings.logo_display_width }}px;
+    width: {{ section.settings.logo_display_width }}px;
   }
   .nav {
     {% if section.settings.menu_position == "block" %}

@@ -10502,8 +10502,6 @@ div.is-absolute {
   margin: 0 auto;
   width: 100%;
   z-index: 999999; }
-  .main_nav_wrapper .logo, .main_nav_wrapper .primary_logo, .main_nav_wrapper .secondary_logo {
-    width: 100px; }
 
 .nav {
   height: 60px;
@@ -10558,17 +10556,10 @@ div.is-absolute {
 /* Main / Logo
     ================================================== */
 div.logo {
-  width: auto;
-  margin-right: 40px; }
+  margin-right: var(--space-md); }
   div.logo:hover {
     opacity: .7;
     transition: all 0.1s ease-out; }
-    div.logo:hover img.primary_logo {
-      margin-top: 4px;
-      max-width: 85px; }
-  div.logo img.primary_logo {
-    margin-top: 4px;
-    max-width: 85px; }
 
 /* #Menu [Closed] - Logo size
   ================================================== */
