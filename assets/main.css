@@ -8353,23 +8353,26 @@ Usage: codyhouse.co/license
   .choice-img[aria-checked="true"] .choice-img__input .icon > * {
     stroke-dashoffset: 0; }
 
-.marquee {
-  overflow-x: hidden;
-  display: flex;
+.marquee, .marquee-animate {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
   min-width: 100%;
   height: 200px; }
-  .marquee:hover .marquee-content {
+  .marquee:hover, .marquee-animate:hover {
     animation-play-state: paused; }
-  .marquee:hover .marquee-logo {
-    filter: grayscale(1) contrast(0) blur(1px); }
+    .marquee:hover .marquee-logo, .marquee-animate:hover .marquee-logo {
+      filter: grayscale(1) contrast(0) blur(1px); }
 
 a.marquee-block {
   padding-left: 4em;
   height: 100%;
   width: 100%;
-  display: flex;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   cursor: default !important; }
   a.marquee-block:hover .marquee-logo {
     filter: unset; }
@@ -8381,6 +8384,9 @@ a.marquee-block {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  height: 100%; }
+
+.marquee-animate {
   animation: slide-left 20s linear infinite; }
 
 @keyframes slide-left {
@@ -10365,6 +10371,13 @@ Usage: codyhouse.co/license
 
 ._hj-widget-container ._hj-2qaGY__styles__openStateToggle::before {
   content: none !important; }
+
+.featured-content-section {
+  padding-top: var(--space-lg); }
+
+.featured_text {
+  max-width: var(--max-width-lg);
+  margin: 0 auto; }
 
 .footer {
   background: rgba(0, 0, 0, 0.79);

@@ -1,82 +1,115 @@
 
 
-    <section class="marquee width-100 stripe--dark">
-      <div class="marquee-content"><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Inc.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066"/></a>
-      </div>
-      <div class="marquee-content"><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Inc.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066"/></a>
-      </div>
-      <div class="marquee-content"><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Forbes.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Inc.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Nat_Geo.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Discovery_Channel.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/REI.svg?v=1593719066"/></a><a class="marquee-block padding-left-md"><img class="marquee-logo" src="https://cdn.shopify.com/s/files/1/0789/1333/files/Fortune.svg?v=1593719066"/></a>
-      </div>
-    </section>
+<section class="marquee width-100 stripe--dark">
+  {% unless section.settings.animation_speed == 0 %}
+    <div class="marquee-animate">
+  {% endunless %}
+  {% if section.blocks.size > 0 %}
+  <div class="marquee-content">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+      </a>
+    {% endfor %}
   
+    {% unless section.settings.animation_speed == 0 %}
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+      </a>
+    {% endfor %}
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+      </a>
+    {% endfor %}
+    {% endunless %}
+
+  </div>
+  {% endif %}
+  {% unless section.settings.animation_speed == 0 %}
+    </div>  
+  {% endunless %}
+</section>
 
 
-
-
-
-{% schema %}
-  {
-    "name": "Marquee Logo List",
-   
-    "settings": [
-            {
-        "type": "range",
-        "id": "grid-h-size",
-        "label": "Images per row",
-        "min": 2,
-        "max": 5,
-        "step": 1,
-        "default": 4,
-        "info": "Vertical masonry and classic only"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "image",
-        "name": "Image",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image",
-            "info": "800 x 800px recommended"
-          },
-            {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Activity name",
-          "default": "Activity name"
-        }
-        ]
-      }
-    ],
-     "presets": [
-      {
-        "name": "Marquee Logo List",
-        "category": "Image",
-        "blocks": [
-          {
-            "type": "image"
-          },
-          {
-            "type": "image"
-          },
-          {
-            "type": "image"
-          },
-          {
-            "type": "image"
-          },
-          {
-            "type": "image"
-          }
-        ]
-      }
-    ]
+<!-- Styling -->
+<style>
+  {% if section.settings.animation_speed == 0 %}
+  a.marquee-block:nth-child(1) {
+  padding-left: 0 !important;
   }
-{% endschema %}
+  {% endif %}
+  .marquee-animate {
+    {% if section.settings.animation_speed == 1 %}
+      animation: slide-left 45s linear infinite;
+    {% elsif section.settings.animation_speed == "2" %}
+      animation: slide-left 30s linear infinite;
+      {% elsif section.settings.animation_speed == "3" %}
+      animation: slide-left 15s linear infinite;
+    {% else %}
+    {% endif %}
+  }
+</style>
+
+    {% schema %}
+    {
+      "name": "Marquee Logo List",
+      "class": "logo-list-section",
+      "max_blocks": 20,
+      "settings": [
+        {
+          "type":      "range",
+          "id":        "animation_speed",
+          "min":       0,
+          "max":        3,
+          "step":       1,
+          "unit":       "s",
+          "label":     "Animation speed",
+          "info":      "Tip: Change to 0s to stop animation",
+          "default":   0
+        }
+      ],
+ 
+      "blocks": [
+        {
+          "type": "logo_block",
+          "name": "Logo",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image",
+              "info": "400 x 300px recommended"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Marquee Logo List",
+          "category": "Image",
+          "blocks": [
+            {
+              "type": "logo_block"
+            },
+            {
+              "type": "logo_block"
+            },
+            {
+              "type": "logo_block"
+            },
+            {
+              "type": "logo_block"
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}
+  
