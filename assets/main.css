@@ -3666,11 +3666,11 @@ html:not(.js) .no-js\:is-hidden {
   .flex-column\@md {
     flex-direction: column; }
   .flex-column-reverse\@md {
-    flex-direction: column-reverse; }
+    flex-direction: column-reverse !important; }
   .flex-row\@md {
     flex-direction: row; }
   .flex-row-reverse\@md {
-    flex-direction: row-reverse; }
+    flex-direction: row-reverse !important; }
   .flex-center\@md {
     justify-content: center;
     align-items: center; }
@@ -7440,13 +7440,8 @@ td {
       top: -2px !important; } }
 
 .thumbnail_banner, .sale_banner_product {
-  height: auto !important;
+  height: var(--space-lg) !important;
   width: auto !important;
-  -webkit-border-radius: 8px !important;
-  -moz-border-radius: 8px !important;
-  border-radius: 8px !important;
-  -ms-border-radius: 8px !important;
-  -o-border-radius: 8px !important;
   line-height: var(--space-unit) !important;
   padding: 0 12px !important;
   display: flex !important;
@@ -8395,6 +8390,115 @@ a.marquee-block {
   to {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%); } }
+
+/* -------------------------------- 
+
+File#: _1_looping_tabs
+Title: Looping Tabs
+Descr: Accessible tabbed content that loops automatically from one item to the next
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --loop-tabs-fill-size: 1px;
+  --loop-tabs-animation-duration: 0.5s; }
+
+.no-flex-wrap {
+  flex-wrap: nowrap; }
+
+.loop-tabs {
+  position: relative;
+  z-index: 1; }
+
+.loop-tabs__media {
+  display: none; }
+
+.js .loop-tabs__assets,
+.js .loop-tabs__panels {
+  position: relative; }
+
+.js .loop-tabs__asset,
+.js .loop-tabs__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--loop-tabs-animation-duration), visibility var(--loop-tabs-animation-duration), transform var(--loop-tabs-animation-duration); }
+
+.js .loop-tabs__asset {
+  transform: scale(0.9); }
+
+.js .loop-tabs__asset--selected,
+.js .loop-tabs__panel--selected {
+  position: relative;
+  opacity: 1;
+  z-index: 2;
+  visibility: visible; }
+
+.js .loop-tabs__asset--selected {
+  transform: scale(1); }
+
+.js .loop-tabs__asset--exit {
+  transform: scale(1.1); }
+
+.js .loop-tabs__control {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: var(--color-contrast-medium);
+  --loop-tabs-filling: 0; }
+  .js .loop-tabs__control::before, .js .loop-tabs__control::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: var(--loop-tabs-fill-size);
+    width: 100%; }
+  .js .loop-tabs__control::before {
+    background-color: var(--color-contrast-low); }
+  .js .loop-tabs__control::after {
+    transform: scaleX(0);
+    transform-origin: left top; }
+  .js .loop-tabs__control:focus {
+    outline: none; }
+  .js .loop-tabs__control:focus::after,
+  .loop-tabs--autoplay-off .js .loop-tabs__control::after {
+    transform: scaleX(1); }
+
+.js .loop-tabs__control--selected {
+  color: var(--color-contrast-high); }
+  .js .loop-tabs__control--selected::after {
+    transform: scaleX(var(--loop-tabs-filling));
+    background-color: currentColor; }
+
+.js .loop-tabs__media {
+  display: flex;
+  justify-content: center; }
+
+@media (min-width: 768px) {
+  .js .loop-tabs__control::before,
+  .js .loop-tabs__control::after {
+    width: var(--loop-tabs-fill-size);
+    height: 100%; }
+  .js .loop-tabs__control::after {
+    transform: scaleY(0); }
+  .js .loop-tabs__control--selected::after {
+    transform: scaleY(var(--loop-tabs-filling)); }
+  .js .loop-tabs__control:focus::after,
+  .js .loop-tabs--autoplay-off .loop-tabs__control::after {
+    transform: scaleY(1); } }
+
+html:not(.js) .loop-tabs__content {
+  width: 100%;
+  flex-basis: 100%;
+  max-width: 100%;
+  margin: 0; }
+
+html:not(.js) .loop-tabs__controls {
+  display: none; }
 
 /* Button spacing */
 .purchase-details {
