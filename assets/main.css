@@ -5224,7 +5224,7 @@ html:not(.js) .no-js\:is-hidden {
 ================================================== */
 /* GoSun / Pumpkin
 ================================================== */
-/* GoSun / Leaf
+/* GoSun / jungle
 ================================================== */
 /* GoSun / Mint
 ================================================== */
@@ -5261,7 +5261,7 @@ html:not(.js) .no-js\:is-hidden {
 .pumpkin {
   background: #c75724 !important; }
 
-.leaf {
+.jungle {
   background: #4b4c22 !important; }
 
 .honey {
@@ -6264,9 +6264,9 @@ a.mobile_nav {
   --color-contrast-high-h: 240;
   --color-contrast-high-s: 4%;
   --color-contrast-high-l: 20%;
-  --color-contrast-higher: hsl(240, 8%, 12%);
+  --color-contrast-higher: hsl(240, 0%, 12%);
   --color-contrast-higher-h: 240;
-  --color-contrast-higher-s: 8%;
+  --color-contrast-higher-s: 0%;
   --color-contrast-higher-l: 12%; }
 
 @supports (--css: variables) {
@@ -7134,39 +7134,19 @@ a.highlight-true, a.highlight-true:hover {
     -ms-border-radius: 8px !important;
     -o-border-radius: 8px !important;
     border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: #fff !important;
+    color: var(--color-white) !important;
     background: #c75724 !important; }
     .button.-primary:hover, .button.-primary:focus, .button.-primary:active, .btn.-primary:hover, .btn.-primary:focus, .btn.-primary:active {
       color: #c75724 !important;
-      background: #fff !important;
+      background: var(--color-white) !important;
       border-color: #c75724 !important; }
     .button.-primary.-hollow, .btn.-primary.-hollow {
       background: none !important;
       color: #c75724 !important;
       border: 3px solid #c75724 !important; }
       .button.-primary.-hollow:hover, .button.-primary.-hollow:focus, .button.-primary.-hollow:active, .btn.-primary.-hollow:hover, .btn.-primary.-hollow:focus, .btn.-primary.-hollow:active {
-        color: #fff !important;
+        color: var(--color-white) !important;
         background: #c75724 !important; }
-  .button.-shine, .btn.-shine {
-    -webkit-border-radius: 8px !important;
-    -moz-border-radius: 8px !important;
-    border-radius: 8px !important;
-    -ms-border-radius: 8px !important;
-    -o-border-radius: 8px !important;
-    border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: #fff !important;
-    background: #C38756 !important; }
-    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .btn.-shine:hover, .btn.-shine:focus, .btn.-shine:active {
-      color: #C38756 !important;
-      background: #fff !important;
-      border-color: #C38756 !important; }
-    .button.-shine.-hollow, .btn.-shine.-hollow {
-      background: none !important;
-      color: #C38756 !important;
-      border: 3px solid #C38756 !important; }
-      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .btn.-shine.-hollow:hover, .btn.-shine.-hollow:focus, .btn.-shine.-hollow:active {
-        color: #fff !important;
-        background: #C38756 !important; }
   .button.-light, .btn.-light {
     -webkit-border-radius: 8px !important;
     -moz-border-radius: 8px !important;
@@ -7174,18 +7154,18 @@ a.highlight-true, a.highlight-true:hover {
     -ms-border-radius: 8px !important;
     -o-border-radius: 8px !important;
     border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: #c75724 !important;
+    color: var(--color-contrast-higher) !important;
     background: #fff !important; }
     .button.-light:hover, .button.-light:focus, .button.-light:active, .btn.-light:hover, .btn.-light:focus, .btn.-light:active {
       color: #fff !important;
-      background: #c75724 !important;
+      background: var(--color-contrast-higher) !important;
       border-color: #fff !important; }
     .button.-light.-hollow, .btn.-light.-hollow {
       background: none !important;
       color: #fff !important;
       border: 3px solid #fff !important; }
       .button.-light.-hollow:hover, .button.-light.-hollow:focus, .button.-light.-hollow:active, .btn.-light.-hollow:hover, .btn.-light.-hollow:focus, .btn.-light.-hollow:active {
-        color: #c75724 !important;
+        color: var(--color-contrast-higher) !important;
         background: #fff !important; }
   .button.-dark, .btn.-dark {
     -webkit-border-radius: 8px !important;
@@ -7194,24 +7174,44 @@ a.highlight-true, a.highlight-true:hover {
     -ms-border-radius: 8px !important;
     -o-border-radius: 8px !important;
     border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: #ffd9b8 !important;
-    background: rgba(0, 0, 0, 0.87) !important; }
+    color: var(--color-white) !important;
+    background: var(--color-contrast-higher) !important; }
     .button.-dark:hover, .button.-dark:focus, .button.-dark:active, .btn.-dark:hover, .btn.-dark:focus, .btn.-dark:active {
-      color: rgba(0, 0, 0, 0.87) !important;
-      background: #ffd9b8 !important;
-      border-color: rgba(0, 0, 0, 0.87) !important; }
+      color: var(--color-contrast-higher) !important;
+      background: var(--color-white) !important;
+      border-color: var(--color-contrast-higher) !important; }
     .button.-dark.-hollow, .btn.-dark.-hollow {
       background: none !important;
-      color: rgba(0, 0, 0, 0.87) !important;
-      border: 3px solid rgba(0, 0, 0, 0.87) !important; }
+      color: var(--color-contrast-higher) !important;
+      border: 3px solid var(--color-contrast-higher) !important; }
       .button.-dark.-hollow:hover, .button.-dark.-hollow:focus, .button.-dark.-hollow:active, .btn.-dark.-hollow:hover, .btn.-dark.-hollow:focus, .btn.-dark.-hollow:active {
-        color: #ffd9b8 !important;
-        background: rgba(0, 0, 0, 0.87) !important; }
+        color: var(--color-white) !important;
+        background: var(--color-contrast-higher) !important; }
   .button.-disabled, .btn.-disabled {
     color: #fff !important;
     background: #757575 !important;
     border-color: #757575 !important;
     cursor: default !important; }
+  .button.-shine, .btn.-shine {
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
+    border: 3px solid rgba(255, 255, 255, 0) !important;
+    color: var(--color-white) !important;
+    background: #C38756 !important; }
+    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .btn.-shine:hover, .btn.-shine:focus, .btn.-shine:active {
+      color: #C38756 !important;
+      background: var(--color-white) !important;
+      border-color: #C38756 !important; }
+    .button.-shine.-hollow, .btn.-shine.-hollow {
+      background: none !important;
+      color: #C38756 !important;
+      border: 3px solid #C38756 !important; }
+      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .btn.-shine.-hollow:hover, .btn.-shine.-hollow:focus, .btn.-shine.-hollow:active {
+        color: var(--color-white) !important;
+        background: #C38756 !important; }
 
 .btn-group {
   float: left; }
@@ -11475,23 +11475,23 @@ Usage: codyhouse.co/license
   color: #205e71;
   background-color: #e4ecee; }
 
-.leaf-0 .split-banner--content {
+.jungle-0 .split-banner--content {
   background-color: #686936; }
 
-.leaf-0 .subnav:before {
+.jungle-0 .subnav:before {
   background-color: #3a3b16; }
 
-.leaf-0 .subnav__link.active-tab {
+.jungle-0 .subnav__link.active-tab {
   color: #686936;
   background-color: #edede7; }
-  .leaf-0 .subnav__link.active-tab:hover {
+  .jungle-0 .subnav__link.active-tab:hover {
     color: #686936;
     background-color: #edede7; }
 
-.leaf-0 .prod-desc li:before {
+.jungle-0 .prod-desc li:before {
   color: #959672; }
 
-.leaf-0 .toggle:hover {
+.jungle-0 .toggle:hover {
   color: #686936;
   background-color: #edede7; }
 

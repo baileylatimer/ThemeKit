@@ -46,7 +46,7 @@
         {% endif %}
     </div>
     {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
-      <div class="width-1-1 split-banner split-banner--content {{ background_color }} pattern-map">
+      <div class="width-1-1 split-banner split-banner--content {{ background_color }} {% if section.settings.show_pattern %} pattern-map {% endif %}">
           <div class="section clearfix intro_description banner_description text-component center align-center"> 
             {% if overline != blank %}
                 <p class="color-contrast-medium text-uppercase">{{ overline }}</p>
@@ -87,9 +87,9 @@
 
     {% unless title == blank and subtitle == blank and button1 == blank and button2 == blank %}
         {% if banner_columns == "3" %}
-            <div class="width-1-{{ banner_columns }} split-banner split-banner--content middle flex-right {{ background_color }} pattern-map">
+            <div class="width-1-{{ banner_columns }} split-banner split-banner--content middle flex-right {{ background_color }} {% if section.settings.show_pattern %} pattern-map {% endif %}">
             {% else %}
-            <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} pattern-map">
+            <div class="width-1-{{ banner_columns }} split-banner split-banner--content flex-right {{ background_color }} {% if section.settings.show_pattern %} pattern-map {% endif %}">
         {% endif %}
         
             <div class="section clearfix intro_description banner_description text-component {% if banner_columns == "3" %} center {% endif %} {% if banner_columns == "2" %} left {% endif %}"> 
@@ -186,10 +186,28 @@
       "default": false
     },
     {
+      "type": "checkbox",
+      "id": "show_pattern",
+      "label": "Show pattern",
+      "default": true
+    },
+    {
       "type": "select",
       "id": "background_color",
       "label": "Background color",
       "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "bg-white",
+          "label": "White"
+        },
+        {
+          "value": "stripe--dark",
+          "label": "Neutral"
+        },
         {
           "value": "grape",
           "label": "Grape"
@@ -200,7 +218,7 @@
         },
         {
           "value": "jungle",
-          "label": "jungle"
+          "label": "Jungle"
         },
         {
           "value": "pumpkin",
