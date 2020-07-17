@@ -48,9 +48,9 @@
               </a>
             </div>
             <div class="eleven columns omega cart_content_info">
-              <h5>
-                <a href="{{ item.url }}">{{ item.product.title }}</a>
-              </h5>
+              <a href="{{ item.url }}" class="font-bold text-lg" itemprop="name">{{ item.product.title }}</a>
+              <p class="font-light text-md" itemprop="type">{{ item.product.type }}</p>
+ 
               {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                 <p class="meta">
                   {% for option in item.product.options %}
