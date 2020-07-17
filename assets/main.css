@@ -819,7 +819,7 @@ img, video, svg {
   --font-primary: 'cp', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   --text-base-size: 1.25em;
   --text-scale-ratio: 1.25;
-  --text-xs: calc((2em / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
   --text-md: calc(
     var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
@@ -854,17 +854,17 @@ h1, h2, h3, h4 {
 .text-xxxl {
   font-size: var(--text-xxxl, 2.488em); }
 
-h1, .text-xxl {
-  font-size: var(--text-xxl, 2.074em); }
-  h1::before, .text-xxl::before {
+h1, .text-xxxl {
+  font-size: var(--text-xxxl, 2.074em); }
+  h1::before, .text-xxxl::before {
     content: '';
     display: block;
     height: 0;
     width: 0;
     margin-top: calc((var(--font-secondary-capital-letter) - var(--heading-line-height)) * 0.5em); }
 
-h2, .text-xl {
-  font-size: var(--text-xl, 1.728em); }
+h2, .text-xxl {
+  font-size: var(--text-xxl, 1.728em); }
 
 h3, .text-lg {
   font-size: var(--text-lg, 1.44em); }
