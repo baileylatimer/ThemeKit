@@ -211,7 +211,9 @@
 
                         <div class="cart_item__title">
                           <div class="item_title">
-                            {{ item.product.title }}
+                            <p class="font-bold" itemprop="name">{{ item.product.title }}</p>
+                            <p class="font-light text-sm" itemprop="type">{{ item.product.type }}</p>
+                            
                             {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                               -
                               {% for option in item.product.options %}
