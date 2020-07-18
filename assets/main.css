@@ -10569,7 +10569,8 @@ div.is-absolute {
 /* Main / Logo
     ================================================== */
 div.logo {
-  margin-right: var(--space-md); }
+  margin-right: var(--space-md);
+  max-width: 125px; }
   div.logo:hover {
     opacity: .7;
     transition: all 0.1s ease-out; }
