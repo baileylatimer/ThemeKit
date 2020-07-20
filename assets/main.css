@@ -5190,6 +5190,10 @@ html:not(.js) .no-js\:is-hidden {
   .display\@xl {
     display: none !important; } }
 
+/**
+ * Returns the transition properties in the correct format
+ * This function is used by @mixin transition($transitions...)
+ */
 /* Success
   ================================================== */
 /* Warning
@@ -6130,10 +6134,6 @@ a.mobile_nav {
  * .selector {
  *   @include visually-shown(relative);
  * }
- */
-/**
- * Returns the transition properties in the correct format
- * This function is used by @mixin transition($transitions...)
  */
 :root, [data-theme="default"] {
   --color-primary-darker: hsl(346, 45%, 18%);
@@ -8505,6 +8505,26 @@ html:not(.js) .loop-tabs__content {
 
 html:not(.js) .loop-tabs__controls {
   display: none; }
+
+/* -------------------------------- 
+
+File#: _1_tabs
+Title: Tabs
+Descr: A list of content sections (panels), accessible one at a time using control labels
+
+-------------------------------- */
+.tabs__control {
+  text-decoration: none;
+  color: var(--color-contrast-medium); }
+  .tabs__control:focus {
+    outline: 2px solid hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
+    outline-offset: 2px; }
+  .tabs__control:hover {
+    color: var(--color-contrast-high); }
+
+.js .tabs__control[aria-selected="true"] {
+  color: var(--color-contrast-high);
+  text-decoration: underline; }
 
 /* -------------------------------- 
 
