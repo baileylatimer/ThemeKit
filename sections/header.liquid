@@ -75,11 +75,12 @@
       {% endif %}
     </a>
     <div class="top_bar--right">
+        <a class="mega-nav__icon-btn info-item" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon"><em class="material-icons-outlined">call</em></span></a>
       {% if section.settings.search_enabled %}
-        <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.placeholder' | t | escape }}" data-dropdown-rel="search"></a>
+        <a href="/search" class="info-item icon-search dropdown_link mega-nav__icon-btn" title="{{ 'general.search.placeholder' | t | escape }}" data-dropdown-rel="search"><span class="icon"><em class="material-icons-outlined">search</em></span></a>
       {% endif %}
       {% if section.settings.show_cart %}
-        <div class="cart_container">
+        <div class="mega-nav__icon-btn cart_container">
           <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}material-icons-outlined icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cart.item_count }}</span></a>
         </div>
       {% endif %}
@@ -88,13 +89,14 @@
   <!-- Search Bar -->
   {% if section.settings.search_enabled %}
     <div class="dropdown_container center" data-dropdown="search">
-      <div class="dropdown">
+      <div class="dropdown bg">
         <form action="/search" class="header_search_form">
           {% if settings.search_option != 'everything' %}
             <input type="hidden" name="type" value="product" />
           {% endif %}
-          <span class="icon-search search-submit"></span>
-          <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t: shop_name: shop.name }}" onfocus="this.placeholder=''" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+       
+          <span class="icon-search search-submit"><span class="icon"><em class="material-icons-outlined color-contrast-medium">search</em></span></span>
+          <input class="color-contrast-high bg-contrast-low" type="text" name="q" placeholder="{{ 'general.search.placeholder' | t: shop_name: shop.name }}" onfocus="this.placeholder=''" autocapitalize="off" autocomplete="off" autocorrect="on" class="search-terms" />
         </form>
       </div>
     </div>
@@ -116,7 +118,7 @@
           {% if section.settings.phone_number != blank %}      
           <a class="info-item padding-left-md padding-y-xs" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon"><em class="material-icons-outlined">call</em></span>{{ section.settings.phone_number }}</a>
           {% endif %}
-          <a class="info-item padding-left-md padding-y-xs" href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question..."> <span class="icon"><em class="material-icons-outlined">textsms</em></span>+1.513.547.2426</a>
+          <a class="info-item padding-left-md padding-y-xs" href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question..."> <span class="icon"><em class="material-icons-outlined">textsms</em></span>+1 513.547.2426</a>
           <a class="info-item padding-left-md padding-y-xs" href="mailto:support@gosun.co"><span class="icon"><em class="material-icons-outlined">mail</em></span>support@gosun.co</a>
           <a class="info-item padding-left-md padding-y-xs" href="/account"><span class="icon"><em class="material-icons-outlined">account_circle</em></span>Account</a>
         </section>
@@ -412,7 +414,7 @@
                 {% if settings.search_option != 'everything' %}
                   <input type="hidden" name="type" value="product" />
                 {% endif %}
-                <span class="icon-search search-submit"></span>
+                <span class="icon-search search-submit"><span class="icon"><em class="material-icons-outlined">search</em></span></span>
                 <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
               </form>
             </li>

@@ -11932,6 +11932,11 @@ header {
   .sticky-buy .shopify-payment-button__more-options {
     display: none; }
 
+/* #Search - Snize
+================================================== */
+body .snize-ac-results.snize-ac-results-mobile {
+  margin-top: var(--header-height) !important; }
+
 .newsletter_section h2 {
   letter-spacing: -0.03em !important;
   font-size: 24px;
