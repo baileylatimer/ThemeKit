@@ -5935,8 +5935,6 @@ h2.product_type {
 
 .icon-user {
   display: flex !important; }
-  .icon-user span {
-    display: none !important; }
 
 /* #Top Bar - Phone number
 ================================================== */
@@ -5957,10 +5955,6 @@ h2.product_type {
 #header .top_bar .icon-search::before {
   font-size: 22px;
   font-weight: 700; }
-
-@media (max-width: 768px) {
-  #header .top_bar a span {
-    display: none; } }
 
 /* Clickable */
 a.mobile_nav {
@@ -6017,10 +6011,13 @@ a.mobile_nav {
   background: #c75724;
   position: absolute;
   top: 4px;
-  left: 30px;
   border-radius: 8px;
   font-size: 12px;
-  line-height: 16px; }
+  line-height: 16px;
+  left: 16px; }
+  @media (min-width: 768px) {
+    .cart_count-bubble {
+      left: 30px; } }
 
 .cart_count {
   line-height: 0 !important;

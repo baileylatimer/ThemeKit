@@ -81,7 +81,11 @@
       {% endif %}
       {% if section.settings.show_cart %}
         <div class="mega-nav__icon-btn cart_container">
-          <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}material-icons-outlined icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant> <span class="cart_count">{{ cart.item_count }}</span></a>
+          <a href="/cart" class="{% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link mega-nav__icon-btn info-item" title="{{ 'layout.general.cart' | t | escape }}" data-no-instant><span class="icon"><em class="material-icons-outlined">shopping_cart</em></span> 
+            <div class="cart_count-bubble"> 
+              <span class="cart_count">{{ cart.item_count }}</span>
+            </div>
+          </a>
         </div>
       {% endif %}
     </div>
@@ -182,7 +186,8 @@
       <!-- Cart -->
       {% if section.settings.show_cart %}
         <div class="cart_container">
-          <a href="/cart" class="mln15 material-icons-outlined {% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
+          <a href="/cart" class="mln15 info-item {% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
+            <span class="icon"><em class="material-icons-outlined">shopping_cart</em></span>
             <div class="cart_count-bubble"> 
               <span class="cart_count">{{ cart.item_count }}</span>
             </div>
@@ -263,7 +268,7 @@
                         <span class="money">{{ cart.total_price | money }}</span>
                       </span>
                   </li>
-                  <li class="margin-bottom-xl">
+                  <li class="margin-bottom-xl text-left">
                     <span class="base-BodyUppercase">Shipping</span>
                     <span class="right">
                       <span class="money">FREE</span>
@@ -344,7 +349,14 @@
   
           {% if shop.customer_accounts_enabled %}
             <li>
-              <a href="/account" class="material-icons-outlined icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
+              <a href="/account" class="icon-user info-item" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> 
+                <span class="icon">
+                  <i class="material-icons-outlined">account_circle</i>
+                </span>
+                <!--
+                <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span>
+                -->
+              </a>
             </li>
           {% endif %}
   
