@@ -166,12 +166,12 @@ rgb(255, 48, 80)
 rgb(255, 23, 59)
 ;
 
-$palette-grape-50: nth($palette-grape, 1);
+$grape-1: nth($palette-grape, 1);
 $palette-grape-100: nth($palette-grape, 2);
 $palette-grape-200: nth($palette-grape, 3);
-$palette-grape-300: nth($palette-grape, 4);
+$grape-2: nth($palette-grape, 4);
 $palette-grape-400: nth($palette-grape, 5);
-$palette-grape-500: nth($palette-grape, 6);
+$grape-3: nth($palette-grape, 6);
 $palette-grape-600: nth($palette-grape, 7);
 $palette-grape-700: nth($palette-grape, 8);
 $palette-grape-800: nth($palette-grape, 9);
@@ -380,7 +380,7 @@ $color-discount: $palette-olive-700;
 /* #Classes - Banners
 ================================================== */
 .grape {
-  background: $palette-grape-500 !important;
+  background: $grape-3 !important;
 }
 .olive {
   background: $palette-olive-700 !important;
