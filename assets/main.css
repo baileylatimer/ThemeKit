@@ -11969,6 +11969,14 @@ body .snize-ac-results.snize-ac-results-mobile {
     .newsletter input.contact_email {
       width: 80% !important; } }
 
+input.contact_email {
+  height: 56px !important;
+  border-radius: 28px !important;
+  -webkit-border-radius: 28px !important;
+  -moz-border-radius: 28px !important;
+  -ms-border-radius: 28px !important;
+  -o-border-radius: 28px !important; }
+
 .newsletter .button {
   width: auto !important; }
 

@@ -138,9 +138,9 @@
     <!-- Announcement Bar -->
     {% if section.settings.promo_text != blank %}
       {% if section.settings.promo_external %}
-        <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_blank')">
+        <div class="promo_banner wood-300" onclick="window.open('{{ promo_link.url }}', '_blank')">
       {% else %}
-        <div class="promo_banner wood-300 pattern-map" onclick="window.open('{{ promo_link.url }}', '_self')">
+        <div class="promo_banner wood-300" onclick="window.open('{{ promo_link.url }}', '_self')">
       {% endif %}
       <div class="promo_banner__content">
         <div class="info-item info-item--banner">
