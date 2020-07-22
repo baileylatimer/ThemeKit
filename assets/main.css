@@ -8359,7 +8359,7 @@ Usage: codyhouse.co/license
   flex-wrap: nowrap;
   white-space: nowrap;
   min-width: 100%;
-  height: 200px; }
+  min-height: 200px; }
   .marquee:hover, .marquee-animate:hover {
     animation-play-state: paused; }
     .marquee:hover .marquee-logo, .marquee-animate:hover .marquee-logo {
@@ -8373,6 +8373,10 @@ a.marquee-block {
   justify-content: center;
   align-items: center;
   cursor: default !important; }
+  @media (max-width: 768px) {
+    a.marquee-block {
+      flex: 50%;
+      padding: var(--space-md); } }
   a.marquee-block:hover .marquee-logo {
     filter: unset; }
 
@@ -8384,6 +8388,11 @@ a.marquee-block {
   flex-shrink: 0;
   align-items: center;
   height: 100%; }
+  @media (max-width: 768px) {
+    .marquee-content {
+      flex-wrap: wrap;
+      flex: 2;
+      padding: var(--space-md); } }
 
 .marquee-animate {
   animation: slide-left 20s linear infinite; }
