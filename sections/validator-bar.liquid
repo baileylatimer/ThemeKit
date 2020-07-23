@@ -1,0 +1,78 @@
+
+<div class="flex flex-wrap flex-center padding-y-md padding-y-lg@lg">
+
+{% for block in section.blocks %}
+    <div class="validator-item margin-sm margin-lg@lg flex-column align-{{ section.settings.alignment }}">
+        <span class="icon m0 color-contrast-medium">
+            <i class="material-icons-outlined icon--lg">{{ block.settings.icon_name }}</i>
+        </span>
+        <h5 class="text-md font-medium margin-top-xs {{ section.settings.alignment }}">{{ block.settings.title }}</h5>
+        {% if block.settings.description != blank %}
+            <p class="body-text--md {{ section.settings.alignment }}">{{ block.settings.description }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Validator Bar",
+    "class": "width-100 stripe--dark", 
+    "max_blocks": 6,
+    "settings": [
+      {
+        "id": "alignment",
+        "type": "select",
+        "label": "Content",
+        "default": "center",
+        "options": [
+          { "value": "center", "label": "Center" },
+          { "value": "left", "label": "Left" }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "content",
+        "name": "Validation bar",
+        "settings": [
+          {
+            "type": "text",
+            "id": "icon_name",
+            "label": "Icon name",
+            "info": "Copy/paste from here: https://material.io/resources/icons/?style=outline"
+          },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+     "presets": [
+      {
+        "name": "Validation bar",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "content"
+          },
+          {
+            "type": "content"
+          },
+          {
+            "type": "content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
