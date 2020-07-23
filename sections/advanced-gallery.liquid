@@ -1,3 +1,4 @@
+
 <div class="adv-gallery__grid container max-width-adaptive-xl">
 
   {% for block in section.blocks %}
@@ -11,7 +12,8 @@
     {% endif %}
   {% endfor %}
 
-  <div class="stripe--dark padding-md flex@lg">
+  <div class="stripe--dark padding-md flex@lg flex-column@lg">
+    <h3 class="font-medium countup text-xxl text-xxxl@lg"><span class="js-countup">{{ section.settings.countup }}</span>&nbsp;{{ section.settings.title }}</h3>
     <div class="margin-top-auto@lg">
       <div class="border-left border-contrast-high height-xxl margin-bottom-sm display@lg" aria-hidden="true"></div>
       <p class="text-md">{{ section.settings.description }}</p>
@@ -27,6 +29,16 @@
     "class": "adv-gallery",
     "max_blocks": 4,
     "settings": [
+      {
+        "type": "text",
+        "id": "countup",
+        "label": "Countup"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
       {
         "type": "text",
         "id": "description",

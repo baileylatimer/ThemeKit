@@ -8384,6 +8384,23 @@ Descr: Advanced image gallery template
 
 /* -------------------------------- 
 
+File#: _1_countup
+Title: CountUp
+Descr: A widget to animate a numerical value by counting to it
+
+-------------------------------- */
+.countup {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums; }
+
+.js .countup {
+  opacity: 0; }
+
+.js .countup--is-visible {
+  opacity: 1; }
+
+/* -------------------------------- 
+
 File#: _1_previous-next-links
 Title: Previous/Next Links
 Descr: Links to previous/next articles
