@@ -8256,7 +8256,9 @@ Descr: Container of information used as teaser for further content exploration
   display: inline-block;
   padding: var(--space-xs) var(--space-sm) !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  box-shadow: none !important;
+  opacity: 0; }
   .card-v9__btn span {
     position: relative;
     z-index: 2;
@@ -8272,7 +8274,7 @@ Descr: Container of information used as teaser for further content exploration
     width: 100%;
     height: 100%;
     border-radius: var(--radius-md);
-    background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.8);
+    background-color: hsla(var(--color-contrast-lower-h), var(--color-contrast-lower-s), var(--color-contrast-lower-l), 0.8);
     opacity: 0;
     transform: translateY(25%);
     transition: opacity 0.3s, transform 0.3s var(--ease-out); }
@@ -8293,10 +8295,12 @@ Descr: Container of information used as teaser for further content exploration
   width: 100%;
   height: 100%;
   background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.5);
-  transition: background-color .3s; }
+  transition: background-color .3s;
+  opacity: 0; }
 
 .card-v9--overlay-bg:hover::before {
-  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.8); }
+  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.8);
+  opacity: 1; }
 
 /* -------------------------------- 
 

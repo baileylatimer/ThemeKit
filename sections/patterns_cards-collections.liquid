@@ -4,7 +4,7 @@
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
 
-      <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-sm" aria-labelledby="card-title-1" style="background-color: {{block.settings.color_title}}; background-image: url( {{ block.settings.image |  img_url: '200x' }} );" title="{{ alt | escape }}">
+      <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-sm" aria-labelledby="card-title-1" style="background-color: {{block.settings.color_title}}; background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
         <div class="card-v9__content padding-md">
           <div class="padding-bottom-xxxl max-width-xxs">
             <p class="text-sm color-white color-opacity-50% margin-bottom-xxs text-uppercase"> {{ block.settings.overline}} </p>
