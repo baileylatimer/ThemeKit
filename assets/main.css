@@ -5944,6 +5944,10 @@ h2.product_type {
   bottom: 0px;
   color: var(--color-white); }
 
+@media (max-width: 768px) {
+  .validator-item {
+    flex: 40%; } }
+
 /* #Top Bar - Mobile
 ================================================== */
 /* All icons */
