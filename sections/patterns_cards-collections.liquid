@@ -1,10 +1,10 @@
-<div class="article-wrapper-lg wrapper--xl pb80">
+<div class="article-wrapper-lg wrapper--xl">
 
   <div class="flex flex-column@xs flex-row@md padding-sm"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
 
-      <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-sm" aria-labelledby="card-title-1" style="background-color: {{block.settings.color_title}}; background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
+      <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-sm {{ block.settings.background_color }}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
         <div class="card-v9__content padding-md">
           <div class="padding-bottom-xxxl max-width-xxs">
             <p class="text-sm color-white color-opacity-50% margin-bottom-xxs text-uppercase"> {{ block.settings.overline}} </p>
@@ -39,11 +39,50 @@
 
     ],
     "blocks": [
-
+    
       {
         "type": "image",
         "name": "Image",
         "settings": [
+        {
+          "type": "select",
+          "id": "background_color",
+          "label": "Background color",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "bg-white",
+              "label": "White"
+            },
+            {
+              "value": "stripe--dark",
+              "label": "Neutral"
+            },
+            {
+              "value": "grape",
+              "label": "Grape"
+            },
+            {
+              "value": "jungle",
+              "label": "Jungle"
+            },
+            {
+              "value": "tundra",
+              "label": "Tundra"
+            },
+            {
+              "value": "ocean",
+              "label": "Ocean"
+            },
+            {
+              "value": "wood",
+              "label": "Wood"
+            }
+          ]
+        },
           {
             "type": "image_picker",
             "id": "image",
@@ -51,31 +90,26 @@
             "info": "800 x 800px recommended"
           },
           {
-            "type": "color",
-             "id": "color_title",
-             "label": "Background color",
-             "default": "#FFFFFF"
-           },
-            {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        },
-        {
-          "type": "text",
-          "id": "overline",
-          "label": "Overline",
-          "default": "Solar"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Title"
-        }
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "overline",
+            "label": "Overline",
+            "default": "Solar"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+          }
         ]
       }
     ],
+    
      "presets": [
       {
         "name": "Collections",

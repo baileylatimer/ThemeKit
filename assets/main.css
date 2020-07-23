@@ -5206,11 +5206,13 @@ html:not(.js) .no-js\:is-hidden {
   ================================================== */
 /* Grape
   ================================================== */
-/* Aqua
-  ================================================== */
 /* Wood
   ================================================== */
 /* Jungle
+  ================================================== */
+/* Ocean
+  ================================================== */
+/* Aqua
   ================================================== */
 /* GoSun / Cherry
 ================================================== */
@@ -5257,37 +5259,40 @@ html:not(.js) .no-js\:is-hidden {
 /* #Classes - Banners
   ================================================== */
 .grape {
-  background: #873B40 !important; }
+  background-color: #873B40 !important; }
 
 .tundra {
-  background: #205e71 !important; }
+  background-color: #205e71 !important; }
 
 .pumpkin {
-  background: #c75724 !important; }
+  background-color: #c75724 !important; }
 
 .jungle {
-  background: #69715E !important; }
+  background-color: #69715E !important; }
 
 .honey {
-  background: #eaaa00 !important; }
+  background-color: #eaaa00 !important; }
 
 .mint {
-  background: #03a7ac !important; }
+  background-color: #03a7ac !important; }
 
 .olive {
-  background: #936d41 !important; }
+  background-color: #936d41 !important; }
 
 .olive-200 {
-  background: #d2c0a9 !important; }
+  background-color: #d2c0a9 !important; }
+
+.wood {
+  background-color: #BA8D65 !important; }
 
 .wood-300 {
-  background: #D3BDAB !important; }
+  background-color: #D3BDAB !important; }
 
 .ocean {
-  background: #0B4D6B !important; }
+  background-color: #5D82A6 !important; }
 
 .cherry-900 {
-  background: #d9120f !important; }
+  background-color: #d9120f !important; }
 
 .aqua--1 {
   background-color: #E1F4F5 !important; }
@@ -5339,12 +5344,12 @@ html:not(.js) .no-js\:is-hidden {
   background-blend-mode: multiply !important; }
 
 .stripe--dark {
-  background: #F0EDEA; }
+  background-color: #F0EDEA; }
 
 /* Tabs
   ================================================== */
 .tab--shine {
-  background: #BA8D65; }
+  background-color: #BA8D65; }
 
 /* Top / Search
   ================================================== */
@@ -5362,7 +5367,7 @@ span.item-pricing,
 .item-result.result--product:hover,
 .dropdown .header_search_form .search__results .item-result a:hover,
 .main_nav .search__results .item-result a:hover {
-  background: #f0f0f0; }
+  background-color: #f0f0f0; }
 
 /* Breadcrumbs
   ================================================== */
@@ -5375,19 +5380,19 @@ span.item-pricing,
   color: #757575 !important; }
 
 .violator--discount {
-  background: var(--color-success-lighter);
+  background-color: var(--color-success-lighter);
   border: 2px solid var(--color-success-lighter);
   color: #fff;
   color: var(--color-success-darker); }
 
 .violator--attribute {
-  background: #e4ecee;
+  background-color: #e4ecee;
   border: 2px solid #e4ecee;
   color: #fff;
   color: #205e71; }
 
 .violator--free-item {
-  background: #205e71;
+  background-color: #205e71;
   border: 2px solid #205e71;
   color: #fff;
   color: #e4ecee; }
@@ -7500,7 +7505,7 @@ td {
   justify-content: center;
   align-items: center;
   display: inline-flex !important;
-  background: transparent;
+  background-color: transparent;
   border: 2px solid #EFFEED;
   color: #EFFEED;
   top: -34px; }
@@ -8249,15 +8254,24 @@ Descr: Container of information used as teaser for further content exploration
   /* parallax effect 
     background-attachment: fixed;
     */
-  background-position: -20% 70px;
-  background-size: 350px;
+  background-position: 150% -30px;
+  background-size: 300px;
   box-shadow: var(--shadow-sm);
   transition: .3s;
-  width: 100%; }
+  width: 100%;
+  height: var(--space-xxxxl); }
+  @media (min-width: 992px) {
+    .card-v9 {
+      background-size: 350px;
+      background-position: -20% 70px;
+      height: 300px; } }
   .card-v9:hover {
     box-shadow: var(--shadow-md);
-    background-position: -15% 40px;
+    background-position: 130% -50px;
     scale: 1.03; }
+    @media (min-width: 992px) {
+      .card-v9:hover {
+        background-position: -15% 40px; } }
 
 .card-v9__content {
   display: flex;
