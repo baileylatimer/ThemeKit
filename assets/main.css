@@ -8215,6 +8215,91 @@ Usage: codyhouse.co/license
 
 /* -------------------------------- 
 
+File#: _1_card-v9
+Title: Card v9
+Descr: Container of information used as teaser for further content exploration
+
+-------------------------------- */
+.card-v9 {
+  display: block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--color-white);
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  /* parallax effect 
+    background-attachment: fixed;
+    */
+  background-position: -20% 70px;
+  background-size: 350px;
+  box-shadow: var(--shadow-sm);
+  transition: .3s;
+  width: 100%; }
+  .card-v9:hover {
+    box-shadow: var(--shadow-md);
+    background-position: -15% 40px;
+    scale: 1.03; }
+
+.card-v9__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  position: relative;
+  z-index: 2; }
+
+.card-v9__btn {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .card-v9__btn span {
+    position: relative;
+    z-index: 2;
+    color: var(--color-bg);
+    opacity: 0;
+    transition: opacity .3s; }
+  .card-v9__btn::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-md);
+    background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.8);
+    opacity: 0;
+    transform: translateY(25%);
+    transition: opacity 0.3s, transform 0.3s var(--ease-out); }
+
+.card-v9:hover .card-v9__btn span {
+  opacity: 1; }
+
+.card-v9:hover .card-v9__btn::after {
+  opacity: 1;
+  transform: translateY(0); }
+
+.card-v9--overlay-bg::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.5);
+  transition: background-color .3s; }
+
+.card-v9--overlay-bg:hover::before {
+  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.8); }
+
+/* -------------------------------- 
+
 File#: _1_previous-next-links
 Title: Previous/Next Links
 Descr: Links to previous/next articles

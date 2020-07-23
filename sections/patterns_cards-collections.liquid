@@ -1,31 +1,22 @@
 <div class="article-wrapper-lg wrapper--xl pb80">
 
-  <div class="grid-h grid-h--1-1 cards cards--activity mobile--true-grid"> 
+  <div class="flex flex-column@xs flex-row@md padding-sm"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
-        <article class="article-tile article-tile--md width-1-1 text-light">
-            <a href="{{ block.settings.link }}" itemprop="url">
-              <div class="article-media filter-top lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} );" title="{{ alt | escape }}">
-                <h3 class="heading--h3"> {{ block.settings.title }} </h3>
-                <p class="body-text--caption semibold text-light--sub b10" > Shop {{ block.settings.title }} ➞</p>
-              </div>
-            </a>
-          </article>
-        {% endif %}
-      {% endfor %}
-    </div>
 
-  <div class="grid-h grid-h--2-2 cards cards--activity mobile--false-grid"> 
-    {% for block in section.blocks %}
-      {% if block.settings.image != blank %}
-        <article class="article-tile article-tile--md width-1-1 text-light">
-          <a href="{{ block.settings.link }}" itemprop="url">
-            <div class="article-media filter-top lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} );" title="{{ alt | escape }}">
-              <h3 class="heading--h3"> {{ block.settings.title }} </h3>
-              <p class="body-text--caption semibold text-light--sub b10" > Shop {{ block.settings.title }} ➞</p>
-            </div>
-          </a>
-        </article>
+      <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-sm" aria-labelledby="card-title-1" style="background-color: {{block.settings.color_title}}; background-image: url( {{ block.settings.image |  img_url: '200x' }} );" title="{{ alt | escape }}">
+        <div class="card-v9__content padding-md">
+          <div class="padding-bottom-xxxl max-width-xxs">
+            <p class="text-sm color-white color-opacity-50% margin-bottom-xxs text-uppercase"> {{ block.settings.overline}} </p>
+            <h1 id="card-title-1" class="text-xl color-white"> {{ block.settings.title }} </h1>
+          </div>
+          
+          <div class="margin-top-auto">
+            <span class="card-v9__btn btn"><span>Shop {{ block.settings.title }}&nbsp;➞</span></span>
+          </div>
+        </div>
+      </a>
+
       {% endif %}
     {% endfor %}
   </div>
@@ -33,24 +24,22 @@
 </div>
 
 
+
+
+
+
+
+
 {% schema %}
   {
     "name": "Collections Cards",
     "class": "image-gallery-section filter-map--white",
-    "max_blocks": 4,
+    "max_blocks": 6,
     "settings": [
-            {
-        "type": "range",
-        "id": "grid-h-size",
-        "label": "Images per row",
-        "min": 2,
-        "max": 4,
-        "step": 1,
-        "default": 4,
-        "info": "Vertical masonry and classic only"
-      }
+
     ],
     "blocks": [
+
       {
         "type": "image",
         "name": "Image",
@@ -61,6 +50,12 @@
             "label": "Image",
             "info": "800 x 800px recommended"
           },
+          {
+            "type": "color",
+             "id": "color_title",
+             "label": "Background color",
+             "default": "#FFFFFF"
+           },
             {
           "type": "url",
           "id": "link",
@@ -68,9 +63,15 @@
         },
         {
           "type": "text",
+          "id": "overline",
+          "label": "Overline",
+          "default": "Solar"
+        },
+        {
+          "type": "text",
           "id": "title",
-          "label": "Collection name",
-          "default": "Collection name"
+          "label": "Title",
+          "default": "Title"
         }
         ]
       }
@@ -100,3 +101,4 @@
     ]
   }
 {% endschema %}
+ 
