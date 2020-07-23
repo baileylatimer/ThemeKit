@@ -3,7 +3,7 @@
  <div class="grid-h grid-h--1-1 cards cards--activity mobile--true-grid"> 
     {% for block in section.blocks %}
         {% if block.settings.image != blank %}
-            <article class="article-tile article-tile--md width-1-1 text-light">
+            <article class="article-tile article-tile--md width-1-1 text-light radius-md ">
                 <a href="{{ block.settings.link }}" itemprop="url">
                   <div class="article-media filter-top lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '400x' }} );" title="{{ alt | escape }}">
                     <h3 class="heading--h3"> {{ block.settings.title }} </h3>
@@ -18,7 +18,7 @@
   <div class="grid-h grid-h--1-6 cards cards--activity mobile--false-grid"> 
     {% for block in section.blocks %}
         {% if block.settings.image != blank %}
-            <article class="article-tile article-tile--md width-1-1 text-light">
+            <article class="article-tile article-tile--md width-1-1 text-light radius-md ">
                 <a href="{{ block.settings.link }}" itemprop="url">
                   <div class="article-media filter-top lazyloaded" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} );" title="{{ alt | escape }}">
                     <h3 class="heading--h3"> {{ block.settings.title }} </h3>
