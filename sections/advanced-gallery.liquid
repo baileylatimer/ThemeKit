@@ -1,5 +1,5 @@
 
-<div class="adv-gallery__grid container max-width-adaptive-xl">
+<div class="adv-gallery__grid container padding-bottom-xl">
 
   {% for block in section.blocks %}
     {% if block.settings.image != blank %}
@@ -26,7 +26,7 @@
 {% schema %}
   {
     "name": "Advanced Gallery",
-    "class": "adv-gallery",
+    "class": "adv-gallery width-100",
     "max_blocks": 4,
     "settings": [
       {
