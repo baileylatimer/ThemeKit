@@ -6841,8 +6841,11 @@ Usage: codyhouse.co/license
   .card--body {
     box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15); }
   .card--md {
-    max-width: 280px;
     max-height: 320px; }
+    @media (min-width: 768px) {
+      .card--md {
+        max-width: 280px;
+        max-height: 320px; } }
   .card--lg {
     max-width: 460px; }
 
@@ -10033,16 +10036,10 @@ a.collection-info__caption .product-details {
       margin: 16px 0; }
       .article-media--lg {
         background-size: 65%; } }
-  @media (max-width: 465px) {
-    .article-media--sm {
-      height: 70px; } }
 
-@media (max-width: 768px) {
-  .article-tile--sm .article-media {
-    height: 70px; } }
-
-.article-tile--lg {
-  max-width: 280px; }
+@media (min-width: 768px) {
+  .article-tile--lg {
+    max-width: 280px; } }
 
 /* #Article - Content
   ================================================== */
@@ -11574,8 +11571,9 @@ Usage: codyhouse.co/license
   margin-left: auto;
   margin-right: auto; }
 
-.product-card--md {
-  max-width: 280px; }
+@media (min-width: 768px) {
+  .product-card--md {
+    max-width: 280px; } }
 
 .mobile--true {
   display: block !important; }

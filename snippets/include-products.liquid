@@ -1,11 +1,11 @@
 
 <div class="article-wrapper-lg">
 	<h2 class="text-dark center title m10">{{ product.metafields.custom_fields["product_list__title"] }}</h2>
-	<div class="grid-h grid-h--1-4">
+	<div class="flex flex-column flex-row@md">
 		{% assign product_refs = product.metafields.custom_fields["product_list__products"] | split: "|" %}
 		{% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
 		{% for product_handle in product_refs %}
-		<article class="article-tile article-tile--lg width-1-1 ">
+		<article class="article-tile article-tile--lg width-1-1 margin-bottom-sm margin-sm@md">
             {% assign product_ref = all_products[product_handle] %}
             <a href="{{product_ref.url}}" itemprop="url">
 
