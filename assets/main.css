@@ -10308,7 +10308,7 @@ a.collection-info__caption .product-details {
   .sidebar.four.columns {
     position: -webkit-sticky;
     position: sticky;
-    top: 0; } }
+    top: var(--space-xxxl); } }
 
 .sidebar-menu, #bc-sf-filter-tree {
   width: 100%; }
