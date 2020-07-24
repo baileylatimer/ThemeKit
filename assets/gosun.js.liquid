@@ -89,14 +89,15 @@ function scrollFunction() {
 
 
 // -----------------------------------------------------------------------------
-// Section / Reviews
+// Third Party / Stamped.io
 // -----------------------------------------------------------------------------
 $(document).ready(function() {
-  $('.spr-summary-actions-newreview').addClass('button')
+  $('.spr-summary-actions-newreview').addClass('button flex')
 });
 
 $(function() {
-  $(".stamped-summary-actions-newreview, .stamped-summary-actions-newquestion").addClass("button, -hollow, -dark");
+  $(".stamped-summary-actions-newreview, .stamped-summary-actions-newquestion, .stamped-pagination a").addClass("button flex -dark");
+  $(".stamped-summary-actions-newquestion").addClass("-hollow");
   if ($('.stamped-review-avatar[data-author="GoSun"]')) {
     $('stamped-review-reply').addClass("reply--offical");
   }
@@ -108,10 +109,19 @@ $(".dismiss-trigger").click(function(){
 });
 
 
+
+
+// -----------------------------------------------------------------------------
+// Third Party / Shogun
+// -----------------------------------------------------------------------------
 /* #Shogun */
 $(function() {
   $(".shg-product-title-component h3").addClass("article-title base-BodyTitle");
   $(".shogun-form button").addClass("button");
+});
+ /* #Icon + Text / Make vertical */
+ $(function() {
+  $(".shg-c .flex-column").addClass("flex");
 });
 
 
@@ -139,10 +149,6 @@ $(function() {
   }
 });
 
- /* #Icon + Text / Make vertical */
-$(function() {
-  $(".shg-c .flex-column").addClass("flex");
-});
 
 
  /* #Media / Video – Autoloop */

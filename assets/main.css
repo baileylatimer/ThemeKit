@@ -1151,7 +1151,7 @@ html:not(.js) .no-js\:is-hidden {
   white-space: nowrap; }
 
 .flex {
-  display: flex; }
+  display: flex !important; }
 
 .inline-flex {
   display: inline-flex; }
@@ -9200,6 +9200,47 @@ Descr: A Slideshow to display a gallery of testimonials
     .testimonial-slideshow {
       --slideshow-height: 500px; } }
 
+.stamped-container {
+  font-family: 'cp' !important; }
+
+.stamped-reviews-title a, .stamped-review-header-title {
+  font-size: var(--text-md), 1.2em; }
+
+.stamped-reviews-author, .author {
+  margin-left: 0 !important;
+  font-size: var(--text-md), 1.2em;
+  color: var(--color-contrast-high); }
+
+.stamped-reviews-date, .created {
+  font-size: var(--text-sm); }
+
+.stamped-reviews-message-block, p.stamped-review-content-body {
+  font-family: 'cp';
+  font-size: var(--text-md);
+  line-height: var(--text-md);
+  font-style: normal;
+  color: var(--color-contrast-medium); }
+
+.stamped-reviews-author, .author {
+  margin-left: 0 !important;
+  font-size: var(--text-md), 1.2em;
+  color: var(--color-contrast-high); }
+
+.stamped-reviews-date, .created {
+  font-size: var(--text-sm); }
+
+.stamped-summary-recommend-percent, .stamped-review-header .stamped-verified-badge, .stamped-review-header .verified, .stamped-review-header .verified .fa-check-circle-o, .stamped-review-header .verified .stamped-fa-check-circle-o, .stamped-review-header .verified-badge, .stamped-review-header .verified-badge .fa-check-circle-o, .stamped-review-header .verified-badge .stamped-fa-check-circle-o, .stamped-verified-badge {
+  color: var(--color-contrast-medium) !important; }
+
+.stamped-reviews .stamped-review-avatar {
+  background: #D3BDAB !important;
+  text-shadow: none !important; }
+  .stamped-reviews .stamped-review-avatar .stamped-review-avatar-content {
+    color: #756151 !important; }
+
+.stamped-review[data-verified="buyer"] .stamped-review-avatar::before, .stamped-review-recommend[data-is-recommend="true"]::before {
+  color: #756151 !important; }
+
 .testimonial-slideshow__profile-img {
   width: var(--testimonial-slideshow-profile-img-size);
   height: var(--testimonial-slideshow-profile-img-size);
@@ -9249,23 +9290,9 @@ Descr: A Slideshow to display a gallery of testimonials
       @media (min-width: 768px) {
         #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .block:before {
           background: linear-gradient(transparent 170px, var(--color-white)); } }
-  #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-title a {
-    font-size: var(--text-md), 1.2em; }
   #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-message {
     margin-left: 0 !important;
     font-size: var(--text-md), 1.2em; }
-  #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-message-block {
-    font-family: cp;
-    font-size: var(--text-md);
-    line-height: var(--text-md);
-    font-style: normal;
-    color: var(--color-contrast-medium); }
-  #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-author {
-    margin-left: 0 !important;
-    font-size: var(--text-md), 1.2em;
-    color: var(--color-contrast-high); }
-  #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-date {
-    font-size: var(--text-sm); }
   #stamped-reviews-widget[data-widget-type="carousel"] .stamped-carousel-scroll #stamped-carousel-scroll-wrapper .stamped-reviews-image {
     display: none; }
 
@@ -10529,7 +10556,12 @@ button#bc-sf-filter-tree-mobile-button {
 
 /* #Stamped.io
   ================================================== */
+.stamped-review-variant {
+  opacity: 0;
+  margin-top: -10px; }
+
 [data-widget-type="minimal"] .stamped-review .stamped-review-content {
+  font-family: 'cp' !important;
   margin: 0 !important;
   width: calc(100% - 40px); }
   @media (min-width: 768px) {
@@ -10568,27 +10600,6 @@ button#bc-sf-filter-tree-mobile-button {
 .stamped-form-custom-question > label {
   font-family: 'cp'; }
 
-/*
-  .new-review-form .stamped-form-custom-question {
-    display: flex;
-  }
-  
-  .stamped-form-custom-question label {
-    width: 20%;
-  }
-  
-  .new-review-form .stamped-form-custom-option-scale label {
-    width: calc(100% / 5);
-  }
-  
-  .new-review-form .stamped-form-custom-option-scale {
-    width: 100%;
-  }
-  
-  .new-review-form .stamped-form-custom-option-scale label:nth-child(2) {
-  }
-  
-  */
 /* #Reviews - Buttons
   ================================================== */
 /* #Buttons - Upload photo */
@@ -10605,16 +10616,30 @@ button#bc-sf-filter-tree-mobile-button {
 .stamped-container[data-widget-show-upload="true"] .stamped-file-uploader {
   margin-top: 10px !important; }
 
+.stamped-review-recommend {
+  display: none !important; }
+
+.stamped-summary-recommend {
+  float: left;
+  font-size: var(--text-sm);
+  width: max-content;
+  position: relative; }
+  .stamped-summary-recommend span.stamped-summary-recommend-percent {
+    font-size: var(--text-xl);
+    background: var(--color-contrast-lower) !important; }
+
 /* #Buttons - Write review, Ask question */
-div[data-widget-style*="standard"] .stamped-summary span.stamped-summary-actions {
+span.stamped-summary-actions {
+  float: right;
+  position: relative;
   display: flex !important;
   flex-direction: row; }
-  div[data-widget-style*="standard"] .stamped-summary span.stamped-summary-actions .stamped-summary-actions-newreview.button {
+  span.stamped-summary-actions .stamped-summary-actions-newreview.button {
     margin-bottom: 5px !important; }
 
 /* Button icon */
 .stamped-summary-actions-newquestion::before, .stamped-summary-actions-newreview::before, .stamped-summary-actions-mobile-filter i::before, .stamped-summary-actions-clear::before {
-  color: #888 !important; }
+  color: var(--color-contrast-medium) !important; }
 
 /* #Reviews - Overview
   ================================================== */
@@ -10692,7 +10717,7 @@ div.stamped-review-options:nth-child(5) {
   ================================================== */
 .stamped-review-image {
   clear: both;
-  padding-top: 40px !important; }
+  padding-top: var(--space-sm); }
 
 /* #Reviews - Footer
   ================================================== */
@@ -10718,18 +10743,18 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
 .stamped-verified-badge {
   padding: .2rem 1rem .3rem;
   border-radius: 2rem;
-  background: #e4f8f0; }
+  background: var(--color-contrast-lower); }
 
 .stamped-review-header .stamped-verified-badge, .stamped-review-header .verified, .stamped-review-header .verified .fa-check-circle-o, .stamped-review-header .verified .stamped-fa-check-circle-o, .stamped-review-header .verified-badge, .stamped-review-header .verified-badge .fa-check-circle-o, .stamped-review-header .verified-badge .stamped-fa-check-circle-o {
-  font-size: 12px;
-  font-weight: 700; }
+  font-size: var(--text-sm);
+  font-weight: 500; }
 
 /* #Reviews - Reply
   ================================================== */
 .stamped-review-reply {
   margin: 30px 0 0 0 !important;
-  background: #eee !important;
-  padding: 20px !important; }
+  background: var(--color-contrast-lower) !important;
+  padding: var(--space-lg) !important; }
 
 /* #Reviews - Helpful
   ================================================== */
@@ -10849,9 +10874,8 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
   flex-direction: column; }
 
 .stamped-summary-text-1 {
-  font-size: 72px !important;
-  line-height: px !important;
-  margin-bottom: 25px; }
+  font-size: var(--text-xxxxl) !important;
+  margin-bottom: var(--space-xxs); }
 
 /* -------------------------------- 
 
