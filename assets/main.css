@@ -8426,6 +8426,39 @@ Descr: A widget to animate a numerical value by counting to it
 
 /* -------------------------------- 
 
+File#: _1_feature-v4
+Title: Feature v4
+Descr: Content group containing media element + text that outsets its container at a specific breakpoint
+
+
+-------------------------------- */
+.feature-v4 {
+  --feature-text-offset: 65%;
+  position: relative;
+  z-index: 1; }
+
+@media (min-width: 768px) {
+  .feature-v4__text-offset {
+    width: calc(100% + var(--feature-text-offset)); }
+  .feature-v4--invert .feature-v4__grid > *:last-child {
+    order: -1; }
+  .feature-v4--invert .feature-v4__text-offset {
+    margin-left: calc(var(--feature-text-offset) * -1); } }
+
+/* -------------------------------- 
+
+File#: _1_feature-v2
+Title: Feature v2
+Descr: Content group containing two text components
+
+
+-------------------------------- */
+.feature-v2 {
+  position: relative;
+  z-index: 1; }
+
+/* -------------------------------- 
+
 File#: _1_previous-next-links
 Title: Previous/Next Links
 Descr: Links to previous/next articles
@@ -9215,11 +9248,11 @@ Descr: A Slideshow to display a gallery of testimonials
   font-size: var(--text-sm); }
 
 .stamped-reviews-message-block, p.stamped-review-content-body {
-  font-family: 'cp';
-  font-size: var(--text-md);
-  line-height: var(--text-md);
-  font-style: normal;
-  color: var(--color-contrast-medium); }
+  font-family: 'cp' !important;
+  font-size: var(--text-md) !important;
+  line-height: var(--text-md) !important;
+  font-style: normal !important;
+  color: var(--color-contrast-medium) !important; }
 
 .stamped-reviews-author, .author {
   margin-left: 0 !important;
