@@ -8281,9 +8281,18 @@ Usage: codyhouse.co/license
 File#: _1_sticky-hero
 Title: Sticky Hero
 Descr: A sticky hero section that reveals its content on scroll
-Usage: codyhouse.co/license
+
 
 -------------------------------- */
+.sticky-hero {
+  position: relative; }
+
+.gradient-overlay {
+  background: rgba(0, 0, 0, 0) linear-gradient(#f7f7f7, rgba(255, 255, 255, 0) 167px, rgba(255, 255, 255, 0) 93%, #f7f7f7) repeat scroll 0% 0%;
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
 .sticky-hero__media {
   position: relative;
   position: sticky;
@@ -8672,6 +8681,9 @@ Descr: Content group containing media element + text that outsets its container 
   --feature-text-offset: 65%;
   position: relative;
   z-index: 1; }
+  @media (max-width: 768px) {
+    .feature-v4 {
+      flex-direction: column-reverse; } }
 
 @media (min-width: 768px) {
   .feature-v4__text-offset {
@@ -8901,15 +8913,20 @@ Descr: Cards stack effect on vertical scrolling
   position: relative;
   position: sticky;
   top: var(--space-md);
-  height: 0;
-  padding-bottom: 50%;
   transform-origin: center top; }
+  @media (min-width: 768px) {
+    .stack-cards__item {
+      height: 0;
+      padding-bottom: 50%; } }
   .stack-cards__item > * {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    padding: var(--space-xl); }
+    @media (min-width: 768px) {
+      .stack-cards__item > * {
+        position: absolute; } }
 
 /* -------------------------------- 
 
