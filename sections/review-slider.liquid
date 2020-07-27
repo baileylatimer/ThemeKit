@@ -1,0 +1,59 @@
+<div id="stamped-reviews-widget" data-widget-type="carousel" data-title="{{ section.settings.title }}" data-auto-play="{% if section.settings.autoplay != blank %}true{% else %} false {% endif %}" data-auto-play-speed="{{ section.settings.slider_speed }}000" data-product-category="{{ section.settings.product_type }}" data-min-rating="{{ section.settings.minimum_rating }}" data-random="? string:Reviews ?"></div>
+
+
+
+{% schema %}
+
+{
+  "name": "Review Slider",
+  "class": "padding-top-xl padding-bottom-xl bg-contrast-lower width-100",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Customer Testimonial"
+    },
+    {
+        "type": "text",
+        "id": "product_type",
+        "label": "Product Type",
+        "default": "Enter product type to show reviews from"
+    },
+    {
+      "type": "range",
+      "id": "minimum_rating",
+      "label": "Show reviews above",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "unit": "★"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "label": "Change testimonials every",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "unit": "sec"
+    },
+    {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay",
+        "default": false
+      }
+  ],
+  
+  "presets": [
+    {
+      "name": "Review Slider",
+      "category": "Text"
+    }
+  ]
+}
+
+{% endschema %}
