@@ -15,7 +15,6 @@
 @import "//app/scss/bundle";
 @import "//app/scss/bundle";
 @import "//app/scss/bundle";
-@import '//node_modules/codyhouse-framework/main/assets/css/base';
 @import "//app/scss/bundle";
 @import "//app/scss/bundle";
 @import "//app/scss/bundle";
@@ -8172,6 +8171,113 @@ Usage: codyhouse.co/license
 
 /* -------------------------------- 
 
+File#: _1_reveal-effects
+Title: Reveal Effects
+Descr: A collection of reveal effects targeting specific elements as they enter the viewport
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --reveal-fx-duration: 0.6s;
+  --reveal-fx-timing-function: var(--ease-out); }
+
+.js .reveal-fx {
+  opacity: 0;
+  transition: opacity, transform var(--reveal-fx-timing-function);
+  transition-duration: var(--reveal-fx-duration); }
+  .js .reveal-fx::before {
+    display: none;
+    content: 'reveal-fx'; }
+
+.js .reveal-fx--translate, .js .reveal-fx--translate-up {
+  transform: translateY(50px); }
+
+.js .reveal-fx--translate-right {
+  transform: translateX(-50px); }
+
+.js .reveal-fx--translate-left {
+  transform: translateX(50px); }
+
+.js .reveal-fx--translate-down {
+  transform: translateY(-50px); }
+
+.js .reveal-fx--scale {
+  transform: scale(0.8); }
+
+.js .reveal-fx--scale-up {
+  transform: translateY(50px) scale(0.8); }
+
+.js .reveal-fx--scale-right {
+  transform: translateX(-50px) scale(0.8); }
+
+.js .reveal-fx--scale-left {
+  transform: translateX(50px) scale(0.8); }
+
+.js .reveal-fx--scale-down {
+  transform: translateY(-50px) scale(0.8); }
+
+.js .reveal-fx--rotate, .js .reveal-fx--rotate-down, .js .reveal-fx--rotate-right, .js .reveal-fx--rotate-left, .js .reveal-fx--rotate-up {
+  perspective: 1000px; }
+  .js .reveal-fx--rotate > *, .js .reveal-fx--rotate-down > *, .js .reveal-fx--rotate-right > *, .js .reveal-fx--rotate-left > *, .js .reveal-fx--rotate-up > * {
+    transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
+    backface-visibility: hidden; }
+
+.js .reveal-fx--rotate > *, .js .reveal-fx--rotate-down > * {
+  transform-origin: top;
+  transform: rotateX(-45deg); }
+
+.js .reveal-fx--rotate-right > * {
+  transform-origin: left center;
+  transform: rotateY(45deg); }
+
+.js .reveal-fx--rotate-left > * {
+  transform-origin: right center;
+  transform: rotateY(-45deg); }
+
+.js .reveal-fx--rotate-up > * {
+  transform-origin: bottom;
+  transform: rotateX(45deg); }
+
+.js .reveal-fx--text-mask {
+  overflow: hidden;
+  display: inline-flex;
+  line-height: 1; }
+  .js .reveal-fx--text-mask > * {
+    display: block;
+    line-height: inherit;
+    transform: translateY(100%);
+    transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
+    will-change: transform; }
+
+.js [class*="reveal-fx--translate"], .js [class*="reveal-fx--scale"] {
+  will-change: opacity, transform; }
+
+.js .reveal-fx--text-mask > *, .js [class*="reveal-fx--rotate"] > * {
+  will-change: transform; }
+
+.js .reveal-fx--clip-x > *,
+.js .reveal-fx--clip-y > * {
+  transition: opacity, clip-path var(--ease-out);
+  transition-duration: var(--reveal-fx-duration); }
+
+.js .reveal-fx--clip-x > * {
+  clip-path: polygon(10% 0%, 90% 0%, 90% 100%, 10% 100%); }
+
+.js .reveal-fx--clip-y > * {
+  clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%); }
+
+.js .reveal-fx--is-visible {
+  opacity: 1; }
+  .js .reveal-fx--is-visible[class*="reveal-fx--translate"], .js .reveal-fx--is-visible[class*="reveal-fx--scale"],
+  .js .reveal-fx--is-visible[class*="reveal-fx--rotate"] > *,
+  .js .reveal-fx--is-visible.reveal-fx--text-mask > * {
+    transform: translate(0); }
+  .js .reveal-fx--is-visible.reveal-fx--clip-x > *, .js .reveal-fx--is-visible.reveal-fx--clip-y > * {
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); }
+
+/* -------------------------------- 
+
 File#: _1_sticky-hero
 Title: Sticky Hero
 Descr: A sticky hero section that reveals its content on scroll
@@ -9469,6 +9575,145 @@ Usage: codyhouse.co/license
     font-size: 10px; }
     .slideshow-pm__nav-item button::before {
       font-size: 16px; } }
+
+/* -------------------------------- 
+
+File#: _2_image-comparison-slider
+Title: Image Comparison Slider
+Descr: A draggable image slider used to compare two versions of the same image
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.compare-slider {
+  position: relative; }
+  .compare-slider img {
+    display: block;
+    width: 100%;
+    pointer-events: none; }
+
+.compare-slider__inner {
+  position: relative; }
+
+.compare-slider__img {
+  position: relative;
+  user-select: none;
+  overflow: hidden; }
+
+.compare-slider__caption {
+  position: absolute;
+  bottom: 0;
+  font-size: var(--text-sm);
+  padding: var(--space-sm);
+  background-color: hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.75);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backdrop-filter: blur(10px);
+  transition: opacity .3s, visibility .3s, transform .3s; }
+
+.compare-slider__img--original .compare-slider__caption {
+  right: 0; }
+
+.compare-slider__img--modified .compare-slider__caption {
+  left: 0; }
+
+.compare-slider__handle {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  color: var(--color-contrast-higher);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  will-change: left;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%) translateX(-50%) scale(0);
+  margin-left: -1px; }
+
+.compare-slider--is-dragging .compare-slider__handle {
+  cursor: grabbing;
+  box-shadow: var(--shadow-sm), 0 0 0 4px hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.5); }
+
+.compare-slider__input-handle {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0; }
+
+.compare-slider__input-handle:focus + .compare-slider__handle {
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm), 0 0 0 4px hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.5); }
+
+.js .compare-slider__img--modified {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  transform: translateZ(0);
+  border-right: 2px solid var(--color-bg);
+  will-change: width; }
+  .js .compare-slider__img--modified img {
+    height: 100%;
+    width: auto;
+    max-width: none; }
+
+.js .compare-slider--in-viewport .compare-slider__img--modified {
+  width: 50%;
+  animation: compare-slider-bounce-in .7s; }
+
+.js .compare-slider__caption {
+  opacity: 0;
+  transform: translateY(20px); }
+
+.js .compare-slider--in-viewport .compare-slider__caption {
+  opacity: 1;
+  transform: translateY(0); }
+
+.js .compare-slider--in-viewport .compare-slider__caption--is-hidden {
+  opacity: 0;
+  visibility: hidden; }
+
+.js .compare-slider__img--original .compare-slider__caption--is-hidden {
+  transform: translateX(30px); }
+
+.js .compare-slider__img--modified .compare-slider__caption--is-hidden {
+  transform: translateX(-30px); }
+
+.js .compare-slider__handle {
+  display: block;
+  display: flex;
+  opacity: 0; }
+
+.js .compare-slider--in-viewport .compare-slider__handle {
+  transition: transform .3s .7s, opacity 0s .7s;
+  transform: translateY(-50%) translateX(-50%) scale(1);
+  opacity: 1; }
+
+.js .compare-slider__input-handle {
+  display: block; }
+
+.js .compare-slider--reduced-motion .compare-slider__img--modified {
+  animation: none; }
+
+.js .compare-slider--reduced-motion .compare-slider__handle,
+.js .compare-slider--reduced-motion .compare-slider__caption {
+  transition: none; }
+
+@keyframes compare-slider-bounce-in {
+  0% {
+    width: 0%; }
+  60% {
+    width: 55%; }
+  100% {
+    width: 50%; } }
 
 /* -------------------------------- 
 
@@ -11168,180 +11413,6 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
   font-size: var(--text-xxxxl) !important;
   margin-bottom: var(--space-xxs); }
 
-/* -------------------------------- 
-
-File#: _2_image-comparison-slider
-Title: Image Comparison Slider
-Descr: A draggable image slider used to compare two versions of the same image
-Usage: codyhouse.co/license
-
--------------------------------- */
-/*
-.compare-slider {
-    position: relative;
-  
-    img {
-      display: block;
-      width: 100%;
-      pointer-events: none;
-    }
-  }
-  
-  .compare-slider__inner {
-    position: relative;
-  }
-  
-  .compare-slider__img {
-    position: relative;
-    user-select: none;
-    overflow: hidden;
-  }
-  
-  .compare-slider__caption {
-    position: absolute;
-    bottom: 0;
-    font-size: var(--text-sm);
-    padding: var(--space-sm);
-    background-color: alpha(var(--color-black), 0.75);
-    color: var(--color-white);
-    @include fontSmooth;
-    backdrop-filter: blur(10px);
-    transition: opacity .3s, visibility .3s, transform .3s;
-  }
-  
-  .compare-slider__img--original .compare-slider__caption {
-    right: 0;
-  }
-  
-  .compare-slider__img--modified .compare-slider__caption {
-    left: 0;
-  }
-  
-  .compare-slider__handle {
-    display: none; // hide if JS is disabled
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 44px;
-    width: 44px;
-    border-radius: 50%;
-    color: var(--color-contrast-higher);
-    background-color: var(--color-bg);
-    box-shadow: var(--shadow-sm);
-    cursor: grab;
-    will-change: left;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-50%) translateX(-50%) scale(0);
-    margin-left: -1px;
-  }
-  
-  .compare-slider--is-dragging .compare-slider__handle {
-    cursor: grabbing;
-    box-shadow: var(--shadow-sm), 0 0 0 4px alpha(var(--color-contrast-higher), 0.5);
-  }
-  
-  .compare-slider__input-handle { // input element never visible - used for keyboard accessibility
-    display: none; // hide if JS is disabled
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    opacity: 0;
-  }
-  
-  .compare-slider__input-handle:focus + .compare-slider__handle { // change handle style when input is in focus
-    color: var(--color-primary);
-    box-shadow: var(--shadow-sm), 0 0 0 4px alpha(var(--color-contrast-higher), 0.5);
-  }
-  
-  .js {
-    .compare-slider__img--modified {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 0%; // will be changed using JS
-      transform: translateZ(0);
-      border-right: 2px solid var(--color-bg);
-      will-change: width;
-    
-      img {
-        height: 100%;
-        width: auto;
-        max-width: none;
-      }
-    }
-  
-    .compare-slider--in-viewport .compare-slider__img--modified { // reveal modified img version when slider enters the viewport
-      width: 50%;
-      animation: compare-slider-bounce-in .7s;
-    }
-  
-    .compare-slider__caption {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-  
-    .compare-slider--in-viewport .compare-slider__caption { // reveal captions when slider enters the viewport
-      opacity: 1;
-      transform: translateY(0);
-    }
-  
-    .compare-slider--in-viewport .compare-slider__caption--is-hidden { // when changing the .compare-slider__modified width -> hide caption if no space is available
-      opacity: 0;
-      visibility: hidden;
-    }
-  
-    .compare-slider__img--original .compare-slider__caption--is-hidden {
-      transform: translateX(30px);
-    }
-    
-    .compare-slider__img--modified .compare-slider__caption--is-hidden {
-      transform: translateX(-30px);
-    }
-  
-    .compare-slider__handle {
-      display: block; // flex fallback
-      display: flex;
-      opacity: 0;
-    }
-  
-    .compare-slider--in-viewport .compare-slider__handle { // reveal handle when slider enters the viewport
-      transition: transform .3s .7s, opacity 0s .7s;
-      transform: translateY(-50%) translateX(-50%) scale(1);
-      opacity: 1;
-    }
-  
-    .compare-slider__input-handle {
-      display: block;
-    }
-  
-    // remove animation if reduced motion is on
-    .compare-slider--reduced-motion .compare-slider__img--modified {
-      animation: none;
-    }
-  
-    .compare-slider--reduced-motion .compare-slider__handle,
-    .compare-slider--reduced-motion .compare-slider__caption {
-      transition: none;
-    }
-  }
-  
-  @keyframes compare-slider-bounce-in {
-    0% {
-      width: 0%;
-    }
-  
-    60% {
-      width: 55%;
-    }
-  
-    100% {
-      width: 50%;
-    }
-  }
-*/
 .cd-signin-modal {
   visibility: hidden;
   opacity: 0;
