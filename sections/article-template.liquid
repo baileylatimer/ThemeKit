@@ -4,7 +4,10 @@
 - Uses blocks
 {% endcomment %}
 
-
+<progress aria-hidden="true" class="reset reading-progressbar reading-progressbar--is-hidden js-reading-progressbar" max="100" value="0">
+  <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
+</progress>
+<span class="js-reading-content">
 <div class="bg-contrast-lower">
 <a name="pagecontent" id="pagecontent"></a>
   <div class="container main content flex-center position-relative z-index-1  padding-y-lg">
@@ -324,6 +327,7 @@
   </div>
 </div>
 </div>
+</span>
 {% schema %}
 
 {
