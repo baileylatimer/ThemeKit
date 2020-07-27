@@ -1,0 +1,71 @@
+<section class="loop-tabs padding-y-lg js-loop-tabs">
+    <div class="container max-width-adaptive-md">
+      <div class="grid gap-md flex-row-reverse@md">
+        <div class="loop-tabs__content col-6@md flex flex-column flex-column-reverse@md justify-center@md text-center text-left@md">
+          <ul class="loop-tabs__controls js-loop-tabs__controls margin-bottom-lg margin-bottom-0@lg flex flex-center flex-wrap flex-column@md items-start@md">
+            <li>
+              <a href="#timingTab1Panel1" class="loop-tabs__control loop-tabs__control--selected text-sm padding-md">{{ title_1 }}</a>
+            </li>
+  
+            <li>
+              <a href="#timingTab1Panel2" class="loop-tabs__control text-sm padding-md">{{ title_2 }}</a>
+            </li>
+  
+            <li>
+              <a href="#timingTab1Panel3" class="loop-tabs__control text-sm padding-md">{{ title_3 }}</a>
+            </li>
+          </ul>
+    
+          <div class="loop-tabs__panels js-loop-tabs__panels margin-bottom-md">
+            <section id="timingTab1Panel1" class="loop-tabs__panel js-loop-tabs__panel text-component loop-tabs__panel--selected">
+              <h1>{{ title_1 }}</h1>
+              <p>{{ description_1 }}</p>
+            </section>
+    
+            <section id="timingTab1Panel2" class="loop-tabs__panel js-loop-tabs__panel text-component">
+              <h1>{{ title_2 }}</h1>
+              <p>{{ description_2 }}</p>
+            </section>
+    
+            <section id="timingTab1Panel3" class="loop-tabs__panel js-loop-tabs__panel text-component">
+              <h1>{{ title_3 }}</h1>
+              <p>{{ description_3 }}</p>
+            </section>
+          </div>
+        </div>
+    
+        <div class="loop-tabs__media col-6@md" aria-hidden="true">
+          <ul class="loop-tabs__assets js-loop-tabs__assets">
+            <li class="loop-tabs__asset loop-tabs__asset--selected">
+              {% if video_1 != blank %}
+                  <video class="shadow-md radius-md" src="{{ video_1 }}" loop muted playsInline></video>
+              {% endif %}
+              {% if image_1 != blank %}
+                  <img src="{{ image_1 }}" alt="{{ title_1 }}">
+              {% endif %}
+            </li>
+    
+            <li class="loop-tabs__asset">
+              {% if video_2 != blank %}
+                  <video class="shadow-md radius-md" src="{{ video_2 }}" loop muted playsInline></video>
+              {% endif %}
+              {% if image_2 != blank %}
+                  <img src="{{ image_2 }}" alt="{{ title_2 }}">
+              {% endif %}
+            </li>
+    
+            <li class="loop-tabs__asset">
+              {% if video_3 != blank %}
+                  <video class="shadow-md radius-md" src="{{ video_3 }}" loop muted playsInline></video>
+              {% endif %}
+              {% if image_3 != blank %}
+                  <img src="{{ image_3 }}" alt="{{ title_3 }}">
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
