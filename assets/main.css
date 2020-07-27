@@ -9281,6 +9281,197 @@ Descr: Show a collection of items one at a time
 
 /* -------------------------------- 
 
+File#: _2_slideshow-preview-mode
+Title: Preview-Mode Slideshow
+Descr: Show a collection of items one at a time with a preview of the next/previous elements
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --slideshow-pm-item-width: 80%;
+  --slideshow-pm-item-gap: var(--space-sm); }
+
+@supports (--css: variables) {
+  @media (min-width: 768px) {
+    :root {
+      --slideshow-pm-item-width: 66%; } } }
+
+.slideshow-pm {
+  overflow: hidden;
+  padding: var(--space-md) 0; }
+
+.slideshow-pm__list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  align-items: center; }
+
+.slideshow-pm__item {
+  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  width: var(--slideshow-pm-item-width);
+  flex-shrink: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+  .slideshow-pm__item:not(:last-of-type) {
+    margin-right: var(--slideshow-pm-item-gap); }
+  .slideshow-pm__item:focus {
+    outline: none; }
+  @media (min-width: 768px) {
+    .slideshow-pm__item {
+      min-height: 400px; } }
+  @media (min-width: 992px) {
+    .slideshow-pm__item {
+      min-height: 480px; } }
+
+.slideshow-pm__item--media {
+  height: auto !important; }
+  .slideshow-pm__item--media img, .slideshow-pm__item--media svg, .slideshow-pm__item--media video {
+    display: block; }
+
+.js .slideshow-pm {
+  opacity: 0; }
+
+.js .slideshow-pm--js-loaded {
+  opacity: 1; }
+
+.js .slideshow-pm__content {
+  position: relative; }
+
+.js .slideshow-pm__list {
+  overflow: visible; }
+
+.js .slideshow-pm__list--has-transition {
+  transition: transform 0.4s;
+  will-change: transform; }
+
+.js .slideshow-pm__list--has-transition .slideshow-pm__item {
+  transition: all 0.3s;
+  will-change: transform, opacity; }
+
+.js .slideshow-pm__item {
+  transform: scale(0.95);
+  opacity: 0.4; }
+
+.js .slideshow-pm__item--selected {
+  transform: scale(1);
+  opacity: 1; }
+
+.js .slideshow-pm[data-swipe="on"] .slideshow-pm__content {
+  user-select: none; }
+  .js .slideshow-pm[data-swipe="on"] .slideshow-pm__content img {
+    pointer-events: none; }
+
+.slideshow-pm__control {
+  display: none; }
+
+.js .slideshow-pm[data-swipe="on"] .slideshow-pm__control {
+  display: none; }
+
+.js .slideshow-pm__control {
+  display: block;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s, visibility 0s .2s; }
+  .js .slideshow-pm__control:first-of-type {
+    left: calc((100% - var(--slideshow-pm-item-width))*0.25);
+    transform: translateY(-50%) translateX(-50%); }
+  .js .slideshow-pm__control:last-of-type {
+    right: calc((100% - var(--slideshow-pm-item-width))*0.25);
+    transform: translateY(-50%) translateX(50%); }
+  .js .slideshow-pm__control button, .js .slideshow-pm__control .icon {
+    display: block; }
+  .js .slideshow-pm__control button {
+    background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.8);
+    height: 48px;
+    width: 24px;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: background .2s, transform 0.2s; }
+    .js .slideshow-pm__control button:hover {
+      background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.85); }
+    .js .slideshow-pm__control button:active {
+      transform: scale(0.95); }
+  .js .slideshow-pm__control .icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    transition: color .2s;
+    color: var(--color-bg); }
+
+.js .slideshow-pm__control--active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .2s; }
+
+@media (min-width: 768px) {
+  .js .slideshow-pm[data-swipe="on"] .slideshow-pm__control {
+    display: block; }
+  .js .slideshow-pm__control button {
+    height: 64px;
+    width: 32px; }
+  .js .slideshow-pm__control .icon {
+    width: 32px;
+    height: 32px; } }
+
+.slideshow-pm__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-sm); }
+
+.slideshow-pm__nav-item {
+  display: inline-block;
+  margin: 0 var(--space-xxxs); }
+  .slideshow-pm__nav-item button {
+    display: block;
+    position: relative;
+    font-size: 8px;
+    color: var(--color-contrast-high);
+    height: 1em !important;
+    width: 1em;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: background .3s; }
+    .slideshow-pm__nav-item button::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 0.5em);
+      left: calc(50% - 0.5em);
+      height: 1em;
+      width: 1em;
+      font-size: 14px;
+      border-radius: inherit;
+      border: 1px solid var(--color-contrast-high);
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.3s; }
+    .slideshow-pm__nav-item button:focus {
+      outline: none; }
+      .slideshow-pm__nav-item button:focus::before {
+        opacity: 1;
+        transform: scale(1); }
+
+.slideshow-pm__nav-item--selected button {
+  opacity: 1; }
+
+@media (min-width: 768px) {
+  .slideshow-pm__nav-item button {
+    font-size: 10px; }
+    .slideshow-pm__nav-item button::before {
+      font-size: 16px; } }
+
+/* -------------------------------- 
+
 File#: _3_testimonial-slideshow
 Title: Testimonial Slideshow
 Descr: A Slideshow to display a gallery of testimonials

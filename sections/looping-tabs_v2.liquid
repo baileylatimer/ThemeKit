@@ -5,33 +5,32 @@
           <ul class="loop-tabs__controls js-loop-tabs__controls margin-bottom-lg margin-bottom-0@lg flex flex-center flex-wrap flex-column@md items-start@md">
             <li>
               <a href="#timingTab1Panel1" class="loop-tabs__control loop-tabs__control--selected text-md font-medium padding-md">{{ title_1 }}</a>
+              <div class="loop-tabs__panels js-loop-tabs__panels margin-bottom-md">
+                <section id="timingTab1Panel1" class="loop-tabs__panel js-loop-tabs__panel text-component padding-md loop-tabs__panel--selected">
+                  {{ description_1 }}
+                </section>
+              </div>
             </li>
   
             <li>
               <a href="#timingTab1Panel2" class="loop-tabs__control text-md font-medium padding-md">{{ title_2 }}</a>
+              <div class="loop-tabs__panels js-loop-tabs__panels margin-bottom-md">
+                <section id="timingTab1Panel2" class="loop-tabs__panel js-loop-tabs__panel padding-md text-component">
+                  {{ description_2 }}
+                </section>
+              </div>
             </li>
   
             <li>
               <a href="#timingTab1Panel3" class="loop-tabs__control text-md font-medium padding-md">{{ title_3 }}</a>
+              <div class="loop-tabs__panels js-loop-tabs__panels margin-bottom-md">
+                <section id="timingTab1Panel3" class="loop-tabs__panel js-loop-tabs__panel padding-md text-component">
+                  {{ description_3 }}
+                </section>
+              </div>
             </li>
           </ul>
     
-          <div class="loop-tabs__panels js-loop-tabs__panels margin-bottom-md">
-            <section id="timingTab1Panel1" class="loop-tabs__panel js-loop-tabs__panel text-component padding-md loop-tabs__panel--selected">
-              <h3>{{ title_1 }}</h3>
-              {{ description_1 }}
-            </section>
-    
-            <section id="timingTab1Panel2" class="loop-tabs__panel js-loop-tabs__panel padding-md text-component">
-              <h3>{{ title_2 }}</h3>
-              {{ description_2 }}
-            </section>
-    
-            <section id="timingTab1Panel3" class="loop-tabs__panel js-loop-tabs__panel padding-md text-component">
-              <h3>{{ title_3 }}</h3>
-              {{ description_3 }}
-            </section>
-          </div>
         </div>
     
         <div class="loop-tabs__media col-6@md" aria-hidden="true">
