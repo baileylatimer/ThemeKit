@@ -8528,6 +8528,69 @@ Descr: A widget to animate a numerical value by counting to it
 
 /* -------------------------------- 
 
+File#: _1_countdown
+Title: CountDown
+Descr: Widget to display a timer
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.countdown {
+  display: flex;
+  align-items: baseline; }
+
+.countdown__timer {
+  display: inline-block; }
+
+.countdown__item {
+  display: inline-block; }
+  .countdown__item:nth-of-type(2)::after, .countdown__item:nth-of-type(3)::after {
+    content: ':'; }
+
+.countdown__value {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss01' on !important; }
+
+.countdown--has-labels .countdown__item {
+  margin-right: var(--space-xs); }
+  .countdown--has-labels .countdown__item:last-child {
+    margin-right: 0; }
+
+.countdown--has-labels .countdown__item::after {
+  content: ''; }
+
+.countdown--has-labels .countdown__label {
+  font-size: 0.45em; }
+
+.countdown--grid .countdown__timer {
+  display: grid;
+  grid-template-columns: repeat(4, 1.6em);
+  grid-gap: var(--space-xxxs); }
+
+.countdown--grid .countdown__item {
+  text-align: center;
+  padding: var(--space-xxxxs) 0;
+  background-color: var(--color-bg); }
+
+.countdown--grid .countdown__item::after {
+  content: ''; }
+
+.countdown--grid .countdown__label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.2em;
+  letter-spacing: 0.1em;
+  color: var(--color-contrast-medium); }
+
+.js .countdown__fallback {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%); }
+
+html:not(.js) .countdown__info {
+  display: none; }
+
+/* -------------------------------- 
+
 File#: _1_feature-v9
 Title: Feature v9
 Descr: A feature section with 2 blocks
@@ -8823,6 +8886,30 @@ a.marquee-block {
   to {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%); } }
+
+/* -------------------------------- 
+
+File#: _1_stacking-cards
+Title: Stacking Cards
+Descr: Cards stack effect on vertical scrolling
+
+-------------------------------- */
+.stack-cards {
+  --stack-cards-gap: var(--space-sm); }
+
+.stack-cards__item {
+  position: relative;
+  position: sticky;
+  top: var(--space-md);
+  height: 0;
+  padding-bottom: 50%;
+  transform-origin: center top; }
+  .stack-cards__item > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
 
 /* -------------------------------- 
 
