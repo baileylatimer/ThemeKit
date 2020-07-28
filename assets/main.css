@@ -1037,7 +1037,13 @@ u {
   --btn-padding-y: var(--space-unit);
   --btn-radius: 0.25em; }
 
-.btn {
+a, a:visited {
+  color: var(--color-contrast-higher); }
+
+a:hover {
+  color: var(--color-contrast-high); }
+
+.btn, a.btn {
   position: relative;
   display: inline-flex;
   justify-content: center;
@@ -1057,36 +1063,36 @@ u {
   padding-left: var(--btn-padding-x, 0.75em);
   padding-right: var(--btn-padding-x, 0.75em);
   border-radius: var(--btn-radius, 0.25em); }
-  .btn:hover {
+  .btn:hover, a.btn:hover {
     box-shadow: 0px 1px 2px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12), 0px 1px 1px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12); }
-  .btn:focus {
+  .btn:focus, a.btn:focus {
     box-shadow: 0px 0px 0px 2px hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.2);
     outline: none; }
-  .btn:active {
+  .btn:active, a.btn:active {
     transform: translateY(2px); }
 
-.btn--primary {
+.btn--primary, a.btn--primary {
   background-color: var(--color-contrast-higher);
   color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
-  .btn--primary:hover {
+  .btn--primary:hover, a.btn--primary:hover {
     background-color: var(--color-contrast-high); }
-  .btn--primary:focus {
+  .btn--primary:focus, a.btn--primary:focus {
     box-shadow: 0px 0px 0px 2px hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2); }
 
-.btn--subtle {
+.btn--subtle, a.btn--subtle {
   background-color: var(--color-contrast-lower);
   color: var(--color-contrast-higher); }
 
-.btn--accent {
+.btn--accent, a.btn--accent {
   background-color: var(--color-accent);
   color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
-  .btn--accent:hover {
+  .btn--accent:hover, a.btn--accent:hover {
     background-color: var(--color-accent-dark); }
-  .btn--accent:focus {
+  .btn--accent:focus, a.btn--accent:focus {
     box-shadow: 0px 0px 0px 2px hsla(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l), 0.2); }
 
 .btn--disabled {
@@ -9979,7 +9985,10 @@ Descr: Navigation template for mega-sites
   --mega-nav-height: 50px;
   --mega-nav-content-max-width: var(--max-width-lg);
   --promo-banner-height: 40px;
-  --header-height: calc(var(--mega-nav-height) + var(--promo-banner-height)); }
+  --header-height: var(--mega-nav-height); }
+  @media (min-width: 768px) {
+    :root {
+      --header-height: calc(var(--mega-nav-height) + var(--promo-banner-height)); } }
   @media (min-width: 768px) {
     :root {
       --mega-nav-height: 70px; } }

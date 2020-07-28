@@ -61,9 +61,9 @@
             {% endif %}
             <div class="split-banner--action">
               {% if button1 != blank %}
-                <button {% if button1_link != blank %}href="#"{% endif %} class="btn btn--primary btn--md">
+                <a {% if button1_link != blank %}href="#"{% endif %} class="btn btn--primary btn--md">
                   {{ button1 }}
-                </button>
+                </a>
               {% endif %}
             </div>           
           </div>
@@ -106,14 +106,14 @@
                 {% endif %}
                 <div class="split-banner--action btn-group">
                   {% if button1 != blank %}
-                    <button {% if button1_link != blank %}href="#"{% endif %} class="btn btn--primary btn--md">
+                    <a {% if button1_link != blank %}href="#"{% endif %} class="btn btn--primary btn--md">
                         {{ button1 }}
-                    </button>
+                    </a>
                     {% endif %}
                     {% if button2 != blank %}
-                    <button {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="btn btn--primary btn--md">
+                    <a {% if button2_link != blank %}href="{{ button2_link }}"{% endif %} class="btn btn--primary btn--md">
                         {{ button2 }}
-                    </button>
+                    </a>
                   {% endif %}
                 </div>           
             </div>
@@ -130,9 +130,9 @@
            
     {% unless button1_link != blank %}
         {% if button1_link != blank and button1 == blank %}
-            <button href="#" class="btn btn--primary btn--md">
+            <a href="#" class="btn btn--primary btn--md">
                 {{ button1 }}
-            </button>
+            </a>
         {% endif %}
     
     {% endunless %}
