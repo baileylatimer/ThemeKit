@@ -59,11 +59,13 @@
           <div class="product_name--container">
             <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
             <h2 class="product_type">{{ product.type }}</h2>
-            <div class="mt10 article-violator article-violator--top tooltip-trigger js-tooltip-trigger" title="5 masks and various dry food" data-tooltip-class="tooltip--lg">
+            <!--
+            <div class="mt10 article-violator article-violator--top tooltip-trigger js-tooltip-trigger"  data-tooltip-class="tooltip--lg">
               {% if violator != blank %}
                 <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
               {% endif %}
             </div>
+            -->
           </div>
           {% comment %}END / Title {% endcomment %}
           <div class="divider"></div>
