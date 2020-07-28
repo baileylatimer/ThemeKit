@@ -1045,24 +1045,53 @@ u {
   white-space: nowrap;
   text-decoration: none;
   line-height: 1;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-weight: 600 !important;
+  text-decoration: none;
+  box-shadow: 0px 2px 8px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12), 0px 1px 1px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12);
+  transition: all 0.3s ease;
   font-size: var(--btn-font-size, 1em);
   padding-top: var(--btn-padding-y, 0.5em);
   padding-bottom: var(--btn-padding-y, 0.5em);
   padding-left: var(--btn-padding-x, 0.75em);
   padding-right: var(--btn-padding-x, 0.75em);
   border-radius: var(--btn-radius, 0.25em); }
+  .btn:hover {
+    box-shadow: 0px 1px 2px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12), 0px 1px 1px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12); }
+  .btn:focus {
+    box-shadow: 0px 0px 0px 2px hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.2);
+    outline: none; }
+  .btn:active {
+    transform: translateY(2px); }
 
 .btn--primary {
-  background-color: var(--color-contrast-high, #212121);
-  color: var(--color-white, white); }
+  background-color: var(--color-contrast-higher);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .btn--primary:hover {
+    background-color: var(--color-primary-dark); }
+  .btn--primary:focus {
+    box-shadow: 0px 0px 0px 2px hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2); }
 
 .btn--subtle {
-  background-color: var(--color-contrast-low, #d3d3d4);
-  color: var(--color-contrast-higher, #1c1c21); }
+  background-color: var(--color-contrast-lower);
+  color: var(--color-contrast-higher); }
 
 .btn--accent {
-  background-color: var(--color-accent, #e02447);
-  color: var(--color-white, white); }
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .btn--accent:hover {
+    background-color: var(--color-accent-dark); }
+  .btn--accent:focus {
+    box-shadow: 0px 0px 0px 2px hsla(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l), 0.2); }
+
+.btn--disabled {
+  opacity: 0.6;
+  cursor: not-allowed; }
 
 .btn--sm {
   font-size: var(--btn-font-size-sm, 0.8em); }
@@ -1076,72 +1105,72 @@ u {
 .btn--icon {
   padding: var(--btn-padding-y, 0.5em); }
 
-.button, .btn, .lightbox-text-link {
+.button, .lightbox-text-link {
   transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
-  .button.-primary, .btn.-primary, .lightbox-text-link.-primary {
+  .button.-primary, .lightbox-text-link.-primary {
     border: 3px solid rgba(255, 255, 255, 0) !important;
     color: var(--color-white) !important;
     background: var(--color-primary) !important; }
-    .button.-primary:hover, .button.-primary:focus, .button.-primary:active, .btn.-primary:hover, .btn.-primary:focus, .btn.-primary:active, .lightbox-text-link.-primary:hover, .lightbox-text-link.-primary:focus, .lightbox-text-link.-primary:active {
+    .button.-primary:hover, .button.-primary:focus, .button.-primary:active, .lightbox-text-link.-primary:hover, .lightbox-text-link.-primary:focus, .lightbox-text-link.-primary:active {
       color: var(--color-primary) !important;
       background: var(--color-white) !important;
       border-color: var(--color-primary) !important; }
-    .button.-primary.-hollow, .btn.-primary.-hollow, .lightbox-text-link.-primary.-hollow {
+    .button.-primary.-hollow, .lightbox-text-link.-primary.-hollow {
       background: none !important;
       color: var(--color-primary) !important;
       border: 3px solid var(--color-primary) !important; }
-      .button.-primary.-hollow:hover, .button.-primary.-hollow:focus, .button.-primary.-hollow:active, .btn.-primary.-hollow:hover, .btn.-primary.-hollow:focus, .btn.-primary.-hollow:active, .lightbox-text-link.-primary.-hollow:hover, .lightbox-text-link.-primary.-hollow:focus, .lightbox-text-link.-primary.-hollow:active {
+      .button.-primary.-hollow:hover, .button.-primary.-hollow:focus, .button.-primary.-hollow:active, .lightbox-text-link.-primary.-hollow:hover, .lightbox-text-link.-primary.-hollow:focus, .lightbox-text-link.-primary.-hollow:active {
         color: var(--color-white) !important;
         background: var(--color-primary) !important; }
-  .button.-light, .btn.-light, .lightbox-text-link.-light {
+  .button.-light, .lightbox-text-link.-light {
     border: 3px solid rgba(255, 255, 255, 0) !important;
     color: var(--color-contrast-higher) !important;
     background: var(--color-white) !important; }
-    .button.-light:hover, .button.-light:focus, .button.-light:active, .btn.-light:hover, .btn.-light:focus, .btn.-light:active, .lightbox-text-link.-light:hover, .lightbox-text-link.-light:focus, .lightbox-text-link.-light:active {
+    .button.-light:hover, .button.-light:focus, .button.-light:active, .lightbox-text-link.-light:hover, .lightbox-text-link.-light:focus, .lightbox-text-link.-light:active {
       color: var(--color-white) !important;
       background: var(--color-contrast-higher) !important;
       border-color: var(--color-white) !important; }
-    .button.-light.-hollow, .btn.-light.-hollow, .lightbox-text-link.-light.-hollow {
+    .button.-light.-hollow, .lightbox-text-link.-light.-hollow {
       background: none !important;
       color: var(--color-white) !important;
       border: 3px solid var(--color-white) !important; }
-      .button.-light.-hollow:hover, .button.-light.-hollow:focus, .button.-light.-hollow:active, .btn.-light.-hollow:hover, .btn.-light.-hollow:focus, .btn.-light.-hollow:active, .lightbox-text-link.-light.-hollow:hover, .lightbox-text-link.-light.-hollow:focus, .lightbox-text-link.-light.-hollow:active {
+      .button.-light.-hollow:hover, .button.-light.-hollow:focus, .button.-light.-hollow:active, .lightbox-text-link.-light.-hollow:hover, .lightbox-text-link.-light.-hollow:focus, .lightbox-text-link.-light.-hollow:active {
         color: var(--color-contrast-higher) !important;
         background: var(--color-white) !important; }
-  .button.-dark, .btn.-dark, .lightbox-text-link.-dark {
+  .button.-dark, .lightbox-text-link.-dark {
     border: 3px solid rgba(255, 255, 255, 0) !important;
     color: var(--color-white) !important;
     background: var(--color-contrast-higher) !important; }
-    .button.-dark:hover, .button.-dark:focus, .button.-dark:active, .btn.-dark:hover, .btn.-dark:focus, .btn.-dark:active, .lightbox-text-link.-dark:hover, .lightbox-text-link.-dark:focus, .lightbox-text-link.-dark:active {
+    .button.-dark:hover, .button.-dark:focus, .button.-dark:active, .lightbox-text-link.-dark:hover, .lightbox-text-link.-dark:focus, .lightbox-text-link.-dark:active {
       color: var(--color-contrast-higher) !important;
       background: var(--color-white) !important;
       border-color: var(--color-contrast-higher) !important; }
-    .button.-dark.-hollow, .btn.-dark.-hollow, .lightbox-text-link.-dark.-hollow {
+    .button.-dark.-hollow, .lightbox-text-link.-dark.-hollow {
       background: none !important;
       color: var(--color-contrast-higher) !important;
       border: 3px solid var(--color-contrast-higher) !important; }
-      .button.-dark.-hollow:hover, .button.-dark.-hollow:focus, .button.-dark.-hollow:active, .btn.-dark.-hollow:hover, .btn.-dark.-hollow:focus, .btn.-dark.-hollow:active, .lightbox-text-link.-dark.-hollow:hover, .lightbox-text-link.-dark.-hollow:focus, .lightbox-text-link.-dark.-hollow:active {
+      .button.-dark.-hollow:hover, .button.-dark.-hollow:focus, .button.-dark.-hollow:active, .lightbox-text-link.-dark.-hollow:hover, .lightbox-text-link.-dark.-hollow:focus, .lightbox-text-link.-dark.-hollow:active {
         color: var(--color-white) !important;
         background: var(--color-contrast-higher) !important; }
-  .button.-disabled, .btn.-disabled, .lightbox-text-link.-disabled {
+  .button.-disabled, .lightbox-text-link.-disabled {
     color: var(--color-contrast-higher) !important;
     background: var(--color-contrast-medium) !important;
     border-color: var(--color-contrast-medium) !important;
     cursor: default !important; }
-  .button.-shine, .btn.-shine, .lightbox-text-link.-shine {
+  .button.-shine, .lightbox-text-link.-shine {
     border: 3px solid rgba(255, 255, 255, 0) !important;
     color: var(--color-white) !important;
     background: var(--color-contrast-higher) !important; }
-    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .btn.-shine:hover, .btn.-shine:focus, .btn.-shine:active, .lightbox-text-link.-shine:hover, .lightbox-text-link.-shine:focus, .lightbox-text-link.-shine:active {
+    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .lightbox-text-link.-shine:hover, .lightbox-text-link.-shine:focus, .lightbox-text-link.-shine:active {
       color: var(--color-contrast-higher) !important;
       background: var(--color-white) !important;
       border-color: var(--color-contrast-higher) !important; }
-    .button.-shine.-hollow, .btn.-shine.-hollow, .lightbox-text-link.-shine.-hollow {
+    .button.-shine.-hollow, .lightbox-text-link.-shine.-hollow {
       background: none !important;
       color: var(--color-contrast-higher) !important;
       border: 3px solid var(--color-contrast-higher) !important; }
-      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .btn.-shine.-hollow:hover, .btn.-shine.-hollow:focus, .btn.-shine.-hollow:active, .lightbox-text-link.-shine.-hollow:hover, .lightbox-text-link.-shine.-hollow:focus, .lightbox-text-link.-shine.-hollow:active {
+      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .lightbox-text-link.-shine.-hollow:hover, .lightbox-text-link.-shine.-hollow:focus, .lightbox-text-link.-shine.-hollow:active {
         color: var(--color-white) !important;
         background: var(--color-contrast-higher) !important; }
 
@@ -1160,6 +1189,27 @@ u {
     #stamped-button-submit.-hollow:hover, #stamped-button-submit.-hollow:focus, #stamped-button-submit.-hollow:active, .stamped-summary-actions-newreview.-hollow:hover, .stamped-summary-actions-newreview.-hollow:focus, .stamped-summary-actions-newreview.-hollow:active, .stamped-summary-actions-newquestion.-hollow:hover, .stamped-summary-actions-newquestion.-hollow:focus, .stamped-summary-actions-newquestion.-hollow:active, .lightbox-text-link.-hollow:hover, .lightbox-text-link.-hollow:focus, .lightbox-text-link.-hollow:active {
       color: var(--color-white) !important;
       background: var(--color-contrast-higher) !important; }
+
+/* #Buttons
+================================================== */
+a.button,
+.button,
+.banners a,
+.lightbox-text-link,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.action_button,
+a.action_button,
+input.action_button[type="submit"],
+input.action_button[type="button"],
+input.action_button[type="button"],
+button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
+  white-space: nowrap;
+  height: 56px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important; }
 
 .form-control {
   background-color: var(--color-bg, #f2f2f2);
@@ -5611,29 +5661,6 @@ hr {
 .body-text--caption {
   text-transform: uppercase; }
 
-/* #Buttons
-================================================== */
-a.button,
-.button,
-.btn,
-.banners a,
-.lightbox-text-link,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.action_button,
-a.action_button,
-input.action_button[type="submit"],
-input.action_button[type="button"],
-input.action_button[type="button"],
-button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
-  white-space: nowrap;
-  height: 56px !important;
-  font-size: 20px;
-  font-weight: 600 !important;
-  letter-spacing: -0.03em !important; }
-
 body {
   letter-spacing: -0.03em; }
 
@@ -7049,43 +7076,6 @@ Usage: codyhouse.co/license
   .banner_description {
     margin-bottom: 0 !important; } }
 
-/*
-   .banner_description { 
-    @include flexBox(column, center, flex-start);
-    @include size(auto,100%); 
-    position: relative;
-    padding: 20px 40px;
-    padding: 50px 40px 40px;
-    margin: 0px;
-    text-align: left;
-    h1 {
-      width: 100% !important;
-      font-size: 36px;
-      line-height: 40px;
-      }
-      h2, p, h4 {
-      font-size: 20px;
-      line-height: normal !important;
-      font-weight: 500 !important;
-      }
-      @include xl {
-        padding: 20px 40px;
-        h1 {
-        font-size: 2.5vw !important;
-        line-height: normal;
-        }
-        h2, p, h4 {
-        font-size: 1.15vw !important;
-        }
-      }
-     }
-  
-    
-     .banner_description h1 {
-      padding-bottom: 15px;
-      }
-      
-   */
 /* Split Banner
 ================================================== */
 /* Container */
