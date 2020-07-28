@@ -816,9 +816,9 @@ img, video, svg {
 
 :root {
   --font-primary: 'cp', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  --text-base-size: 1.25em;
-  --text-scale-ratio: 1.25;
-  --text-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-base-size: 1rem;
+  --text-scale-ratio: 1.2;
+  --text-xs: calc((1rem / var(--text-scale-ratio)) / var(--text-scale-ratio));
   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
   --text-md: calc(
     var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
@@ -834,8 +834,8 @@ img, video, svg {
   --font-primary-capital-letter: 1; }
   @media (min-width: 64rem) {
     :root {
-      --text-base-size: 1.5em;
-      --text-scale-ratio: 1.5; } }
+      --text-base-size: 1.2rem;
+      --text-scale-ratio: 1.25; } }
 
 body {
   font-size: var(--text-base-size, 1em);
@@ -854,7 +854,7 @@ h1, h2, h3, h4 {
   font-size: var(--text-xxxl, 2.488em); }
 
 h1, .text-xxxl {
-  font-size: var(--text-xxxl, 2.074em); }
+  font-size: var(--text-xxl, 2.074em); }
   h1::before, .text-xxxl::before {
     content: '';
     display: block;
@@ -863,7 +863,7 @@ h1, .text-xxxl {
     margin-top: calc((var(--font-secondary-capital-letter) - var(--heading-line-height)) * 0.5em); }
 
 h2, .text-xxl {
-  font-size: var(--text-xxl, 1.728em); }
+  font-size: var(--text-xl, 1.728em); }
 
 h3, .text-lg {
   font-size: var(--text-lg, 1.44em); }
@@ -882,6 +882,12 @@ small, .text-sm {
 
 a {
   text-decoration: none; }
+
+a, a:visited {
+  color: var(--color-contrast-higher); }
+
+a:hover {
+  color: var(--color-contrast-high); }
 
 .link {
   color: var(--color-primary, #2a6df4);
@@ -1029,19 +1035,13 @@ u {
   fill: currentColor; }
 
 :root {
-  --btn-font-size: 1em;
+  --btn-font-size: 2rem;
   --btn-font-size-sm: 0.8em;
   --btn-font-size-md: 1.2em;
   --btn-font-size-lg: 1.4em;
   --btn-padding-x: var(--space-md);
   --btn-padding-y: var(--space-unit);
   --btn-radius: 0.25em; }
-
-a, a:visited {
-  color: var(--color-contrast-higher); }
-
-a:hover {
-  color: var(--color-contrast-high); }
 
 .btn, a.btn {
   position: relative;
@@ -1057,7 +1057,7 @@ a:hover {
   text-decoration: none;
   box-shadow: 0px 2px 8px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12), 0px 1px 1px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12);
   transition: all 0.3s ease;
-  font-size: var(--btn-font-size, 1em);
+  font-size: var(--btn-font-size, 2rem);
   padding-top: var(--btn-padding-y, 0.5em);
   padding-bottom: var(--btn-padding-y, 0.5em);
   padding-left: var(--btn-padding-x, 0.75em);
