@@ -10450,9 +10450,6 @@ html:not(.js) .mega-nav--mobile .mega-nav__nav, html:not(.js) .mega-nav--mobile 
   margin-right: 0px;
   width: 100%; }
 
-a.button, .button, button, input[type="submit"], input[type="reset"], input[type="button"], .action_button, a.action_button, input.action_button[type="submit"], input.action_button[type="button"], input.action_button[type="button"], button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
-  width: 100%; }
-
 .product-wrap__footer {
   height: 97px !important;
   width: 100%; }

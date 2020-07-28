@@ -23,7 +23,7 @@
       <div class="section clearfix">
         <div class="six columns offset-by-five medium-down--one-whole">
           <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
-          <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/solar-ovens{% endif %}" class="button action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+          <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/solar-ovens{% endif %}" class="btn btn--accent btn--md action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
         </div>
         <br class="clear" />
       </div>
@@ -220,7 +220,7 @@
       </div>
       {% endif %}
       <p>
-        <button type="submit" class="button action_button add_to_cart" id="checkout" name="checkout">{% if settings.show_lock_icon %}<span class="buttonicon-lock"></span>{% endif %}{{ 'cart.general.checkout' | t }}</button>
+        <button type="submit" class="btn btn--accent action_button add_to_cart" id="checkout" name="checkout">{% if settings.show_lock_icon %}<span class="buttonicon-lock"></span>{% endif %}{{ 'cart.general.checkout' | t }}</button>
       </p>
     </div>
 

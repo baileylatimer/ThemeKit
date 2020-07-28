@@ -34,7 +34,7 @@
 
       <div class="width-1-1">
 
-        <a href="{{ product.metafields.custom_fields["partners_url"] }}" target="_blank" type=""  class=" button button-cherry -hollow -{{ product.metafields.custom_fields["partners_platform"] }} ">
+        <a href="{{ product.metafields.custom_fields["partners_url"] }}" target="_blank" type=""  class=" btn btn--primary btn--md btn--{{ product.metafields.custom_fields["partners_platform"] }} ">
             {% if  product.metafields.custom_fields["partners_platform"] == "kickstarter" %}
                 Pre-order on <img class="m0" src="https://www.dropbox.com/s/7yxniq64ov6n57n/Dark.svg?raw=1">
             {% elsif product.metafields.custom_fields["partners_platform"] == "indiegogo" %}

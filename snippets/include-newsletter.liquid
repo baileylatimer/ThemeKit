@@ -59,7 +59,7 @@
 
                 <div class="input-row">
                   <input type="email" value="" name="EMAIL" class="contact_email mr10" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
-                  <button type="submit"  class="button  -shade split-banner--button margin-left-xs" name="subscribe"><i class="material-icons">send</i></button>
+                  <button type="submit"  class="btn btn--primary btn--icon margin-left-xs" name="subscribe"><i class="material-icons">send</i></button>
                 </div>
               </form>
             {% else %}
@@ -85,7 +85,7 @@
                 <div class="input-row">
                   <input type="hidden" name="challenge" value="false" />
                   <input type="email" class="contact_email mr10" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
-                  <button type="submit"  class="button  -dark split-banner--button" name="subscribe"><i class="material-icons mt5">send</i></button>
+                  <button type="submit"  class="btn btn--primary btn--icon" name="subscribe"><i class="material-icons mt5">send</i></button>
                 </div>
               {% endform %}
             {% endif %}

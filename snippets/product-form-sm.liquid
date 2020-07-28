@@ -31,7 +31,7 @@
     <div class="flex">
       {% capture add_to_cart_label_sm %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}add_shopping_cart{% elsif collection_handles contains 'retired' %}beach_access{% else %}add_shopping_cart{% endif %}{% endcapture %}
       {% unless product.available %}
-        <button class="button btn -disabled" >
+        <button class="btn btn--disabled btn--md" >
           <span class="text"> Sold Out</span>
         </button>
       {% else %}
@@ -43,7 +43,7 @@
             <input type="hidden" name="return_to" value="/checkout" />
           {% endif %}
 
-            <button type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="button {% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }} >
+            <button type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="btn btn--primary btn--md {% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }} >
               <div class="info-item  justify-center"> <span class="icon"> <i class="material-icons-outlined">{{ add_to_cart_label_sm }} </i></span> </div>
               <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
                 <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>

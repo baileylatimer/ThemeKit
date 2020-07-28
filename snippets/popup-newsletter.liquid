@@ -14,12 +14,12 @@
 					{% if settings.popup_button1 != blank or settings.popup_button2 != blank %}
 						<div class="newsletter-buttons">
 							{% if settings.popup_button1 != blank %}
-								<a {% if settings.popup_button1_link != blank %}href="{{ settings.popup_button1_link }}"{% else %}data-fancybox-close{% endif %} class="button highlight-{{ settings.popup_button1_highlight }}">
+								<a {% if settings.popup_button1_link != blank %}href="{{ settings.popup_button1_link }}"{% else %}data-fancybox-close{% endif %} class="btn btn--primary btn--md  highlight-{{ settings.popup_button1_highlight }}">
 									{{ settings.popup_button1 }}
 								</a>
 							{% endif %}
 							{% if settings.popup_button2 != blank %}
-								<a {% if settings.popup_button2_link != blank %}href="{{ settings.popup_button2_link }}"{% else %}data-fancybox-close{% endif %} class="button highlight-{{ settings.popup_button2_highlight }}">
+								<a {% if settings.popup_button2_link != blank %}href="{{ settings.popup_button2_link }}"{% else %}data-fancybox-close{% endif %} class="btn btn--primary btn--md  highlight-{{ settings.popup_button2_highlight }}">
 									{{ settings.popup_button2 }}
 								</a>
 							{% endif %}

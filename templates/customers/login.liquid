@@ -19,7 +19,6 @@
 
         {% form 'customer_login' %}
           
-
         
           <label for="customer_email" class="login">{{ 'customer.login.email' | t }}</label>
           <input type="email" value="" name="customer[email]" id="customer_email" class="large" size="30"  autocorrect="off" autocapitalize="off" tabindex="1" />
@@ -36,7 +35,7 @@
 
           {% endif %}
           {{ form.errors | default_errors }}
-          <input class="btn button -shine action_button width-1-1" type="submit" value="{{ 'customer.login.sign_in' | t }}" style="margin-bottom: 5px !important" tabindex="3" />       
+          <input class="btn btn--primary btn--md action_button" type="submit" value="{{ 'customer.login.sign_in' | t }}" style="margin-bottom: 5px !important" tabindex="3" />       
         {% endform %}
 
         <div class="large--right">
@@ -79,7 +78,7 @@
                   <em class="note">{{ 'customer.recover_password.subtext' | t }}</em>
                 </p>
                 <div class="action_bottom">
-                  <input class="btn button action_button width-1-1" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
+                  <input class="btn btn--primary btn--md action_button" type="submit" value="{{ 'customer.recover_password.submit' | t }}" />
                   <span class="note">{{ 'customer.recover_password.or' | t }} <a href="#" onclick="hideRecoverPasswordForm()">{{ 'customer.recover_password.cancel' | t }}</a></span>
                 </div>
               {% endif %}
