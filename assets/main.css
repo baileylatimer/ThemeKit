@@ -1028,6 +1028,15 @@ u {
   color: inherit;
   fill: currentColor; }
 
+:root {
+  --btn-font-size: 1em;
+  --btn-font-size-sm: 0.8em;
+  --btn-font-size-md: 1.2em;
+  --btn-font-size-lg: 1.4em;
+  --btn-padding-x: var(--space-md);
+  --btn-padding-y: var(--space-xs);
+  --btn-radius: 0.25em; }
+
 .btn {
   position: relative;
   display: inline-flex;
@@ -1044,7 +1053,7 @@ u {
   border-radius: var(--btn-radius, 0.25em); }
 
 .btn--primary {
-  background-color: var(--color-primary, #2a6df4);
+  background-color: var(--color-contrast-high, #212121);
   color: var(--color-white, white); }
 
 .btn--subtle {
@@ -1066,6 +1075,91 @@ u {
 
 .btn--icon {
   padding: var(--btn-padding-y, 0.5em); }
+
+.button, .btn, .lightbox-text-link {
+  transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); }
+  .button.-primary, .btn.-primary, .lightbox-text-link.-primary {
+    border: 3px solid rgba(255, 255, 255, 0) !important;
+    color: var(--color-white) !important;
+    background: var(--color-primary) !important; }
+    .button.-primary:hover, .button.-primary:focus, .button.-primary:active, .btn.-primary:hover, .btn.-primary:focus, .btn.-primary:active, .lightbox-text-link.-primary:hover, .lightbox-text-link.-primary:focus, .lightbox-text-link.-primary:active {
+      color: var(--color-primary) !important;
+      background: var(--color-white) !important;
+      border-color: var(--color-primary) !important; }
+    .button.-primary.-hollow, .btn.-primary.-hollow, .lightbox-text-link.-primary.-hollow {
+      background: none !important;
+      color: var(--color-primary) !important;
+      border: 3px solid var(--color-primary) !important; }
+      .button.-primary.-hollow:hover, .button.-primary.-hollow:focus, .button.-primary.-hollow:active, .btn.-primary.-hollow:hover, .btn.-primary.-hollow:focus, .btn.-primary.-hollow:active, .lightbox-text-link.-primary.-hollow:hover, .lightbox-text-link.-primary.-hollow:focus, .lightbox-text-link.-primary.-hollow:active {
+        color: var(--color-white) !important;
+        background: var(--color-primary) !important; }
+  .button.-light, .btn.-light, .lightbox-text-link.-light {
+    border: 3px solid rgba(255, 255, 255, 0) !important;
+    color: var(--color-contrast-higher) !important;
+    background: var(--color-white) !important; }
+    .button.-light:hover, .button.-light:focus, .button.-light:active, .btn.-light:hover, .btn.-light:focus, .btn.-light:active, .lightbox-text-link.-light:hover, .lightbox-text-link.-light:focus, .lightbox-text-link.-light:active {
+      color: var(--color-white) !important;
+      background: var(--color-contrast-higher) !important;
+      border-color: var(--color-white) !important; }
+    .button.-light.-hollow, .btn.-light.-hollow, .lightbox-text-link.-light.-hollow {
+      background: none !important;
+      color: var(--color-white) !important;
+      border: 3px solid var(--color-white) !important; }
+      .button.-light.-hollow:hover, .button.-light.-hollow:focus, .button.-light.-hollow:active, .btn.-light.-hollow:hover, .btn.-light.-hollow:focus, .btn.-light.-hollow:active, .lightbox-text-link.-light.-hollow:hover, .lightbox-text-link.-light.-hollow:focus, .lightbox-text-link.-light.-hollow:active {
+        color: var(--color-contrast-higher) !important;
+        background: var(--color-white) !important; }
+  .button.-dark, .btn.-dark, .lightbox-text-link.-dark {
+    border: 3px solid rgba(255, 255, 255, 0) !important;
+    color: var(--color-white) !important;
+    background: var(--color-contrast-higher) !important; }
+    .button.-dark:hover, .button.-dark:focus, .button.-dark:active, .btn.-dark:hover, .btn.-dark:focus, .btn.-dark:active, .lightbox-text-link.-dark:hover, .lightbox-text-link.-dark:focus, .lightbox-text-link.-dark:active {
+      color: var(--color-contrast-higher) !important;
+      background: var(--color-white) !important;
+      border-color: var(--color-contrast-higher) !important; }
+    .button.-dark.-hollow, .btn.-dark.-hollow, .lightbox-text-link.-dark.-hollow {
+      background: none !important;
+      color: var(--color-contrast-higher) !important;
+      border: 3px solid var(--color-contrast-higher) !important; }
+      .button.-dark.-hollow:hover, .button.-dark.-hollow:focus, .button.-dark.-hollow:active, .btn.-dark.-hollow:hover, .btn.-dark.-hollow:focus, .btn.-dark.-hollow:active, .lightbox-text-link.-dark.-hollow:hover, .lightbox-text-link.-dark.-hollow:focus, .lightbox-text-link.-dark.-hollow:active {
+        color: var(--color-white) !important;
+        background: var(--color-contrast-higher) !important; }
+  .button.-disabled, .btn.-disabled, .lightbox-text-link.-disabled {
+    color: var(--color-contrast-higher) !important;
+    background: var(--color-contrast-medium) !important;
+    border-color: var(--color-contrast-medium) !important;
+    cursor: default !important; }
+  .button.-shine, .btn.-shine, .lightbox-text-link.-shine {
+    border: 3px solid rgba(255, 255, 255, 0) !important;
+    color: var(--color-white) !important;
+    background: var(--color-contrast-higher) !important; }
+    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .btn.-shine:hover, .btn.-shine:focus, .btn.-shine:active, .lightbox-text-link.-shine:hover, .lightbox-text-link.-shine:focus, .lightbox-text-link.-shine:active {
+      color: var(--color-contrast-higher) !important;
+      background: var(--color-white) !important;
+      border-color: var(--color-contrast-higher) !important; }
+    .button.-shine.-hollow, .btn.-shine.-hollow, .lightbox-text-link.-shine.-hollow {
+      background: none !important;
+      color: var(--color-contrast-higher) !important;
+      border: 3px solid var(--color-contrast-higher) !important; }
+      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .btn.-shine.-hollow:hover, .btn.-shine.-hollow:focus, .btn.-shine.-hollow:active, .lightbox-text-link.-shine.-hollow:hover, .lightbox-text-link.-shine.-hollow:focus, .lightbox-text-link.-shine.-hollow:active {
+        color: var(--color-white) !important;
+        background: var(--color-contrast-higher) !important; }
+
+#stamped-button-submit, .stamped-summary-actions-newreview, .stamped-summary-actions-newquestion, .lightbox-text-link {
+  border: 3px solid rgba(255, 255, 255, 0) !important;
+  color: var(--color-white) !important;
+  background: var(--color-contrast-higher) !important; }
+  #stamped-button-submit:hover, #stamped-button-submit:focus, #stamped-button-submit:active, .stamped-summary-actions-newreview:hover, .stamped-summary-actions-newreview:focus, .stamped-summary-actions-newreview:active, .stamped-summary-actions-newquestion:hover, .stamped-summary-actions-newquestion:focus, .stamped-summary-actions-newquestion:active, .lightbox-text-link:hover, .lightbox-text-link:focus, .lightbox-text-link:active {
+    color: var(--color-contrast-higher) !important;
+    background: var(--color-white) !important;
+    border-color: var(--color-contrast-higher) !important; }
+  #stamped-button-submit.-hollow, .stamped-summary-actions-newreview.-hollow, .stamped-summary-actions-newquestion.-hollow, .lightbox-text-link.-hollow {
+    background: none !important;
+    color: var(--color-contrast-higher) !important;
+    border: 3px solid var(--color-contrast-higher) !important; }
+    #stamped-button-submit.-hollow:hover, #stamped-button-submit.-hollow:focus, #stamped-button-submit.-hollow:active, .stamped-summary-actions-newreview.-hollow:hover, .stamped-summary-actions-newreview.-hollow:focus, .stamped-summary-actions-newreview.-hollow:active, .stamped-summary-actions-newquestion.-hollow:hover, .stamped-summary-actions-newquestion.-hollow:focus, .stamped-summary-actions-newquestion.-hollow:active, .lightbox-text-link.-hollow:hover, .lightbox-text-link.-hollow:focus, .lightbox-text-link.-hollow:active {
+      color: var(--color-white) !important;
+      background: var(--color-contrast-higher) !important; }
 
 .form-control {
   background-color: var(--color-bg, #f2f2f2);
@@ -5517,11 +5611,25 @@ hr {
 .body-text--caption {
   text-transform: uppercase; }
 
-.button, .btn, button, .banners a {
+/* #Buttons
+================================================== */
+a.button,
+.button,
+.btn,
+.banners a,
+.lightbox-text-link,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.action_button,
+a.action_button,
+input.action_button[type="submit"],
+input.action_button[type="button"],
+input.action_button[type="button"],
+button.shopify-payment-button__button.shopify-payment-button__button--unbranded {
   white-space: nowrap;
-  display: inline-block;
   height: 56px !important;
-  line-height: 40px !important;
   font-size: 20px;
   font-weight: 600 !important;
   letter-spacing: -0.03em !important; }
@@ -7126,101 +7234,6 @@ a.highlight-true, a.highlight-true:hover {
     transition: all 0.2s ease-out;
     padding: 20px 50px; }
 
-.button, .btn {
-  transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
-  padding: 0 14px !important;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  -webkit-border-radius: var(--radius-md) !important;
-  -moz-border-radius: var(--radius-md) !important;
-  border-radius: var(--radius-md) !important;
-  -ms-border-radius: var(--radius-md) !important;
-  -o-border-radius: var(--radius-md) !important; }
-  .button.-primary, .btn.-primary {
-    -webkit-border-radius: var(--radius-md) !important;
-    -moz-border-radius: var(--radius-md) !important;
-    border-radius: var(--radius-md) !important;
-    -ms-border-radius: var(--radius-md) !important;
-    -o-border-radius: var(--radius-md) !important;
-    border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: var(--color-white) !important;
-    background: #c75724 !important; }
-    .button.-primary:hover, .button.-primary:focus, .button.-primary:active, .btn.-primary:hover, .btn.-primary:focus, .btn.-primary:active {
-      color: #c75724 !important;
-      background: var(--color-white) !important;
-      border-color: #c75724 !important; }
-    .button.-primary.-hollow, .btn.-primary.-hollow {
-      background: none !important;
-      color: #c75724 !important;
-      border: 3px solid #c75724 !important; }
-      .button.-primary.-hollow:hover, .button.-primary.-hollow:focus, .button.-primary.-hollow:active, .btn.-primary.-hollow:hover, .btn.-primary.-hollow:focus, .btn.-primary.-hollow:active {
-        color: var(--color-white) !important;
-        background: #c75724 !important; }
-  .button.-light, .btn.-light {
-    -webkit-border-radius: var(--radius-md) !important;
-    -moz-border-radius: var(--radius-md) !important;
-    border-radius: var(--radius-md) !important;
-    -ms-border-radius: var(--radius-md) !important;
-    -o-border-radius: var(--radius-md) !important;
-    border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: var(--color-contrast-higher) !important;
-    background: #fff !important; }
-    .button.-light:hover, .button.-light:focus, .button.-light:active, .btn.-light:hover, .btn.-light:focus, .btn.-light:active {
-      color: #fff !important;
-      background: var(--color-contrast-higher) !important;
-      border-color: #fff !important; }
-    .button.-light.-hollow, .btn.-light.-hollow {
-      background: none !important;
-      color: #fff !important;
-      border: 3px solid #fff !important; }
-      .button.-light.-hollow:hover, .button.-light.-hollow:focus, .button.-light.-hollow:active, .btn.-light.-hollow:hover, .btn.-light.-hollow:focus, .btn.-light.-hollow:active {
-        color: var(--color-contrast-higher) !important;
-        background: #fff !important; }
-  .button.-dark, .btn.-dark {
-    -webkit-border-radius: var(--radius-md) !important;
-    -moz-border-radius: var(--radius-md) !important;
-    border-radius: var(--radius-md) !important;
-    -ms-border-radius: var(--radius-md) !important;
-    -o-border-radius: var(--radius-md) !important;
-    border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: var(--color-white) !important;
-    background: var(--color-contrast-higher) !important; }
-    .button.-dark:hover, .button.-dark:focus, .button.-dark:active, .btn.-dark:hover, .btn.-dark:focus, .btn.-dark:active {
-      color: var(--color-contrast-higher) !important;
-      background: var(--color-white) !important;
-      border-color: var(--color-contrast-higher) !important; }
-    .button.-dark.-hollow, .btn.-dark.-hollow {
-      background: none !important;
-      color: var(--color-contrast-higher) !important;
-      border: 3px solid var(--color-contrast-higher) !important; }
-      .button.-dark.-hollow:hover, .button.-dark.-hollow:focus, .button.-dark.-hollow:active, .btn.-dark.-hollow:hover, .btn.-dark.-hollow:focus, .btn.-dark.-hollow:active {
-        color: var(--color-white) !important;
-        background: var(--color-contrast-higher) !important; }
-  .button.-disabled, .btn.-disabled {
-    color: #fff !important;
-    background: #757575 !important;
-    border-color: #757575 !important;
-    cursor: default !important; }
-  .button.-shine, .btn.-shine {
-    -webkit-border-radius: var(--radius-md) !important;
-    -moz-border-radius: var(--radius-md) !important;
-    border-radius: var(--radius-md) !important;
-    -ms-border-radius: var(--radius-md) !important;
-    -o-border-radius: var(--radius-md) !important;
-    border: 3px solid rgba(255, 255, 255, 0) !important;
-    color: var(--color-white) !important;
-    background: #C38756 !important; }
-    .button.-shine:hover, .button.-shine:focus, .button.-shine:active, .btn.-shine:hover, .btn.-shine:focus, .btn.-shine:active {
-      color: #C38756 !important;
-      background: var(--color-white) !important;
-      border-color: #C38756 !important; }
-    .button.-shine.-hollow, .btn.-shine.-hollow {
-      background: none !important;
-      color: #C38756 !important;
-      border: 3px solid #C38756 !important; }
-      .button.-shine.-hollow:hover, .button.-shine.-hollow:focus, .button.-shine.-hollow:active, .btn.-shine.-hollow:hover, .btn.-shine.-hollow:focus, .btn.-shine.-hollow:active {
-        color: var(--color-white) !important;
-        background: #C38756 !important; }
-
 .btn-group {
   float: left; }
   .btn-group a {
@@ -7230,33 +7243,11 @@ a.highlight-true, a.highlight-true:hover {
   .btn-group.-a {
     background: #e92f2a; }
 
-#stamped-button-submit, .stamped-summary-actions-newreview, .stamped-summary-actions-newquestion {
-  -webkit-border-radius: var(--radius-md) !important;
-  -moz-border-radius: var(--radius-md) !important;
-  border-radius: var(--radius-md) !important;
-  -ms-border-radius: var(--radius-md) !important;
-  -o-border-radius: var(--radius-md) !important;
-  border: 3px solid rgba(255, 255, 255, 0) !important;
-  color: #f7f7f7 !important;
-  background: #212121 !important; }
-  #stamped-button-submit:hover, #stamped-button-submit:focus, #stamped-button-submit:active, .stamped-summary-actions-newreview:hover, .stamped-summary-actions-newreview:focus, .stamped-summary-actions-newreview:active, .stamped-summary-actions-newquestion:hover, .stamped-summary-actions-newquestion:focus, .stamped-summary-actions-newquestion:active {
-    color: #212121 !important;
-    background: #f7f7f7 !important;
-    border-color: #212121 !important; }
-  #stamped-button-submit.-hollow, .stamped-summary-actions-newreview.-hollow, .stamped-summary-actions-newquestion.-hollow {
-    background: none !important;
-    color: #212121 !important;
-    border: 3px solid #212121 !important; }
-    #stamped-button-submit.-hollow:hover, #stamped-button-submit.-hollow:focus, #stamped-button-submit.-hollow:active, .stamped-summary-actions-newreview.-hollow:hover, .stamped-summary-actions-newreview.-hollow:focus, .stamped-summary-actions-newreview.-hollow:active, .stamped-summary-actions-newquestion.-hollow:hover, .stamped-summary-actions-newquestion.-hollow:focus, .stamped-summary-actions-newquestion.-hollow:active {
-      color: #f7f7f7 !important;
-      background: #212121 !important; }
-
 /* #Buttons - Submit */
 #stamped-button-submit, .stamped-summary-actions-newreview, .stamped-summary-actions-newquestion {
   transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
   white-space: nowrap;
-  display: inline-block;
-  height: 40px !important;
+  height: 56px !important;
   padding: 0 14px !important;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
   font-size: 15px !important;
@@ -7277,27 +7268,6 @@ a.highlight-true, a.highlight-true:hover {
   background: #E51075 !important; }
   .-indiegogo:hover {
     background: #D50F6D !important; }
-
-a.-light {
-  -webkit-border-radius: var(--radius-md) !important;
-  -moz-border-radius: var(--radius-md) !important;
-  border-radius: var(--radius-md) !important;
-  -ms-border-radius: var(--radius-md) !important;
-  -o-border-radius: var(--radius-md) !important;
-  border: 3px solid rgba(255, 255, 255, 0) !important;
-  color: #205e71 !important;
-  background: #f7f7f7 !important; }
-  a.-light:hover, a.-light:focus, a.-light:active {
-    color: #f7f7f7 !important;
-    background: #205e71 !important;
-    border-color: #f7f7f7 !important; }
-  a.-light.-hollow {
-    background: none !important;
-    color: #f7f7f7 !important;
-    border: 3px solid #f7f7f7 !important; }
-    a.-light.-hollow:hover, a.-light.-hollow:focus, a.-light.-hollow:active {
-      color: #205e71 !important;
-      background: #f7f7f7 !important; }
 
 /* #Button - Flits / Social login
 ================================================== */
