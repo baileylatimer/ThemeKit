@@ -16,19 +16,19 @@
 <main class="js-reading-content {{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
 
   {% comment %}START / Content {% endcomment %}
-  <div class="margin-top-lg product clearfix sixteen columns product-{{ product.id }}" data-free-text="{{ settings.free_price_text }}">
+  <div class="product clearfix sixteen columns product-{{ product.id }}" data-free-text="{{ settings.free_price_text }}">
       
     {% comment %}START / Overview {% endcomment %}
-    <section id="overview" class="section--page">
+    <section id="overview" class="">
       
       <div class="section product_section clearfix js-product_section {% if section.settings.product_images_position == 'right' %}align_right--images{% endif %}" itemscope itemtype="http://schema.org/Product" data-rv-handle="{{ product.handle }}">
         {% if product.metafields.custom_fields["banners_dialog_product"] != blank %}
             {% include 'banners-dialog' %}
         {% endif %}
-        <div id="product-images" class="mb60 nine columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
+        <div id="product-images" class="nine columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
         </div>
-        <div id="product-details"class="mb60 seven columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+        <div id="product-details"class="seven columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
           {% assign collection_handles = product.collections | map: 'handle' %}
           {% assign variant = product.selected_or_first_available_variant %}
           {% if product.available %}
