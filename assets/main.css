@@ -12532,10 +12532,13 @@ header {
     header {
       margin-top: calc(var(--header-height) * -1); } }
 
-.container.main.content, .index-sections, .collection-template-section {
+.index-sections, .collection-template-section {
+  margin-top: var(--header-height); }
+
+.container.main.content {
   margin-top: var(--header-height); }
   @media (min-width: 768px) {
-    .container.main.content, .index-sections, .collection-template-section {
+    .container.main.content {
       padding-top: var(--space-xl); } }
 
 @media (max-width: 768px) {
