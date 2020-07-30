@@ -7028,12 +7028,12 @@ Usage: codyhouse.co/license
   align-items: flex-start;
   width: 100%;
   height: 100%;
-  padding: 20px 40px;
-  margin: 0px;
-  padding-left: 6%;
-  padding-right: 10%; }
+  padding: var(--space-md);
+  margin: 0px; }
   @media (min-width: 992px) {
     .intro_description {
+      padding-left: 6%;
+      padding-right: 10%;
       max-width: calc(.5 * 1250px);
       width: 60%;
       height: 100%; } }
@@ -7049,7 +7049,8 @@ Usage: codyhouse.co/license
   transition: all 0.5s ease-in-out; }
   @media (min-width: 768px) {
     .tri_banner {
-      height: 540px; } }
+      max-height: 500px;
+      height: 33vw; } }
   .tri_banner img {
     min-height: 177px;
     height: 100% !important;
