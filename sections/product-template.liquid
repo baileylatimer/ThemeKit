@@ -8,12 +8,9 @@
 
 <a name="pagecontent" id="pagecontent"></a><span id="stick-here"></span>
 
-<progress aria-hidden="true" class="reset reading-progressbar reading-progressbar--is-hidden js-reading-progressbar" max="100" value="0">
-  <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
-</progress>
 
 {% comment %}START / Page {% endcomment %}
-<main class="js-reading-content {{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
+<main class="{{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
 
   {% comment %}START / Content {% endcomment %}
   <div class="product clearfix sixteen columns product-{{ product.id }}" data-free-text="{{ settings.free_price_text }}">
@@ -25,10 +22,10 @@
         {% if product.metafields.custom_fields["banners_dialog_product"] != blank %}
             {% include 'banners-dialog' %}
         {% endif %}
-        <div id="product-images" class="nine columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
+        <div id="product-images" class="ten columns medium-down--one-whole position-sticky top-0 {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
         </div>
-        <div id="product-details"class="seven columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+        <div id="product-details"class="six columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
           {% assign collection_handles = product.collections | map: 'handle' %}
           {% assign variant = product.selected_or_first_available_variant %}
           {% if product.available %}
