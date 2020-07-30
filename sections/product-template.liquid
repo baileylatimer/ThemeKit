@@ -12,56 +12,56 @@
 
 {% comment %}START / Page {% endcomment %}
 <main class="{{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
-
+  
 
 {% comment %}START / Breadcrumbs {% endcomment %}
-<nav class="breadcrumbs sixteen columns">
+<nav class="breadcrumbs sixteen columns text-sm" aria-label="Breadcrumbs">
   {% if collection.previous_product or collection.next_product or section.settings.product_breadcrumb %}
     <div class="clearfix breadcrumb-collection">
       {% if collection.previous_product or collection.next_product %}
         <div class="nav_arrows breadcrumb_text">
           {% if collection.previous_product %}
-            <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="breadcrumb_link">
-              <span class="icon-left-arrow">
+            <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="breadcrumb_link color-inherit margin-left-xxs"  aria-hidden="true">
+              <span class="icon-left-arrow color-contrast-low">
                 {{ 'products.general.previous_product_html' | t }}
               </span>
             </a>
           {% endif %}
           {% if collection.previous_product and collection.next_product %}
-            <span class="breadcrumb-divider">|</span>
+            <span class="breadcrumb-divider color-contrast-low">/</span>
           {% endif %}
           {% if collection.next_product %}
-            <a href="{{ collection.next_product }}" title="{{ 'products.general.next_product_html' | t }}" class="breadcrumb_link">{{ 'products.general.next_product_html' | t }}
-              <span class="icon-right-arrow"></span>
+            <a href="{{ collection.next_product }}" title="{{ 'products.general.next_product_html' | t }}" class="breadcrumb_link color-inherit margin-left-xxs"  aria-hidden="true">{{ 'products.general.next_product_html' | t }}
+              <span class="icon-right-arrow color-contrast-low"></span>
             </a>
           {% endif %}
         </div>
       {% endif %}
       {% if section.settings.product_breadcrumb %}
-        <div class="breadcrumb-not-active" class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <div class="breadcrumb-not-active breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
           <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
-              <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+            <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link color-inherit margin-left-xxs"  aria-hidden="true">
+              <span class="text-underline" itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
             </a>
             <meta itemprop="position" content="1"/>
           </span>
-          <span class="breadcrumb-not-active" class="breadcrumb-divider">>></span>
+          <span class="breadcrumb-not-active breadcrumb-divider color-contrast-low">/</span>
           <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
             {% if collection %}
-              <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link">
-                <span itemprop="name">{{ collection.title }}</span>
+              <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link color-inherit margin-left-xxs"  aria-hidden="true">
+                <span class="text-underline" itemprop="name">{{ collection.title }}</span>
                 <meta itemprop="position" content="2"/>
               </a>
             {% else %}
-              <a class="breadcrumb-not-active" href="/collections/all" title="{{ collections.all.title }}" itemprop="item" class="breadcrumb_link">
-                <span itemprop="name">{{ collections.all.title }}</span>
+              <a class="breadcrumb-not-active" href="/collections/all" title="{{ collections.all.title }}" itemprop="item" class="breadcrumb_link color-inherit margin-left-xxs"  aria-hidden="true">
+                <span class="text-underline" itemprop="name">{{ collections.all.title }}</span>
                 <meta itemprop="position" content="2"/>
               </a>
             {% endif %}
           </span>
-          <span class="breadcrumb-divider">>></span>
+          <span class="breadcrumb-divider color-contrast-low">/</span>
           <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <a class="breadcrumb-active" href="{{ product.url }}" itemprop="item" class="breadcrumb_link">
+            <a class="breadcrumb-active" href="{{ product.url }}" itemprop="item" class="breadcrumb_link color-inherit margin-left-xxs" aria-current="page">
               <span itemprop="name">{{ product.title }}</span>
               <meta itemprop="position" content="3"/>
             </a>
@@ -135,14 +135,14 @@
               {% for tag in product.tags %}
                 {% if tag contains 'meta-size-chart-' %}
                   <a href="javascript:;" class="size_chart" data-fancybox data-src="#size-chart{{ product.id }}" data-type="inline" data-no-instant>{{ 'products.product.size_chart' | t }}
-                    <span class="icon-right-arrow"></span>
+                    <span class="icon-right-arrow color-contrast-low"></span>
                   </a>
                   {% include 'popup-size-chart', product_id: product.id %}
                 {% endif %}
               {% endfor %}
             {% elsif settings.size_chart != blank %}
               <a href="javascript:;" class="size_chart" data-fancybox data-src="#size-chart{{ product.id }}" data-type="inline" data-no-instant>{{ 'products.product.size_chart' | t }}
-                <span class="icon-right-arrow"></span>
+                <span class="icon-right-arrow color-contrast-low"></span>
               </a>
           {% endif %}
           {% if collection_handles contains 'coming-soon' %}

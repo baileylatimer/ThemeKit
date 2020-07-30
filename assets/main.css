@@ -5522,11 +5522,6 @@ span.item-pricing,
 .main_nav .search__results .item-result a:hover {
   background-color: #f0f0f0; }
 
-/* Breadcrumbs
-  ================================================== */
-.breadcrumb a, .breadcrumb a span, .breadcrumb-collection a, .breadcrumb-collection a span {
-  color: #757575 !important; }
-
 /* Navigation / Product
   ================================================== */
 .subnav__menu a {
@@ -5901,12 +5896,6 @@ ul:not(.menu .center) .sublink a:not(.parent-link--true) {
 
 .footer .info-item a, .footer .info-item p, .footer .info-item--product a, .footer .info-item--product p {
   letter-spacing: -0.03em; }
-
-/* Breadcrumbs
-  ================================================== */
-.breadcrumb-active {
-  font-weight: 700 !important;
-  text-decoration: underline; }
 
 /* Product – Small
   ================================================== */
