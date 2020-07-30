@@ -8232,6 +8232,21 @@ Usage: codyhouse.co/license
 
 /* -------------------------------- 
 
+File#: _1_breadcrumbs
+Title: Breadcrumbss
+Descr: List of links to help the user move within website structure
+
+-------------------------------- */
+.breadcrumbs {
+  margin-top: calc(var(--space-lg) * -1); }
+
+.breadcrumbs__item {
+  display: inline-block;
+  display: inline-flex;
+  align-items: center; }
+
+/* -------------------------------- 
+
 File#: _1_sticky-hero
 Title: Sticky Hero
 Descr: A sticky hero section that reveals its content on scroll
