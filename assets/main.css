@@ -8572,6 +8572,57 @@ html:not(.js) .countdown__info {
 
 /* -------------------------------- 
 
+File#: _1_feature
+Title: Feature
+Descr: Content group containing text + media (img, video, iframe, inline SVG)
+
+-------------------------------- */
+@media (max-width: 768px) {
+  .feature-text, .feature-content {
+    text-align: center; }
+  .feature-btn-group {
+    justify-content: center; }
+  .feature-image {
+    max-height: 33vh; } }
+
+/* -------------------------------- 
+
+File#: _1_feature-v2
+Title: Feature v2
+Descr: Content group containing two text components
+
+
+-------------------------------- */
+.feature-v2 {
+  position: relative;
+  z-index: 1; }
+
+/* -------------------------------- 
+
+File#: _1_feature-v4
+Title: Feature v4
+Descr: Content group containing media element + text that outsets its container at a specific breakpoint
+
+
+-------------------------------- */
+.feature-v4 {
+  --feature-text-offset: 65%;
+  position: relative;
+  z-index: 1; }
+  @media (max-width: 768px) {
+    .feature-v4 {
+      flex-direction: column-reverse; } }
+
+@media (min-width: 768px) {
+  .feature-v4__text-offset {
+    width: calc(100% + var(--feature-text-offset)); }
+  .feature-v4--invert .feature-v4__grid > *:last-child {
+    order: -1; }
+  .feature-v4--invert .feature-v4__text-offset {
+    margin-left: calc(var(--feature-text-offset) * -1); } }
+
+/* -------------------------------- 
+
 File#: _1_feature-v9
 Title: Feature v9
 Descr: A feature section with 2 blocks
@@ -8640,42 +8691,6 @@ Usage: codyhouse.co/license
   transition: background-color .2s; }
   .feature-v9__link:hover {
     background-color: hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 1); }
-
-/* -------------------------------- 
-
-File#: _1_feature-v4
-Title: Feature v4
-Descr: Content group containing media element + text that outsets its container at a specific breakpoint
-
-
--------------------------------- */
-.feature-v4 {
-  --feature-text-offset: 65%;
-  position: relative;
-  z-index: 1; }
-  @media (max-width: 768px) {
-    .feature-v4 {
-      flex-direction: column-reverse; } }
-
-@media (min-width: 768px) {
-  .feature-v4__text-offset {
-    width: calc(100% + var(--feature-text-offset)); }
-  .feature-v4--invert .feature-v4__grid > *:last-child {
-    order: -1; }
-  .feature-v4--invert .feature-v4__text-offset {
-    margin-left: calc(var(--feature-text-offset) * -1); } }
-
-/* -------------------------------- 
-
-File#: _1_feature-v2
-Title: Feature v2
-Descr: Content group containing two text components
-
-
--------------------------------- */
-.feature-v2 {
-  position: relative;
-  z-index: 1; }
 
 /* -------------------------------- 
 
@@ -12143,8 +12158,7 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
 
 .footer_credits {
   border-top: 1px solid #CB9B9E;
-  margin-top: 70px;
-  margin-bottom: -30px; }
+  margin-top: 70px; }
   .footer_credits a {
     font-size: var(--text-sm);
     color: #c69aa5 !important; }
