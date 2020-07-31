@@ -84,7 +84,7 @@
         {% if product.metafields.custom_fields["banners_dialog_product"] != blank %}
             {% include 'banners-dialog' %}
         {% endif %}
-        <div id="product-images" class="ten columns medium-down--one-whole position-sticky top-0 {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
+        <div id="product-images" class="ten columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
         </div>
         <div id="product-details"class="six columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">

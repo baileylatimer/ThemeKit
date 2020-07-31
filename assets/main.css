@@ -7860,6 +7860,17 @@ div.section.collection_description {
     color: white !important; }
 
 /* Product gallery */
+@media (max-width: 768px) {
+  #product-images {
+    margin-top: -40px;
+    margin-left: calc(-50vw + 50%);
+    width: 100vw; } }
+
+@media (min-width: 768px) {
+  #product-images {
+    position: sticky;
+    top: 0; } }
+
 .gallery-wrap {
   display: inline-flex;
   flex-direction: row-reverse;
@@ -7897,12 +7908,6 @@ div.section.collection_description {
 ================================================== */
 /* Images
 ================================================== */
-@media (max-width: 768px) {
-  #product-images {
-    margin-top: -40px;
-    margin-left: calc(-50vw + 50%);
-    width: 100vw; } }
-
 .product_gallery_nav.product_gallery_nav--bottom-slider .gallery-cell img, .product_gallery img {
   filter: brightness(0.94) !important;
   -webkit-filter: brightness(0.94) !important; }
