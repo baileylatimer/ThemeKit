@@ -4799,7 +4799,9 @@ html:not(.js) .no-js\:is-hidden {
     .text-xxl\@lg {
       font-size: var(--text-xxl, 2.074em); }
     .text-xxxl\@lg {
-      font-size: var(--text-xxxl, 2.488em); } }
+      font-size: var(--text-xxxl, 2.488em); }
+    .text-xxxxl\@lg {
+      font-size: var(--text-xxxxl, 3em); } }
   .hide\@lg {
     display: none !important; } }
 
@@ -7521,6 +7523,12 @@ td {
   filter: none !important;
   -webkit-filter: none !important; }
 
+.index-sections .gradient-bottom {
+  background: rgba(0, 0, 0, 0) linear-gradient(#f7f7f7, rgba(255, 255, 255, 0) 167px, rgba(255, 255, 255, 0) 93%, #f7f7f7) repeat scroll 0% 0%;
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
 .img--stretch img {
   width: 100%; }
 
@@ -9986,7 +9994,7 @@ Descr: Navigation template for mega-sites
   --mega-nav-height: 50px;
   --mega-nav-content-max-width: var(--max-width-lg);
   --promo-banner-height: 40px;
-  --header-height: var(--mega-nav-height); }
+  --header-height: calc(var(--mega-nav-height) + var(--promo-banner-height)); }
   @media (min-width: 768px) {
     :root {
       --header-height: calc(var(--mega-nav-height) + var(--promo-banner-height) + var(--promo-banner-height)); } }
@@ -12510,7 +12518,7 @@ header {
     header {
       margin-top: calc(var(--header-height) * -1); } }
 
-.index-sections, .collection-template-section {
+.collection-template-section, .index-sections {
   margin-top: var(--header-height); }
 
 .container.main.content {
@@ -12520,7 +12528,7 @@ header {
       padding-top: var(--space-xl); } }
 
 @media (max-width: 768px) {
-  .index-sections, .customers-login, .content {
+  .customers-login, .content {
     margin-top: var(--header-height); } }
 
 .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
