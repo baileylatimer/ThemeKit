@@ -8242,6 +8242,15 @@ Descr: List of links to help the user move within website structure
 -------------------------------- */
 .breadcrumbs {
   margin-top: calc(var(--space-lg) * -1); }
+  @media (max-width: 768px) {
+    .breadcrumbs {
+      margin-left: calc(-50vw + 50%);
+      width: 100vw;
+      background: var(--color-contrast-lower);
+      position: relative;
+      margin-bottom: var(--space-lg);
+      z-index: 99;
+      visibility: hidden; } }
 
 .breadcrumbs__item {
   display: inline-block;
@@ -8583,7 +8592,13 @@ Descr: Content group containing text + media (img, video, iframe, inline SVG)
   .feature-btn-group {
     justify-content: center; }
   .feature-image {
-    max-height: 33vh; } }
+    max-height: 33vh; }
+  .feature-grid {
+    flex-direction: column-reverse; } }
+
+@media (min-width: 768px) {
+  .feature-image {
+    max-height: 600px; } }
 
 /* -------------------------------- 
 
@@ -12535,11 +12550,15 @@ header {
 .collection-template-section, .index-sections {
   margin-top: var(--header-height); }
 
+#shopify-section-product-template .content {
+  margin-top: 0; }
+
 .container.main.content {
-  margin-top: var(--header-height); }
+  min-height: 50vh; }
   @media (min-width: 768px) {
     .container.main.content {
-      padding-top: var(--space-xl); } }
+      padding-top: var(--space-xl);
+      margin-top: var(--header-height); } }
 
 @media (max-width: 768px) {
   .customers-login, .content {
