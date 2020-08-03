@@ -12550,8 +12550,9 @@ header {
 .collection-template-section, .index-sections {
   margin-top: var(--header-height); }
 
-#shopify-section-product-template .content {
-  margin-top: 0; }
+@media (max-width: 768px) {
+  #shopify-section-product-template .content {
+    margin-top: 0; } }
 
 .container.main.content {
   min-height: 50vh; }
