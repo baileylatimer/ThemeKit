@@ -5347,6 +5347,50 @@ html:not(.js) .no-js\:is-hidden {
  * Returns the transition properties in the correct format
  * This function is used by @mixin transition($transitions...)
  */
+:root {
+  /* Grape
+================================================== */
+  --grape-1:#F0EBEB;
+  --grape-2:#CB9B9E;
+  --grape-3:#873B40;
+  --grape-4:#7a363b;
+  /* Wood
+================================================== */
+  --wood-1:#F0EDEA;
+  --wood-2:#D3BDAB;
+  --wood-3:#BA8D65;
+  --wood-4:#756151;
+  /* Pumpkin
+================================================== */
+  --pumpkin-1:#F1ECEB;
+  --pumpkin-2:#EDD2C6;
+  --pumpkin-3:#C75724;
+  --pumpkin-4:#783014;
+  /* Tundra
+================================================== */
+  --tundra-1:#E7ECED;
+  --tundra-2:#A9C8D9;
+  --tundra-3:#205E71;
+  --tundra-4:#133843;
+  /* Jungle
+================================================== */
+  --jungle-1:#EDF0EA;
+  --jungle-2:#B6BFAA;
+  --jungle-3:#69715E;
+  --jungle-4:#313F37;
+  /* Ocean
+================================================== */
+  --ocean-1:#E8F3FF;
+  --ocean-2:#ADCFF1;
+  --ocean-3:#5D82A6;
+  --ocean-4:#0B4D6B;
+  /* Aqua
+================================================== */
+  --aqua-1:#E1F4F5;
+  --aqua-2:#81D3D6;
+  --aqua-3:#03A7AC;
+  --aqua-4:#006666; }
+
 /* Success
   ================================================== */
 /* Warning
@@ -5363,6 +5407,10 @@ html:not(.js) .no-js\:is-hidden {
   ================================================== */
 /* Wood
   ================================================== */
+/* Pumpkin
+  ================================================== */
+/* Tundra
+  ================================================== */
 /* Jungle
   ================================================== */
 /* Ocean
@@ -5372,16 +5420,6 @@ html:not(.js) .no-js\:is-hidden {
 /* GoSun / Cherry
 ================================================== */
 /* GoSun / Orange
-================================================== */
-/* GoSun / Wood
-================================================== */
-/* GoSun / Olive
-================================================== */
-/* GoSun / Grape
-================================================== */
-/* GoSun / Ocean
-================================================== */
-/* GoSun / Tundra
 ================================================== */
 /* GoSun / Pumpkin
 ================================================== */
@@ -5403,8 +5441,6 @@ html:not(.js) .no-js\:is-hidden {
 .alert {
   color: #FF6A55; }
 
-/* #Config - Primary
-  ================================================== */
 /* #Config - Borders
   ================================================== */
 /* #Config - Typography
@@ -5415,51 +5451,86 @@ html:not(.js) .no-js\:is-hidden {
   ================================================== */
 .grape {
   background-color: #873B40 !important; }
+  .grape--1 {
+    background-color: #F0EBEB !important; }
+  .grape--2 {
+    background-color: #CB9B9E !important; }
+  .grape--3 {
+    background-color: #873B40 !important; }
+  .grape--4 {
+    background-color: #7a363b !important; }
 
 .tundra {
-  background-color: #205e71 !important; }
+  background-color: #205E71 !important; }
+  .tundra--1 {
+    background-color: #E7ECED !important; }
+  .tundra--2 {
+    background-color: #A9C8D9 !important; }
+  .tundra--3 {
+    background-color: #205E71 !important; }
+  .tundra--4 {
+    background-color: #133843 !important; }
 
 .pumpkin {
-  background-color: #c75724 !important; }
+  background-color: #C75724 !important; }
+  .pumpkin--1 {
+    background-color: #F1ECEB !important; }
+  .pumpkin--2 {
+    background-color: #EDD2C6 !important; }
+  .pumpkin--3 {
+    background-color: #C75724 !important; }
+  .pumpkin--4 {
+    background-color: #783014 !important; }
 
 .jungle {
   background-color: #69715E !important; }
+  .jungle--1 {
+    background-color: #EDF0EA !important; }
+  .jungle--2 {
+    background-color: #B6BFAA !important; }
+  .jungle--3 {
+    background-color: #69715E !important; }
+  .jungle--4 {
+    background-color: #313F37 !important; }
 
-.honey {
-  background-color: #eaaa00 !important; }
+.ocean {
+  background-color: #5D82A6 !important; }
+  .ocean--1 {
+    background-color: #E8F3FF !important; }
+  .ocean--2 {
+    background-color: #ADCFF1 !important; }
+  .ocean--3 {
+    background-color: #5D82A6 !important; }
+  .ocean--4 {
+    background-color: #0B4D6B !important; }
+
+.wood {
+  background-color: #BA8D65 !important; }
+  .wood--1 {
+    background-color: #F0EDEA !important; }
+  .wood--2 {
+    background-color: #D3BDAB !important; }
+  .wood--3 {
+    background-color: #BA8D65 !important; }
+  .wood--4 {
+    background-color: #756151 !important; }
+
+.aqua {
+  background-color: #03A7AC !important; }
+  .aqua--1 {
+    background-color: #E1F4F5 !important; }
+  .aqua--2 {
+    background-color: #81D3D6 !important; }
+  .aqua--3 {
+    background-color: #03A7AC !important; }
+  .aqua--4 {
+    background-color: #006666 !important; }
 
 .mint {
   background-color: #03a7ac !important; }
 
-.olive {
-  background-color: #936d41 !important; }
-
-.olive-200 {
-  background-color: #d2c0a9 !important; }
-
-.wood {
-  background-color: #BA8D65 !important; }
-
 .wood-300 {
   background-color: #D3BDAB !important; }
-
-.ocean {
-  background-color: #5D82A6 !important; }
-
-.cherry-900 {
-  background-color: #d9120f !important; }
-
-.aqua--1 {
-  background-color: #E1F4F5 !important; }
-
-.aqua--2 {
-  background-color: #81D3D6 !important; }
-
-.aqua--3 {
-  background-color: #03A7AC !important; }
-
-.aqua--4 {
-  background-color: #006666 !important; }
 
 /* #Classes - Typography
   ================================================== */
@@ -5499,7 +5570,7 @@ html:not(.js) .no-js\:is-hidden {
   background-blend-mode: multiply !important; }
 
 .stripe--dark {
-  background-color: #F0EDEA; }
+  background-color: #F0EDEA !important; }
 
 /* Tabs
   ================================================== */
@@ -5536,16 +5607,16 @@ span.item-pricing,
   color: var(--color-success-darker); }
 
 .violator--attribute {
-  background-color: #e4ecee;
-  border: 2px solid #e4ecee;
+  background-color: #E7ECED;
+  border: 2px solid #E7ECED;
   color: #fff;
-  color: #205e71; }
+  color: #E7ECED; }
 
 .violator--free-item {
-  background-color: #205e71;
-  border: 2px solid #205e71;
+  background-color: #205E71;
+  border: 2px solid #205E71;
   color: #fff;
-  color: #e4ecee; }
+  color: #E7ECED; }
 
 /* Title
   ================================================== */
@@ -7115,7 +7186,7 @@ Usage: codyhouse.co/license
 
 .feature-container {
   height: 100%;
-  background: #36171f;
+  background: #7a363b;
   display: flex !important;
   flex-direction: row;
   justify-content: center;
@@ -7135,7 +7206,6 @@ Usage: codyhouse.co/license
   flex-grow: 0; }
 
 .hero-3--center {
-  background-color: #d2c0a9;
   display: flex !important;
   flex-direction: row;
   justify-content: flex-start;
@@ -7159,7 +7229,6 @@ Usage: codyhouse.co/license
 
 .hero-3--button {
   color: #212121;
-  background-color: #d2c0a9;
   border: 2px solid #212121;
   -webkit-border-radius: var(--radius-md) !important;
   -moz-border-radius: var(--radius-md) !important;
@@ -7183,56 +7252,6 @@ a.highlight-true, a.highlight-true:hover {
   background-color: #fff !important;
   border-color: transparent !important;
   color: #212121 !important; }
-
-.btn-custom {
-  background: #e92f2a;
-  -webkit-border-radius: var(--radius-md) !important;
-  -moz-border-radius: var(--radius-md) !important;
-  border-radius: var(--radius-md) !important;
-  -ms-border-radius: var(--radius-md) !important;
-  -o-border-radius: var(--radius-md) !important;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
-  padding: 10px 50px;
-  margin-bottom: 10px;
-  color: #fff !important; }
-  .btn-custom:hover {
-    background: #f49795;
-    transition: all 0.2s ease-out; }
-
-.btn-xl {
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  background: #e92f2a;
-  -webkit-border-radius: var(--radius-md) !important;
-  -moz-border-radius: var(--radius-md) !important;
-  border-radius: var(--radius-md) !important;
-  -ms-border-radius: var(--radius-md) !important;
-  -o-border-radius: var(--radius-md) !important;
-  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17) !important;
-  -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17) !important;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17) !important;
-  padding: 15px 50px;
-  color: #fff !important;
-  width: 100%;
-  z-index: 19;
-  margin-top: 30px; }
-  @media (max-width: 768px) {
-    .btn-xl {
-      margin-top: 10px; } }
-  .btn-xl:hover {
-    background: #f49795;
-    transition: all 0.2s ease-out;
-    padding: 20px 50px; }
-
-.btn-group {
-  float: left; }
-  .btn-group a {
-    display: block;
-    text-align: center;
-    text-decoration: none; }
-  .btn-group.-a {
-    background: #e92f2a; }
 
 /* #Buttons - Submit */
 #stamped-button-submit, .stamped-summary-actions-newreview, .stamped-summary-actions-newquestion {
@@ -8367,6 +8386,18 @@ Descr: Container of information used as teaser for further content exploration
     box-shadow: var(--shadow-md);
     background-position: 130px -40px;
     scale: 1.03; }
+    .card-v9:hover h2, .card-v9:hover p {
+      color: var(--color-white) !important; }
+    .card-v9:hover:nth-child(1) {
+      background-color: var(--grape-3) !important; }
+    .card-v9:hover:nth-child(2) {
+      background-color: var(--ocean-3) !important; }
+    .card-v9:hover:nth-child(3) {
+      background-color: var(--tundra-3) !important; }
+    .card-v9:hover:nth-child(4) {
+      background-color: var(--wood-3) !important; }
+    .card-v9:hover:nth-child(5) {
+      background-color: var(--ocean-3) !important; }
     @media (min-width: 992px) {
       .card-v9:hover {
         background-position: -15% 25px; } }
@@ -12166,7 +12197,7 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
   margin-top: 0; }
 
 .footer {
-  background: #7A363B;
+  background: #873B40;
   border-top: none !important; }
   .footer a {
     font-size: 16px;
@@ -12176,14 +12207,14 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
       border-top: 1px solid #CB9B9E; } }
 
 .credits {
-  color: #c69aa5; }
+  color: #CB9B9E; }
 
 .footer_credits {
   border-top: 1px solid #CB9B9E;
   margin-top: 70px; }
   .footer_credits a {
     font-size: var(--text-sm);
-    color: #c69aa5 !important; }
+    color: #CB9B9E !important; }
 
 .payment_methods, .footer-logo {
   display: none !important; }
@@ -12309,11 +12340,11 @@ div.is-absolute {
 
 .search_form input {
   border-radius: 22px;
-  background: #7A363B;
+  background: #7a363b;
   border: none !important; }
   .search_form input:active, .search_form input:focus {
     border-radius: 22px;
-    background: #7A363B;
+    background: #7a363b;
     border: none !important; }
 
 /* Hide placeholder text on click */
@@ -13180,7 +13211,7 @@ Usage: codyhouse.co/license
   background-color: #873B40; }
 
 .grape-0 .subnav:before {
-  background-color: #63202C; }
+  background-color: #7a363b; }
 
 .grape-0 .subnav__link.active-tab {
   color: #873B40;
@@ -13196,31 +13227,11 @@ Usage: codyhouse.co/license
   color: #873B40;
   background-color: #F0EBEB; }
 
-.olive-0 .split-banner--content {
-  background-color: #936d41; }
-
-.olive-0 .subnav:before {
-  background-color: #795028; }
-
-.olive-0 .subnav__link.active-tab {
-  color: #936d41;
-  background-color: #f4f0ea; }
-  .olive-0 .subnav__link.active-tab:hover {
-    color: #936d41;
-    background-color: #f4f0ea; }
-
-.olive-0 .prod-desc li:before {
-  color: #c0a686; }
-
-.olive-0 .toggle:hover {
-  color: #936d41;
-  background-color: #f4f0ea; }
-
 .ocean-0 .split-banner--content {
   background-color: #5D82A6; }
 
 .ocean-0 .subnav:before {
-  background-color: #0177dd; }
+  background-color: #0B4D6B; }
 
 .ocean-0 .subnav__link.active-tab {
   color: #5D82A6;
@@ -13230,31 +13241,31 @@ Usage: codyhouse.co/license
     background-color: #E8F3FF; }
 
 .ocean-0 .prod-desc li:before {
-  color: #50bff1; }
+  color: #ADCFF1; }
 
 .ocean-0 .toggle:hover {
   color: #5D82A6;
   background-color: #E8F3FF; }
 
 .tundra-0 .split-banner--content {
-  background-color: #205e71; }
+  background-color: #205E71; }
 
 .tundra-0 .subnav:before {
-  background-color: #0b3142; }
+  background-color: #133843; }
 
 .tundra-0 .subnav__link.active-tab {
-  color: #205e71;
-  background-color: #e4ecee; }
+  color: #205E71;
+  background-color: #E7ECED; }
   .tundra-0 .subnav__link.active-tab:hover {
-    color: #205e71;
-    background-color: #e4ecee; }
+    color: #205E71;
+    background-color: #E7ECED; }
 
 .tundra-0 .prod-desc li:before {
-  color: #638e9c; }
+  color: #A9C8D9; }
 
 .tundra-0 .toggle:hover {
-  color: #205e71;
-  background-color: #e4ecee; }
+  color: #205E71;
+  background-color: #E7ECED; }
 
 .jungle-0 .split-banner--content {
   background-color: #69715E; }
@@ -13277,61 +13288,21 @@ Usage: codyhouse.co/license
   background-color: #EDF0EA; }
 
 .pumpkin-0 .split-banner--content {
-  background-color: #c75724; }
+  background-color: #C75724; }
 
 .pumpkin-0 .subnav:before {
-  background-color: #97170a; }
+  background-color: #783014; }
 
 .pumpkin-0 .subnav__link.active-tab {
-  color: #c75724;
-  background-color: #f7e7e4; }
+  color: #C75724;
+  background-color: #F1ECEB; }
   .pumpkin-0 .subnav__link.active-tab:hover {
-    color: #c75724;
-    background-color: #f7e7e4; }
+    color: #C75724;
+    background-color: #F1ECEB; }
 
 .pumpkin-0 .prod-desc li:before {
-  color: #d07461; }
+  color: #EDD2C6; }
 
 .pumpkin-0 .toggle:hover {
-  color: #c75724;
-  background-color: #f7e7e4; }
-
-.mint-0 .split-banner--content {
-  background-color: #03a7ac; }
-
-.mint-0 .subnav:before {
-  background-color: #017c82; }
-
-.mint-0 .subnav__link.active-tab {
-  color: #03a7ac;
-  background-color: #e1f4f5; }
-  .mint-0 .subnav__link.active-tab:hover {
-    color: #03a7ac;
-    background-color: #e1f4f5; }
-
-.mint-0 .prod-desc li:before {
-  color: #4fc1c5; }
-
-.mint-0 .toggle:hover {
-  color: #03a7ac;
-  background-color: #e1f4f5; }
-
-.honey-0 .split-banner--content {
-  background-color: #eaaa00; }
-
-.honey-0 .subnav:before {
-  background-color: #db7f00; }
-
-.honey-0 .subnav__link.active-tab {
-  color: #eaaa00;
-  background-color: #fcf5e0; }
-  .honey-0 .subnav__link.active-tab:hover {
-    color: #eaaa00;
-    background-color: #fcf5e0; }
-
-.honey-0 .prod-desc li:before {
-  color: #f0c44d; }
-
-.honey-0 .toggle:hover {
-  color: #eaaa00;
-  background-color: #fcf5e0; }
+  color: #C75724;
+  background-color: #F1ECEB; }
