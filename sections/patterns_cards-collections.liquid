@@ -2,11 +2,11 @@
   <div class="flex flex-column flex-row@md"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
-        <a href="{{ block.settings.link }}" itemprop="url" class="card-v9 radius-md margin-bottom-sm margin-sm@md {{ block.settings.background_color }}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
+        <a href="{{ block.settings.link }}" itemprop="url"  {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %} class="card-v9 radius-md margin-bottom-sm margin-sm@md {{ block.settings.background_color }}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
           <div class="card-v9__content padding-md">
             <div class="padding-bottom-xxxl max-width-xxs">
-              <p class="color-white color-opacity-50% text-uppercase"> {{ block.settings.overline}} </p>
-              <h2 id="card-title-1" class="text-xl color-white"> {{ block.settings.title }} </h2>
+              <p class="color-opacity-50% text-uppercase"> {{ block.settings.overline}} </p>
+              <h2 id="card-title-1" class="text-xl"> {{ block.settings.title }} </h2>
             </div>
             <div class="margin-top-auto">
               <span class="card-v9__btn btn"><span>Shop {{ block.settings.title }}&nbsp;➞</span></span>
@@ -31,7 +31,12 @@
     "class": "filter-map--white width-100",
     "max_blocks": 6,
     "settings": [
-
+    {
+      "type": "checkbox",
+      "id": "dark_theme",
+      "label": "Dark theme",
+      "default": true
+    }
     ],
     "blocks": [
     
@@ -39,6 +44,7 @@
         "type": "image",
         "name": "Image",
         "settings": [
+ 
         {
           "type": "select",
           "id": "background_color",

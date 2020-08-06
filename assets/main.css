@@ -8344,7 +8344,6 @@ Descr: Container of information used as teaser for further content exploration
   position: relative;
   z-index: 1;
   text-decoration: none;
-  color: inherit;
   background-color: var(--color-white);
   background-repeat: no-repeat;
   background-size: contain;
@@ -12035,11 +12034,6 @@ li[data-value="location"], li[data-value="age"], li[data-value="gender"] {
 
 .float-right {
   float: right; }
-
-/* Cards - Product Small */
-.product .grid {
-  grid-column-gap: 10px;
-  grid-row-gap: 10px; }
 
 .grid-h {
   display: grid;
