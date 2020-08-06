@@ -12573,7 +12573,7 @@ header {
     margin-top: var(--header-height); } }
 
 .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
-  padding-bottom: 40px !important; }
+  padding-bottom: 0px !important; }
 
 /* Pages / Support */
 .shogun-tab-box {
