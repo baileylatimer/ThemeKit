@@ -1,0 +1,297 @@
+{% if type == 'block' %}
+  {% assign id = block.id %}
+  {% assign wide_display = block.settings.wide_display %}
+  {% assign aspect_ratio = block.settings.aspect_ratio %}
+  {% assign autoplay = block.settings.autoplay %}
+  {% assign autoloop = block.settings.autoloop %}
+  {% assign video_dark_overlay = block.settings.video_dark_overlay %}
+  {% assign video = block.settings.video %}
+  {% assign mp4 = block.settings.mp4 %}
+  {% assign mp4_preview = block.settings.mp4_preview %}
+  {% assign ogv = block.settings.ogv %}
+  {% assign image = block.settings.image %}
+  {% assign display_text_over_video = block.settings.display_text_over_video %}
+  {% assign pretext = block.settings.pretext %}
+  {% assign title = block.settings.title %}
+  {% assign subtitle = block.settings.subtitle %}
+  {% assign text_position = block.settings.text_position %}
+  {% assign text_align = block.settings.text_align %}
+  {% assign caption_background = block.settings.caption_background %}
+  {% assign caption_background_transparency = block.settings.caption_background_transparency %}
+  {% assign button1_label = block.settings.button1_label %}
+  {% assign button1_link = block.settings.button1_link %}
+  {% assign button1_highlight = block.settings.button1_highlight %}
+  {% assign button2_label = block.settings.button2_label %}
+  {% assign button2_link = block.settings.button2_link %}
+  {% assign button2_highlight = block.settings.button2_highlight %}
+{% else %}
+  {% assign id = section.id %}
+  {% assign wide_display = section.settings.wide_display %}
+  {% assign aspect_ratio = section.settings.aspect_ratio %}
+  {% assign autoplay = section.settings.autoplay %}
+  {% assign autoloop = section.settings.autoloop %}
+  {% assign video_dark_overlay = section.settings.video_dark_overlay %}
+  {% assign video = section.settings.video %}
+  {% assign mp4 = section.settings.mp4 %}
+  {% assign mp4_preview = section.settings.mp4_preview %}
+  {% assign ogv = section.settings.ogv %}
+  {% assign image = section.settings.image %}
+  {% assign display_text_over_video = section.settings.display_text_over_video %}
+  {% assign pretext = section.settings.pretext %}
+  {% assign title = section.settings.title %}
+  {% assign subtitle = section.settings.subtitle %}
+  {% assign text_position = section.settings.text_position %}
+  {% assign text_align = section.settings.text_align %}
+  {% assign caption_background = section.settings.caption_background %}
+  {% assign caption_background_transparency = section.settings.caption_background_transparency %}
+  {% assign button1_label = section.settings.button1_label %}
+  {% assign button1_link = section.settings.button1_link %}
+  {% assign button1_highlight = section.settings.button1_highlight %}
+  {% assign button2_label = section.settings.button2_label %}
+  {% assign button2_link = section.settings.button2_link %}
+  {% assign button2_highlight = section.settings.button2_highlight %}
+{% endif %}
+
+<section class="hero hero--video-bg position-relative padding-y-xxl">
+    <div class="container max-width-adaptive-sm">
+      <div class="position-relative z-index-2 text-center">
+        <div class="text-component">
+          {% if title != blank %}<h1>{{ title }}</h1> {% endif %}
+            <div class="position-relative height-xxl margin-top-md">
+                    <div id="play" class="btn-wrap js-tab-focus mb0" aria-controls="modal-video-x" data-url="{{ mp4 }}">
+                        <div class="play-btn mb0">
+                            <div class="play-icon mb0"></div>
+                        </div>
+                        <div class="play-btn-pulse mb0"></div>
+                    </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="hero__video-bg" aria-hidden="true">
+      <img src="{{ image }}" alt="Video Preview">
+      <video {% if autoplay == true %}autoplay{% endif %}{% if autoloop == true %}loop{% endif %} muted playsInline src="{{ mp4_preview }}"></video>
+    </div>
+  </section>
+  
+  <div class="modal modal--is-loading flex flex-center bg-contrast-higher bg-opacity-90% padding-x-md js-modal" id="modal-video-x">
+    <div class="modal__content width-100% max-width-md shadow-md" role="alertdialog" aria-labelledby="modal-video-x-title" aria-describedby="">
+  
+      <p class="sr-only" id="modal-video-x-title">A video is being shown</p>
+  
+      <figure class="media-wrapper">
+        <iframe src="" class="js-modal-video__media" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </figure>
+    </div>
+  
+    <div class="modal__loader" aria-hidden="true">
+      <svg class="icon icon--lg color-bg icon--is-spinning">
+        <path d="M24,48A24,24,0,1,1,48,24,24.027,24.027,0,0,1,24,48ZM24,4A20,20,0,1,0,44,24,20.023,20.023,0,0,0,24,4Z" opacity="0.4"></path>
+        <path d="M48,24H44A20.023,20.023,0,0,0,24,4V0A24.028,24.028,0,0,1,48,24Z"></path>
+      </svg>
+    </div>
+  
+    <button class="reset modal__close-btn modal__close-btn--outer  js-modal__close js-tab-focus">
+      <svg class="icon icon--sm" viewBox="0 0 24 24">
+        <title>Close modal window</title>
+        <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2">
+          <line x1="3" y1="3" x2="21" y2="21" />
+          <line x1="21" y1="3" x2="3" y2="21" />
+        </g>
+      </svg>
+    </button>
+  </div>
+  
+
+  {% schema %}
+  {
+    "name": "Video Background Hero",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "wide_display",
+        "label": "Wide display",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Aspect ratio",
+        "options": [
+          {
+            "value": "16:9",
+            "label": "16:9"
+          },
+          {
+            "value": "4:3",
+            "label": "4:3"
+          }
+        ],
+        "default": "16:9"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay video",
+        "default": false,
+        "info": "Limited browser support for autoplaying video. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360000661568-Why-won-t-my-video-autoplay-)"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoloop",
+        "label": "Autoloop video",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "video_dark_overlay",
+        "label": "Darken video"
+      },
+      {
+        "type": "text",
+        "id": "mp4",
+        "label": "MP4 full"
+      },
+      {
+        "type": "text",
+        "id": "mp4_preview",
+        "label": "MP4 preview"
+      },
+      {
+        "type": "text",
+        "id": "ogv",
+        "label": "HTML5 OGV File URL (optional)"
+      },
+      {
+        "type": "video_url",
+        "id": "video",
+        "label": "Video link",
+        "accept": ["youtube", "vimeo"],
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "1600 x 900px recommended"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_text_over_video",
+        "label": "Show text on video",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "pretext",
+        "label": "Preheading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "subtitle",
+        "label": "Subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "caption_background",
+        "label": "Display solid text background"
+      },
+      {
+        "type": "checkbox",
+        "id": "caption_background_transparency",
+        "label": "Enable background transparency"
+      },
+      {
+        "type": "text",
+        "id": "button1_label",
+        "label": "First button label"
+      },
+      {
+        "type": "url",
+        "id": "button1_link",
+        "label": "First button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "button1_highlight",
+        "label": "Highlight first button"
+      },
+      {
+        "type": "text",
+        "id": "button2_label",
+        "label": "Second button label"
+      },
+      {
+        "type": "url",
+        "id": "button2_link",
+        "label": "Second button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "button2_highlight",
+        "label": "Highlight second button"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }
+    ],
+    "presets": [{
+      "name": "Video Background Hero",
+      "category": "Video",
+      "settings": {
+        "mp4": "https://cdn.shopify.com/s/files/1/0789/1333/files/ProductsSummaryHomepage_notitles_v1--min.mp4?v=1596823489",
+        "button1_label": "Play Video"
+      }
+    }]
+  }
+  
+  {% endschema %}
+    

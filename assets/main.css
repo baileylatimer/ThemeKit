@@ -8278,6 +8278,28 @@ Descr: List of links to help the user move within website structure
 
 /* -------------------------------- 
 
+File#: _1_hero
+Title: Hero
+Descr: A full-width callout section
+
+-------------------------------- */
+.hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
+.hero--overlay-layer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.65);
+  z-index: 1; }
+
+/* -------------------------------- 
+
 File#: _1_sticky-hero
 Title: Sticky Hero
 Descr: A sticky hero section that reveals its content on scroll
@@ -8736,6 +8758,161 @@ Usage: codyhouse.co/license
   transition: background-color .2s; }
   .feature-v9__link:hover {
     background-color: hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 1); }
+
+/* -------------------------------- 
+
+File#: _1_modal-window
+Title: Modal Window
+Descr: A modal dialog used to display critical information
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.modal {
+  position: fixed;
+  z-index: var(--zindex-overlay);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  visibility: hidden; }
+  .modal:not(.modal--is-visible) {
+    pointer-events: none;
+    background-color: transparent; }
+
+.modal--is-visible {
+  opacity: 1;
+  visibility: visible; }
+
+.modal__content {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 100%; }
+
+.modal__close-btn {
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: .2s; }
+  .modal__close-btn .icon {
+    display: block;
+    margin: auto; }
+
+.modal__close-btn--outer {
+  width: 3.2em;
+  height: 3.2em;
+  position: fixed;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: var(--zindex-fixed-element);
+  background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.8); }
+  .modal__close-btn--outer:hover {
+    background-color: var(--color-contrast-higher); }
+  .modal__close-btn--outer .icon {
+    color: var(--color-bg); }
+
+.modal__close-btn--inner {
+  width: 2em;
+  height: 2em;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm); }
+  .modal__close-btn--inner .icon {
+    color: inherit; }
+  .modal__close-btn--inner:hover {
+    box-shadow: var(--shadow-md); }
+
+:root {
+  --modal-transition-duration: 0.2s; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .modal--animate-fade {
+    --modal-transition-duration: 0.2s;
+    transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s var(--modal-transition-duration); }
+    .modal--animate-fade.modal--is-visible {
+      transition: opacity var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s; }
+  .modal--animate-scale,
+  .modal--animate-translate-up,
+  .modal--animate-translate-down,
+  .modal--animate-translate-right,
+  .modal--animate-translate-left {
+    --modal-transition-duration: 0.2s;
+    transition: opacity var(--modal-transition-duration), visibility 0s var(--modal-transition-duration); }
+    .modal--animate-scale .modal__content,
+    .modal--animate-translate-up .modal__content,
+    .modal--animate-translate-down .modal__content,
+    .modal--animate-translate-right .modal__content,
+    .modal--animate-translate-left .modal__content {
+      will-change: transform;
+      transition: transform var(--modal-transition-duration) var(--ease-out); }
+    .modal--animate-scale.modal--is-visible,
+    .modal--animate-translate-up.modal--is-visible,
+    .modal--animate-translate-down.modal--is-visible,
+    .modal--animate-translate-right.modal--is-visible,
+    .modal--animate-translate-left.modal--is-visible {
+      transition: opacity var(--modal-transition-duration), visibility 0s; }
+      .modal--animate-scale.modal--is-visible .modal__content,
+      .modal--animate-translate-up.modal--is-visible .modal__content,
+      .modal--animate-translate-down.modal--is-visible .modal__content,
+      .modal--animate-translate-right.modal--is-visible .modal__content,
+      .modal--animate-translate-left.modal--is-visible .modal__content {
+        transform: scale(1); }
+  .modal--animate-slide-up,
+  .modal--animate-slide-down,
+  .modal--animate-slide-right,
+  .modal--animate-slide-left {
+    --modal-transition-duration: 0.3s;
+    transition: opacity 0s var(--modal-transition-duration), background-color var(--modal-transition-duration), visibility 0s var(--modal-transition-duration); }
+    .modal--animate-slide-up .modal__content,
+    .modal--animate-slide-down .modal__content,
+    .modal--animate-slide-right .modal__content,
+    .modal--animate-slide-left .modal__content {
+      will-change: transform;
+      transition: transform var(--modal-transition-duration) var(--ease-out); }
+    .modal--animate-slide-up.modal--is-visible,
+    .modal--animate-slide-down.modal--is-visible,
+    .modal--animate-slide-right.modal--is-visible,
+    .modal--animate-slide-left.modal--is-visible {
+      transition: background-color var(--modal-transition-duration), visibility 0s; }
+      .modal--animate-slide-up.modal--is-visible .modal__content,
+      .modal--animate-slide-down.modal--is-visible .modal__content,
+      .modal--animate-slide-right.modal--is-visible .modal__content,
+      .modal--animate-slide-left.modal--is-visible .modal__content {
+        transform: scale(1); }
+  .modal--animate-scale .modal__content {
+    transform: scale(0.95); }
+  .modal--animate-translate-up .modal__content {
+    transform: translateY(40px); }
+  .modal--animate-translate-down .modal__content {
+    transform: translateY(-40px); }
+  .modal--animate-translate-right .modal__content {
+    transform: translateX(-40px); }
+  .modal--animate-translate-left .modal__content {
+    transform: translateX(40px); }
+  .modal--animate-slide-up .modal__content {
+    transform: translateY(100%); }
+  .modal--animate-slide-down .modal__content {
+    transform: translateY(-100%); }
+  .modal--animate-slide-right .modal__content {
+    transform: translateX(-100%); }
+  .modal--animate-slide-left .modal__content {
+    transform: translateX(100%); } }
+
+.modal--is-loading .modal__content {
+  visibility: hidden; }
+
+.modal--is-loading .modal__loader {
+  display: flex; }
+
+.modal__loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  pointer-events: none; }
 
 /* -------------------------------- 
 
@@ -9906,6 +10083,70 @@ Usage: codyhouse.co/license
     width: 55%; }
   100% {
     width: 50%; } }
+
+/* -------------------------------- 
+
+File#: _3_hero-video-bg
+Title: Hero Background Video
+Descr: Hero section variation w/ background video
+
+-------------------------------- */
+.hero__video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1; }
+  .hero__video-bg video {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto;
+    max-width: none; }
+    @supports (object-fit: cover) {
+      .hero__video-bg video {
+        object-fit: cover;
+        height: 100%;
+        width: 100%; } }
+    @supports (object-fit: cover) and (-ms-ime-align: auto) {
+      .hero__video-bg video {
+        height: auto;
+        width: auto; } }
+  .hero__video-bg img {
+    display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video-bg video {
+      visibility: hidden; }
+    .hero__video-bg img {
+      display: block;
+      position: absolute;
+      object-fit: cover;
+      height: 100%;
+      width: 100%; } }
+
+.hero__play-btn {
+  background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.85);
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  display: inline-flex;
+  transition: background-color .3s; }
+  .hero__play-btn .icon {
+    margin: auto;
+    color: var(--color-bg);
+    font-size: 1.25em;
+    display: block;
+    transition: transform 0.3s var(--ease-out-back); }
+  .hero__play-btn:hover {
+    background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 1); }
+    .hero__play-btn:hover .icon {
+      transform: scale(1.2); }
 
 /* -------------------------------- 
 
