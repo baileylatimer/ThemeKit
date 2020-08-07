@@ -113,18 +113,20 @@
       <div class="menu flex flex-column justify-between" id="mobile_menu">
       <!-- Main Menu -->
         <ul class="main-menu mega-nav__sub-items">
+            <span class="height-md block border-bottom border-2"></span>
             {% include 'mobile-menu' with section.settings.main_linklist %}
             {% include 'mobile-menu' with section.settings.main_linklist2 %}
+            <span class="height-md block border-bottom border-2"></span>
             {% include 'mobile-menu' with section.settings.top_bar_menu %}
         </ul>
          <!-- Utility Menu -->
-        <section class="utility-nav flex flex-column padding-top-lg">
+        <section class="utility-nav flex flex-wrap padding-top-lg">
           {% if section.settings.phone_number != blank %}      
-          <a class="info-item padding-left-md padding-y-xs" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon"><em class="material-icons-outlined">call</em></span>{{ section.settings.phone_number }}</a>
+          <a class="info-item padding-left-md padding-y-xs width-50%" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon"><em class="material-icons-outlined">call</em></span>{{ section.settings.phone_number }}</a>
           {% endif %}
-          <a class="info-item padding-left-md padding-y-xs" href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question..."> <span class="icon"><em class="material-icons-outlined">textsms</em></span>+1 513.547.2426</a>
-          <a class="info-item padding-left-md padding-y-xs" href="mailto:support@gosun.co"><span class="icon"><em class="material-icons-outlined">mail</em></span>support@gosun.co</a>
-          <a class="info-item padding-left-md padding-y-xs" href="/account"><span class="icon"><em class="material-icons-outlined">account_circle</em></span>Account</a>
+          <a class="info-item padding-left-md padding-y-xs width-50%" href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question..."> <span class="icon"><em class="material-icons-outlined">textsms</em></span>+1 513.547.2426</a>
+          <a class="info-item padding-left-md padding-y-xs width-50%" href="mailto:support@gosun.co"><span class="icon"><em class="material-icons-outlined">mail</em></span>support@gosun.co</a>
+          <a class="info-item padding-left-md padding-y-xs width-50%" href="/account"><span class="icon"><em class="material-icons-outlined">account_circle</em></span>Account</a>
         </section>
       </div>
     </div>
@@ -401,7 +403,7 @@
 
             <!-- Sale Link -->
             {% if section.settings.sale_text != blank %}
-            <li class="link-sale sublink">
+            <li class="link-sale sublink color-white">
               <a href="{{ section.settings.sale_url }}">
                 <span class="icon">
                   <i class="material-icons-outlined"> {{ section.settings.sale_icon }}</i>
