@@ -52,7 +52,7 @@
   {% assign button2_highlight = section.settings.button2_highlight %}
 {% endif %}
 
-<section class="hero hero--video-bg position-relative padding-y-xxl">
+<section class="hero hero--video-bg position-relative padding-y-xxl" {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %}>
     <div class="container max-width-adaptive-sm">
       <div class="position-relative z-index-2 text-center">
         <div class="text-component">
@@ -72,7 +72,7 @@
   
     <div class="hero__video-bg" aria-hidden="true">
       <img src="{{ image }}" alt="Video Preview">
-      <video {% if autoplay == true %}autoplay{% endif %}{% if autoloop == true %}loop{% endif %} muted playsInline src="{{ mp4_preview }}"></video>
+      <video {% if autoplay == true %}autoplay{% endif %} {% if autoloop == true %} loop{% endif %} muted playsInline src="https://cdn.shopify.com/s/files/1/0789/1333/files/{{ mp4_preview }}"></video>
     </div>
   </section>
   
@@ -82,7 +82,8 @@
       <p class="sr-only" id="modal-video-x-title">A video is being shown</p>
   
       <figure class="media-wrapper">
-        <iframe src="" class="js-modal-video__media" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <video class="js-modal-video__media" controls src=""></video>
+
       </figure>
     </div>
   
@@ -109,34 +110,17 @@
   {
     "name": "Video Background Hero",
     "settings": [
-      {
+        {
         "type": "checkbox",
-        "id": "wide_display",
-        "label": "Wide display",
+        "id": "dark_theme",
+        "label": "Dark theme",
         "default": true
-      },
-      {
-        "type": "select",
-        "id": "aspect_ratio",
-        "label": "Aspect ratio",
-        "options": [
-          {
-            "value": "16:9",
-            "label": "16:9"
-          },
-          {
-            "value": "4:3",
-            "label": "4:3"
-          }
-        ],
-        "default": "16:9"
-      },
+        },
       {
         "type": "checkbox",
         "id": "autoplay",
         "label": "Autoplay video",
-        "default": false,
-        "info": "Limited browser support for autoplaying video. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360000661568-Why-won-t-my-video-autoplay-)"
+        "default": false
       },
       {
         "type": "checkbox",
@@ -145,25 +129,47 @@
         "default": true
       },
       {
-        "type": "checkbox",
-        "id": "video_dark_overlay",
-        "label": "Darken video"
-      },
-      {
         "type": "text",
         "id": "mp4",
         "label": "MP4 full"
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "mp4_preview",
-        "label": "MP4 preview"
-      },
-      {
-        "type": "text",
-        "id": "ogv",
-        "label": "HTML5 OGV File URL (optional)"
-      },
+        "label": "MP4 preview",
+        "options": [
+          {
+            "value": "Earth_Spinning.mp4?v=1596831078",
+            "label": "Earth spinning"
+          },
+          {
+            "value": "Tulips.mp4?v=1596831077",
+            "label": "Tulip field"
+          },
+          {
+            "value": "Sun_Leaves.mp4?v=1596830003",
+            "label": "Sunny leaves"
+          },
+          {
+            "value": "Blue_Sky.mp4?v=1596830001",
+            "label": "Blue sky"
+          },
+          {
+            "value": "Boat_Ocean.mp4?v=1596829997",
+            "label": "Sailboat"
+          },
+          {
+            "value": "Wind_Turbines.mp4?v=1596829996",
+            "label": "Wind turbines"
+          },
+          {
+            "value": "Solar_Panels.mp4?v=1596829995",
+            "label": "Solar panels"
+          }
+        ],
+        "default": "Solar_Panels.mp4?v=1596829995"
+    },
+
       {
         "type": "video_url",
         "id": "video",
@@ -187,15 +193,11 @@
         "label": "Show text on video",
         "default": false
       },
-      {
-        "type": "richtext",
-        "id": "pretext",
-        "label": "Preheading"
-      },
+
       {
         "type": "text",
         "id": "title",
-        "label": "Heading"
+        "label": "Title"
       },
       {
         "type": "richtext",
@@ -287,7 +289,7 @@
       "name": "Video Background Hero",
       "category": "Video",
       "settings": {
-        "mp4": "https://cdn.shopify.com/s/files/1/0789/1333/files/ProductsSummaryHomepage_notitles_v1--min.mp4?v=1596823489",
+        "mp4": "ProductsSummaryHomepage_notitles_v1--min.mp4?v=1596823489",
         "button1_label": "Play Video"
       }
     }]
