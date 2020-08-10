@@ -5610,7 +5610,7 @@ span.item-pricing,
   background-color: #E7ECED;
   border: 2px solid #E7ECED;
   color: #fff;
-  color: #E7ECED; }
+  color: #205E71; }
 
 .violator--free-item {
   background-color: #205E71;
@@ -5923,11 +5923,11 @@ h6.article-type {
     color: #212121; }
   li.sublink a:not(.parent-link--true) {
     font-weight: 400 !important;
-    color: var(--color-contrast-medium) !important; }
-  
-  }
+    color: var(--color-contrast-medium) !important; } }
 
-
+ul:not(.menu .center) .sublink a:not(.parent-link--true) {
+  font-weight: 400 !important;
+  color: var(--color-contrast-medium) !important; }
 
 /* Menu – Default
   ================================================== */
