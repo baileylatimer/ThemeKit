@@ -1,12 +1,13 @@
 <a name="pagecontent" id="pagecontent"></a>
 
-<!-- START / Mobile  -->
-  <!-- Banner / 2-Columns -->
+
     {% if section.settings.featured_collection_image %}
     {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
     {% assign sizes = sizes | split: ',' %}
 
-  <span class='{{ collection.metafields.custom_fields["theme_color"] }}-0'>
+<span class='{{ collection.metafields.custom_fields["theme_color"] }}-0'>
+  <!-- START / Mobile  -->
+    <!-- Banner / 2-Columns -->
     <div class="banner center page_banner collection_banner mobile--true dark-overlay-{{ section.settings.image_darken }}">
       <div class="width-1-1 split-banner split-banner--img right">
         <img
@@ -45,7 +46,7 @@
         {% endif %}
     </div>
   {% endif %}
-
+<!-- END / Mobile  -->
   <div class="container padding-top-lg">
     {% paginate collection.products by section.settings.pagination_limit %}
     {% comment %}Check to see if sidebar should be enabled{% endcomment %}  
@@ -87,7 +88,7 @@
       </div>
     </div>
     <div class="twelve columns">
-<!-- END / Mobile  -->
+
   
 <!-- START / Desktop  -->
   {% if section.settings.featured_collection_image %}
