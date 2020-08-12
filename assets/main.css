@@ -5539,14 +5539,30 @@ html:not(.js) .no-js\:is-hidden {
 
 .text-dark {
   color: #212121; }
-  .text-dark h1, .text-dark h2, .text-dark h3, .text-dark h4, .text-dark h5, .text-dark h6, .text-dark li, .text-dark li a, .text-dark a {
+  .text-dark h1,
+  .text-dark h2,
+  .text-dark h3,
+  .text-dark h4,
+  .text-dark h5,
+  .text-dark h6,
+  .text-dark li,
+  .text-dark li a,
+  .text-dark a {
     color: #212121 !important; }
   .text-dark p {
     color: var(--color-contrast-medium-h) !important; }
 
 .text-light {
   color: #fff !important; }
-  .text-light h1, .text-light h2, .text-light h3, .text-light h4, .text-light h5, .text-light h6, .text-light li, .text-light li a, .text-light a {
+  .text-light h1,
+  .text-light h2,
+  .text-light h3,
+  .text-light h4,
+  .text-light h5,
+  .text-light h6,
+  .text-light li,
+  .text-light li a,
+  .text-light a {
     color: #fff !important; }
   .text-light p {
     color: #eee !important; }
@@ -5587,7 +5603,8 @@ span.item-pricing,
 .item-pricing span {
   color: #757575 !important; }
 
-.dropdown .header_search_form .search__results .item-result a:hover .title, .main_nav .search__results .item-result a:hover .title {
+.dropdown .header_search_form .search__results .item-result a:hover .title,
+.main_nav .search__results .item-result a:hover .title {
   color: #212121 !important; }
 
 .item-result.result--product:hover,
@@ -5601,22 +5618,16 @@ span.item-pricing,
   color: #757575 !important; }
 
 .violator--discount {
-  background-color: var(--color-success-lighter);
-  border: 2px solid var(--color-success-lighter);
-  color: #fff;
+  background: var(--color-success-lighter);
   color: var(--color-success-darker); }
 
 .violator--attribute {
-  background-color: #E7ECED;
-  border: 2px solid #E7ECED;
-  color: #fff;
-  color: #205E71; }
+  background: var(--color-contrast-high);
+  color: var(--color-contrast-lower); }
 
 .violator--free-item {
-  background-color: #205E71;
-  border: 2px solid #205E71;
-  color: #fff;
-  color: #E7ECED; }
+  background: var(--color-contrast-high);
+  color: var(--color-contrast-lower); }
 
 /* Title
   ================================================== */
@@ -5632,7 +5643,9 @@ h2.product_type {
 .price .money {
   color: var(--color-contrast-high) !important; }
 
-.modal_price .money, .thumbnail .was_price span.money, .was_price span.money {
+.modal_price .money,
+.thumbnail .was_price span.money,
+.was_price span.money {
   color: #616161; }
 
 /* New price */
@@ -7414,7 +7427,8 @@ td {
   display: flex !important;
   align-items: center !important; }
 
-.new_banner_product, .preorder_banner_product {
+.new_banner_product,
+.preorder_banner_product {
   display: none !important; }
 
 .banner_holder {
@@ -7431,7 +7445,8 @@ td {
     .article-violator--top {
       top: -2px !important; } }
 
-.thumbnail_banner, .sale_banner_product {
+.thumbnail_banner,
+.sale_banner_product {
   height: var(--space-lg) !important;
   width: auto !important;
   line-height: var(--space-unit) !important;
@@ -7445,33 +7460,19 @@ td {
 .violator {
   border-color: transparent !important;
   max-width: 92% !important;
-  height: 24px !important; }
+  height: 24px !important;
+  border-radius: 4px 0 !important; }
   @media (min-width: 768px) {
     .violator {
       max-width: 70% !important; } }
-  .violator--discount {
-    border-radius: 30px !important;
-    margin-left: var(--space-sm); }
-  .violator--attribute {
-    border-radius: 4px 0 !important;
-    border-color: transparent !important;
-    max-width: 92% !important; }
-    @media (min-width: 768px) {
-      .violator--attribute {
-        max-width: 70% !important; } }
-  .violator--free-item {
-    border-radius: 4px 0 !important;
-    border-color: transparent !important;
-    max-width: 92% !important; }
-    @media (min-width: 768px) {
-      .violator--free-item {
-        max-width: 70% !important; } }
 
 .product-list .thumbnail .thumbnail_banner {
   position: static; }
 
 /* Hide default banners */
-.preorder_banner, .preorder_banner_product, .new_banner {
+.preorder_banner,
+.preorder_banner_product,
+.new_banner {
   display: none; }
 
 /* Pre-order Delivery 
@@ -7488,8 +7489,8 @@ td {
   align-items: center;
   display: inline-flex !important;
   background-color: transparent;
-  border: 2px solid #EFFEED;
-  color: #EFFEED;
+  border: 2px solid var(--color-success-light);
+  color: var(--color-success-light);
   top: -34px; }
 
 @media (max-width: 768px) {

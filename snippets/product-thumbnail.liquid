@@ -29,14 +29,24 @@
     <meta itemprop="image" content="{{ product.featured_image | img_url: '800x' }}">
     <a href="{{ product.url }}" itemprop="url">
       <figure class="product-media">
+
+        
         <div class="article-violator article-violator--top">
-          {% if violator != blank %}
+          {% if product.compare_at_price == product.price %}
+            {% if violator != blank %}
             <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
+            {% endif %}
+          {% else %}
+            {% if settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
+              <span class="left thumbnail_banner violator violator--discount">Save ${{ product.compare_at_price_min | minus: product.price_min | money_without_currency }}</span>
+            {% endif %}
           {% endif %}
           <div class="right mr10" onclick="return false">
             {% render 'flits_wishlist_snippet' with 'flits_collection_page_wsl_btn', product:product %}
           </div> 
         </div>
+        
+
         <div class="article-media article-media--lg lazyload" style="background-image: url('{{ product.featured_image | img_url: '800x' }};" title="{{ alt_text | escape }} "></div>
       </figure>
 

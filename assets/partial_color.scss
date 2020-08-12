@@ -3,32 +3,16 @@
 // -----------------------------------------------------------------------------
 @import "//app/scss/bundle";
 
-
-
-
 // -----------------------------------------------------------------------------
 // Color Declarations
 // -----------------------------------------------------------------------------
 
-
 /* #Color - Cherry
 ================================================== */
-$palette-cherry:
-rgb(252, 230, 229)
-rgb(248, 193, 191)
-rgb(244, 151, 149)
-rgb(240, 109, 106)
-rgb(236, 78, 74)
-rgb(233, 47, 42)
-rgb(230, 42, 37)
-rgb(227, 35, 31)
-rgb(223, 29, 25)
-rgb(217, 18, 15)
-rgb(255, 255, 255)
-rgb(255, 211, 211)
-rgb(255, 161, 160)
-rgb(255, 135, 134)
-;
+$palette-cherry: rgb(252, 230, 229) rgb(248, 193, 191) rgb(244, 151, 149)
+  rgb(240, 109, 106) rgb(236, 78, 74) rgb(233, 47, 42) rgb(230, 42, 37)
+  rgb(227, 35, 31) rgb(223, 29, 25) rgb(217, 18, 15) rgb(255, 255, 255)
+  rgb(255, 211, 211) rgb(255, 161, 160) rgb(255, 135, 134);
 
 $palette-cherry-50: nth($palette-cherry, 1);
 $palette-cherry-100: nth($palette-cherry, 2);
@@ -47,22 +31,10 @@ $palette-cherry-A700: nth($palette-cherry, 14);
 
 /* #Color - Orange
 ================================================== */
-$palette-orange:
-rgb(253, 240, 229)
-rgb(251, 218, 190)
-rgb(249, 194, 147)
-rgb(246, 170, 103)
-rgb(244, 151, 71)
-rgb(242, 133, 38)
-rgb(240, 125, 34)
-rgb(238, 114, 28)
-rgb(236, 104, 23)
-rgb(232, 85, 13)
-rgb(255, 255, 255)
-rgb(255, 233, 224)
-rgb(255, 197, 173)
-rgb(255, 179, 148)
-;
+$palette-orange: rgb(253, 240, 229) rgb(251, 218, 190) rgb(249, 194, 147)
+  rgb(246, 170, 103) rgb(244, 151, 71) rgb(242, 133, 38) rgb(240, 125, 34)
+  rgb(238, 114, 28) rgb(236, 104, 23) rgb(232, 85, 13) rgb(255, 255, 255)
+  rgb(255, 233, 224) rgb(255, 197, 173) rgb(255, 179, 148);
 
 $palette-orange-50: nth($palette-orange, 1);
 $palette-orange-100: nth($palette-orange, 2);
@@ -81,22 +53,10 @@ $palette-orange-A700: nth($palette-orange, 14);
 
 /* #Color - Wood
 ================================================== */
-$palette-wood:
-rgb(255, 249, 243)
-rgb(255, 239, 225)
-rgb(255, 228, 205)
-rgb(255, 217, 184)
-rgb(255, 209, 169)
-rgb(255, 201, 154)
-rgb(255, 195, 146)
-rgb(255, 188, 136)
-rgb(255, 181, 126)
-rgb(255, 169, 108)
-rgb(255, 255, 255)
-rgb(255, 255, 255)
-rgb(255, 255, 255)
-rgb(255, 249, 245)
-;
+$palette-wood: rgb(255, 249, 243) rgb(255, 239, 225) rgb(255, 228, 205)
+  rgb(255, 217, 184) rgb(255, 209, 169) rgb(255, 201, 154) rgb(255, 195, 146)
+  rgb(255, 188, 136) rgb(255, 181, 126) rgb(255, 169, 108) rgb(255, 255, 255)
+  rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 249, 245);
 
 $palette-wood-50: nth($palette-wood, 1);
 $palette-wood-100: nth($palette-wood, 2);
@@ -115,22 +75,10 @@ $palette-wood-A700: nth($palette-wood, 14);
 
 /* #Color - Olive
 ================================================== */
-$palette-olive:
-rgb(244, 240, 234)
-rgb(228, 217, 203)
-rgb(210, 192, 169)
-rgb(192, 166, 134)
-rgb(179, 147, 108)
-rgb(165, 128, 82)
-rgb(157, 120, 75)
-rgb(147, 109, 65)
-rgb(138, 99, 56)
-rgb(121, 80, 40)
-rgb(255, 220, 189)
-rgb(255, 193, 138)
-rgb(255, 167, 87)
-rgb(255, 153, 61)
-;
+$palette-olive: rgb(244, 240, 234) rgb(228, 217, 203) rgb(210, 192, 169)
+  rgb(192, 166, 134) rgb(179, 147, 108) rgb(165, 128, 82) rgb(157, 120, 75)
+  rgb(147, 109, 65) rgb(138, 99, 56) rgb(121, 80, 40) rgb(255, 220, 189)
+  rgb(255, 193, 138) rgb(255, 167, 87) rgb(255, 153, 61);
 
 $palette-olive-50: nth($palette-olive, 1);
 $palette-olive-100: nth($palette-olive, 2);
@@ -149,22 +97,10 @@ $palette-olive-A700: nth($palette-olive, 14);
 
 /* #Color - Grape
 ================================================== */
-$palette-grape:
-rgb(241, 231, 233)
-rgb(221, 194, 201)
-rgb(198, 154, 165)
-rgb(175, 114, 128)
-rgb(157, 83, 101)
-rgb(140, 53, 74)
-rgb(132, 48, 67)
-rgb(121, 40, 58)
-rgb(111, 34, 50)
-rgb(92, 22, 34)
-rgb(255, 150, 166)
-rgb(255, 99, 123)
-rgb(255, 48, 80)
-rgb(255, 23, 59)
-;
+$palette-grape: rgb(241, 231, 233) rgb(221, 194, 201) rgb(198, 154, 165)
+  rgb(175, 114, 128) rgb(157, 83, 101) rgb(140, 53, 74) rgb(132, 48, 67)
+  rgb(121, 40, 58) rgb(111, 34, 50) rgb(92, 22, 34) rgb(255, 150, 166)
+  rgb(255, 99, 123) rgb(255, 48, 80) rgb(255, 23, 59);
 
 $palette-grape-50: nth($palette-grape, 1);
 $palette-grape-100: nth($palette-grape, 2);
@@ -181,25 +117,12 @@ $palette-grape-A200: nth($palette-grape, 12);
 $palette-grape-A400: nth($palette-grape, 13);
 $palette-grape-A700: nth($palette-grape, 14);
 
-
 /* #Color - Ocean
 ================================================== */
-$palette-ocean:
-rgb(225, 244, 253)
-rgb(180, 227, 249)
-rgb(130, 209, 245)
-rgb(80, 191, 241)
-rgb(43, 177, 238)
-rgb(5, 163, 235)
-rgb(4, 155, 233)
-rgb(4, 145, 229)
-rgb(3, 136, 226)
-rgb(1, 119, 221)
-rgb(255, 255, 255)
-rgb(209, 231, 255)
-rgb(158, 205, 255)
-rgb(133, 192, 255)
-;
+$palette-ocean: rgb(225, 244, 253) rgb(180, 227, 249) rgb(130, 209, 245)
+  rgb(80, 191, 241) rgb(43, 177, 238) rgb(5, 163, 235) rgb(4, 155, 233)
+  rgb(4, 145, 229) rgb(3, 136, 226) rgb(1, 119, 221) rgb(255, 255, 255)
+  rgb(209, 231, 255) rgb(158, 205, 255) rgb(133, 192, 255);
 
 $palette-ocean-50: nth($palette-ocean, 1);
 $palette-ocean-100: nth($palette-ocean, 2);
@@ -216,43 +139,18 @@ $palette-ocean-A200: nth($palette-ocean, 12);
 $palette-ocean-A400: nth($palette-ocean, 13);
 $palette-ocean-A700: nth($palette-ocean, 14);
 
-
-
-
 /* #Color - Tint
 ================================================== */
-
-
-
-
 
 /* #Color - Shade
 ================================================== */
 
 $palette-shade:
-/* 50 */
-#f7f7f7
-/* 100 */
-rgba(0, 0, 0, 0.08)
-/* 200 */
-rgba(0, 0, 0, 0.17)
-/* 300 */
-rgba(0, 0, 0, 0.22)
-/* 400 */
-rgba(0, 0, 0, 0.35)
-/* 500 */
-rgba(0, 0, 0, 0.54)
-/* 600 */
-rgba(0, 0, 0, 0.6)
-/* 700 */
-rgba(0, 0, 0, 0.7)
-/* 800 */
-rgba(0, 0, 0, 0.79)
-/* 900 */
-rgba(0, 0, 0, 0.87)
-/* A100 */
-rgba(0, 0, 0, 0)
-;
+/* 50 */ #f7f7f7 /* 100 */ rgba(0, 0, 0, 0.08) /* 200 */
+  rgba(0, 0, 0, 0.17) /* 300 */ rgba(0, 0, 0, 0.22) /* 400 */
+  rgba(0, 0, 0, 0.35) /* 500 */ rgba(0, 0, 0, 0.54) /* 600 */ rgba(0, 0, 0, 0.6)
+  /* 700 */ rgba(0, 0, 0, 0.7) /* 800 */ rgba(0, 0, 0, 0.79) /* 900 */
+  rgba(0, 0, 0, 0.87) /* A100 */ rgba(0, 0, 0, 0);
 
 $palette-shade-50: nth($palette-shade, 1);
 $palette-shade-100: nth($palette-shade, 2);
@@ -269,29 +167,11 @@ $palette-shade-A100: nth($palette-shade, 11);
 /* #Color - Shade
 ================================================== */
 $palette-tint:
-/* 50 */
-hsl(220, 12%, 96%)
-/* 100 */
-rgba(0, 0, 0, 0.08)
-/* 200 */
-rgba(0, 0, 0, 0.17)
-/* 300 */
-rgba(0, 0, 0, 0.22)
-/* 400 */
-rgba(0, 0, 0, 0.35)
-/* 500 */
-rgba(0, 0, 0, 0.54)
-/* 600 */
-rgba(255,255,255,0.65)
-/* 700 */
-rgba(0, 0, 0, 0.7)
-/* 800 */
-rgba(255, 255, 255, 0.79)
-/* 900 */
-rgba(0, 0, 0, 0.87)
-/* A100 */
-#fff
-;
+/* 50 */ hsl(220, 12%, 96%) /* 100 */ rgba(0, 0, 0, 0.08)
+  /* 200 */ rgba(0, 0, 0, 0.17) /* 300 */ rgba(0, 0, 0, 0.22) /* 400 */
+  rgba(0, 0, 0, 0.35) /* 500 */ rgba(0, 0, 0, 0.54) /* 600 */
+  rgba(255, 255, 255, 0.65) /* 700 */ rgba(0, 0, 0, 0.7) /* 800 */
+  rgba(255, 255, 255, 0.79) /* 900 */ rgba(0, 0, 0, 0.87) /* A100 */ #fff;
 
 $palette-tint-50: nth($palette-tint, 1);
 $palette-tint-100: nth($palette-tint, 2);
@@ -305,10 +185,6 @@ $palette-tint-800: nth($palette-tint, 9);
 $palette-tint-900: nth($palette-tint, 10);
 $palette-tint-A100: nth($palette-tint, 11);
 
-
-
-
-
 // Red Color Variables
 $cardinal: #bc2026;
 $pomegranate: #f44336;
@@ -316,8 +192,6 @@ $bittersweet: #ff6f60;
 $bright-red: #ab000d;
 $indiegogo: #e51075;
 $indiegogo-hover: #d50f6d;
-
-
 
 /* #Color - Old
 ================================================== */
@@ -339,8 +213,6 @@ $wood: #ffc99a;
 $olive: #a58052;
 $grape: #8c354a;
 
-
-
 // -----------------------------------------------------------------------------
 // Config Declarations
 // -----------------------------------------------------------------------------
@@ -353,7 +225,7 @@ $color-primary-hover: $palette-cherry-200;
 /* #Config - Borders
 ================================================== */
 $color-border-light: $palette-shade-100;
-$color-border-mid:$palette-shade-300;
+$color-border-mid: $palette-shade-300;
 
 /* #Config - Typography
 ================================================== */
@@ -371,7 +243,6 @@ $color-link-hover: $blueberry;
 ================================================== */
 $color-attribute: $palette-wood-300;
 $color-discount: $palette-olive-700;
-
 
 // -----------------------------------------------------------------------------
 // Class Declarations
@@ -409,26 +280,31 @@ $color-discount: $palette-olive-700;
 }
 
 .text-light {
-  h1, h2, h3, h4, h5, h6, p, li, li a, a {
-  color: $palette-tint-A100 !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  li a,
+  a {
+    color: $palette-tint-A100 !important;
   }
 }
 .text-light-sub {
   color: $palette-tint-800 !important;
 }
 
-
 @mixin pattern-map() {
-background-image: url("https://cdn.shopify.com/s/files/1/0789/1333/files/cartography.png?12110") !important;
-background-blend-mode: multiply !important;
+  background-image: url("https://cdn.shopify.com/s/files/1/0789/1333/files/cartography.png?12110") !important;
+  background-blend-mode: multiply !important;
 }
 
 .pattern-map {
   @include pattern-map();
 }
-
-
-
 
 @mixin fill($color) {
   background: $color;

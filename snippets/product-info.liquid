@@ -29,15 +29,7 @@
             {% endunless %}
         </span>
     
-        {% if product.available %}
-        {% unless product.compare_at_price == product.price %}
-            {% if settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
-                <span class="thumbnail_banner violator--discount">Save ${{ product.compare_at_price_min | minus: product.price_min | money_without_currency }}</span>
-            {% else %}
-                <span class="article-violator"></span>
-            {% endif %}
-        {% endunless %}
-        {% endif %}
+
         {% endif %}
     </section>
 </div>
