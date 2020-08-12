@@ -47,7 +47,9 @@
         </div>
         
         <div class="article-media article-media--lg lazyload img-1" 
-        style="background-image: url({{ product.featured_image | img_url: '200x' }};" title="{{ alt_text | escape }} "></div>
+        onMouseOver="this.style.background='url({{ product.images[1]| img_url: '200x' }}';"
+        onMouseOut="this.style.background='url({{ product.featured_image | img_url: '200x' }}';"
+        style="background: url({{ product.featured_image | img_url: '200x' }};" title="{{ alt_text | escape }} "></div>
       </figure>
 
       {% include "product-info" %}

@@ -1,13 +1,13 @@
 <div class="product-details">
+    <!-- Name -->
     <h4 class="article-title base-BodyTitle" itemprop="name">{{ product.title }}</h4>
     <h6 class="article-type" itemprop="name">{{ product.type }}</h6>
   
-
+    <!-- Price -->
     <section class="flex">
-        {% if collection_handles contains 'coming-soon' %}
+    {% if collection_handles contains 'coming-soon' %}
         <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
-        {% else %}
-
+    {% else %}
         <span class="money price {% unless product.compare_at_price == product.price %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endunless %}">
             {% if product.available %}
                 {% if product.price_min > 0 %}
@@ -28,10 +28,11 @@
             {% endif %}
             {% endunless %}
         </span>
-    
-
-        {% endif %}
+        
+    {% endif %}
+    </section>
+    <section class="flex flex-row">
+        <p class="affirm-as-low-as text-sm" data-page-type="category" data-amount="{{ product.price }}" data-learnmore-show="false" data-affirm-type = "text"></p>
     </section>
 </div>
-  
-  
+
