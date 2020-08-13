@@ -50,55 +50,55 @@
       </div>
     </div>
 
-
+    {{ 'main.css' | asset_url | stylesheet_tag }}
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross_200x.png?v=1594927398');
+
+            var txt3 = document.createElement('section');  // Create with DOM
+                txt3.innerHTML = "<div class='cart__gift bg-contrast-lower radius-md padding-md flex flex-column flex items-left margin-bottom-md'>" +            
+                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
+                    "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>verified_user</i>" + 
+                    "<p>1-year limited warranty</p>" + 
+                   "</div>" + 
+                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
+                    "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>local_shipping</i>" + 
+                    "<p>FREE shipping and FREE returns</p>" + 
+                    "</div>" + 
+                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
+                    "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>monetization_on</i>" + 
+                    "<p class='affirm-as-low-as' data-page-type='product' data-amount='{{ variant.price }}' data-affirm-type='text' data-learnmore-show='true'></p>" + 
+                    "</div>" + 
+                "</div>";
+            document.querySelector("div[data-order-summary-section='payment-lines']").append(txt3);
         });
 
-        $(document).on(`page:load page:change`, function() {
-            var x = document.createElement("P");                        // Create a <p> node
-            var t = document.createTextNode("This is a paragraph.");    // Create a text node
-            x.appendChild(t);                                           // Append the text to <p>
-            document.body.appendChild(x);                               // Append <p> to <body> 
-        });
+    </script>
 
 
-        $(document).on(`page:load page:change`, function() {
-            function appendText() {
-                var txt3 = document.createElement("p");  // Create with DOM
-                txt3.innerHTML = "Text.";
-                $(".order-summary__sections").append(txt3);      // Append the new elements
-            } 
+    <!-- Hotjar Tracking Code for gosun.co -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1783414,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    <!-- Install this snippet AFTER the Hotjar tracking code. -->
+    <script>
+        var userId = your_user_id || null; // Replace your_user_id with your own if available.
+        window.hj('identify', userId, {
+            'Signed up': '2019—06-20Z', // Signup date in ISO-8601 format.
+            // Add your own custom attributes here. Some examples:
+            // 'Last purchase category': 'Electronics', // Send strings with quotes around them.
+            // 'Total purchases': 15, // Send numbers without quotes.
+            // 'Last purchase date': '2019-06-20Z', // Send dates in ISO-8601 format. 
+            // 'Last refund date': null, // Send null when no value exists for a user.
         });
-        
         </script>
-
-    
-  <!-- Hotjar Tracking Code for gosun.co -->
-        <script>
-          (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:1783414,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
-      <!-- Install this snippet AFTER the Hotjar tracking code. -->
-        <script>
-          var userId = your_user_id || null; // Replace your_user_id with your own if available.
-          window.hj('identify', userId, {
-              'Signed up': '2019—06-20Z', // Signup date in ISO-8601 format.
-              // Add your own custom attributes here. Some examples:
-              // 'Last purchase category': 'Electronics', // Send strings with quotes around them.
-              // 'Total purchases': 15, // Send numbers without quotes.
-              // 'Last purchase date': '2019-06-20Z', // Send dates in ISO-8601 format. 
-              // 'Last refund date': null, // Send null when no value exists for a user.
-          });
-          </script>
 
 
     {{ tracking_code }}
