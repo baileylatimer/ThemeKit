@@ -44,10 +44,36 @@
           </div>
           <div class="sidebar__content">
             {{ content_for_order_summary }}
+
           </div>
         </aside>
       </div>
     </div>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross_200x.png?v=1594927398');
+        });
+
+        $(document).on(`page:load page:change`, function() {
+            var x = document.createElement("P");                        // Create a <p> node
+            var t = document.createTextNode("This is a paragraph.");    // Create a text node
+            x.appendChild(t);                                           // Append the text to <p>
+            document.body.appendChild(x);                               // Append <p> to <body> 
+        });
+
+
+        $(document).on(`page:load page:change`, function() {
+            function appendText() {
+                var txt3 = document.createElement("p");  // Create with DOM
+                txt3.innerHTML = "Text.";
+                $(".order-summary__sections").append(txt3);      // Append the new elements
+            } 
+        });
+        
+        </script>
 
     
   <!-- Hotjar Tracking Code for gosun.co -->
