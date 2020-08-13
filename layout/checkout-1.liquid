@@ -49,28 +49,33 @@
         </aside>
       </div>
     </div>
-
-    {{ 'main.css' | asset_url | stylesheet_tag }}
+    {{ 'checkout-util.scss' | asset_url | stylesheet_tag }}
+    {{ 'checkout.scss' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Red_Cross_200x.png?v=1594927398');
-
-            var txt3 = document.createElement('section');  // Create with DOM
-                txt3.innerHTML = "<div class='cart__gift bg-contrast-lower radius-md padding-md flex flex-column flex items-left margin-bottom-md'>" +            
-                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
+        document.on(`page:load page:change`, function() {
+            $(function() {
+                $('div.option_title').html($('div.option_title').html().replace("Title", "Condition")); // Hide text near buy button
+                });
+                document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Primary_Dark.svg?v=1597346290');
+            var valueProp = document.createElement('section');  // Create with DOM
+                valueProp.innerHTML = "<div class='border-top border-2 width-100\% cart__gift bg-contrast-lower radius-md padding-md inline-flex flex-column items-left margin-y-xl'>" +   
+                    "<h3 class='margin-bottom-sm'> The perks of every order</h3>" +         
+                    "<div class='inline-flex color-contrast-medium margin-bottom-xxs'>" + 
                     "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>verified_user</i>" + 
-                    "<p>1-year limited warranty</p>" + 
+                    "<p>1-year warranty</p>" + 
                    "</div>" + 
-                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
+                    "<div class='inline-flex color-contrast-medium margin-bottom-xxs'>" + 
                     "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>local_shipping</i>" + 
-                    "<p>FREE shipping and FREE returns</p>" + 
+                    "<p>Free shipping & returns</p>" + 
                     "</div>" + 
-                    "<div class='pill color-contrast-medium margin-bottom-xxs'>" + 
-                    "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>monetization_on</i>" + 
-                    "<p class='affirm-as-low-as' data-page-type='product' data-amount='{{ variant.price }}' data-affirm-type='text' data-learnmore-show='true'></p>" + 
+                    "<div class='inline-flex color-contrast-medium margin-bottom-xxs'>" + 
+                    "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>lock</i>" + 
+                    "<p>SSL secured checkout</p>" + 
                     "</div>" + 
                 "</div>";
-            document.querySelector("div[data-order-summary-section='payment-lines']").append(txt3);
+            document.querySelector("div[data-order-summary-section='payment-lines']").append(valueProp);
         });
 
     </script>
