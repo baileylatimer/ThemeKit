@@ -19,7 +19,7 @@
     medium-down--one-half
     small-down--one-half
   {% endif %}
-  thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}">
+  thumbnail {% cycle collection_group_mobile: 'even', 'odd' %} reveal-fx">
 
   {% assign collection_handles = product.collections | map: 'handle' %}
   {% assign alt_text = product.featured_image.alt %}

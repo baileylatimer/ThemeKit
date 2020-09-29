@@ -49,16 +49,16 @@
         </aside>
       </div>
     </div>
-    {{ 'checkout-util.scss' | asset_url | stylesheet_tag }}
-    {{ 'checkout.scss' | asset_url | stylesheet_tag }}
+    {{ 'checkout-util.scss' | asset_url | stylesheet_tag }} <!-- Utility classes -->
+    {{ 'checkout.scss' | asset_url | stylesheet_tag }} <!-- Checkout specific classes -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
     
     <script>
-        $(document).on(`page:load page:change`, function() {
-            document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Primary_Dark.svg?v=1597346290');
+        $(document).on(`page:load page:change`, function() { // Handle page switching
+            document.querySelector('img[alt="GoSun"]').setAttribute('src', '//cdn.shopify.com/s/files/1/0789/1333/files/Primary_Dark.svg?v=1597346290'); // Change logo to SVG
             var valueProp = document.createElement('section');  // Create with DOM
                 valueProp.innerHTML = "<div class='border-top border-2 width-100\% cart__gift bg-contrast-lower radius-md padding-md inline-flex flex-column items-left margin-y-xl'>" +   
-                    "<h3 class='margin-bottom-sm'> The perks of every order</h3>" +         
+                    "<h4 class='margin-bottom-sm'> The perks of every order</h4>" +         
                     "<div class='inline-flex color-contrast-medium margin-bottom-xxs'>" + 
                     "<i class='icon--sm margin-right-xxs material-icons-outlined color-contrast-low'>verified_user</i>" + 
                     "<p>1-year warranty</p>" + 
@@ -72,9 +72,8 @@
                     "<p>SSL secured checkout</p>" + 
                     "</div>" + 
                 "</div>";
-            document.querySelector("div[data-order-summary-section='payment-lines']").append(valueProp);
+            document.querySelector("div[data-order-summary-section='payment-lines']").append(valueProp); // Append to payment section
         });
-
     </script>
 
 

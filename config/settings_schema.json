@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Turbo",
-    "theme_author": "Out of the Sandbox",
-    "theme_version": "4.1.5",
-    "theme_documentation_url": "https:\/\/help.outofthesandbox.com\/",
-    "theme_support_url": "https:\/\/help.outofthesandbox.com\/hc\/en-us\/requests\/new"
+    "theme_name": "GoSun Sol (Custom)",
+    "theme_author": "Latimer Design",
+    "theme_version": "4.2",
+    "theme_support_url": "https:\/\/latimer.me",
+    "theme_documentation_url": "https:\/\/latimer.me"
   },
   {
     "name": "Performance",
@@ -80,6 +80,17 @@
   {
     "name": "Colors",
     "settings": [
+      {
+        "type": "header",
+        "content": "Theme"
+      },
+      {
+        "type": "checkbox",
+        "id": "theme_switch",
+        "label": "Enable theme switching",
+        "info": "Allow users to switch between light\/dark mode",
+        "default": true
+      },
       {
         "type": "header",
         "content": "Text"

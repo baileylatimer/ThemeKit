@@ -1,0 +1,146 @@
+
+
+        <!-- Cart -->
+        {% if section.settings.show_cart %}
+        <div class="cart_container">
+          <a href="/cart" class="mln15 info-item {% if section.settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
+            <span class="icon"><em class="material-icons-outlined">shopping_cart</em></span>
+            <div class="cart_count-bubble"> 
+              <span class="cart_count">{{ cart.item_count }}</span>
+            </div>
+          </a>
+          {% assign shipping_value = 0 %}
+          {% assign cart_total = cart.total_price %}
+          {% assign shipping_value_left = shipping_value | minus: cart_total %}
+          {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+            <div class="cart_content animated fadeInRight ">
+              <div class="cart_info bg-contrast-lower">
+                <h2>Your cart</h2>
+              </div>
+              <hr>
+              <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+                <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+              </div>
+              <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}{% endif %}">
+                <ul class="cart_items js-cart_items clearfix">
+                  {% assign total_saving = 0 %}
+                  {% for item in cart.items %}
+                    {% if item.variant.compare_at_price > item.variant.price %}
+                      {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+                      {% assign total_saving = saving | plus: total_saving %}
+                    {% endif %}
+
+                    <li class="cart_item clearfix">
+                      <a href="{{ item.url }}">
+                        {% if item.image %}
+                          <div class="cart_image">
+                            <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                          </div>
+                        {% endif %}
+
+                        <div class="cart_item__title">
+                          <div class="item_title">
+                            <p class="font-bold" itemprop="name">{{ item.product.title }}</p>
+                            <p class="font-light text-sm" itemprop="type">{{ item.product.type }}</p>
+                            
+                            {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
+                              -
+                              {% for option in item.product.options %}
+                                {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                              {% endfor %}
+                            {% endunless %}
+                            {% if item.properties %}
+                              {% for p in item.properties %}
+                                {% if p.last != blank %}
+                                  <div class="line-item">
+                                    {{ p.first }}: {{ p.last }}
+                                  </div>
+                                {% endif %}
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                      </a>
+                      <div class="left product-quantity-box">
+                        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                        <input type="number" min="1" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                      </div>
+                </div>
+
+                      <strong class="right price">
+                        {% if item.price < item.variant.compare_at_price %}
+                          <span class="money was_price">{{ item.variant.compare_at_price | money }}</span>
+                        {% endif %}
+                        <span class="money">{{ item.price | money }}</span>
+                      </strong>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <hr>
+
+                <ul>
+                  <li class="cart_subtotal js-cart_subtotal">
+                    <span class="base-BodyUppercase">{{ 'layout.general.subtotal' | t }}</span>
+                      <span class="right">
+                        <span class="money">{{ cart.total_price | money }}</span>
+                      </span>
+                  </li>
+                  <li class="margin-bottom-xl text-left">
+                    <span class="base-BodyUppercase">Shipping</span>
+                    <span class="right">
+                      <span class="money">FREE</span>
+                    </span>
+                  </li>
+                  {% if settings.display_savings %}
+                  <li class="cart_savings sale js-cart_savings margin-top-sm  margin-bottom-lg">
+                    {% if total_saving > 0 %}
+                      <span class="thumbnail_banner violator--discount right">
+                        <span class="money"></span>You save&nbsp;{{ total_saving | money }}</span>
+                      </span>
+                    {% endif %}
+                  </li>
+                {% endif %}
+
+                <div class="position-absolute left-0 bottom-0 cart_bottom">
+                    <!--
+                  <li class="cart_subtotal js-cart_subtotal flex justify-between">
+                    <h3>Your total</h3>
+                      <h3 class="money right">{{ cart.total_price | money }}</h3>
+                  </li>
+                  -->
+
+                  <li>
+                    {% if settings.display_special_instructions and settings.go_to_checkout %}
+                      <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+                    {% endif %}
+
+                    {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                      <p class="tos">
+                        <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+                        <label class="tos_label">
+                          {{ 'cart.general.agree_to_terms_html' | t }}
+                        </label>
+                        {% if settings.tos_page != blank %}
+                          <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                        {% endif %}
+                      </p>
+                    {% endif %}
+
+                    {% if settings.go_to_checkout %}
+                      <button type="submit" class="btn btn--primary action_button add_to_cart" id="checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+                    {% else %}
+                      <button type="submit" class="btn btn--primary action_button add_to_cart" id="go_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+                    {% endif %}
+
+                    <div class="pill color-contrast-high margin-top-md margin-bottom-lg flex">
+                      <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">monetization_on</i>
+                      <p class="affirm-as-low-as" data-page-type="cart" data-amount="{{cart.total_price}}" data-affirm-type="text" data-learnmore-show="true"></p>
+                    </div>
+
+                  </li>
+                </div>
+                </ul>
+              </form>
+        {% endunless %}
+        </div>
+      {%endif%}

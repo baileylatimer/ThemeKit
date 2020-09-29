@@ -13,7 +13,7 @@
 <div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim">
   {% for product in products limit: limit %}
     {% if product.id == skip_product.id or skip == true %}
-      {% assign product_found = true %}
+      {% assign product_found = true %} 
     {% else %}
       {% if forloop.rindex0 == 0 and product_found == false and forloop.length != products.count and template != 'search' and template != 'index' and type != 'block' %}
         {% assign skip = true %}
@@ -39,7 +39,7 @@
       {% endif %}
     {% endif %}
   {% elsif template contains 'search' %}
-    {% if settings.search_pagination_type == 'load_more' or settings.search_pagination_type == 'infinite_scroll' %}
+    {% if settings.search_pagination_type == 'load_more' or settings.search_pagination_type == 'infinite_scroll' %} 
       {% if paginate.next.url %}
         <span class="js-load-more load-more">
           <a href="{{ paginate.next.url }}" data-no-instant class="load-more__btn action_button continue-button">

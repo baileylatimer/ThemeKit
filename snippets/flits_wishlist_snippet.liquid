@@ -91,8 +91,9 @@
 </style>
 
 {% when 'flits_product_page_wsl_btn' %}
+
 {% if shop.metafields.Flits.IS_WISHLIST_ENABLE == 1 %}
-<div class="flits-wishlist-product-page">
+<div class="flits-wishlist-product-page is-hidden">
   <input type="hidden" name="token" id="flits-wsl-token" value="{{ shop.metafields.Flits.SHOP_TOKEN }}">
   <input type="hidden" name="wsl-url" id="flits-wsl-url" value="/apps/{{ shop.metafields.Flits.APP_PROXY }}/api/{{ shop.metafields.Flits.APP_ID }}/{{ shop.metafields.Flits.SHOP_ID }}/wishlist">
   {% assign btn = shop.metafields.Flits.WSL_BTN_TYPE %}
@@ -151,7 +152,6 @@
   {% endif %}
 </div>
 {% endif %}
-
 {% when 'flits_collection_page_wsl_btn' %}
 {% if shop.metafields.Flits.IS_WISHLIST_ENABLE == 1 %}
 <div class="flits-wishlist-collection-page">

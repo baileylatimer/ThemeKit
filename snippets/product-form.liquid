@@ -11,7 +11,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
 <!-- START / SellUps --> 
-<div id="launchtip_upsell_wrapper"></div>
+<!-- <div id="launchtip_upsell_wrapper"></div> -->
 <!-- END / SellUps -->
 
 <div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
@@ -66,18 +66,18 @@
       
       {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}Add to cart{% elsif collection_handles contains 'retired' %}Sold out{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
       {% unless product.available %}
-        <button class="btn btn--primary btn--disabled btn--md" >
+        <button class="btn btn--subtle btn--disabled btn--md" >
           <span class="text"> Sold Out</span>
         </button>
       {% else %}
 
-        <div class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} width-1-1">
+        <div aria-controls="drawer-cart-id" class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} width-1-1">
           {% if settings.cart_action == 'reload_page' %}
             <input type="hidden" name="return_to" value="back" />
           {% elsif settings.cart_action == 'redirect_checkout' %}
             <input type="hidden" name="return_to" value="/checkout" />
           {% endif %}
-            <button type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="btn btn--md btn--accent{% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }} >
+            <button type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="btn btn--md btn--accent{% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }} aria-controls="drawer-cart-id" >
               <span class="text"> <div class="info-item justify-center"> <span class="icon"> <i class="material-icons-outlined">add_shopping_cart</i></span> {{ add_to_cart_label }}</div></span>
               <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
                 <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
@@ -87,20 +87,12 @@
       
       {% endunless %}
     </div>
-    
-    {% include 'components_pill_stock' %}
-
-    {% unless product.available %}
-    {% else %}
-
-    {% endunless %}
-
-    
-
   </section>
-
 {% endform %} 
+<div class="padding-bottom-md width-100%">{% include 'components_pill_stock' %}</div>
 </div>
+
+
 
 
 

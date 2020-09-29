@@ -4,7 +4,7 @@
   {% for block in section.blocks %}
     {% if block.settings.image != blank %}
     
-      <div class="adv-gallery__img padding-sm {% if block.settings.handle != blank %} filter-bottom {% endif %}" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} )" alt="{{ alt | escape }}">
+      <div class="adv-gallery__img padding-sm reveal-fx {% if block.settings.handle != blank %} filter-bottom {% endif %}" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} )" alt="{{ alt | escape }}">
         <span class="b10 text-base color-contrast-lower gallery-caption">@{{ block.settings.handle }}</span>
       </div>
       
@@ -13,8 +13,8 @@
   {% endfor %}
 
   <div class="stripe--dark padding-md flex@lg flex flex-column@lg">
-    <h3 class="font-medium  text-xxl text-xxxl@lg">{{ section.settings.title }}</h3>
-    <div class="margin-top-auto@lg">
+    <h3 class="font-medium  text-xxl text-xxxl@lg reveal-fx">{{ section.settings.title }}</h3>
+    <div class="margin-top-auto@lg reveal-fx">
       <div class="border-left border-contrast-high height-xxl margin-bottom-sm display@lg" aria-hidden="true"></div>
       <p class="text-md">{{ section.settings.description }}</p>
     </div>
@@ -29,6 +29,11 @@
     "class": "adv-gallery width-100",
     "max_blocks": 4,
     "settings": [
+      {
+        "type":      "header",
+        "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+        "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+      },
       {
         "type": "text",
         "id": "countup",

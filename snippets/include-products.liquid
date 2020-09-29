@@ -11,9 +11,17 @@
 
 				<figure class="product-media">
 					<div class="article-violator article-violator--top">
+						{% if product_ref.available %}
+						{% if product.compare_at_price == product.price %}
 						{% if violator != blank %}
-						<div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product_ref.metafields.custom_fields["violator_tag_type"] }}">{{ product_ref.metafields.custom_fields["violator_tag_text"] }}</div>
+						<div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
 						{% endif %}
+					  {% else %}
+						{% if settings.sale_banner_enabled and product_ref.compare_at_price_max > product_ref.price %}
+						  <span class="left thumbnail_banner violator violator--discount">Save ${{ product_ref.compare_at_price_min | minus: product_ref.price_min | money_without_currency }}</span>
+						{% endif %}
+					  {% endif %}
+					  {% endif %}
 						<div class="right mr20" onclick="return false">
 						{% render 'flits_wishlist_snippet' with 'flits_collection_page_wsl_btn', product:product %}
 						</div> 
@@ -21,7 +29,7 @@
 					<div class="article-media article-media--sm lazyload" style="background-image: url('{{product_ref | img_url: '800x800'}};" title="{{ product_ref.title }}"></div>
 				</figure>
 
-				<div class="product-details">
+				<section class="product-details">
 					<h4 class="article-title base-BodyTitle" itemprop="name">{{ product_ref.title }}</h4>
 					<h6 class="article-type">{{ product_ref.type}}</h6>
 					{% if collection_handles contains 'coming-soon' %}
@@ -44,18 +52,11 @@
 							</span>
 						{% endif %}
 					</span>
-				
-					{% if product_ref.available %}
-					{% unless product.compare_at_price == product.price %}
-						{% if settings.sale_banner_enabled and product_ref.compare_at_price_max > product_ref.price %}
-							<span class="thumbnail_banner violator--discount">Save ${{ product_ref.compare_at_price_min | minus: product_ref.price_min | money_without_currency }}</span>
-						{% else %}
-							<span class="article-violator"></span>
-						{% endif %}
-					{% endunless %}
+					<section class="flex flex-row">
+						<p class="affirm-as-low-as text-sm" data-page-type="category" data-amount="{{ product_ref.price }}" data-learnmore-show="false" data-affirm-type = "text"></p>
+					</section>
 					{% endif %}
-					{% endif %}
-				</div>
+				</section>
 			</a>
 		</article>
 		{% endfor %}

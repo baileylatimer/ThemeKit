@@ -87,7 +87,7 @@
         <div id="product-images" class="ten columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
         </div>
-        <div id="product-details"class="six columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+        <div id="product-details"class="reveal-fx reveal-fx--translate-left six columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
           {% assign collection_handles = product.collections | map: 'handle' %}
           {% assign variant = product.selected_or_first_available_variant %}
           {% if product.available %}
@@ -115,16 +115,15 @@
 
           {% comment %}START / Title {% endcomment %}
           {% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
-          <div class="product_name--container">
-            <h1 class="product_name" itemprop="name">{{ product.title }}</h1>
+          <div class="product_name--container flex flex-column">
+
+
+          <!-- START / Reviews --> 
+          <span class="stamped-product-reviews-badge stamped-main-badge margin-bottom-sm" data-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-type="{{ product.type }}" style="display: block;"></span>
+          <!-- End / Reviews --> 
+
+            <h1 class="product_name" itemprop="name">{{ product.title }}</h1> 
             <h2 class="product_type">{{ product.type }}</h2>
-            <!--
-            <div class="mt10 article-violator article-violator--top tooltip-trigger js-tooltip-trigger"  data-tooltip-class="tooltip--lg">
-              {% if violator != blank %}
-                <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
-              {% endif %}
-            </div>
-            -->
           </div>
           {% comment %}END / Title {% endcomment %}
           <div class="divider"></div>
@@ -184,11 +183,12 @@
                 </span>
               {% endif %}
             </p>
+
+            <div class="pill color-contrast-medium margin-bottom-xxs">
+              <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
+            </div>
           {% endif %}
 
-          <!-- START / Reviews --> 
-          <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-type="{{ product.type }}" style="display: block;"></span>
-          <!-- End / Reviews --> 
                   
           <div class="divider"></div>
           
@@ -200,7 +200,7 @@
               {% include 'product-form' with 'product' %}
           {% endif %}
 
-          <!-- START / Value Proposition --> 
+          <!-- START / Value Proposition 
           <div class="cart__gift bg-contrast-lower radius-md padding-md flex flex-column flex items-left margin-bottom-md">              
             <div class="pill color-contrast-medium margin-bottom-xxs">
               <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">verified_user</i>
@@ -210,12 +210,9 @@
               <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">local_shipping</i>
               <p>FREE shipping and FREE returns</p>
             </div>
-            <div class="pill color-contrast-medium margin-bottom-xxs">
-              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">monetization_on</i>
-              <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
-            </div>
+
           </div>
-          <!-- END / Value Proposition --> 
+           END / Value Proposition --> 
           
           {{ product.description }}
 
@@ -227,7 +224,7 @@
 
 
     {% comment %}START / Details{% endcomment %}
-    <section id="features">
+    <section id="features reveal-fx">
 
       {{product.metafields.shogun.above}}
 

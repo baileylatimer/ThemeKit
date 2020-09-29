@@ -1,0 +1,120 @@
+
+<section class="has-section-divider-top bg-contrast-lower padding-y-lg">
+    <h2 class="text-center">{{ section.settings.title }}</h2>
+    <div class="tabs js-tabs container max-width-adaptive-lg">
+        <div class="js-tabs__panels">
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+                <section id="{{ block.settings.name | handleize }}" class="padding-top-md js-tabs__panel reveal-fx">
+                   
+                  <div class="banner radius-md overflow-hidden">
+                      <div class="grid flex-row-reverse@md image-tabs" >
+                          <div class="col-6@md overflow-hidden flex justify-center align-center" style="background: var(--{{ block.settings.name | handleize }}) !important;" aria-hidden="true">
+                              <div class="banner__figure width-100% flex align-center" >
+                                  <img class="banner__logo" src="{{ block.settings.image | img_url: '300x' }}"/>
+                              </div> 
+                          </div>
+                  
+                          <div class="col-6@md bg-max">
+                            <div class="text-component v-space-md height-100% flex flex-column padding-md padding-lg@md text-md text-xl@md flex align-center">
+                              {% if block.settings.quote %}
+                              <svg class="display@md margin-bottom-sm" style="scale: 1.3" width="36" height="28" viewBox="0 0 36 28" fill="var(--color-contrast-low)" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3001 24.8112C17.2001 19.1112 20.7001 9.11118 25.0001 5.31118C28.6001 2.01118 34.6001 -0.688815 35.2001 0.311185C36.1001 1.81118 32.6001 2.81118 29.9001 5.21118C26.6001 8.81118 25.5001 10.4112 30.1001 12.4112C35.0001 14.6112 35.1001 16.8112 35.3001 19.6112C35.6001 26.5112 27.3001 29.7112 22.3001 24.8112Z" fill="var(--color-contrast-low)"/>
+                                <path d="M3.09989 24.7111C-2.00011 19.0111 1.49987 9.01109 5.79987 5.21109C9.39987 1.91109 15.3999 -0.788913 15.9999 0.211087C16.8999 1.71109 13.3999 2.71111 10.6999 5.11111C7.3999 8.71111 6.29988 10.3111 10.8999 12.3111C15.7999 14.5111 15.8999 16.7111 16.0999 19.5111C16.3999 26.4111 8.09989 29.6111 3.09989 24.7111Z" fill="var(--color-contrast-low)"/>
+                              </svg>
+                              {% else %}
+                              <svg class="display@md margin-bottom-sm" style="scale: 1.3" width="27" height="28" viewBox="0 0 27 28" fill="var(--color-contrast-low)" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 3.01889H21V0H6V3.01889H3C1.35 3.01889 0 4.37739 0 6.03778V7.54722C0 11.3963 2.88 14.5359 6.585 15.0039C7.53 17.268 9.555 18.9737 12 19.4718V24.1511H6V27.17H21V24.1511H15V19.4718C17.445 18.9737 19.47 17.268 20.415 15.0039C24.12 14.5359 27 11.3963 27 7.54722V6.03778C27 4.37739 25.65 3.01889 24 3.01889ZM3 7.54722V6.03778H6V11.8039C4.26 11.1699 3 9.5095 3 7.54722ZM13.5 16.6039C11.025 16.6039 9 14.5661 9 12.0756V3.01889H18V12.0756C18 14.5661 15.975 16.6039 13.5 16.6039ZM24 7.54722C24 9.5095 22.74 11.1699 21 11.8039V6.03778H24V7.54722Z" fill="var(--color-contrast-low)"/>
+                              </svg>
+                              {% endif %}
+                              {{ block.settings.testimonial }}
+                          </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+                   
+                </section>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <ul class="flex flex-wrap justify-between padding-top-md gap-sm js-tabs__controls display@md reveal-fx" aria-label="Tabs Interface">
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            <li class="flex align-center"><a href="#{{ block.settings.name | handleize }}" class="tabs__control" aria-selected="true">
+                <img class="marquee-logo" src="{{ block.settings.image | img_url: '150x' }}"/>
+            </a></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Image Tabs",
+  "settings": [
+  {
+    "type":      "header",
+    "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+    "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "default": "Featured in"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Company name"
+        },
+        {
+            "type": "richtext",
+            "id": "testimonial",
+            "label": "Testimonial",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Company logo"
+        },
+        {
+            "type": "checkbox",
+            "id": "quote",
+            "label": "Quote",
+            "info": "Add quote styling"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Image Tabs",
+    "category": "Value Props",
+    "blocks": [ 
+      {
+        "type": "tab"
+      },
+      {
+        "type": "tab"
+      },
+      {
+        "type": "tab"
+      }
+      
+    ]
+  }]
+}
+{% endschema %}
+ 

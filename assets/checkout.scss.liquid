@@ -1,34 +1,158 @@
-button,
-.btn {
-  padding: var(--space-md) var(--space-xl);
-  background-color: var(--color-contrast-higher); // continue button
-}
-button:hover,
-.btn:hover {
-  background-color: var(--color-contrast-high);
-}
-
+/* Layout
+========== */
 body {
-  background: var(--wood-1); // body
+  background: var(--color-contrast-lower); // body
+  color: var(--color-contrast-higher) !important;
 }
 
-/* navigation */
+.content {
+  margin-top: 0 !important; // override .customers-login, .content { margin-top: var(--space-lg) }
+}
+
 .page--banner .banner {
   padding-top: var(--space-md);
   padding-bottom: var(--space-sm);
-  background: var(--grape-3);
+  background: var(--color-white);
   box-shadow: var(--shadow-sm);
 }
 
-.logo__image {
-  filter: invert(1) brightness(2);
-  -webkit-filter: invert(1) brightness(2);
-}
-
-.wood--1 {
-  background: var(--wood-1);
-}
-
 .breadcrumb li:first-child {
-  display: none; // hide 'Cart >'
+  display: none; // hide 'Cart > -'
+}
+
+.product__description {
+  padding-left: var(--space-md);
+}
+
+.order-summary__scroll-indicator,
+.tooltip {
+  background-color: var(--color-primary-lighter) !important;
+  color: var(--color-contrast-higher) !important;
+  font-weight: 500;
+}
+
+/* Icons
+========== */
+.icon-svg--color-adaptive-lighter {
+  color: var(--color-contrast-medium) !important;
+  fill: currentColor;
+}
+
+.input-checkbox:checked,
+.input-radio:checked {
+  border: none;
+  -webkit-box-shadow: 0 0 0 10px var(--color-contrast-high) inset;
+  box-shadow: 0 0 0 10px var(--color-contrast-high) inset; // Checkbox bg
+}
+
+/* Buttons
+========== */
+.step__footer__continue-btn {
+  padding: var(--space-md) var(--space-xl);
+}
+
+.product-thumbnail__quantity {
+  background: var(--color-primary-lighter);
+  color: var(--color-contrast-higher) !important;
+}
+
+button,
+.btn {
+  background-color: var(--color-accent); // continue button
+}
+button:hover,
+.btn:hover {
+  background-color: var(--color-accent-light);
+}
+
+.order-summary-toggle {
+  background-color: var(--color-bg);
+}
+.order-summary-toggle:hover {
+  background-color: var(
+    --color-contrast-lower
+  ); // Remove default button hover bg
+}
+
+/* Discounts
+==============*/
+
+#checkout_reduction_code {
+  height: var(--btn-height-lg); // Match discount form to button height
+}
+
+.sidebar span.reduction-code__text {
+  font-size: var(--text-sm);
+  color: var(--color-success) !important; // discount code
+}
+
+svg.reduction-code__icon {
+  fill: currentColor !important;
+  color: var(--color-success) !important; // discount icon
+}
+
+/* Color
+========== */
+.main h2,
+.main .heading-2,
+.default-background h3,
+.default-background .heading-3,
+.content-box h3,
+.content-box .heading-3,
+.sidebar h2,
+.sidebar .heading-2,
+.content-box h2,
+.content-box .heading-2,
+.default-background h2,
+.default-background .heading-2,
+.main h3,
+.main .heading-3,
+.sidebar h3,
+.sidebar .heading-3,
+.content-box .payment-due__price,
+.total-recap__final-price,
+.sidebar .payment-due__price,
+.content-box .payment-due-label__total,
+.sidebar .reduction-code__text,
+.content-box .reduction-code__text,
+.sidebar .order-summary__emphasis,
+.content-box .order-summary__emphasis,
+.sidebar .payment-due-label__total,
+.default-background .emphasis,
+.content-box .emphasis,
+.sidebar .emphasis,
+.main .emphasis,
+.content-box__emphasis,
+.review-block__content,
+.breadcrumb__item--current {
+  color: var(--color-contrast-higher) !important;
+}
+
+.main .small-text .emphasis,
+.sidebar .small-text .emphasis,
+.content-box .small-text .emphasis,
+.default-background .small-text .emphasis,
+.main .small-text,
+.sidebar .small-text,
+.content-box .small-text,
+.default-background .small-text,
+.sidebar .payment-due-label__taxes,
+.content-box .payment-due-label__taxes,
+.sidebar .payment-due__currency,
+.content-box .payment-due__currency,
+.sidebar .order-summary__small-text,
+.content-box .order-summary__small-text,
+.review-block__label,
+.radio__label__primary,
+.breadcrumb__link,
+.breadcrumb__item {
+  color: var(--color-contrast-medium) !important;
+}
+
+.breadcrumb__item {
+  color: var(--color-contrast-medium);
+}
+
+.link--small {
+  color: var(--color-primary) !important;
 }

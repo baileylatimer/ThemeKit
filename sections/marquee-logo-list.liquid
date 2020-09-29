@@ -7,19 +7,19 @@
   {% if section.blocks.size > 0 %}
   <div class="marquee-content">
     {% for block in section.blocks %}
-      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+      <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
         <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
   
     {% unless section.settings.animation_speed == 0 %}
     {% for block in section.blocks %}
-      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+      <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
         <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
     {% for block in section.blocks %}
-      <a href="{{ block.settings.link }}" class="marquee-block padding-left-md">
+      <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
         <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
@@ -58,6 +58,11 @@
       "class": "logo-list-section",
       "max_blocks": 20,
       "settings": [
+        {
+          "type":      "header",
+          "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+          "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+        },
         {
           "type":      "range",
           "id":        "animation_speed",

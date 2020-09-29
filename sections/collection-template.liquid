@@ -5,11 +5,11 @@
     {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
     {% assign sizes = sizes | split: ',' %}
 
-<span class='{{ collection.metafields.custom_fields["theme_color"] }}-0'>
+<span class='{{ collection.metafields.custom_fields["theme_color"] }}-0rm'>
   <!-- START / Mobile  -->
     <!-- Banner / 2-Columns -->
     <div class="banner center page_banner collection_banner mobile--true dark-overlay-{{ section.settings.image_darken }}">
-      <div class="width-1-1 split-banner split-banner--img right">
+      <div class="width-1-1 split-banner split-banner--img right reveal-fx reveal-fx--translate-down">
         <img
             {% if collection.image %}
                 src="{{ collection.image | img_url: sizes.first }}"
@@ -37,8 +37,8 @@
       </div>
 
         {% if collection.description != blank %}
-        <div class="width-1-1 split-banner split-banner--content left pattern-map ">
-          <div class="section clearfix collection_description">
+        <div class="width-1-1 color-contrast-higher bg-contrast-lower split-banner split-banner--content left">
+          <div class="section clearfix collection_description reveal-fx reveal-fx--translate-up">
             <h1> Shop {{ collection.title }}</h1>
             <span class="text-md">{{ collection.description }}</span>
           </div>
@@ -95,7 +95,7 @@
     {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
     {% assign sizes = sizes | split: ',' %}
     <div class="banner center page_banner collection_banner mobile--false dark-overlay-{{ section.settings.image_darken }}">
-      <div class="width-1-2 split-banner split-banner--img right">
+      <div class="width-1-2 split-banner split-banner--img right reveal-fx reveal-fx--translate-left">
         <img
             {% if collection.image %}
                 src="{{ collection.image | img_url: sizes.first }}"
@@ -122,7 +122,7 @@
                     {%- endfor -%}" />
       </div>
       {% if collection.description != blank %}
-        <div class="width-1-2 split-banner split-banner--content left pattern-map">
+        <div class="width-1-2  color-contrast-higher  bg-contrast-lower split-banner split-banner--content left reveal-fx reveal-fx--translate-right">
           <div class="section clearfix collection_description">
             <h1> Shop {{ collection.title }}</h1>
             <span class="text-md">{{ collection.description }}</span>

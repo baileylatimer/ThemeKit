@@ -52,9 +52,9 @@
   {% assign button2_highlight = section.settings.button2_highlight %}
 {% endif %}
 
-<section class="hero hero--video-bg position-relative padding-y-xxl" {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %}>
+<section class="hero hero--video-bg position-relative padding-y-xxl z-index-3" {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %}>
     <div class="container max-width-adaptive-sm">
-      <div class="position-relative z-index-2 text-center">
+      <div class="position-relative z-index-2 text-center reveal-fx">
         <div class="text-component">
           {% if title != blank %}<h1>{{ title }}</h1> {% endif %}
             <div class="position-relative height-xxl margin-top-md">
@@ -110,6 +110,11 @@
   {
     "name": "Video Background Hero",
     "settings": [
+      {
+        "type":      "header",
+        "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+        "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+      },
         {
         "type": "checkbox",
         "id": "dark_theme",

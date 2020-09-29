@@ -1,0 +1,147 @@
+{% assign shipping_value = 0 %}
+{% assign cart_total = cart.total_price %}
+{% assign shipping_value_left = shipping_value | minus: cart_total %}
+
+
+
+{% unless settings.cart_action == 'ajax' and template contains 'cart' %}
+<div class="drawer drawer--modal dr-cart js-drawer js-drawer--modal" id="drawer-cart-id">
+  <div class="drawer__content flex flex-column cart_content" role="alertdialog" aria-labelledby="drawer-cart-title">
+
+    <header class="drawer__header">
+      <h1 id="drawer-cart-title" class="text-truncate text-md">Your Cart<span class="font-normal color-contrast-medium">&nbsp;(<span class="cart_count">{{ cart.item_count }}</span>)</span></h1>
+      <button class="reset drawer__close-btn js-tab-focus js-drawer__close" aria-controls="drawer-cart-id">
+        <i class="icon--sm material-icons-outlined color-contrast-medium">close</i>
+      </button>
+    </header>
+
+    <div class="drawer__body padding-x-md padding-y-sm js-drawer__body  position-relative">
+
+      {% assign found_title = false %}
+      {% for item in cart.items %}
+        {% if item.variant.id == 32148796440670 %}
+          {% assign found_title = true %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign gift_value = 40000 %}
+      {% assign cart_total = cart.total_price %}
+      {% assign gift_value_left = gift_value | minus: cart_total %}
+
+   
+      <div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
+        <div class="flex items-center">
+          <i class="icon--sm material-icons-outlined margin-right-xxs">card_giftcard</i>
+          <span class="money js-cart_gift text-sm">
+            {% if gift_value_left > 0 %}
+            Free Snack Box on orders $400+ <br><a href='/collections/todays-deals' class='color-success-dark'>Add {{ gift_value_left | money }}  to unlock your free gift ➞</a>
+            {% else %}
+              You've unlocked a free Snack Box! 
+              {% if found_title == false %}
+                <a href='/products/snack-box' class='margin-left-xxs color-success-dark'>Claim now ➞</a>
+              {% endif %}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+
+
+  
+
+      <!-- empty content -->
+      <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+        <div class="flex flex-column align-center padding-y-lg">
+        {% include 'svg' with 'cart' %}
+        <p class="empty_cart text-bold text-lg padding-bottom-xs">{{ 'layout.general.empty_cart' | t }}</p>
+        <a href="/collections/all" class="text-md link-fx-5 color-primary">Continue shopping ➞</a>
+      </div>
+      </div>
+
+      <form action="/checkout" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}{% endif %}">
+        <ol class="cart_items js-cart_items margin-top-md">
+
+          {% assign total_saving = 0 %}
+          {% for item in cart.items %}
+          {% if item.variant.compare_at_price > item.variant.price %}
+              {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+              {% assign total_saving = saving | plus: total_saving %}
+          {% endif %}
+
+            <li class="dr-cart__product cart_item">
+              {% if item.image %}
+                <a href="{{ item.url }}" class="dr-cart__img">
+                  <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                </a>
+                {% endif %}  
+
+              <section class="flex flex-column">
+                <h2 class="text-base"><a href="{{ item.url }}" class="color-inherit">{{ item.product.title }} 
+                  {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %} <!-- variant title -->
+                  <span class="font-normal color-contrast-medium">&nbsp;| 
+                    {% for option in item.product.options %}
+                      {{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                    {% endfor %}
+                  </span> 
+                  {% endunless %}
+                </a></h2>
+                <p class="text-sm color-contrast-medium margin-top-xxxs">{{ item.product.type }}</p>
+                
+                <div class="margin-top-xxxxs left product-quantity-box">
+                  <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                  <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                  <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                </div>
+              </section>
+
+              <section class="flex flex-column align-end justify-between height-100%">
+                <div value="0" class="reset drawer__close-btn dr-cart__remove-btn">
+                  <i class="icon--sm material-icons-outlined color-contrast-low">delete</i>
+                </div>
+                <summary class="flex flex-column text-right">
+                  <span class="color-contrast-higher {% if item.price < item.variant.compare_at_price %}sale{% endif %}">{{ item.price | money }}</span>
+                  {% if item.price < item.variant.compare_at_price %}
+                    <span class="money was_price mtn5">{{ item.variant.compare_at_price | money }}</span>
+                  {% endif %}
+                </summary>
+              </section>
+
+            </li>
+          {% endfor %}
+        </ol>
+      
+      <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0">
+        <p class="flex justify-between js-cart_subtotal"><span>{{ 'layout.general.subtotal' | t }}</span> <span>{{ cart.total_price | money }}</span></p>
+        <p class="flex justify-between"><span>Shipping</span> <span>Free</span></p>
+      </summary>
+    </div>
+
+
+    <footer class="padding-x-md padding-y-sm border-top border-contrast-lower flex-shrink-0">
+      <p class="flex justify-between js-cart_subtotal text-lg font-medium"><span>Your total</span> <span>{{ cart.total_price | money }}</span></p>
+
+      {% if settings.display_savings and total_saving > 0 %}
+        <div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
+          <div class="flex items-center">
+            <i class="icon--sm material-icons-outlined margin-right-xxs">monetization_on</i>
+            <span class="money js-cart_savings">You save&nbsp;{{ total_saving | money }}</span>
+          </div>
+        </div>
+      {% endif %}
+      
+
+      {% if settings.go_to_checkout %}
+        <button type="submit" class="add_to_cart action_button btn btn--accent btn--md width-100%" id="checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
+      {% else %}
+        <button type="submit" class="add_to_cart action_button btn btn--accent btn--md width-100% margin-y-sm" id="go_to_cart">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.go_to_cart' | t }} </button>
+      {% endif %}
+      <p class="affirm-as-low-as inline-block width-100% margin-y-xs text-center" data-page-type="cart" data-amount="{{cart.total_price}}" data-affirm-type="text" data-learnmore-show="true"></p>
+    </footer>
+    </form>
+  </div>
+
+  {% include '_0_cart-add-on' %}
+
+</div>
+
+{% endunless %}
+

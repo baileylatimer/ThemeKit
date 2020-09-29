@@ -1,33 +1,43 @@
 {% if product.metafields.custom_fields["available_year"] != blank %}
-    <div class="pill pill--stock margin-top-sm color-contrast-medium width-1-2 ">
-        <span class="icon"><i class="material-icons">schedule</i></span>
-        <p> Ships&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} </p>
+    <div data-tooltip-position="bottom" title="{{ 'value_props.backorder.description' | t }}" data-tooltip-class="tooltip--lg" class="tooltip-trigger js-tooltip-trigger pill pill--stock color-contrast-medium width-1-2 cursor-pointer">
+        <span class="icon"><i class="material-icons">{{ 'value_props.backorder.icon' | t }}</i></span>
+        <p> Ships&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} | Free shipping & returns</p>
     </div> 
+
+    <div class="alert alert--warning alert--is-visible js-alert margin-y-xs" role="alert">
+        <div class="flex items-center">
+          <i class="icon--sm material-icons-outlined margin-right-xxs">{{ 'value_props.shipping.icon' | t }}</i>
+          <span class="text-sm">
+            {{ 'value_props.backorder.more_info' | t }}
+          </span>
+        </div>
+    </div>
+
 {% elsif collection_handles contains 'retired' %}
-    <div class="pill pill--stock margin-top-sm color-contrast-medium width-1-2">
+    <div class="pill pill--stock color-contrast-medium width-1-2">
         <span class="icon"><i class="material-icons">beach_access</i></span>
         <p>	Retired – This product won't be returning </p>
     </div>
 {% elsif collection_handles contains 'back-order' %} 
-    <div class="pill pill--stock margin-top-sm alert width-1-2">
+    <div class="pill pill--stock alert width-1-2">
         <span class="icon"><i class="material-icons color-contrast-medium">error_outline</i></span>
-        <p> Out of stock - Check again soon </p>
+        <p> Out of stock - Check again soon </p> 
     </div> 
 {% elsif variant.inventory_quantity <= settings.inventory_threshold %}
     {% if variant.inventory_quantity >= 1 %}
-        <div class="pill pill--stock margin-top-sm alert width-1-2">
+        <div class="pill pill--stock alert width-1-2">
             <span class="icon"><i class="material-icons">error_outline</i></span>
             <p>	Only {{ variant.inventory_quantity }} left - Order soon </p>
         </div>
       {% else %}
-      <div class="pill pill--stock margin-top-sm alert width-1-2">
+      <div class="pill pill--stock alert width-1-2">
         <span class="icon"><i class="material-icons color-contrast-medium">error_outline</i></span>
-        <p> Out of stock - Check again soon </p>
+        <p> Out of stock - Check again soon  </p>
     </div> 
     {% endif %}
 {% else %}
-    <div class="pill pill--stock margin-top-sm success width-1-2">
+    <div data-tooltip-position="bottom" title="{{ 'value_props.shipping.description' | t }}" data-tooltip-class="tooltip--lg" class="tooltip-trigger js-tooltip-trigger pill pill--stock success width-1-2">
         <span class="icon"><i class="material-icons">check_circle_outline</i></span>
-        <p>	In stock - Available now </p>
+        <p>	Ready to ship | Free shipping & returns </p>
     </div>
 {% endif %}

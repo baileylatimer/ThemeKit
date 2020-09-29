@@ -10,10 +10,10 @@
     <div class="dropdown menu">
       <div class="dropdown_content {% if section.blocks < 4 %}dropdown_narrow{% endif %}">
         {% for block in section.blocks %}
-          <div class="dropdown_column" {{ block.shopify_attributes }}>
+        <div class="dropdown_column cursor-pointer" onclick="window.location.href='{{ block.settings.image_link_bottom }}';" {{ block.shopify_attributes }}>
             {% if block.type == 'column' %}
               {% comment %}Richtext{% endcomment %}
-              {% if block.settings.richtext_top %}
+              {% if block.settings.richtext_top %} 
                 <div class="mega-menu__richtext">
                   {{ block.settings.richtext_top }}
                 </div>
@@ -21,16 +21,14 @@
 
               {% comment %}Image with caption and link{% endcomment %}
               {% if block.settings.image_top != nil or block.settings.image_caption_top != blank %}
-                <div class="mega-menu__image-caption-link">
-                  <a {% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} >
-                    {% if block.settings.image_top != nil %}
-                      {% include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt %}
-                    {% endif %}
-                    {% if block.settings.image_caption_top %}
-                      <p>{{ block.settings.image_caption_top }}</p>
-                    {% endif %}
-                  </a>
-                </div>
+              <a class="mega-menu__image-caption-link"{% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} >
+                {% if block.settings.image_top != nil %}
+                  {% include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt %}
+                {% endif %}
+                {% if block.settings.image_caption_top %}
+                  <p>{{ block.settings.image_caption_top }}</p>
+                {% endif %}
+              </a>
               {% endif %}
 
               {% comment %}Menu 1{% endcomment %}

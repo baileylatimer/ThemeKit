@@ -3,8 +3,6 @@
 // -----------------------------------------------------------------------------
 @import "//app/scss/bundle";
 
-
-
 // -----------------------------------------------------------------------------
 // Layout
 // -----------------------------------------------------------------------------
@@ -93,9 +91,9 @@
 ================================================== */
 @mixin textColor($color) {
   @if $color == light {
-    color: $color-text-dark;
+    color: var(--color-contrast-higher);
   } @else if $color == dark {
-    color: $color-text-dark;
+    color: var(--color-contrast-higher);
   }
 }
 @mixin textStyle($color, $decoration: null) {
@@ -104,7 +102,6 @@
     text-decoration: underline !important;
   }
 }
-
 
 // -----------------------------------------------------------------------------
 // Animation
@@ -118,9 +115,8 @@
     -moz-transition: all 0.5s ease-out;
     -ms-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
+  }
 }
-}
-
 
 // -----------------------------------------------------------------------------
 // Media Queries
@@ -167,12 +163,10 @@
   }
 } // Small devices (max)
 
-
 @mixin gradient() {
   background-repeat: repeat-x;
   background-image: linear-gradient(to bottom, rgba(49, 49, 47, 0.95), #262625);
 }
-
 
 // -----------------------------------------------------------------------------
 // Shadows
@@ -191,7 +185,8 @@
 @mixin card-shadow() {
   @include box-shadow(0, 0.5rem, 1rem, -0.5rem, $palette-shade-100);
   &:hover {
-    box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px -3px,
+      rgba(0, 0, 0, 0.14) 0 8px 10px 1px, rgba(0, 0, 0, 0.12) 0 3px 14px 2px;
   }
 }
 
@@ -208,7 +203,7 @@
     0 1px 3px 0 rgba(63, 63, 68, 0.15);
 }
 .shadow-nav {
-  @include shadow-nav();
+  box-shadow: var(--shadow-xs);
   &:hover {
     @include shadow-menu();
   }
@@ -216,30 +211,35 @@
 /* #Shadows - Forms [inset]
 ================================================== */
 @mixin form-shadow() {
-  box-shadow:  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.14) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px
- }
+  box-shadow: rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.14) 0px 0px 0px 4px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
 
 /* #Shadows - Article 
 ================================================== */
 @mixin article-shadow() {
-  box-shadow: 0 30px 60px -12px rgba(50,50,93,.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 18px 35px rgba(50,50,93,.1),0 8px 15px rgba(0,0,0,.07);
+    box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1),
+      0 8px 15px rgba(0, 0, 0, 0.07);
   }
 }
 
 @mixin shadow-100() {
-  box-shadow: 0 6px 12px -2px rgba(50,50,93,.25),0 3px 7px -3px rgba(0,0,0,.3);
+  box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25),
+    0 3px 7px -3px rgba(0, 0, 0, 0.3);
 }
-
-
-
 
 /* #Transform - Skew [rotate]
 ================================================== */
 @mixin transform-skew() {
-transform: translate(-60px,-50%) rotate(12deg);
+  transform: translate(-60px, -50%) rotate(12deg);
 }
 // -----------------------------------------------------------------------------
 // Corners
@@ -256,7 +256,6 @@ transform: translate(-60px,-50%) rotate(12deg);
   border-radius: 0 0 4px 4px !important;
 }
 
-
 // -----------------------------------------------------------------------------
 // Buttons
 // -----------------------------------------------------------------------------
@@ -264,15 +263,16 @@ transform: translate(-60px,-50%) rotate(12deg);
 ================================================== */
 @mixin btn-hover() {
   color: white;
-  box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0 8px 10px 1px, rgba(0, 0, 0, 0.12) 0 3px 14px 2px;
 }
 /* #Buttons - [Transition]
 ================================================== */
 @mixin btn-transition() {
   transition-delay: 0s !important;
-  transition-duration: .28s !important;
+  transition-duration: 0.28s !important;
   transition-property: all !important;
-  transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* #Button - Default
@@ -281,19 +281,18 @@ transform: translate(-60px,-50%) rotate(12deg);
   @include rounded();
   cursor: pointer !important;
   height: 36px;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
   line-height: 36px;
   font-size: 14px;
-  color: $white !important;
+  color: var(--color-max) !important;
   min-width: 88px;
   padding: 0 16px;
-  @include btn-transition(); 
-  @include btn-shadow ();
+  @include btn-transition();
+  @include btn-shadow();
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
 }
-
 
 // -----------------------------------------------------------------------------
 // Cards
@@ -314,12 +313,13 @@ transform: translate(-60px,-50%) rotate(12deg);
 ================================================== */
 @mixin card-hover() {
   border: none;
-  box-shadow: rgba(0,0,0,.2) 0 5px 5px -3px,rgba(0,0,0,.14) 0 8px 10px 1px,rgba(0,0,0,.12) 0 3px 14px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0 8px 10px 1px, rgba(0, 0, 0, 0.12) 0 3px 14px 2px;
 }
 
 @mixin hover-zoom() {
-  transform: scale(1.06) translatex(1px) translatey(-1px)!important;
-    filter: none !important;
+  transform: scale(1.06) translatex(1px) translatey(-1px) !important;
+  filter: none !important;
 }
 
 // -----------------------------------------------------------------------------
@@ -329,13 +329,11 @@ transform: translate(-60px,-50%) rotate(12deg);
 /* #Border - Light
 ================================================== */
 @mixin border-light() {
-  border: 1px solid $white !important;
+  border: 1px solid var(--color-max) !important;
   @include rounded();
-  color: $white !important;
+  color: var(--color-max) !important;
   background-color: transparent;
 }
-
-
 
 // -----------------------------------------------------------------------------
 // Media
@@ -343,16 +341,16 @@ transform: translate(-60px,-50%) rotate(12deg);
 /* #Media - Filters
 ================================================== */
 @mixin filter-alabaster() {
-  filter: brightness(.97) !important;
-  -webkit-filter: brightness(.97) !important;
+  filter: brightness(0.97) !important;
+  -webkit-filter: brightness(0.97) !important;
 }
 @mixin filter-egg() {
-  filter: brightness(.95) !important;
-  -webkit-filter: brightness(.95) !important;
+  filter: brightness(0.95) !important;
+  -webkit-filter: brightness(0.95) !important;
 }
 @mixin filter-banner() {
-  filter: brightness(.7) !important;
-  -webkit-filter: brightness(.7) !important;
+  filter: brightness(0.7) !important;
+  -webkit-filter: brightness(0.7) !important;
 }
 @mixin filter-dim() {
   filter: brightness(0.85) contrast(0.75) saturate(1.15) !important;
@@ -368,10 +366,7 @@ transform: translate(-60px,-50%) rotate(12deg);
 @mixin clip-transition {
   transition: 0.4s cubic-bezier(1, -1, 0, 2);
 }
-@mixin clip-circle(){
+@mixin clip-circle() {
   @include clip-transition();
   clip-path: circle(50% at 50% 50%);
 }
-
-
-

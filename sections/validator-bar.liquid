@@ -1,12 +1,82 @@
-
 <div class="container flex flex-wrap flex-center padding-y-md@xl">
-
 {% for block in section.blocks %}
-    <div class="validator-item margin-sm margin-lg@lg flex flex-column align-{{ section.settings.alignment }}">
-        <span class="icon m0 color-contrast-medium">
-            <i class="material-icons-outlined icon--lg">{{ block.settings.icon_name }}</i>
+    <div aria-controls="{{ block.settings.value_prop | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ section.settings.alignment }}">
+        <span  class="icon {% if section.settings.icon_style != blank %} {{ section.settings.icon_style }} {% endif %} {% if section.settings.icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+            <i class="{% if section.settings.icon_style != blank %} {{ section.settings.icon_style }}{% else %} material-icons-outlined {% endif %} {% if section.settings.icon_size != blank %} {{ section.settings.icon_size }}{% else %} icon--md {% endif %}">
+            {% case block.settings.value_prop %}
+              {% when 'shipping' %}
+              {{ 'value_props.shipping.icon' | t }}
+              {% when 'customer_count' %}
+              {{ 'value_props.customer_count.icon' | t }}
+              {% when 'customer_service' %}
+              {{ 'value_props.customer_service.icon' | t }}
+              {% when 'financing' %}
+              {{ 'value_props.financing.icon' | t }}
+              {% when 'warranty' %}
+              {{ 'value_props.warranty.icon' | t }}
+              {% when 'security' %}
+              {{ 'value_props.security.icon' | t }}
+              {% else %}
+            {% endcase %}
+          </i>
         </span>
-        <h5 class="text-md font-medium margin-top-xs {{ section.settings.alignment }}">{{ block.settings.title }}</h5>
+        <h5 class="text-md font-medium margin-top-xs {{ section.settings.alignment }}">
+          {% case block.settings.value_prop %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.title' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.title' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.title' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.title' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.title' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.title' | t }}
+            {% else %}
+          {% endcase %}
+        </h5>
+        
+        <div id="{{ block.settings.value_prop | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+          <div class="text-component text-sm">
+            <h1 class="text-md">
+              {% case block.settings.value_prop %}
+                {% when 'shipping' %}
+                {{ 'value_props.shipping.title' | t }}
+                {% when 'customer_count' %}
+                {{ 'value_props.customer_count.title' | t }}
+                {% when 'customer_service' %}
+                {{ 'value_props.customer_service.title' | t }}
+                {% when 'financing' %}
+                {{ 'value_props.financing.title' | t }}
+                {% when 'warranty' %}
+                {{ 'value_props.warranty.title' | t }}
+                {% when 'security' %}
+                {{ 'value_props.security.title' | t }}
+                {% else %}
+              {% endcase %}
+            </h1>
+            <p>
+              {% case block.settings.value_prop %}
+                {% when 'shipping' %}
+                {{ 'value_props.shipping.description' | t }}
+                {% when 'customer_count' %}
+                {{ 'value_props.customer_count.description' | t }}
+                {% when 'customer_service' %}
+                {{ 'value_props.customer_service.description' | t }}
+                {% when 'financing' %}
+                {{ 'value_props.financing.description' | t }}
+                {% when 'warranty' %}
+                {{ 'value_props.warranty.description' | t }}
+                {% when 'security' %}
+                {{ 'value_props.security.description' | t }}
+                {% else %}
+              {% endcase %}
+            </p>
+          </div>
+        </div>
+        
         {% if block.settings.description != blank %}
             <p class="body-text--md {{ section.settings.alignment }}">{{ block.settings.description }}</p>
         {% endif %}
@@ -16,12 +86,25 @@
 </div>
 
 
+
+
+
+
+
+
+
+
 {% schema %}
   {
     "name": "Validator Bar",
     "class": "width-100 stripe--dark", 
     "max_blocks": 6,
     "settings": [
+      {
+        "type":      "header",
+        "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+        "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+      },
       {
         "id": "alignment",
         "type": "select",
@@ -31,6 +114,45 @@
           { "value": "center", "label": "Center" },
           { "value": "left", "label": "Left" }
         ]
+      },
+      {
+        "type": "select",
+        "id": "icon_size",
+        "label": "Icon size",
+        "options": [
+          {
+            "value": "icon--md",
+            "label": "Default"
+          },
+          {
+            "value": "icon--lg",
+            "label": "LG"
+          },
+          {
+            "value": "icon--xl",
+            "label": "XL"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "icon_color",
+        "label": "Add color"
+      },
+      {
+        "type": "select",
+        "id": "icon_style",
+        "label": "Icon style",
+        "options": [
+          {
+            "value": "material-icons-two-tone",
+            "label": "Two-tone"
+          },
+          {
+            "value": "material-icons-outlined",
+            "label": "Outline"
+          }
+        ]
       }
     ],
     "blocks": [
@@ -39,20 +161,36 @@
         "name": "Validation bar",
         "settings": [
           {
-            "type": "text",
-            "id": "icon_name",
-            "label": "Icon name",
-            "info": "Copy/paste from here: https://material.io/resources/icons/?style=outline"
-          },
-        {
-            "type": "text",
-            "id": "title",
-            "label": "Title"
-        },
-        {
-            "type": "text",
-            "id": "description",
-            "label": "Description"
+            "type": "select",
+            "id": "value_prop",
+            "label": "Value prop",
+            "options": [
+              {
+                "value": "shipping",
+                "label": "Shipping"
+              },
+              {
+                "value": "customer_count",
+                "label": "Customer Count"
+              },
+              {
+                "value": "customer_service",
+                "label": "Customer Service"
+              },
+              {
+                "value": "financing",
+                "label": "Financing"
+              },
+              {
+                "value": "warranty",
+                "label": "Warranty"
+              },
+              {
+                "value": "security",
+                "label": "Security"
+              }
+              
+            ]
           }
         ]
       }

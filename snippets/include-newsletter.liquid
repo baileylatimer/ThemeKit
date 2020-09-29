@@ -20,7 +20,7 @@
   <div class="container">
     <div class="sixteen columns">
 {% endif %}
-      <div class="newsletter_section wood-300 padding-lg
+      <div class="newsletter_section bg-contrast-low padding-lg
                   {% if display_first_name and display_last_name %}newsletter-both-names--true {% else %}newsletter-both-names--false {% endif %}
                   {% if image != nil %}newsletter-bgr-true{% endif %}
                   text-align--{{newsletter_section_text_align}}
@@ -39,7 +39,7 @@
         <div class="container">
           <div class="{% if newsletter_section_text_align == "center" %}offset-by-three{% elsif newsletter_section_text_align == "right" %} offset-by-six{% endif %} ten columns section_form">
             {% if newsletter_title != blank %}
-              <h2 class="width-100 text-dark margin-bottom-sm">{{ newsletter_title }}</h2>
+              <h2 class="width-100">{{ newsletter_title }}</h2>
             {% endif %}
             {% if newsletter_text != blank %}
               <div class="newsletter-text">{{ newsletter_text }}</div>
@@ -59,7 +59,7 @@
 
                 <div class="input-row">
                   <input type="email" value="" name="EMAIL" class="contact_email mr10" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
-                  <button type="submit"  class="btn btn--primary btn--icon margin-left-xs" name="subscribe"><i class="material-icons">send</i></button>
+                  <button type="submit"  class="btn btn--accent btn--icon margin-left-xs" name="subscribe"><i class="material-icons">send</i></button>
                 </div>
               </form>
             {% else %}
@@ -85,7 +85,7 @@
                 <div class="input-row">
                   <input type="hidden" name="challenge" value="false" />
                   <input type="email" class="contact_email mr10" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
-                  <button type="submit"  class="btn btn--primary btn--icon" name="subscribe"><i class="material-icons mt5">send</i></button>
+                  <button type="submit"  class="btn btn--accent btn--icon" name="subscribe"><i class="material-icons mt5">send</i></button>
                 </div>
               {% endform %}
             {% endif %}

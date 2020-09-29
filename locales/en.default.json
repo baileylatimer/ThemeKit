@@ -8,8 +8,8 @@
       "page": "Page {{ page_number }}"
     },
     "404": {
-      "title": "Page Not Found",
-      "subtext": "We're sorry, but the page you requested could not be found.",
+      "title": "Oh snap!",
+      "subtext": "Sorry, we can't find that page. It might be an old link or maybe it moved.",
       "continue_shopping_html": "Try searching or <a href=\"\/collections\/all\">continue shopping &rarr;<\/a>"
     },
     "password_page": {
@@ -62,6 +62,49 @@
       "placeholder": "What can we help you find?",
       "placeholder_with_shop_name": "Search {{ shop_name }}...",
       "submit": "Search"
+    }
+  },
+  "value_props": {
+    "backorder": {
+      "icon": "schedule",
+      "title": "Why the delay?",
+      "description": "Looks like you picked a winner! This product is popular and temporarily out of stock. <br><br> You can still order now and our small team will notify you once it's shipped.",
+      "more_info": "The shipping delay on this item is due to high demand and COVID-19."
+    },
+    "customer_count": {
+      "icon": "public",
+      "title": "50,000+ customers",
+      "description": "Join a passionate group of solar heros across 60 different countries."
+    },
+    "customer_service": {
+      "icon": "support_agent",
+      "title": "Award-winning customer service",
+      "description": "Lorem ipsum."
+    },
+    "financing": {
+      "icon": "event_available",
+      "title": "Quick, simple financing",
+      "description": "Split your purchase into easy payments with Affirm. Oh, and there's no interest, late fees, or hidden fees."
+    },
+    "shipping": {
+      "icon": "local_shipping",
+      "title": "Free shipping & returns",
+      "description": "If you're unhappy with your purchase, we will take it back and provide a full refund."
+    },
+    "warranty": {
+      "icon": "verified_user",
+      "title": "1-year warranty",
+      "description": "We offer a no-questions-asked warranty covering our product's build quality and performance."
+    },
+    "security": {
+      "icon": "lock",
+      "title": "SSL secured checkout",
+      "description": "Using Shopify and SSL encryption, your credit card number is safe here."
+    },
+    "free_gift": {
+      "icon": "card_giftcard",
+      "title": "You've unlocked a free gift",
+      "description": "Lorem ipsum."
     }
   },
   "blogs": {
@@ -168,8 +211,8 @@
       "savings": "You save",
       "products_tagged": "Products tagged {{ tag }}",
       "items_left_count": {
-        "one": "left",
-        "other": "left"
+        "one": "left in stock",
+        "other": "left in stock"
       }
     },
     "notify_form": {
@@ -352,8 +395,8 @@
       "total": "Total",
       "item": "Item",
       "uploaded_file": "uploaded file",
-      "continue_browsing_html": "There are no items in your cart.",
-      "continue_shopping_link_html": "Continue Shopping",
+      "continue_browsing_html": "Your cart looks empty.",
+      "continue_shopping_link_html": "Continue shopping ➞",
       "excluding_tax_shipping": "Excluding tax & shipping",
       "orders_processed_in_currency_html": "Orders will be processed in {{ currency }}.",
       "note": "Order Notes",
@@ -389,7 +432,7 @@
       "go_to_cart": "Review Cart",
       "checkout": "Checkout",
       "continue_shopping": "Continue",
-      "empty_cart": "There are no items in your cart.",
+      "empty_cart": "Your cart looks empty.",
       "cart_note": "Order Notes",
       "subtotal": "Subtotal",
       "savings": "You save",

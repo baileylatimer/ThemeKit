@@ -1,63 +1,55 @@
-<div class="testimonial-slideshow slideshow slideshow--transition-slide js-slideshow" data-swipe="on">
+
+
+<section class="has-section-divider-top bg-primary-lighter">
+  {% include '_1_section-divider' with 'paint-2' %}
+<div class="testimonial-slideshow slideshow slideshow--transition-slide js-slideshow  padding-top-lg margin-bottom-lg" data-swipe="on">
+    
+    <h2 class="text-center margin-bottom-md-neg">{{ section.settings.title }}</h2>
+
     <p class="sr-only">Slideshow Items</p>
     
-    <ul class="slideshow__content">
-      <li class="slideshow__item bg-contrast-lower text-center js-slideshow__item">
-        <div class="container max-width-sm">
-          <blockquote class="text-lg@md line-height-md">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quo dolores dolor reprehenderit iure laborum atque. </p>
-          </blockquote>
+    <ul class="slideshow__content reveal-fx reveal-fx--translate-right">
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {%- assign product = all_products[block.settings.featured_product] -%}
 
-          <footer class="margin-top-md">
-            <figure class="testimonial-slideshow__profile-img radius-50% border border-2 border-bg margin-x-auto margin-bottom-sm" aria-hidden="true">
-              <img src="../../../app/assets/img/testimonials-img-1.svg" alt="Emily Ewing">
-            </figure>
-            
-            <cite class="text-sm">
-              <strong>Emily Ewing</strong> 
-              <span class="block color-contrast-medium margin-top-xxxxs">Designer at CompanyX</span>
-            </cite>
-          </footer>
-        </div>
-      </li>
-      
-      <li class="slideshow__item bg-contrast-lower text-center js-slideshow__item">
-        <div class="container max-width-sm">
+        {%- assign collection_handles = product.collections | map: 'handle' -%}
+        {% if product.empty? %}
+          {%- assign section_onboarding = true -%}
+        {% else %}
+          {%- assign section_onboarding = false -%}
+        {% endif %}
+
+        <li class="slideshow__item text-center js-slideshow__item product-{{ product.id }} itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+          {{ block.shopify_attributes }}
+
+          <div class="container max-width-sm">
+            {% include '_1_rating' %}
             <blockquote class="text-lg@md line-height-md">
-              <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, ducimus velit culpa ex blanditiis maxime minus quas. </p>
+              {{ block.settings.testimonial }}
             </blockquote>
-            
+
             <footer class="margin-top-md">
-              <figure class="testimonial-slideshow__profile-img radius-50% border border-2 border-bg margin-x-auto margin-bottom-sm" aria-hidden="true">
-                <img src="../../../app/assets/img/testimonials-img-2.svg" alt="James Powell">
-              </figure>
               
-              <cite class="text-sm">
-                <strong>James Powell</strong>
-                <span class="block color-contrast-medium margin-top-xxxxs">Developer at CompanyY</span>
+              <figure class="testimonial-slideshow__profile-img radius-50% border border-2 border-primary margin-x-auto margin-bottom-sm" aria-hidden="true">
+                <!--{% include 'product-images', image_width: 'full' %}-->
+                <a href="{{ product.url }}"><img src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.title }}"></a>
+              </figure>
+            
+              <cite class="flex justify-center align-center">
+                {%- if block.settings.name != blank -%} 
+                <strong>{{ block.settings.name }}</strong>
+                {%- endif -%}
+                
+                <a href="{{ product.url }}" itemprop="name" class="block color-contrast-medium link-fx-5">&nbsp;loves the&nbsp;{{ product.title }}</a>
+                
               </cite>
             </footer>
-        </div>
-      </li>
-      
-      <li class="slideshow__item bg-contrast-lower text-center js-slideshow__item">
-        <div class="container max-width-sm">
-            <blockquote class="text-lg@md line-height-md">
-              <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi veniam maiores eum! </p>
-            </blockquote>
-            
-            <footer class="margin-top-md">
-              <figure class="testimonial-slideshow__profile-img radius-50% border border-2 border-bg margin-x-auto margin-bottom-sm" aria-hidden="true">
-                <img src="../../../app/assets/img/testimonials-img-3.svg" alt="Olivia Gribben">
-              </figure>
-              
-              <cite class="text-sm">
-                <strong>Olivia Gribben</strong> 
-                <span class="block color-contrast-medium margin-top-xxxxs">CEO at CompanyZ</span>
-              </cite>
-            </footer>
-        </div>
-      </li>
+          </div>
+        </li>
+
+      {% endfor %}
+      {% endif %}
     </ul>
   
     <ul>
@@ -74,3 +66,74 @@
       </li>
     </ul>
   </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Reviews",
+  "class": "featured-reviews",
+  "settings": [
+  {
+    "type":      "header",
+    "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+    "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "default": "See why customers love GoSun."
+  }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "unit": "★",
+          "min": 1,
+          "max": 5,
+          "step": 0.5,
+          "default": 1
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial",
+          "label": "Testimonial",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam enim, fringilla ut purus ut, pretium ullamcorper sem. In sit amet vestibulum tellus. Aenean gravida dolor eget mi bibendum semper. </p>"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Featured Reviews",
+    "category": "Value Props",
+    "blocks": [ 
+      {
+        "type": "product"
+      },
+      {
+        "type": "product"
+      },
+      {
+        "type": "product"
+      }
+    ]
+  }]
+}
+{% endschema %}
+ 

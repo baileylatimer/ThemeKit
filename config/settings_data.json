@@ -3,32 +3,33 @@
     "performance": "ludicrous",
     "image_loading_style": "blur-up",
     "custom_scripts": "",
+    "theme_switch": true,
     "logo_color": "#ffffff",
     "regular_color": "#424242",
     "banner_color": "#ffffff",
-    "headline_color": "#212121",
+    "headline_color": "#0b225a",
     "headline_footer_text_color": "#ffffff",
     "sub_footer_text_color": "#e7e7e7",
-    "sale_color": "#212121",
+    "sale_color": "#0b225a",
     "was_price_color": "#616161",
     "product_hover_text_color": "#ffffff",
-    "promo_text_color": "#333333",
-    "shop_home_page_content_text_color": "#333333",
-    "newsletter_popup_color": "#333333",
-    "newsletter_section_color": "#333333",
-    "collection_filter_color": "#333333",
-    "top_bar_color": "#ffffff",
-    "top_bar_color_hover": "#ffffff",
-    "nav_color": "#ffffff",
-    "nav_color_home": "#ffffff",
-    "nav_color_hover": "#ffffff",
-    "link_color": "#212121",
+    "promo_text_color": "#31396c",
+    "shop_home_page_content_text_color": "#31396c",
+    "newsletter_popup_color": "#31396c",
+    "newsletter_section_color": "#31396c",
+    "collection_filter_color": "#31396c",
+    "top_bar_color": "#0b225a",
+    "top_bar_color_hover": "#0b225a",
+    "nav_color": "#0b225a",
+    "nav_color_home": "#0b225a",
+    "nav_color_hover": "#0b225a",
+    "link_color": "#0b225a",
     "link_hover_color": "#902800",
-    "sidebar_nav_color": "#333333",
+    "sidebar_nav_color": "#31396c",
     "sidebar_nav_color_hover": "#000000",
     "sub_footer_link_color": "#bdbdbd",
     "sub_footer_link_color_hover": "#bdbcbc",
-    "btn_color": "#212121",
+    "btn_color": "#0b225a",
     "banner_button_color": "#ffffff",
     "btn_hover_color": "#902800",
     "btn_text_color": "#ffffff",
@@ -37,7 +38,7 @@
     "swatch_style": "rounded",
     "table_styles_enabled": false,
     "slideshow_arrow_size": "bold",
-    "arrow_color": "#333333",
+    "arrow_color": "#31396c",
     "slideshow_button_style": false,
     "slideshow_nav_buttons": false,
     "border_color": "#dedede",
@@ -48,10 +49,10 @@
     "sale_banner_color": "#686936",
     "new_banner_color": "#686936",
     "banner_style": "round",
-    "search_section_color": "#212121",
+    "search_section_color": "#0b225a",
     "search_section_bg_color": "#f7f7f7",
     "testimonial_color": "#ffffff",
-    "testimonial_bg_color": "#666666",
+    "testimonial_bg_color": "#8182a4",
     "featured_promotions_color": "#fff",
     "featured_promotions_color_hover": "#fff",
     "featured_promotions_background": "#000",
@@ -66,7 +67,7 @@
     "top_bar_bg_color": "#7a363b",
     "top_bar_cart_bg_color": "#7a363b",
     "minicart_bg_color": "#7a363b",
-    "banner_placeholder_background_color": "#666666",
+    "banner_placeholder_background_color": "#8182a4",
     "banner_background_color": "#000000",
     "header_bg_color": "#ffffff",
     "header_background": false,
@@ -75,12 +76,12 @@
     "shop_home_page_content_bg_color": "#ffffff",
     "featured_links_background": "#ffffff",
     "product_hover_bg_color": "#000000",
-    "sub_footer_color": "#333333",
+    "sub_footer_color": "#31396c",
     "footer_bg": "",
     "footer_bg_stretched": false,
     "newsletter_popup_background_color": "#ffffff",
     "newsletter_section_background_color": "#ffffff",
-    "password_page_text_color": "#212121",
+    "password_page_text_color": "#0b225a",
     "password_page_background_color": "#ffffff",
     "logo__font": "open_sans_n4",
     "logo_font_style": "none",
@@ -121,7 +122,7 @@
     "mega_menu_2": true,
     "mega_menu_3": true,
     "mega_menu_4": true,
-    "mega_menu_5": false,
+    "mega_menu_5": true,
     "search_option": "everything",
     "search_pagination_type": "load_more",
     "enable_autocomplete": true,
@@ -141,7 +142,7 @@
     "display_product_quantity": false,
     "limit_quantity": false,
     "display_inventory_left": true,
-    "inventory_threshold": 50,
+    "inventory_threshold": 10,
     "free_price_text": "Free",
     "size_chart": "",
     "enable_shopify_review_comments": true,
@@ -196,7 +197,7 @@
     "popup_button2_highlight": false,
     "newsletter_popup_seconds": 2,
     "newsletter_popup_days": "30",
-    "twitter_link": "https:\/\/twitter.com\/GoSunStove",
+    "twitter_link": "https:\/\/twitter.com\/gosun",
     "facebook_link": "https:\/\/www.facebook.com\/gosun.co\/",
     "youtube_link": "https:\/\/www.youtube.com\/user\/sunwindworker",
     "vimeo_link": "",
@@ -208,7 +209,7 @@
     "linkedin_link": "https:\/\/www.linkedin.com\/company\/gosun-stove",
     "email_link": "",
     "og_image_fallback": "shopify:\/\/shop_images\/youtube-Channel_Art___Sport_Portable.jpg",
-    "favicon": "shopify:\/\/shop_images\/Generic_Favicon_50c3c7f7-7e84-4d7c-9961-0580f05b9532.png",
+    "favicon": "shopify:\/\/shop_images\/3_Medium_a482a7f7-585b-4dfb-93a0-27baa13a5034.png",
     "disqus_enabled": false,
     "disqus_shortname": "",
     "flits_tracking_active_color": "#f9b658",
@@ -217,13 +218,13 @@
     "flits_outer_circle_background_color": "#ebf0f2",
     "flits_check_mark_color": "#ebf0f2",
     "flits_primary_button_color": "#ffffff",
-    "flits_primary_button_background_color": "#212121",
+    "flits_primary_button_background_color": "#0b225a",
     "flits_default_button_color": "#c75724",
     "flits_default_button_background_color": "#ffffff",
     "flits_danger_button_color": "#ff6a55",
     "flits_danger_button_background_color": "#ebeff2",
     "checkout_header_image": "shopify:\/\/shop_images\/CheckoutBannerGrape_4x.png",
-    "checkout_logo_image": "shopify:\/\/shop_images\/Logo_Light_c457186a-bf76-472b-b6e5-24930f7956ce.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/gosun_trust_badges.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
     "checkout_body_background_image": "",
@@ -255,23 +256,10 @@
           "wide_display": true,
           "display_first_name": false,
           "display_last_name": false,
-          "newsletter_title": "Become an insider for special deals.",
-          "newsletter_text": "",
+          "newsletter_title": "Take the lead.",
+          "newsletter_text": "<p>Subscribe for tips, tricks, recipes, and special deals.<\/p>",
           "newsletter_section_text_align": "center",
           "image": ""
-        }
-      },
-      "1570142434553": {
-        "type": "featured-text",
-        "disabled": true,
-        "settings": {
-          "image": "",
-          "title": "Share your adventure.",
-          "content": "<p>Let others experience&nbsp;Off-Grid Solar&nbsp;by tagging <a href=\"https:\/\/www.instagram.com\/explore\/tags\/gosun\/\" title=\"https:\/\/www.instagram.com\/explore\/tags\/gosun\/\">#GoSun<\/a> on social.<\/p>",
-          "button_label": "",
-          "button_link": "",
-          "text_size": "featured_text",
-          "text_alignment": "center"
         }
       },
       "footer": {
@@ -342,7 +330,8 @@
           "full_width": true,
           "invert": true,
           "dark_theme": true,
-          "background_color": "jungle",
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--primary",
           "show_pattern": false
         }
       },
@@ -352,33 +341,25 @@
           "1595533985043": {
             "type": "content",
             "settings": {
-              "icon_name": "public",
-              "title": "50,000+ customers",
-              "description": ""
+              "value_prop": "customer_count"
             }
           },
           "1595533879839-1": {
             "type": "content",
             "settings": {
-              "icon_name": "event_available",
-              "title": "Quick, simple financing",
-              "description": ""
+              "value_prop": "financing"
             }
           },
           "1595533879839-0": {
             "type": "content",
             "settings": {
-              "icon_name": "local_shipping",
-              "title": "Free shipping & returns",
-              "description": ""
+              "value_prop": "shipping"
             }
           },
           "1595533879839-2": {
             "type": "content",
             "settings": {
-              "icon_name": "verified_user",
-              "title": "1-year warranty",
-              "description": ""
+              "value_prop": "warranty"
             }
           }
         },
@@ -389,7 +370,10 @@
           "1595533879839-2"
         ],
         "settings": {
-          "alignment": "center"
+          "alignment": "center",
+          "icon_size": "icon--lg",
+          "icon_color": false,
+          "icon_style": "material-icons-two-tone"
         }
       },
       "review-slider": {
@@ -443,7 +427,7 @@
               "menu_4_link": "",
               "image_bottom": "shopify:\/\/shop_images\/Sport_200w.png",
               "image_caption_bottom": "Sport",
-              "image_link_bottom": "shopify:\/\/products\/sport",
+              "image_link_bottom": "shopify:\/\/products\/sport-pro-pack",
               "richtext_bottom": ""
             }
           },
@@ -498,24 +482,6 @@
         ],
         "settings": {
           "parent": "Ovens"
-        }
-      },
-      "1591125289344": {
-        "type": "components-banner",
-        "disabled": true,
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Exterior_v2.jpg",
-          "overline": "Coming Fall 2020",
-          "title": "Living off-grid has never been easier.",
-          "subtitle": "<p>Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.<\/p>",
-          "button1": "Learn more ➞",
-          "button1_link": "https:\/\/gosun.co\/pages\/dream-tiny-house",
-          "hero_external": false,
-          "show_pattern": false,
-          "dark_theme": true,
-          "background_color": "jungle",
-          "text_color": "light",
-          "banner_columns": "2"
         }
       },
       "mega-menu-2": {
@@ -739,19 +705,6 @@
           "rv_max_display": 4,
           "rv_per": 4,
           "toggle": false
-        }
-      },
-      "1573064190700": {
-        "type": "featured-text",
-        "disabled": true,
-        "settings": {
-          "image": "",
-          "title": "Perfect for any activity.",
-          "content": "",
-          "button_label": "",
-          "button_link": "",
-          "text_size": "featured_text",
-          "text_alignment": "center"
         }
       },
       "1576887448540": {
@@ -1092,26 +1045,9 @@
           "grid-h-size": 4
         }
       },
-      "1574441846063": {
-        "type": "components-banner",
-        "disabled": true,
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Forest_Chill-Table--03c.jpg",
-          "overline": "Free Gift Offer",
-          "title": "Summer bundle savings are here.",
-          "subtitle": "<p><\/p>\n<p><\/p>",
-          "button1": "Shop Summer Bundles ➞",
-          "button1_link": "shopify:\/\/collections\/todays-deals",
-          "hero_external": false,
-          "show_pattern": false,
-          "dark_theme": false,
-          "background_color": "wood-300",
-          "text_color": "dark",
-          "banner_columns": "2"
-        }
-      },
       "1594926564453": {
         "type": "marquee-logo-list",
+        "disabled": true,
         "blocks": {
           "1594926564453-0": {
             "type": "logo_block",
@@ -1148,10 +1084,10 @@
               "link": ""
             }
           },
-          "1594927385764": {
+          "1596897916701": {
             "type": "logo_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Red_Cross.png",
+              "image": "shopify:\/\/shop_images\/Fortune.png",
               "link": ""
             }
           }
@@ -1162,54 +1098,10 @@
           "1594926564453-2",
           "1594926564453-3",
           "1594927358685",
-          "1594927385764"
+          "1596897916701"
         ],
         "settings": {
           "animation_speed": 0
-        }
-      },
-      "1570137279518": {
-        "type": "social-gallery",
-        "disabled": true,
-        "blocks": {
-          "1570137279518-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Sport_ManOutside.jpg",
-              "link": "https:\/\/www.instagram.com\/p\/BpNDq0FhTos\/"
-            }
-          },
-          "1570137279518-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Grill_FoodTrays.jpg",
-              "link": "https:\/\/www.instagram.com\/p\/Bjvnlh8jOgB\/"
-            }
-          },
-          "1570137279518-2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Generic_KidsCorn.jpg",
-              "link": "https:\/\/www.instagram.com\/p\/B1ZOerHnvEH\/"
-            }
-          },
-          "1570137279518-3": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Generic_JoshuaTree.jpg",
-              "link": "https:\/\/www.instagram.com\/p\/BxSgQ_WHk0U\/"
-            }
-          }
-        },
-        "block_order": [
-          "1570137279518-0",
-          "1570137279518-1",
-          "1570137279518-2",
-          "1570137279518-3"
-        ],
-        "settings": {
-          "grid-h-size": 4,
-          "enable_lightbox": false
         }
       },
       "list-collections-template": {
@@ -1309,39 +1201,6 @@
         "settings": {
         }
       },
-      "1570219731255": {
-        "type": "split-content",
-        "disabled": true,
-        "settings": {
-          "background_color": "grape",
-          "image": "shopify:\/\/shop_images\/Future_Fusion_Food_4c46d996-d355-4b07-b5c3-762713ecb98e.jpg",
-          "title": "Bake. Boil. Roast. Fry.",
-          "subtitle": "<p>No fuel, no flames, just the juiciest and tastiest food you'll ever make, using the sun.<\/p>",
-          "button1": "See recipes",
-          "button1_link": "shopify:\/\/blogs\/recipes",
-          "button1_highlight": false,
-          "button2": "",
-          "button2_link": "",
-          "button2_highlight": false,
-          "text_position": "center",
-          "text_align": "center"
-        }
-      },
-      "1570809095836": {
-        "type": "divider",
-        "disabled": true,
-        "settings": {
-          "divider_spacing": 30,
-          "divider_border": false
-        }
-      },
-      "1564326360879": {
-        "type": "divider",
-        "settings": {
-          "divider_spacing": 30,
-          "divider_border": false
-        }
-      },
       "collection-template": {
         "type": "collection-template",
         "blocks": {
@@ -1393,28 +1252,10 @@
           "wide_display": true,
           "display_first_name": false,
           "display_last_name": false,
-          "newsletter_title": "Become an insider for special deals.",
-          "newsletter_text": "",
+          "newsletter_title": "Take the lead.",
+          "newsletter_text": "<p>Subscribe for tips, tricks, recipes, and special deals.<\/p>",
           "newsletter_section_text_align": "center",
           "image": ""
-        }
-      },
-      "1574466367866": {
-        "type": "components-banner",
-        "disabled": true,
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Christmas_Pico_Banner_2-Columns-2.jpg",
-          "overline": "",
-          "title": "Our gift to you.",
-          "subtitle": "<p>When you buy a Sport, you'll receive a Pico for free.<\/p>",
-          "button1": "Shop Deal",
-          "button1_link": "shopify:\/\/products\/sport-free-gift",
-          "hero_external": false,
-          "show_pattern": true,
-          "dark_theme": true,
-          "background_color": "wood-300",
-          "text_color": "dark",
-          "banner_columns": "2"
         }
       },
       "page-ourstory-template": {
@@ -1541,7 +1382,7 @@
               "menu_4_link": "",
               "image_bottom": "shopify:\/\/shop_images\/SolarPanel30_200w.png",
               "image_caption_bottom": "SolarPanel 30",
-              "image_link_bottom": "shopify:\/\/products\/solarpanel-30-plus",
+              "image_link_bottom": "shopify:\/\/products\/solarpanel-30",
               "richtext_bottom": ""
             }
           },
@@ -1674,6 +1515,107 @@
           "parent": "Water"
         }
       },
+      "1596824502217": {
+        "type": "video-background-hero",
+        "settings": {
+          "dark_theme": true,
+          "autoplay": true,
+          "autoloop": true,
+          "mp4": "https:\/\/cdn.shopify.com\/s\/files\/1\/0789\/1333\/files\/Solar_Table_Instagram_v3--min.mp4?v=1596838245",
+          "mp4_preview": "Blue_Sky.mp4?v=1596830001",
+          "video": "",
+          "image": "",
+          "display_text_over_video": false,
+          "title": "Become independent, healthy & resilient.",
+          "subtitle": "",
+          "caption_background": false,
+          "caption_background_transparency": false,
+          "button1_label": "Play Video",
+          "button1_link": "",
+          "button1_highlight": false,
+          "button2_label": "",
+          "button2_link": "",
+          "button2_highlight": false,
+          "text_position": "center",
+          "text_align": "center"
+        }
+      },
+      "mega-menu-5": {
+        "type": "mega-menu-5",
+        "blocks": {
+          "mega-menu-5-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "shopify:\/\/shop_images\/SolarLamp50_200w.png",
+              "image_caption_bottom": "SolarLamp 50",
+              "image_link_bottom": "shopify:\/\/products\/solarlamp-50",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-5-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/SunKingPro_200w.png",
+              "image_caption_top": "Sun King Pro",
+              "image_link_top": "shopify:\/\/products\/sun-king-pro",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-5-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "shopify:\/\/shop_images\/SolarLight_200w.png",
+              "image_caption_bottom": "SolarLight",
+              "image_link_bottom": "shopify:\/\/products\/solarlight",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-5-0",
+          "mega-menu-5-1",
+          "mega-menu-5-2"
+        ],
+        "settings": {
+          "parent": "Lighting"
+        }
+      },
       "1574447604302": {
         "type": "components-banner",
         "disabled": true,
@@ -1714,9 +1656,10 @@
         "type": "header",
         "settings": {
           "promo_icon": "card_giftcard",
-          "promo_text": "<p><strong>FREE shipping | FREE returns<br><\/strong><\/p>",
+          "promo_text": "Free shipping & returns | Free Snack Box on orders $400+",
           "promo_link": "",
           "promo_external": false,
+          "tagline_text": "Portable power for the people",
           "social_icons_header": false,
           "phone_number": "+1 888.868.6154",
           "top_bar_menu": "top-bar-1",
@@ -1807,17 +1750,18 @@
           "1596745484279"
         ],
         "settings": {
-          "dark_theme": false
+          "dark_theme": false,
+          "hover_effect": "card-v9--subtle"
         }
       },
       "1596226695144": {
         "type": "feature-1",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Forest_Chill-Table--03c.jpg",
-          "overline": "",
-          "title": "Summer bundle savings are here.",
-          "description": "",
-          "button1": "Shop Summer Bundles",
+          "image": "shopify:\/\/shop_images\/Chill_Tent_Angela.jpg",
+          "overline": "National Preparedness Month",
+          "title": "Power when you need it most.",
+          "description": "Shop the new limited edition Prep Kits available in September only.",
+          "button1": "Shop the kits",
           "button1_url": "shopify:\/\/collections\/todays-deals",
           "button2": "",
           "button2_url": "",
@@ -1826,57 +1770,136 @@
           "full_width": true,
           "invert": false,
           "dark_theme": false,
-          "background_color": "wood-300",
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--accent",
           "show_pattern": false
         }
       },
-      "1596824502217": {
-        "type": "video-background-hero",
+      "1598461380754": {
+        "type": "testimonial-slider",
+        "blocks": {
+          "1598461380754-0": {
+            "type": "product",
+            "settings": {
+              "featured_product": "solarpanel-10",
+              "rating": 5,
+              "testimonial": "<p>My favorite thing about these panels is that you can hang them from anywhere. They reliably charged my phone &amp; camera all week under cloudy weather. Looks super cool on the outside of our tent too :)<\/p>",
+              "name": "Skye M"
+            }
+          },
+          "1598461380754-1": {
+            "type": "product",
+            "settings": {
+              "featured_product": "chill",
+              "rating": 5,
+              "testimonial": "<p>I liked my first Chill so much, I got a second one to use as a freezer. This gives me great peace of mind in the event of an extended power outage.<\/p>",
+              "name": "Charlie G"
+            }
+          },
+          "1598461380754-2": {
+            "type": "product",
+            "settings": {
+              "featured_product": "fusion",
+              "rating": 4.5,
+              "testimonial": "<p>The Fusion, by far, is the best product I&rsquo;ve purchased this year. I cooked a hearty stew of mixed vegetables and diced chicken. Needless to say, I was amazed at how well it worked.<\/p>",
+              "name": "William W"
+            }
+          }
+        },
+        "block_order": [
+          "1598461380754-0",
+          "1598461380754-1",
+          "1598461380754-2"
+        ],
         "settings": {
-          "dark_theme": true,
-          "autoplay": true,
-          "autoloop": true,
-          "mp4": "https:\/\/cdn.shopify.com\/s\/files\/1\/0789\/1333\/files\/ProductsSummaryHomepage_notitles_v1--min.mp4?v=1596823489",
-          "mp4_preview": "Blue_Sky.mp4?v=1596830001",
-          "video": "",
-          "image": "",
-          "display_text_over_video": false,
-          "title": "Are you ready to save the world?",
-          "subtitle": "",
-          "caption_background": false,
-          "caption_background_transparency": false,
-          "button1_label": "Play Video",
-          "button1_link": "",
-          "button1_highlight": false,
-          "button2_label": "",
-          "button2_link": "",
-          "button2_highlight": false,
-          "text_position": "center",
-          "text_align": "center"
+          "title": "See why customers love GoSun."
+        }
+      },
+      "1601324457687": {
+        "type": "image-tabs",
+        "blocks": {
+          "1601324457687-2": {
+            "type": "tab",
+            "settings": {
+              "name": "CES",
+              "testimonial": "<p>GoSun won <strong>Climate Change Innovation Award<\/strong> (2019) and <strong>Small Business of the Year Award<\/strong> (2017).<\/p>",
+              "image": "shopify:\/\/shop_images\/CES_Cutout_cbe5255c-b009-48f4-924a-8f76b9da35b8.png",
+              "quote": false
+            }
+          },
+          "1601324457687-0": {
+            "type": "tab",
+            "settings": {
+              "name": "Forbes",
+              "testimonial": "<p>People can now improve their quality of life without requiring the use of fossil fuels or deforestation.<\/p>",
+              "image": "shopify:\/\/shop_images\/Forbes_9df8b2ca-1c20-4fdf-b9c2-e6bef515adc8.png",
+              "quote": true
+            }
+          },
+          "1601324457687-1": {
+            "type": "tab",
+            "settings": {
+              "name": "Discovery Channel",
+              "testimonial": "<p>The GoSun is a stunning, tube-shaped portable oven powerful enough to bake, fry or broil a meal in as little as 10 minutes.<\/p>",
+              "image": "shopify:\/\/shop_images\/Discovery_Channel_-_Logo_2019_1.png",
+              "quote": true
+            }
+          },
+          "1601324707790": {
+            "type": "tab",
+            "settings": {
+              "name": "Top Chef",
+              "testimonial": "<p>Jos&eacute; Andr&eacute;s challenges contestants to cook with GoSun solar-powered stoves.<\/p>",
+              "image": "shopify:\/\/shop_images\/Top-Chef.png",
+              "quote": false
+            }
+          },
+          "1601324683693": {
+            "type": "tab",
+            "settings": {
+              "name": "Tech Crunch",
+              "testimonial": "<p>Fire is for prehistoric man. The modern man uses the sustainable and renewable energy to cook meats and veggies &ndash; like the GoSun Stove .<\/p>",
+              "image": "shopify:\/\/shop_images\/Tech_Crunch_5874e5c2-0199-4850-b73c-487d4728b7b2.png",
+              "quote": true
+            }
+          },
+          "1601324618148": {
+            "type": "tab",
+            "settings": {
+              "name": "National Geographic",
+              "testimonial": "<p>\"For simmering our sauces, we used GoSun Stoves, which are smaller and more compact but still have incredible power.\" - Jos&eacute; Andr&eacute;s<\/p>",
+              "image": "shopify:\/\/shop_images\/Nat_Geo_4ac47710-e6d5-4302-81c7-70ceb34120bb.png",
+              "quote": true
+            }
+          }
+        },
+        "block_order": [
+          "1601324457687-2",
+          "1601324457687-0",
+          "1601324457687-1",
+          "1601324707790",
+          "1601324683693",
+          "1601324618148"
+        ],
+        "settings": {
+          "title": "In the press"
         }
       }
     },
     "content_for_index": [
-      "1574441846063",
       "1596226695144",
       "1595533879839",
       "1576887448540",
       "1576887130693",
-      "1574447604302",
-      "1570219731255",
-      "1573064190700",
-      "1573056412858",
-      "1591125289344",
       "1596230707797",
-      "1570809095836",
+      "1574447604302",
+      "1601324457687",
       "1594926564453",
-      "1574466367866",
-      "1570142434553",
-      "1570137279518",
-      "1564326360879",
+      "1598461380754",
       "1595519740851",
       "1596824502217",
-      "1562619980179"
+      "1562619980179",
+      "1573056412858"
     ]
   }
 }

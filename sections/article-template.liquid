@@ -245,9 +245,9 @@
     </div>
 
     {% if section.settings.blog_additional_posts and blog.articles_count > 1 %}
+     <hr class="margin-y-lg"/>
       <div class="section clearfix">
-        <hr />
-        <h3>{{ 'blogs.article.additional_articles' | t: title: blog.title }}</h3>
+        <h3 class="margin-bottom-md">{{ 'blogs.article.additional_articles' | t: title: blog.title }}</h3>
 
         {% assign article_found = false %}
         {% for a in blog.articles limit: 4 %}

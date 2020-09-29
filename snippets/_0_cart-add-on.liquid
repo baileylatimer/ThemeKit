@@ -1,0 +1,24 @@
+{% assign found_title = false %}
+{% for item in cart.items %}
+  {% if item.variant.id == 32148796440670 %}
+    {% assign found_title = true %}
+  {% endif %}
+{% endfor %}
+
+{% if cart.subtotal_price > 10000 and found_title == false %}
+<script>
+  $( document ).ready(function() {
+      var variantId = 32148796440670;
+      jQuery.post('/cart/add.js', {
+        quantity: 1,
+        id: variantId
+      });
+      setTimeout( 
+        function() {
+          window.location.reload(true);
+        }, 1000);
+  });
+  
+  console.log('Added item to cart');
+</script>
+{% endif %}

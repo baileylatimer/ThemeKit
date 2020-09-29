@@ -10,7 +10,7 @@
     <div class="dropdown menu">
       <div class="dropdown_content {% if section.blocks < 4 %}dropdown_narrow{% endif %}">
         {% for block in section.blocks %}
-          <div class="dropdown_column" {{ block.shopify_attributes }}>
+        <div class="dropdown_column cursor-pointer" onclick="window.location.href='{{ block.settings.image_link_bottom }}';" {{ block.shopify_attributes }}>
             {% if block.type == 'column' %}
               {% comment %}Richtext{% endcomment %}
               {% if block.settings.richtext_top %}
