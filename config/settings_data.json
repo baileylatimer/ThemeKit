@@ -1472,9 +1472,31 @@
               "image_link_bottom": "",
               "richtext_bottom": ""
             }
+          },
+          "1608228669021": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "shopify:\/\/shop_images\/Brew_Cover--min.png",
+              "image_caption_bottom": "Brew",
+              "image_link_bottom": "shopify:\/\/products\/brew",
+              "richtext_bottom": ""
+            }
           }
         },
         "block_order": [
+          "1608228669021",
           "mega-menu-4-0",
           "mega-menu-4-1",
           "1596834950910"
@@ -1646,7 +1668,7 @@
           "sale_link": true,
           "sale_icon": "card_giftcard",
           "sale_text": "<p>Gifts ➞<\/p>",
-          "sale_url": "shopify:\/\/collections\/todays-deals",
+          "sale_url": "shopify:\/\/pages\/gifts",
           "sale_external": false,
           "main_linklist": "main-menu",
           "main_linklist2": "",

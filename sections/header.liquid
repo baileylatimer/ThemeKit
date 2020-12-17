@@ -148,8 +148,21 @@
           <ul class="main-menu mega-nav__sub-items">
               
               {% include 'mobile-menu' with section.settings.main_linklist %}
+
+                <!-- Sale Link -->
+                {% if section.settings.sale_text != blank %}
+                  <li class="link-sale sublink">
+                    <a class="margin-left-sm flex align-center" href="{{ section.settings.sale_url }}">
+                      <span class="icon" style="padding-bottom: 0;">
+                        <i class="material-icons-outlined"> {{ section.settings.sale_icon }}</i>
+                      </span>
+                      <p class="font-medium"{{ section.settings.sale_text }}</p>
+                    </a>
+                  </li>
+                {% endif %}
+
               {% include 'mobile-menu' with section.settings.main_linklist2 %}
-              <span class="height-md block border-bottom border-2"></span>
+              <!-- <span class="height-md block border-bottom border-2"></span> -->
               {% include 'mobile-menu' with section.settings.top_bar_menu %}
           </ul>
           <!-- Utility Menu -->
@@ -266,10 +279,10 @@
         <!-- Menu / Left -->
         {% capture menu_left %}
 
-            {% include 'menu' with section.settings.main_linklist %}
+          {% include 'menu' with section.settings.main_linklist %}
 
-            <!-- Sale Link -->
-            {% if section.settings.sale_text != blank %}
+          <!-- Sale Link -->
+          {% if section.settings.sale_text != blank %}
             <li class="link-sale sublink">
               <a class="flex align-center" href="{{ section.settings.sale_url }}">
                 <span class="icon" style="padding-bottom: 0;">
