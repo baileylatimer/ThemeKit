@@ -22,7 +22,7 @@
   {% if product.images.size > 1 and image_width != 'full' %}
     <div class="product_gallery_nav product_gallery_nav--left product-{{ product.id }}-gallery-nav">
       {% for media in product.media %}
-        <div class="gallery-cell{% if media.media_type == "external_video" %}{% endif %}" data-title="{{ media.alt | escape }}">
+        <div class="gallery-cell" data-title="{{ media.alt | escape }}">
 
         {% if media.media_type == "external_video" %}
           <div class="play-btn-cell position-absolute">
@@ -36,8 +36,6 @@
             data-image-id="{{ media.id }}"
             data-featured-image="{{featured_image.id}}"
           />
-
-
         </div>
       {% endfor %}
     </div> 

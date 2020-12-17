@@ -4,14 +4,16 @@
         <p> Ships&nbsp;{{ product.metafields.custom_fields["available_month"] }}&nbsp;{{ product.metafields.custom_fields["available_year"] }} | Free shipping & returns</p>
     </div> 
 
-    <div class="alert alert--warning alert--is-visible js-alert margin-y-xs" role="alert">
-        <div class="flex items-center">
-          <i class="icon--sm material-icons-outlined margin-right-xxs">{{ 'value_props.shipping.icon' | t }}</i>
-          <span class="text-sm">
-            {{ 'value_props.backorder.more_info' | t }}
-          </span>
-        </div>
-    </div>
+    {% unless product.title == 'Dream' %}
+      <div class="alert alert--warning alert--is-visible js-alert margin-y-xs" role="alert">
+          <div class="flex items-center">
+            <i class="icon--sm material-icons-outlined margin-right-xxs">{{ 'value_props.shipping.icon' | t }}</i>
+            <span class="text-sm">
+              {{ 'value_props.backorder.more_info' | t }}
+            </span>
+          </div>
+      </div>
+    {% endunless %}
 
 {% elsif collection_handles contains 'retired' %}
     <div class="pill pill--stock color-contrast-medium width-1-2">

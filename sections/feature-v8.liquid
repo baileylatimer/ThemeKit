@@ -1,0 +1,56 @@
+<section class="feature-v8 padding-bottom-xxl">
+  <div class="feature-v8__main-content bg-contrast-lower padding-top-xxl">
+    <div class="container max-width-adaptive-md">
+      <div class="grid gap-sm gap-lg@sm">
+        <div class="text-component col-6@sm">
+          <h1>{{ page.title }}</h1>
+        </div>
+
+        <div class="text-component col-6@sm">
+          <p class="color-contrast-medium">{{ page.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container max-width-adaptive-md">
+    <ul class="feature-v8__sub-content grid gap-lg">
+
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      <li class="col-6@sm">
+
+        <a href="#0" class="card-v8 bg radius-lg">
+          <figure>
+            <img src="{{ block.settings.image }}" alt="{{ block.settings.title }}">
+          </figure>
+
+          <footer class="padding-sm">
+            <p class="text-sm color-contrast-medium margin-bottom-sm">{{ block.settings.overline }}</p>
+            <div class="text-component">
+              <h4><span class="card-v8__title">{{ block.settings.title }}</span></h4>
+            </div>
+          </footer>
+        </a>
+      </li>
+
+{% endfor %}
+{% endif %}
+      <li class="col-6@sm">
+
+        <a href="#0" class="card-v8 bg radius-lg">
+          <figure>
+            <img src="../../../app/assets/img/feature-v8-img-2.jpg" alt="Image description">
+          </figure>
+
+          <footer class="padding-sm">
+            <p class="text-sm color-contrast-medium margin-bottom-sm">Label</p>
+            <div class="text-component">
+              <h4><span class="card-v8__title">Almost before we knew it, we had left the ground.</span></h4>
+            </div>
+          </footer>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

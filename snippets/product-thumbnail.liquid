@@ -32,15 +32,16 @@
 
         
         <div class="article-violator article-violator--top">
-          {% if product.compare_at_price == product.price %}
-            {% if violator != blank %}
-            <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
-            {% endif %}
-          {% else %}
-            {% if settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
+          {% if violator != blank %}
+          <div itemprop="attribute"class="left thumbnail_banner violator violator--{{ product.metafields.custom_fields["violator_tag_type"] }}">{{ product.metafields.custom_fields["violator_tag_text"] }}</div>
+          {% endif %}
+    
+
+
+            {% if violator == blank and settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
               <span class="left thumbnail_banner violator violator--discount">Save ${{ product.compare_at_price_min | minus: product.price_min | money_without_currency }}</span>
             {% endif %}
-          {% endif %}
+  
           <div class="right mr10" onclick="return false">
             {% render 'flits_wishlist_snippet' with 'flits_collection_page_wsl_btn', product:product %}
           </div> 

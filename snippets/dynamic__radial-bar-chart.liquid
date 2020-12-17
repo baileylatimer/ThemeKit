@@ -1,0 +1,45 @@
+<div class="bg radius-md padding-md shadow-xs">
+  <!-- <p class="color-contrast-medium margin-bottom-md">{{ title }}</p> -->
+  {% if overline != blank %}
+  <p class="opacity-70% text-uppercase margin-bottom-xxs">{{ overline }}</p>
+  {% endif %}
+  <h2 class="color-contrast-higher margin-bottom-md">{{ title }}</h2>
+
+  <div class="radial-bar flex flex-column gap-md js-radial-bar" data-radial-bar-animation="on">
+    <div class="flex-shrink-0 flex justify-center">
+      <div class="radial-bar__area js-radial-bar__area" aria-hidden="true">
+        <!-- radial bars are created in JS  -->
+
+        <div class="radial-bar__tooltip is-hidden js-radial-bar__tooltip"></div>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <ul class="grid gap-xs">
+        <li class="flex items-center justify-center col-6">
+          <span class="radial-bar__bullet bg-primary-light margin-right-xxs" aria-hidden="true"></span>
+          <span class="text-md@md font-light"><span class="font-bold js-radial-bar__value" data-radial-bar-color="color-primary-light">{{ value-1 }}</span> at {{ label-1 }}</span>
+        </li>
+        {% if label-2 != blank %}
+        <li class="flex items-center justify-center col-6">
+          <span class="radial-bar__bullet bg-primary margin-right-xxs" aria-hidden="true"></span>
+          <span class="text-md@md font-light"><span class="font-bold js-radial-bar__value" data-radial-bar-color="color-primary">{{ value-2 }}</span> at {{ label-2 }} </span>
+        </li>
+        {% endif %}
+        {% if label-3 != blank %}
+        <li class="flex items-center justify-center col-6">
+          <span class="radial-bar__bullet bg-primary-dark margin-right-xxs" aria-hidden="true"></span>
+          <span class="text-md@md font-light"><span class="font-bold js-radial-bar__value" data-radial-bar-color="color-primary-dark">{{ value-3 }}</span> at {{ label-3 }} </span>
+        </li>
+        {% endif %}
+        {% if label-4 != blank %}
+        <li class="flex items-center justify-center col-6">
+          <span class="radial-bar__bullet bg-primary-darker margin-right-xxs" aria-hidden="true"></span>
+          <span class="text-md@md font-light"><span class="font-bold js-radial-bar__value" data-radial-bar-color="color-primary-darker">{{ value-4 }}</span> at {{ label-4 }} </span>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+<span class="is-hidden">{{ value-2 }}{{ value-3 }}{{ value-4 }}</span>

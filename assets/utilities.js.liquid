@@ -1057,7 +1057,7 @@ var quickShop = {
 
     //Add main gallery
     $('.js-gallery-modal').flickity({
-      "adaptiveHeight": true,
+      "adaptiveHeight": false,
       "wrapAround": "true",
       "cellAlign": "left",
       "draggable": draggable,
@@ -1072,7 +1072,7 @@ var quickShop = {
     {% if settings.quick_shop_thumbnail_position == 'bottom-slider' %}
       //Initialize carousel flickity
       $('.js-gallery-carousel').flickity({
-        "adaptiveHeight": true,
+        "adaptiveHeight": false,
         "cellAlign": 'center',
         "draggable": false,
         "contain": true,

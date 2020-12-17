@@ -201,7 +201,7 @@
     "facebook_link": "https:\/\/www.facebook.com\/gosun.co\/",
     "youtube_link": "https:\/\/www.youtube.com\/user\/sunwindworker",
     "vimeo_link": "",
-    "pinterest_link": "",
+    "pinterest_link": "https:\/\/www.pinterest.com\/gosun\/_created\/",
     "tumblr_link": "",
     "instagram_link": "https:\/\/www.instagram.com\/gosun\/",
     "snapchat_link": "",
@@ -316,6 +316,7 @@
       },
       "1596230707797": {
         "type": "feature-1",
+        "disabled": true,
         "settings": {
           "image": "shopify:\/\/shop_images\/Exterior_v2.jpg",
           "overline": "Coming Fall 2020",
@@ -427,7 +428,7 @@
               "menu_4_link": "",
               "image_bottom": "shopify:\/\/shop_images\/Sport_200w.png",
               "image_caption_bottom": "Sport",
-              "image_link_bottom": "shopify:\/\/products\/sport-pro-pack",
+              "image_link_bottom": "shopify:\/\/products\/sport",
               "richtext_bottom": ""
             }
           },
@@ -451,34 +452,12 @@
               "image_link_bottom": "shopify:\/\/products\/go",
               "richtext_bottom": ""
             }
-          },
-          "mega-menu-1-4": {
-            "type": "column",
-            "settings": {
-              "richtext_top": "",
-              "image_top": "",
-              "image_caption_top": "",
-              "image_link_top": "",
-              "menu_1": "",
-              "menu_1_link": "",
-              "menu_2": "",
-              "menu_2_link": "",
-              "menu_3": "",
-              "menu_3_link": "",
-              "menu_4": "",
-              "menu_4_link": "",
-              "image_bottom": "shopify:\/\/shop_images\/Sport_ede98579-8a44-48e0-a022-439da06e1b35.jpg",
-              "image_caption_bottom": "Shop All",
-              "image_link_bottom": "shopify:\/\/collections\/all",
-              "richtext_bottom": ""
-            }
           }
         },
         "block_order": [
           "mega-menu-1-0",
           "mega-menu-1-1",
-          "mega-menu-1-2",
-          "mega-menu-1-4"
+          "mega-menu-1-2"
         ],
         "settings": {
           "parent": "Ovens"
@@ -577,6 +556,7 @@
       },
       "1595519740851": {
         "type": "advanced-gallery",
+        "disabled": true,
         "blocks": {
           "1595519740851-0": {
             "type": "image",
@@ -1246,18 +1226,6 @@
           "toggle": false
         }
       },
-      "1562619980179": {
-        "type": "newsletter",
-        "settings": {
-          "wide_display": true,
-          "display_first_name": false,
-          "display_last_name": false,
-          "newsletter_title": "Take the lead.",
-          "newsletter_text": "<p>Subscribe for tips, tricks, recipes, and special deals.<\/p>",
-          "newsletter_section_text_align": "center",
-          "image": ""
-        }
-      },
       "page-ourstory-template": {
         "type": "page-ourstory-template",
         "blocks": {
@@ -1412,8 +1380,8 @@
             "settings": {
               "richtext_top": "",
               "image_top": "shopify:\/\/shop_images\/PowerBank__200w.png",
-              "image_caption_top": "PowerBank+",
-              "image_link_top": "shopify:\/\/products\/powerbank-plus",
+              "image_caption_top": "PowerBank 144",
+              "image_link_top": "shopify:\/\/products\/power-144",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -1568,9 +1536,9 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/SunKingPro_200w.png",
-              "image_caption_top": "Sun King Pro",
-              "image_link_top": "shopify:\/\/products\/sun-king-pro",
+              "image_top": "shopify:\/\/shop_images\/Cover.jpg",
+              "image_caption_top": "SolarLamp 600",
+              "image_link_top": "shopify:\/\/products\/solarlamp-600",
               "menu_1": "",
               "menu_1_link": "",
               "menu_2": "",
@@ -1601,7 +1569,7 @@
               "menu_4": "",
               "menu_4_link": "",
               "image_bottom": "shopify:\/\/shop_images\/SolarLight_200w.png",
-              "image_caption_bottom": "SolarLight",
+              "image_caption_bottom": "SolarFlash",
               "image_link_bottom": "shopify:\/\/products\/solarlight",
               "richtext_bottom": ""
             }
@@ -1655,11 +1623,17 @@
       "header": {
         "type": "header",
         "settings": {
+          "show_sale": false,
+          "featured_product": "flatware",
+          "gift_value": "100",
           "promo_icon": "card_giftcard",
-          "promo_text": "Free shipping & returns | Free Snack Box on orders $400+",
-          "promo_link": "",
+          "promo_text": "Save up to 15% on last second gifts",
+          "promo_text_mobile": "",
+          "countdown_date": "2020-12-18",
+          "countdown_time": "11:59",
+          "promo_link": "shopify:\/\/collections\/todays-deals",
           "promo_external": false,
-          "tagline_text": "Portable power for the people",
+          "tagline_text": "Free shipping & Returns",
           "social_icons_header": false,
           "phone_number": "+1 888.868.6154",
           "top_bar_menu": "top-bar-1",
@@ -1671,7 +1645,7 @@
           "logo_mobile": "shopify:\/\/shop_images\/GoSun_Logo--min_5283e9f9-a223-448f-9428-5bef049b2153.png",
           "sale_link": true,
           "sale_icon": "card_giftcard",
-          "sale_text": "<p>Sale ➞<\/p>",
+          "sale_text": "<p>Gifts ➞<\/p>",
           "sale_url": "shopify:\/\/collections\/todays-deals",
           "sale_external": false,
           "main_linklist": "main-menu",
@@ -1757,11 +1731,11 @@
       "1596226695144": {
         "type": "feature-1",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Chill_Tent_Angela.jpg",
-          "overline": "National Preparedness Month",
-          "title": "Power when you need it most.",
-          "description": "Shop the new limited edition Prep Kits available in September only.",
-          "button1": "Shop the kits",
+          "image": "shopify:\/\/shop_images\/Christmas_Go_Precrop_acace061-d3a2-4d59-8fb7-6a52f144f15b.jpg",
+          "overline": "Tis' the solar season",
+          "title": "Give nature's greatest gift.",
+          "description": "Shop solar gifts before they're gone.",
+          "button1": "Shop Holiday Deals",
           "button1_url": "shopify:\/\/collections\/todays-deals",
           "button2": "",
           "button2_url": "",
@@ -1777,14 +1751,15 @@
       },
       "1598461380754": {
         "type": "testimonial-slider",
+        "disabled": true,
         "blocks": {
-          "1598461380754-0": {
+          "1598461380754-2": {
             "type": "product",
             "settings": {
-              "featured_product": "solarpanel-10",
-              "rating": 5,
-              "testimonial": "<p>My favorite thing about these panels is that you can hang them from anywhere. They reliably charged my phone &amp; camera all week under cloudy weather. Looks super cool on the outside of our tent too :)<\/p>",
-              "name": "Skye M"
+              "featured_product": "fusion",
+              "rating": 4.5,
+              "testimonial": "<p>The Fusion, by far, is the best product I&rsquo;ve purchased this year. I cooked a hearty stew of mixed vegetables and diced chicken. Needless to say, I was amazed at how well it worked.<\/p>",
+              "name": "William W"
             }
           },
           "1598461380754-1": {
@@ -1796,20 +1771,20 @@
               "name": "Charlie G"
             }
           },
-          "1598461380754-2": {
+          "1598461380754-0": {
             "type": "product",
             "settings": {
-              "featured_product": "fusion",
-              "rating": 4.5,
-              "testimonial": "<p>The Fusion, by far, is the best product I&rsquo;ve purchased this year. I cooked a hearty stew of mixed vegetables and diced chicken. Needless to say, I was amazed at how well it worked.<\/p>",
-              "name": "William W"
+              "featured_product": "solarpanel-10",
+              "rating": 5,
+              "testimonial": "<p>My favorite thing about these panels is that you can hang them from anywhere. They reliably charged my phone &amp; camera all week under cloudy weather. Looks super cool on the outside of our tent too :)<\/p>",
+              "name": "Skye M"
             }
           }
         },
         "block_order": [
-          "1598461380754-0",
+          "1598461380754-2",
           "1598461380754-1",
-          "1598461380754-2"
+          "1598461380754-0"
         ],
         "settings": {
           "title": "See why customers love GoSun."
@@ -1884,6 +1859,209 @@
         "settings": {
           "title": "In the press"
         }
+      },
+      "1602281874842": {
+        "type": "social-gallery--v2",
+        "blocks": {
+          "1602281874842-0": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20201003-Brew--023.jpg",
+              "featured_product": "fusion",
+              "rating": 4,
+              "title": "Fast, fun, & delicious.",
+              "description": "I cooked a hearty stew of mixed vegetables & diced chicken.",
+              "handle": "sarah",
+              "activity": "BBQ"
+            }
+          },
+          "1607117291127": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/darcy.jpg",
+              "featured_product": "solar-kitchen",
+              "rating": 5,
+              "title": "My emergency prep kit is complete.",
+              "description": "I stole the show when my friends saw my set up at our beach party.",
+              "handle": "Darcy",
+              "activity": "beach parties"
+            }
+          },
+          "1602281874842-1": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
+              "featured_product": "chill",
+              "rating": 5,
+              "title": "Changed the way we boat.",
+              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
+              "handle": "McKenna",
+              "activity": "boating"
+            }
+          },
+          "1602281874842-2": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20201003-Brew--025.jpg",
+              "featured_product": "flow-pro",
+              "rating": 5,
+              "title": "Much better than hand-sanitizer.",
+              "description": "No more grimy hands. The sink is perfect for dishes too.",
+              "handle": "ruby",
+              "activity": "camping"
+            }
+          },
+          "1602281874842-3": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20200908-P1100017.MP4.00_00_04_11.Still001.jpg",
+              "featured_product": "solarpanel-30",
+              "rating": 4.5,
+              "title": "Peace of mind, anywhere.",
+              "description": "When the grid goes down, I still have all the power I need.",
+              "handle": "thomas",
+              "activity": "emergencies"
+            }
+          },
+          "1607117811837": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Brew_Coffee--03.jpg",
+              "featured_product": "brew",
+              "rating": 1,
+              "title": "My morning hero.",
+              "description": "It's satisfying to enjoy hot, fresh coffee in even the most remote places.",
+              "handle": "Peter",
+              "activity": "off-grid living"
+            }
+          }
+        },
+        "block_order": [
+          "1602281874842-0",
+          "1607117291127",
+          "1602281874842-1",
+          "1602281874842-2",
+          "1602281874842-3",
+          "1607117811837"
+        ],
+        "settings": {
+          "title": "Share your adventures with"
+        }
+      },
+      "1602523575506": {
+        "type": "cta-banner",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Exterior--05_copy_2.jpg",
+          "overline": "Coming 2021",
+          "title": "Living off-grid has never been easier.",
+          "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
+          "button1": "Learn more",
+          "button1_url": "shopify:\/\/pages\/dream-tiny-house",
+          "hero_external": false,
+          "invert": false,
+          "dark_theme": false,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--primary"
+        }
+      },
+      "1607033991340": {
+        "type": "cta-banner",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Website.jpg",
+          "overline": "Gifts of Gratitude",
+          "title": "$10k Product Giveaway",
+          "description": "To give props to those making an impact, GoSun is donating to organizations that you nominate for bringing more sunshine to the world.",
+          "button1": "Learn more",
+          "button1_url": "shopify:\/\/pages\/gratitude",
+          "hero_external": false,
+          "invert": false,
+          "dark_theme": true,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--accent"
+        }
+      },
+      "social-gallery--v2": {
+        "type": "social-gallery--v2",
+        "blocks": {
+          "1607636458462": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20201003-Brew--023.jpg",
+              "featured_product": "fusion-bag",
+              "rating": 1,
+              "title": "Fast, fun, & delicious.",
+              "description": "I cooked a hearty stew of mixed vegetables & diced chicken.",
+              "handle": "Sarah",
+              "activity": "BBQ"
+            }
+          },
+          "1607637028457": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Flatware_AerialWoman.jpg",
+              "featured_product": "flatware",
+              "rating": 5,
+              "title": "I bring it everywhere.",
+              "description": "Instead of wasting plastic, I now use Flatware.",
+              "handle": "Joy",
+              "activity": "lunch at work"
+            }
+          },
+          "1607636658212": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Go_Pour.jpg",
+              "featured_product": "go",
+              "rating": 5,
+              "title": "Small and simple.",
+              "description": "I can boil just about anything. Super convenient.",
+              "handle": "Rob",
+              "activity": "living off-grid"
+            }
+          },
+          "1607636533000": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
+              "featured_product": "chill",
+              "rating": 1,
+              "title": "Changed the way we boat.",
+              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
+              "handle": "Mckenna",
+              "activity": "boating"
+            }
+          }
+        },
+        "block_order": [
+          "1607636458462",
+          "1607637028457",
+          "1607636658212",
+          "1607636533000"
+        ],
+        "settings": {
+          "title": "See why customers love GoSun."
+        }
+      },
+      "feature-1": {
+        "type": "feature-1",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Christmas_Go_Precrop_acace061-d3a2-4d59-8fb7-6a52f144f15b.jpg",
+          "overline": "",
+          "title": "Holiday Gifts",
+          "description": "Whether they like to travel off-grid or relax in the backyard, we've got the perfect gifts for everyone on your list.",
+          "button1": "",
+          "button1_url": "",
+          "button2": "",
+          "button2_url": "",
+          "hero_external": false,
+          "display_text": true,
+          "full_width": true,
+          "invert": false,
+          "dark_theme": false,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--primary",
+          "show_pattern": true
+        }
       }
     },
     "content_for_index": [
@@ -1891,14 +2069,16 @@
       "1595533879839",
       "1576887448540",
       "1576887130693",
-      "1596230707797",
-      "1574447604302",
+      "1602281874842",
+      "1602523575506",
+      "1607033991340",
       "1601324457687",
+      "1596824502217",
+      "1596230707797",
       "1594926564453",
+      "1574447604302",
       "1598461380754",
       "1595519740851",
-      "1596824502217",
-      "1562619980179",
       "1573056412858"
     ]
   }

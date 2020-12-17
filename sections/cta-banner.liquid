@@ -15,6 +15,7 @@
   {% assign dark_theme = block.settings.dark_theme %}
   {% assign show_pattern = block.settings.show_pattern %}
   {% assign background_color = block.settings.background_color %}
+  {% assign btn_type = block.settings.btn_type %}
   {% assign text_color = block.settings.text_color %}
 {% else %}
   {% assign id = section.id %}
@@ -34,45 +35,55 @@
   {% assign dark_theme = section.settings.dark_theme %}
   {% assign show_pattern = section.settings.show_pattern %}
   {% assign background_color = section.settings.background_color %}
+  {% assign btn_type = section.settings.btn_type %}
 
 {% endif %}
 
-<section class="feature-section position-relative z-index-1 {% if full_width != blank %}width-100{% endif %} {{ background_color }} {% if show_pattern %} pattern-map {% endif %}" {% if dark_theme != blank %}data-theme="dark-1"{% endif %} {% if button1_url != blank %} onclick="window.open('{{ button1_url }}', {% if section.settings.hero_external %} '_blank' {% else %} '_self'{% endif %})" {% endif %}>
-  <div class="grid feature-grid">
-    <div class=" flex items-center col-6@md {% if invert != blank %} justify-start@md order-2@md {% else %}justify-end@md{% endif %}">
-      <div class="padding-md padding-x-lg@lg padding-y-xxl@lg max-width-sm feature-content">
-        {% if overline != blank %}
-        <p class="opacity-60% text-uppercase margin-bottom-xxs">{{ overline }}</p>
-        {% endif %}
 
-        <div class="text-component feature-text">
-        {% if title != blank %} <h1 class="{% if display_text != blank %} text-xxxxl@lg {% endif %}"> {{ title }}</h1> {% endif %}
-        {% if description != blank %} <p class="text-md {% if display_text != blank %} text-lg@lg {% endif %}" >{{ description }}</p>{% endif %}
+
+
+<section class="{{ background_color }}  radius-md overflow-hidden padding-component cta-banner" {% if dark_theme != blank %}data-theme="dark-1"{% endif %} {% if button1_url != blank %} onclick="window.open('{{ button1_url }}', {% if section.settings.hero_external %} '_blank' {% else %} '_self'{% endif %})" {% endif %}>
+  <div class="grid gap-md items-center">
+    <div class="col-6@md reveal-fx reveal-fx--translate-left">
+      <div class="padding-left-md@lg">
+        <div class="text-component">
+          {% if overline != blank %}
+          <p class="opacity-70% text-uppercase margin-bottom-xxs">{{ overline }}</p>
+          {% endif %}
+          <h2 class="mt0"> {{ title }}</h2>
+          <p class="text-md">{{ description }}</p>
         </div>
     
-        <div class="{% if description != blank %} margin-top-md {% else %}margin-top-lg{% endif %}">
-          <div class="flex flex-wrap gap-sm items-center feature-btn-group">
-              {% if button1 != blank %}
-                  <a {% if button1_url != blank %}href="{{ button1_url }}"{% endif %} class="btn btn--primary  btn--md">{{ button1 }}&nbsp;➞</a>
-              {% endif %}
-              {% if button2 != blank %}
-                  <a {% if button2_url != blank %}href="#"{% endif %} class="color-inherit">{{ button2 }}&nbsp;➞</a>
-              {% endif %}
+        <div class="margin-top-sm">
+          <div class="flex flex-wrap gap-sm items-center">
+            <a {% if button1_url != blank %}href="{{ button1_url }}"{% endif %} class="btn {% if btn_type != blank %} {{ btn_type }} {% endif %}">{{ button1 }}&nbsp;➞</a>
           </div>
         </div>
       </div>
     </div>
-    <img class="block width-100% object-cover col-6@md feature-image {% if invert != blank %} order-1@md {% endif %}" src="{{ image |  img_url: '600x' }}" alt="{{ alt | escape }}">
+  
+    <div class="col-6@md reveal-fx reveal-fx--translate-right">
+      <figure class="width-100%">
+        <img class="block width-100%" src="{{ image |  img_url: '600x' }}" alt="{{ title }}">
+      </figure>
+    </div>
   </div>
 </section>
+
+
   
   
 {% schema %}
 
 {
-  "name": "Feature 1",
+  "name": "CTA Banner",
+  "class": "container padding-bottom-xl",
   "settings": [
-
+    {
+      "type":      "header",
+      "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+      "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -105,33 +116,11 @@
       "label": "Button 1 URL"
     },
     {
-      "type": "text",
-      "id": "button2",
-      "label": "Button 2 label"
-    },
-    {
-      "type": "url",
-      "id": "button2_url",
-      "label": "Button 2 URL"
-    },
-    {
       "type": "checkbox",
       "id": "hero_external",
       "label": "Open url in new tab",
       "default": false
     },
-    {
-        "type": "checkbox",
-        "id": "display_text",
-        "label": "Hero section",
-        "default": false
-      },
-    {
-        "type": "checkbox",
-        "id": "full_width",
-        "label": "Full width",
-        "default": false
-      },
     {
         "type": "checkbox",
         "id": "invert",
@@ -159,55 +148,45 @@
         },
         {
           "value": "bg-contrast-lower",
-          "label": "Contrast / lower",
-          "group": "Contrast"
+          "label": "Contrast / lower"
         },
         {
           "value": "bg-contrast-low",
-          "label": "Contrast / low",
-          "group": "Contrast"
+          "label": "Contrast / low"
         },
         {
           "value": "bg-contrast-medium",
-          "label": "Contrast / medium",
-          "group": "Contrast"
+          "label": "Contrast / medium"
         },
         {
           "value": "bg-contrast-high",
-          "label": "Contrast / high",
-          "group": "Contrast"
+          "label": "Contrast / high"
         },
         {
           "value": "bg-contrast-higher",
-          "label": "Contrast / higher",
-          "group": "Contrast"
+          "label": "Contrast / higher"
         },
         
 
         {
           "value": "bg-primary-lighter",
-          "label": "Primary / lighter",
-          "group": "Primary"
+          "label": "Primary / lighter"
         },
         {
           "value": "bg-primary-light",
-          "label": "Primary / light",
-          "group": "Primary"
+          "label": "Primary / light"
         },
         {
           "value": "bg-primary",
-          "label": "Primary / medium",
-          "group": "Primary"
+          "label": "Primary / medium"
         },
         {
           "value": "bg-primary-dark",
-          "label": "Primary / dark",
-          "group": "Primary"
+          "label": "Primary / dark"
         },
         {
           "value": "bg-primary-darker",
-          "label": "Primary / darker",
-          "group": "Primary"
+          "label": "Primary / darker"
         },
 
 
@@ -240,43 +219,39 @@
         }
       ]
     },
-    {
+        {
       "type": "select",
       "id": "btn_type",
       "label": "Button type",
       "options": [
         {
           "value": "",
-          "label": "Default",
+          "label": "Default"
         },
         {
           "value": "btn--primary",
-          "label": "Primary",
+          "label": "Primary"
         },
         {
           "value": "btn--accent",
-          "label": "Secondary",
+          "label": "Secondary"
         },
         {
           "value": "btn--subtle",
-          "label": "Subtle",
+          "label": "Subtle"
         }
       ] 
-    },
-    {
-      "type": "checkbox",
-      "id": "show_pattern",
-      "label": "Show pattern",
-      "default": true
-    },
+    }
+    
   ],
   "presets": [
     {
-      "name": "Feature 1",
+      "name": "CTA Banner",
       "category": "Features",
       "settings": {
         "image": "",
         "title": "Living off-grid has never been easier.",
+        "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
         "button1": "Shop now",
         "button1_url": ""
       }

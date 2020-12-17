@@ -108,7 +108,12 @@
 
   <script src="{{ 'jquery.min.js' | asset_url }}"></script>
         
-<!----------- APPS ----------->
+<!----------- APPS 1 ----------->
+<!-- Start of gosun Zendesk Widget script -->
+<script type="text/javascript" id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> </script>
+<!-- End of gosun Zendesk Widget script -->
+
+
   <!-- Bugsnag -->
   <script defer src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
   <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script>
@@ -151,12 +156,13 @@
     {% endif %}
   {%  endunless %}
 
-  {% unless template contains 'index' or 'checkout' %}
-    <!-- Start of gosun Zendesk Widget script -->
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> </script>
-    <!-- End of gosun Zendesk Widget script -->
-  {% endunless %}
-<!----------- End APPS ----------->
+
+
+
+
+
+
+<!----------- End APPS 1 ----------->
     
   <script>
     window.lazySizesConfig = window.lazySizesConfig || {};
@@ -287,10 +293,11 @@
         {{ content_for_layout }}
         </div>
 
-        {% unless template contains 'index' or 'customer' or settings.secondary_newsletter_banner == false %}
+        {% unless template contains 'customer' %}
           {% section 'newsletter' %}
         {% endunless %}
 
+   
         {% section 'footer' %}
 
         {% if settings.size_chart != blank %}
@@ -311,7 +318,7 @@
       
 
     
-      <!----------- APPS ----------->
+      <!----------- APPS 2 ----------->
       {% if template contains 'product' or 'collection'%}
         <!-- Currency Switcher / Accounts -->{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}
       {% endif %}
@@ -320,7 +327,7 @@
         <script>
           window.stamped_disable_font=true
         </script>
-        <!----------- End APPS ----------->
+        <!----------- End APPS 2 ----------->
 
       
     
@@ -347,7 +354,11 @@
       <script src="{{ 'app.js' | asset_url }}"></script>
       <script defer src="{{ 'gosun.js' | asset_url }}"></script>
       <!-- <script defer src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script> -->
-      <!-- <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script>  -->
+      <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script> 
+      <script src="{{ 'vendor-widgets.js' | asset_url }}"></script>
+      <script type="text/javascript">
+
+      </script>
     <!----------- End SCRIPTS ----------->
 
     {% if settings.show_multiple_currencies %}

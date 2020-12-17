@@ -25,7 +25,6 @@
           class="transition--blur-up lazyload {{ settings.image_loading_style }}"
           data-index="{{ forloop.index0 }}"
           data-image-id="{{ media.id }}"
-
           data-sizes="{% if section.settings.enable_product_lightbox %}100vw{% else %}auto{% endif %}"
           data-aspectratio="{{ media.height }}/{{ media.width }}"
           data-src="{{ media | img_url: '600x600'}}"
@@ -42,9 +41,21 @@
       </a>
     {% endif %}
   {% when 'external_video' %}
-    {{ media | external_video_tag: style: "width: 100%", height: "360px" }}
+    <div id="play" class="video-wrapper" data-media-id="{{ media.id }}">
+      <div class="btn-wrap">
+          <div class="play-btn">
+            <div class="play-icon"></div>
+          </div>
+          <div class="play-btn-pulse"></div>
+      </div>
+      <div class='overlay-bottom'><p class="text-bold text-md color-white">See how it works</p></div>
+      <img  id="video-cover" src='{{ product.featured_media | img_url: '600x600' }}' alt="Video title">
+      {{ media | external_video_tag:  id: "player"}}
+    </div>
+    
   {% when 'video' %}
     <div class="product-single__media" data-media-id="{{ media.id }}">
+      
       {{ media | video_tag: controls: false, loop: true, autoplay: true, image_size: "1024x" }}
     </div>
   {% when 'model' %}

@@ -1,0 +1,15 @@
+
+<figure class="bg-media" style="background-image: url( {{ image }} );"> 
+
+  {% unless loop == blank %}
+  <video class="bg-video" src="{{ loop }}" muted autoplay loop playsinline></video>
+  {% endunless %}
+  
+  {% unless text == blank %}
+  <div class="overlay-bottom">
+    <p class="text-bold text-md color-white">{{ text }}</p>
+  </div>
+  {% endunless %}
+  
+</figure>
+ 

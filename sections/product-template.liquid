@@ -9,10 +9,10 @@
 <a name="pagecontent" id="pagecontent"></a><span id="stick-here"></span>
 
 
-
 {% comment %}START / Page {% endcomment %}
 <main class="{{ product.metafields.custom_fields["product_intro_content_color"] }}-0 container main content product-name--{{ product.handle }}">
   
+
 
 {% comment %}START / Breadcrumbs {% endcomment %}
 <nav class="breadcrumbs sixteen columns text-sm" aria-label="Breadcrumbs">
@@ -184,9 +184,11 @@
               {% endif %}
             </p>
 
-            <div class="pill color-contrast-medium margin-bottom-xxs">
-              <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
-            </div>
+            {% unless product.title == 'Dream' %}
+              <div class="pill color-contrast-medium margin-bottom-xxs">
+                <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
+              </div>
+              {% endunless %}
           {% endif %}
 
                   
@@ -226,7 +228,6 @@
     {% comment %}START / Details{% endcomment %}
     <section id="features reveal-fx">
 
-      {{product.metafields.shogun.above}}
 
       {% assign product-intro = product.metafields.custom_fields["product_intro_content_title"] | split: '|' %}
  

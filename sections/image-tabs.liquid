@@ -1,7 +1,7 @@
 
 <section class="has-section-divider-top bg-contrast-lower padding-y-lg">
     <h2 class="text-center">{{ section.settings.title }}</h2>
-    <div class="tabs js-tabs container max-width-adaptive-lg">
+    <div class="tabs js-tabs container">
         <div class="js-tabs__panels">
             {% if section.blocks.size > 0 %}
             {% for block in section.blocks %}
@@ -10,13 +10,13 @@
                   <div class="banner radius-md overflow-hidden">
                       <div class="grid flex-row-reverse@md image-tabs" >
                           <div class="col-6@md overflow-hidden flex justify-center align-center" style="background: var(--{{ block.settings.name | handleize }}) !important;" aria-hidden="true">
-                              <div class="banner__figure width-100% flex align-center" >
+                              <div class="banner__figure width-100% flex align-center justify-center" >
                                   <img class="banner__logo" src="{{ block.settings.image | img_url: '300x' }}"/>
                               </div> 
                           </div>
                   
                           <div class="col-6@md bg-max">
-                            <div class="text-component v-space-md height-100% flex flex-column padding-md padding-lg@md text-md text-xl@md flex align-center">
+                            <div class="text-component v-space-md height-100% padding-md padding-lg@md text-base text-lg@md flex flex-column align-center justify-center">
                               {% if block.settings.quote %}
                               <svg class="display@md margin-bottom-sm" style="scale: 1.3" width="36" height="28" viewBox="0 0 36 28" fill="var(--color-contrast-low)" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.3001 24.8112C17.2001 19.1112 20.7001 9.11118 25.0001 5.31118C28.6001 2.01118 34.6001 -0.688815 35.2001 0.311185C36.1001 1.81118 32.6001 2.81118 29.9001 5.21118C26.6001 8.81118 25.5001 10.4112 30.1001 12.4112C35.0001 14.6112 35.1001 16.8112 35.3001 19.6112C35.6001 26.5112 27.3001 29.7112 22.3001 24.8112Z" fill="var(--color-contrast-low)"/>

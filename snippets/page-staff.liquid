@@ -96,7 +96,7 @@
       {% for i in fc_keys %}
         {% assign index = i | plus: 0 %}
             <article class="article-tile article-tile--md width-1-1 {{ staff_hide_array[index] }}">
-                    <div class="article-a" href="#" target="" itemprop="url">
+                    <div class="article-a" {% if staff_personal_site_array[index] != blank %} onclick="window.open('{{ staff_personal_site_array[index] }}', '_blank'" {% endif %} itemprop="url">
                   
                         <div class="article-media lazyload" style="background-image: url('{{ staff_photo_array[index] }}')" title="{{ alt_text | escape }}">
                         </div>

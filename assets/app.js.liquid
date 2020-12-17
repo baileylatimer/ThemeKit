@@ -494,14 +494,14 @@ $(function() {
         cart_savings_html = "";
       }
 
-      let gift_value = 40000;
+      let gift_value = 10000;
       let cart_total = cart.total_price;
       let gift_value_left = gift_value - cart_total;
 
       if((gift_value_left > 0 ) && (cart.item_count > 0 )) {
-        cart_gift_html = "Free Snack Box on orders $400+ <br><a href='/collections/todays-deals' class='color-success-dark'> Add " + Shopify.formatMoney(gift_value_left, $('body').data('money-format')) + " to claim your free gift ➞</a>";
+        cart_gift_html = "Free Flatware set on orders $100+ <br><a href='/collections/todays-deals' class='color-success-dark'> Add " + Shopify.formatMoney(gift_value_left, $('body').data('money-format')) + " to claim your free gift ➞</a>";
       } else {
-        cart_gift_html = "You've unlocked a free Snack Box! <a href='/products/snack-box' class='margin-left-xxs color-success-dark'>Claim now ➞</a>";
+        cart_gift_html = "You've unlocked a free Flatware set! <br>(Refresh the page if it doesn't appear in your cart)";
       }
     }
 
@@ -583,15 +583,15 @@ $(function() {
                 $('.top_bar .cart_container').addClass('active_link');
               }
 
-              //block scrolling on mobile
-              if ($(window).width() <= 798) {
-                var $cart_container = $(this).parent();
-                if($cart_container.hasClass('active_link')) {
-                  $('body').addClass('blocked-scroll');
-                } else {
-                  $('body').addClass('blocked-scroll');
-                }
-              }
+              // //block scrolling on mobile
+              // if ($(window).width() <= 798) {
+              //   var $cart_container = $(this).parent();
+              //   if($cart_container.hasClass('active_link')) {
+              //     $('body').addClass('blocked-scroll');
+              //   } else {
+              //     $('body').addClass('blocked-scroll');
+              //   }
+              // }
             }
           });
         },

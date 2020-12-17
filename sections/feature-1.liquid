@@ -41,7 +41,7 @@
 
 <section class="feature-section position-relative z-index-1 {% if full_width != blank %}width-100{% endif %} {{ background_color }} {% if show_pattern %} pattern-map {% endif %}" {% if dark_theme != blank %}data-theme="dark-1"{% endif %} {% if button1_url != blank %} onclick="window.open('{{ button1_url }}', {% if section.settings.hero_external %} '_blank' {% else %} '_self'{% endif %})" {% endif %}>
   <div class="grid feature-grid">
-    <div class=" flex items-center col-6@md  reveal-fx {% if invert != blank %} reveal-fx--translate-left justify-start@md order-2@md {% else %} reveal-fx--translate-right justify-end@md{% endif %}">
+    <div class=" flex items-center justify-center col-6@lg reveal-fx {% if invert != blank %} reveal-fx--translate-left  justify-start@lg order-2@lg {% else %} reveal-fx--translate-right justify-end@lg{% endif %}">
       <div class="padding-md padding-x-lg@lg padding-y-xxl@lg max-width-sm feature-content">
         {% if overline != blank %}
         <p class="opacity-70% text-uppercase margin-bottom-xxs">{{ overline }}</p>
@@ -55,7 +55,7 @@
         <div class="{% if description != blank %} margin-top-md {% else %}margin-top-lg{% endif %}">
           <div class="flex flex-wrap gap-sm items-center feature-btn-group">
               {% if button1 != blank %}
-                  <a {% if button1_url != blank %}href="{{ button1_url }}"{% endif %} class="btn  {% if btn_type != blank %} {{ btn_type }} {% endif %} btn--md">{{ button1 }}&nbsp;➞</a>
+                  <a {% if button1_url != blank %}href="{{ button1_url }}"{% endif %} class="btn {% if btn_type != blank %} {{ btn_type }} {% endif %} btn--md">{{ button1 }}&nbsp;➞</a>
               {% endif %}
               {% if button2 != blank %}
                   <a {% if button2_url != blank %}href="#"{% endif %} class="color-inherit">{{ button2 }}&nbsp;➞</a>
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <img class="block width-100% object-cover col-6@md feature-image  reveal-fx {% if invert != blank %} order-1@md  reveal-fx--translate-right {% else %}  reveal-fx--translate-left {% endif %}" src="{{ image |  img_url: '600x' }}" alt="{{ alt | escape }}">
+    <img class="block width-100% object-cover col-6@lg feature-image reveal-fx {% if invert != blank %} order-1@lg  reveal-fx--translate-right {% else %}  reveal-fx--translate-left {% endif %}" src="{{ image |  img_url: '600x' }}" alt="{{ alt | escape }}">
   </div>
 </section>
   

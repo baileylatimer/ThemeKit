@@ -11,8 +11,7 @@ staging:
   password: ${SHOPIFY_API_PASSWORD}
   theme_id: ${STAGING_THEME_ID}
   store: patricksherwin.myshopify.com
-  ignore_files:
-  - config/settings_data.json
+
   
 production:
   password: ${SHOPIFY_API_PASSWORD}

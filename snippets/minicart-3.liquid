@@ -17,36 +17,52 @@
 
     <div class="drawer__body padding-x-md padding-y-sm js-drawer__body  position-relative">
 
-      {% assign found_title = false %}
-      {% for item in cart.items %}
-        {% if item.variant.id == 32148796440670 %}
-          {% assign found_title = true %}
-        {% endif %}
-      {% endfor %}
 
-      {% assign gift_value = 40000 %}
-      {% assign cart_total = cart.total_price %}
-      {% assign gift_value_left = gift_value | minus: cart_total %}
+    <!-- {% if section.settings.show_sale %}
+     {% include '_promo-scripts' %}
+    {% endif %} -->
+<!-- 
+  <script>
 
+(function(){
+
+// when I click on the add to cart button
+$('.add_to_cart').on('click', function(e){
+  var variantId = 31989958508638;
+  console.log('Success')
+  jQuery.getJSON('/cart.js', function(data){
+   var items = data.items;
+   console.log(items);
+   var currentVarId;
+   var quantity;
+   var isProduct = false;
+   items.forEach(function(e,i,a){
+     console.log(e);
+     currentVarId = e.variant_id;
+     
+     if(currentVarId === variantId) {
+       isProduct = true;
+       quantity = e.quantity;
+     }
+   });
    
-      <div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
-        <div class="flex items-center">
-          <i class="icon--sm material-icons-outlined margin-right-xxs">card_giftcard</i>
-          <span class="money js-cart_gift text-sm">
-            {% if gift_value_left > 0 %}
-            Free Snack Box on orders $400+ <br><a href='/collections/todays-deals' class='color-success-dark'>Add {{ gift_value_left | money }}  to unlock your free gift ➞</a>
-            {% else %}
-              You've unlocked a free Snack Box! 
-              {% if found_title == false %}
-                <a href='/products/snack-box' class='margin-left-xxs color-success-dark'>Claim now ➞</a>
-              {% endif %}
-            {% endif %}
-          </span>
-        </div>
-      </div>
-
-
-  
+    if(!isProduct) {
+      jQuery.post('/cart/add.js', {
+        quantity: 1,
+        id: variantId
+      });
+    } else {
+      if(quantity > 1) {
+        jQuery.post('/cart/change.js', {
+          quantity: 1,
+          id: variantId
+    });
+   }
+  }
+ });
+});
+})();
+  </script> -->
 
       <!-- empty content -->
       <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
@@ -94,7 +110,7 @@
               </section>
 
               <section class="flex flex-column align-end justify-between height-100%">
-                <div value="0" class="reset drawer__close-btn dr-cart__remove-btn">
+                <div value="0" class="reset drawer__close-btn dr-cart__remove-btn is-hidden">
                   <i class="icon--sm material-icons-outlined color-contrast-low">delete</i>
                 </div>
                 <summary class="flex flex-column text-right">
@@ -144,4 +160,3 @@
 </div>
 
 {% endunless %}
-

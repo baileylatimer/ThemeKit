@@ -1,0 +1,140 @@
+<h2 class="text-center">{{ section.settings.title }} <a href="https://www.instagram.com/explore/tags/gosun/" target="_blank"><span class="color-gradient-accent">#GoSun</span></a></h2>
+<div class="grid gap-sm padding-top-md">
+{% if section.blocks.size > 0 %}
+{% for block in section.blocks %}
+  {%- assign product = all_products[block.settings.featured_product] -%}
+
+  {%- assign collection_handles = product.collections | map: 'handle' -%}
+  {% if product.empty? %}
+    {%- assign section_onboarding = true -%}
+  {% else %}
+    {%- assign section_onboarding = false -%}
+  {% endif %}
+
+  <a href="{{ product.url }}" class="card-v9 backdrop-blur-20 card-v9--overlay-bg radius-md  {% cycle 'col-8@md', 'col-4@md', 'col-4@md', 'col-8@md' %} product-{{ product.id }} 
+  {% if block.settings.handle != blank %} filter-bottom {% endif %}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} )" alt="{{ alt | escape }}"  itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+
+    {{ block.shopify_attributes }}
+
+    
+
+      <div class="card-v9__content padding-md adv-gallery-v3__img-link reveal-content z-index-3">
+
+        <div class="padding-bottom-xxxl max-width-xxs padding-right-md">
+          <h2 class="margin-bottom-xxs text-md text-lg@lg"><span class="color-gradient-accent">{{ block.settings.title }}</span></h2>
+          <h3 class="color-contrast-higher text-md text-lg@lg" id="card-title-2">{{ block.settings.description }}</h3>
+        </div>
+        
+        <div class="b10 z-index-3">
+          <span class="text-base gallery-caption">
+            <p itemprop="name" class="block color-white text-bold text-md@lg link-fx-5"><span class="color-gradient-accent">Shop&nbsp;{{ product.title }} ➞</span></p>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="padding-x-md b10 z-index-3 hide-content">
+        <span class="text-base gallery-caption">
+          <p itemprop="name" class="block color-white text-bold text-md@lg link-fx-5">{{ block.settings.handle | capitalize }}&nbsp;loves the&nbsp;<span class="color-gradient-accent">{{ product.title }}</span> for {{ block.settings.activity }}</p>
+        </span>
+      </div>
+
+
+  </a>
+{% endfor %}
+{% endif %}
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Social Gallery v2",
+  "class": "container padding-y-xl",
+  "settings": [
+  {
+    "type":      "header",
+    "content":   "Created by [Latimer Design](https:\/\/latimer.me)",
+    "info":      "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "default": "See why customers love GoSun."
+  }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "800 x 800px recommended"
+      },
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "unit": "★",
+          "min": 1,
+          "max": 5,
+          "step": 0.5,
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast, fun, & delicious."
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ut arcu mattis integer laoreet."
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Handle",
+          "info": "@username"
+        },
+        {
+          "type": "text",
+          "id": "activity",
+          "label": "Activity",
+          "info": "camping, boating, etc."
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Social Gallery v2",
+    "category": "Value Props",
+    "blocks": [ 
+      {
+        "type": "product"
+      },
+      {
+        "type": "product"
+      },
+      {
+        "type": "product"
+      },
+      {
+        "type": "product"
+      }
+    ]
+  }]
+}
+{% endschema %}
+ 

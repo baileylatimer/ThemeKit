@@ -1,0 +1,234 @@
+{% assign page_title = section.settings.page_title %}
+{% assign btn_label = section.settings.btn_label %}
+{% assign btn_link = section.settings.btn_link %}
+
+
+
+  <!-- <section class="width-100% flex justify-center align-center">
+    <a href="https://gosun.co" title="GoSun" class="display@md"> 
+     
+    </a>
+  </section> -->
+
+  <div class="container flex justify-between  align-center">
+    <h4 class="margin-right-auto display@md">Dream</h4>
+    <div class="subnav subnav--expanded@sm js-subnav">
+      <button class="reset btn btn--subtle margin-y-sm subnav__control js-subnav__control">
+        <span>Dream</span>
+        <svg class="icon icon--xxs margin-left-xxs" aria-hidden="true" viewBox="0 0 12 12">
+          <polyline points="0.5 3.5 6 9.5 11.5 3.5" fill="none" stroke-width="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        </svg>
+      </button>
+
+      
+
+      <div class="subnav__wrapper js-subnav__wrapper">
+        <nav class="subnav__nav ">
+          <button class="reset subnav__close-btn js-subnav__close-btn js-tab-focus" aria-label="Close navigation">
+            <svg class="icon" viewBox="0 0 16 16">
+              <g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                <line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line>
+                <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
+              </g>
+            </svg>
+          </button>
+
+          <ul class="subnav__list">
+            <li class="subnav__item"><a href="#intro" class="subnav__link js-smooth-scroll" aria-current=page data-duration="300">Intro</a></li>
+            <li class="subnav__item"><a href="#overview" class="subnav__link js-smooth-scroll"  data-duration="300">Overview</a></li>
+            <li class="subnav__item"><a href="#solar-ready" class="subnav__link js-smooth-scroll"  data-duration="300">Solar</a></li>
+            <li class="subnav__item"><a href="#travel-anywhere" class="subnav__link js-smooth-scroll"  data-duration="300">Travel</a></li>
+            <li class="subnav__item"><a href="#cost-efficient" class="subnav__link js-smooth-scroll"  data-duration="300">Cost</a></li>
+            <li class="subnav__item"><a href="#video-tour" class="subnav__link js-smooth-scroll"  data-duration="300">Video Tour</a></li>
+            <li class="subnav__item"><a href="#floor-plan" class="subnav__link js-smooth-scroll"  data-duration="300">Floor Plan</a></li>
+            <li class="subnav__item"><a href="#interior" class="subnav__link js-smooth-scroll"  data-duration="300">Interior</a></li>
+            <li class="subnav__item"><a href="#specs" class="subnav__link js-smooth-scroll"  data-duration="300">Specs</a></li>
+            <li class="subnav__item"><a href="#updates" class="subnav__link js-smooth-scroll"  data-duration="300">Updates</a></li>
+          </ul>
+        </nav>
+      </div> 
+    </div>
+    <div class="position-relative flex justify-end items-center margin-left-auto">
+      <a class="btn btn--accent btn--sm" href="/products/dream-tiny-house" aria-label="Dream Tiny House">
+        Reserve yours
+      </a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+
+{
+  "name": "Sub Navigation",
+  "class": "bg-white shadow-sm sub-nav z-index-header hide-nav js-hide-nav js-hide-nav--sub",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Created by [Latimer Design](https:\/\/latimer.me)",
+      "info": "Need help? [Send an email.](mailto:\/\/bailey@latimer.me)"
+    },
+    {
+      "type": "text",
+      "id": "parent",
+      "label": "Link title",
+      "info": "The mega menu will appear below this parent link"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "text",
+      "id": "btn_link",
+      "label": "Button Link"
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Top content"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext_top",
+          "label": "Text area"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_top",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_caption_top",
+          "label": "Image caption"
+        },
+        {
+          "type": "url",
+          "id": "image_link_top",
+          "label": "Image link"
+        },
+        {
+          "type": "header",
+          "content": "Navigation"
+        },
+        {
+          "type": "link_list",
+          "id": "menu_1",
+          "label": "Menu 1"
+        },
+        {
+          "type": "url",
+          "id": "menu_1_link",
+          "label": "Menu 1 link",
+          "info": "Add a link to the title of the menu."
+        },
+        {
+          "type": "link_list",
+          "id": "menu_2",
+          "label": "Menu 2"
+        },
+        {
+          "type": "url",
+          "id": "menu_2_link",
+          "label": "Menu 2 link",
+          "info": "Add a link to the title of the menu."
+        },
+        {
+          "type": "link_list",
+          "id": "menu_3",
+          "label": "Menu 3"
+        },
+        {
+          "type": "url",
+          "id": "menu_3_link",
+          "label": "Menu 3 link",
+          "info": "Add a link to the title of the menu."
+        },
+        {
+          "type": "link_list",
+          "id": "menu_4",
+          "label": "Menu 4"
+        },
+        {
+          "type": "url",
+          "id": "menu_4_link",
+          "label": "Menu 4 link",
+          "info": "Add a link to the title of the menu."
+        },
+        {
+          "type": "header",
+          "content": "Bottom content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_bottom",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_caption_bottom",
+          "label": "Image caption"
+        },
+        {
+          "type": "url",
+          "id": "image_link_bottom",
+          "label": "Image link"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext_bottom",
+          "label": "Text area"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "column",
+        "settings": {
+          "richtext_top": "<p>Add description, images, menus and links to your mega menu</p>"
+        }
+      },
+      {
+        "type": "column",
+        "settings": {
+          "richtext_top": "<p>A column with no settings can be used as a spacer</p>"
+        }
+      },
+      {
+        "type": "column"
+      },
+      {
+        "type": "column",
+        "settings": {
+          "richtext_top": "<p>Link to your collections, sales and even external links</p>"
+        }
+      },
+      {
+        "type": "column",
+        "settings": {
+          "richtext_top": "<p>Add up to five columns</p>"
+        }
+      }
+    ]
+  }
+}
+
+{% endschema %}
