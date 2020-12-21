@@ -107,7 +107,7 @@
         {% include 'svg' with 'logo' %}
       </a>
       <div class="menu margin-left-auto">
-          <a class="mega-nav__icon-btn info-item" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon icon--cta"><em class="material-icons-outlined">call</em></span></a>
+          <a class="mega-nav__icon-btn info-item" href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}"><span class="icon"><em class="material-icons-outlined">call</em></span></a>
         {% if section.settings.search_enabled %}
           <a href="/search" class="info-item icon-search dropdown_link mega-nav__icon-btn" title="{{ 'general.search.placeholder' | t | escape }}" data-dropdown-rel="search"><span class="icon"><em class="material-icons-outlined">search</em></span></a>
         {% endif %}
@@ -218,7 +218,7 @@
         {% if section.settings.phone_number != blank %}     
         {% if section.settings.phone_position == "right" %}    
         <li class="margin-left-sm info-item info-item--top-bar">
-          <span class="icon icon--cta"><i class="material-icons-outlined">call</i></span>
+          <span class="icon"><i class="material-icons-outlined">call</i></span>
           <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}">{{ section.settings.phone_number }}</a>
         </li>
         {% endif %}

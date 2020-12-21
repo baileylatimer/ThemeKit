@@ -1410,6 +1410,27 @@
       "mega-menu-4": {
         "type": "mega-menu-4",
         "blocks": {
+          "1608228669021": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_bottom": "shopify:\/\/shop_images\/Brew_Cover--min.png",
+              "image_caption_bottom": "Brew",
+              "image_link_bottom": "shopify:\/\/products\/brew",
+              "richtext_bottom": ""
+            }
+          },
           "mega-menu-4-0": {
             "type": "column",
             "settings": {
@@ -1472,27 +1493,6 @@
               "image_link_bottom": "",
               "richtext_bottom": ""
             }
-          },
-          "1608228669021": {
-            "type": "column",
-            "settings": {
-              "richtext_top": "",
-              "image_top": "",
-              "image_caption_top": "",
-              "image_link_top": "",
-              "menu_1": "",
-              "menu_1_link": "",
-              "menu_2": "",
-              "menu_2_link": "",
-              "menu_3": "",
-              "menu_3_link": "",
-              "menu_4": "",
-              "menu_4_link": "",
-              "image_bottom": "shopify:\/\/shop_images\/Brew_Cover--min.png",
-              "image_caption_bottom": "Brew",
-              "image_link_bottom": "shopify:\/\/products\/brew",
-              "richtext_bottom": ""
-            }
           }
         },
         "block_order": [
@@ -1510,11 +1510,11 @@
         "settings": {
           "dark_theme": true,
           "autoplay": true,
-          "autoloop": true,
+          "autoloop": false,
           "mp4": "https:\/\/cdn.shopify.com\/s\/files\/1\/0789\/1333\/files\/Solar_Table_Instagram_v3--min.mp4?v=1596838245",
           "mp4_preview": "Blue_Sky.mp4?v=1596830001",
           "video": "",
-          "image": "",
+          "image": "shopify:\/\/shop_images\/video.jpg",
           "display_text_over_video": false,
           "title": "Become independent, healthy & resilient.",
           "subtitle": "",
@@ -1651,7 +1651,7 @@
           "promo_icon": "card_giftcard",
           "promo_text": "Save up to 15% on last second gifts",
           "promo_text_mobile": "",
-          "countdown_date": "2020-12-18",
+          "countdown_date": "2020-12-22",
           "countdown_time": "11:59",
           "promo_link": "shopify:\/\/collections\/todays-deals",
           "promo_external": false,
@@ -1988,6 +1988,7 @@
       },
       "1607033991340": {
         "type": "cta-banner",
+        "disabled": true,
         "settings": {
           "image": "shopify:\/\/shop_images\/Website.jpg",
           "overline": "Gifts of Gratitude",

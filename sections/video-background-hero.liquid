@@ -70,9 +70,11 @@
       </div>
     </div>
   
-    <div class="hero__video-bg" aria-hidden="true">
-      <img src="{{ image }}" alt="Video Preview">
+    <div class="hero__video-bg" aria-hidden="true" style="background-image: url( {{ section.settings.image |  img_url: '600x' }} ); background-size: cover; background-position: bottom;">
+      <!-- <img src="{{ image }}" alt="Video Preview"> -->
+      {% if autoloop == true %} 
       <video {% if autoplay == true %}autoplay{% endif %} {% if autoloop == true %} loop{% endif %} muted playsInline src="https://cdn.shopify.com/s/files/1/0789/1333/files/{{ mp4_preview }}"></video>
+      {% endif %}
     </div>
   </section>
   
@@ -143,6 +145,7 @@
         "id": "mp4_preview",
         "label": "MP4 preview",
         "options": [
+
           {
             "value": "Earth_Spinning.mp4?v=1596831078",
             "label": "Earth spinning"

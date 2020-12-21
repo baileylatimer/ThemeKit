@@ -901,6 +901,12 @@ a:visited {
 a:hover {
   color: var(--color-contrast-medium); }
 
+.nav a:hover {
+  color: var(--color-link-hover); }
+
+.svg_logo {
+  fill: var(--color-primary) !important; }
+
 .link {
   color: var(--color-link);
   text-decoration: underline; }
