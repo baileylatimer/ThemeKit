@@ -58,7 +58,7 @@ header, nav, section, article, aside, footer {
 
 .template-giftcard,
 .template-giftcard body {
-  background: $colorBody;
+  background: var(--color-primary-lighter);
 
   a {
     text-decoration: none;
@@ -92,9 +92,9 @@ header, nav, section, article, aside, footer {
 }
 
 .giftcard__border {
-  background-color: $colorGiftBorder;
-  border-radius: 4px;
-  border: 1px solid darken($colorGiftBorder, 5%);
+  // background-color: $colorGiftBorder;
+  // border-radius: 4px;
+  // border: 1px solid darken($colorGiftBorder, 5%);
   padding: 1em;
   -webkit-animation: container-slide 0.8s ease-in-out;
   animation: container-slide 0.8s ease-in-out
@@ -104,8 +104,8 @@ header, nav, section, article, aside, footer {
   @include clearfix;
   background-color: #fff;
   color: $colorGiftText;
-  border: 1px solid darken($colorGiftBorder, 5%);
-  border-radius: 3px;
+  // border: 1px solid darken($colorGiftBorder, 5%);
+  // border-radius: 3px;
   -webkit-animation: cardslide 0.8s ease-in-out;
   animation: cardslide 0.8s ease-in-out;
 }
@@ -181,7 +181,7 @@ header, nav, section, article, aside, footer {
 
 .giftcard__code {
   position: absolute;
-  bottom: $gutter;
+  bottom: 40%;
   text-align: center;
   width: 100%;
   z-index: 50;
@@ -198,7 +198,7 @@ header, nav, section, article, aside, footer {
 .giftcard__code__inner {
   display: inline-block;
   vertical-align: baseline;
-  background-color: #fff;
+  background-color: var(--color-max);
   padding: .5em;
   border-radius: 4px;
   max-width: 450px;
@@ -219,7 +219,7 @@ header, nav, section, article, aside, footer {
   padding: .4em .5em;
   display: inline-block;
   vertical-align: baseline;
-  color: #777;
+  color: var(--color-primary);
   line-height: 1;
 
   .disabled & {
@@ -240,7 +240,7 @@ header, nav, section, article, aside, footer {
 
   strong {
     display: block;
-    text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    // text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
   }
 }
 
