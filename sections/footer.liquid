@@ -4,7 +4,7 @@
 - Uses blocks
 {% endcomment %}
 
-<footer class="footer">
+<footer class="footer padding-top-xl">
   <div class="container footer-menu-wrap">
     {% for block in section.blocks %}
       <div class="{% if forloop.length >= 5 %}one-fifth column{% elsif forloop.length == 4 %}one-fourth column{% elsif forloop.length == 3 %}one-third column{% elsif forloop.length == 2 %}one-half column{% endif %} medium-down--one-whole" {{ block.shopify_attributes }}>
@@ -30,7 +30,7 @@
 
         {% elsif block.type == 'newsletter' %}
 
-        <div class="newsletter_section bg-contrast-low">
+        <div class="newsletter_section bg-primary-lighter">
           {% if block.settings.title != blank %}
             <h6 class="text-dark">{{ block.settings.title }}</h6>
           {% endif %}
@@ -125,14 +125,14 @@
             <h6>Contact<span class="right icon-down-arrow"></span></h6>
             <div class="toggle_content">
               <ul>
-                <li class="info-item color-contrast-medium"><span class="icon icon--cta"> <em class="material-icons-outlined">call</em></span> <a href="tel:+18888686154">+1 888.868.6154</a></li>
+                <li class="flex color-contrast-medium"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">call</em></span> <a href="tel:+18888686154">+1 888.868.6154</a></p></li>
 
-                <li class="info-item color-contrast-medium"><span class="icon icon--cta"> <em class="material-icons-outlined">textsms</em></span><a href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question...">+1 513.547.2426</a></li>
+                <li class="flex color-contrast-medium"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">textsms</em></span><a href="sms://+15135472426;?&amp;body=Hey%20GoSun%20Team!%20I%20have%20a%20question...">+1 513.547.2426</a></p></li>
 
 
-                <li class="info-item color-contrast-medium"><span class="icon icon--cta"> <em class="material-icons-outlined">email</em></span> <a href="mailto:support@gosun.co">support@gosun.co</a></li>
+                <li class="flex color-contrast-medium"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">email</em></span> <a href="mailto:support@gosun.co">support@gosun.co</a></p></li>
 
-                <li><a> Mon-Fri | 9AM-5PM ET </a></li>
+                <li><p><a>Mon-Fri | 9AM-5PM ET </a></p></li>
               </ul>
             </div>
           </div>
@@ -163,15 +163,18 @@
   {% endif %}
 {% endfor %}
 
-    <div class="sixteen columns row footer_credits">
-      <p class="credits">
+    <div class="sixteen columns row footer_credits flex justify-between">
+      <p class="credits"><a>
         &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
         {{ section.settings.copyright_text }}
         {% if section.settings.display_designed_by %}
           {{ 'layout.general.designer_credits_html' | t }}
         {% endif %}
+      </a>
       </p>
-
+      <div class="footer-social-icons">
+        {% include 'social-icons' %}
+      </div>
       {% if section.settings.display_payment_methods %}
         <div class="payment_methods">
           {% for type in shop.enabled_payment_types %}

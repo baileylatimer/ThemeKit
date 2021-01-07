@@ -15291,23 +15291,19 @@ div.stamped-reviews-search-text input.stamped-reviews-search-input {
   margin: 0 auto; }
 
 .footer {
-  margin-bottom: -30px; }
-
-.footer a {
-  text-decoration: none !important; }
-  .footer a:hover {
-    opacity: 0.72 !important; }
-
-.footer p {
-  font-size: var(--text-sm);
-  line-height: 1em !important;
-  margin-top: 0; }
-
-.footer {
   background: var(--bg-footer);
-  border-top: none !important; }
+  border-top: none !important;
+  margin-bottom: -30px; }
+  .footer p {
+    font-size: var(--text-sm);
+    line-height: 1em !important;
+    margin-top: 0; }
   .footer a {
-    color: var(--color-contrast-low) !important; }
+    color: var(--color-white) !important;
+    text-decoration: none !important;
+    font-size: var(--text-md); }
+    .footer a:hover {
+      color: var(--color-primary) !important; }
   @media (max-width: 768px) {
     .footer .footer-menu-wrap h6 {
       border-top: 1px solid var(--color-contrast-high); } }
@@ -15316,11 +15312,8 @@ div.stamped-reviews-search-text input.stamped-reviews-search-input {
   color: var(--color-contrast-medium); }
 
 .footer_credits {
-  border-top: 1px solid var(--color-contrast-medium);
-  margin-top: 70px; }
-  .footer_credits a {
-    font-size: var(--text-sm);
-    color: var(--color-contrast-medium) !important; }
+  border-top: none;
+  margin-top: var(--space-xl); }
 
 .payment_methods,
 .footer-logo {
@@ -16055,6 +16048,13 @@ p.modal_price {
 
 .default-background {
   background-color: var(--color-max) !important; }
+
+.field__input {
+  padding: 0.9285714286em 0.7857142857em; }
+
+.section__title {
+  font-size: var(--text-lg);
+  font-weight: 700; }
 
 /*
 img.logo__image.logo__image--small {
