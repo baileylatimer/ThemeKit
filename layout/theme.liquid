@@ -31,7 +31,7 @@
     <title>
       {% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}
     </title>
-    <link rel="preconnect dns-prefetch" href="https://fonts.shopifycdn.com" />
+    <!-- <link rel="preconnect dns-prefetch" href="https://fonts.shopifycdn.com" /> -->
     <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com" />
     <link rel="preconnect dns-prefetch" href="https://v.shopify.com" />
     <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com" />
@@ -54,10 +54,6 @@
       {% endif %}
 
 
-      {% if settings.theme_switch %}
-        <script defer src="{{ 'theme_switch.js' | asset_url }}"></script>
-      {% endif %}
-
       <!-- Icons -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
     <!----------- End STYLE ----------->
@@ -75,7 +71,7 @@
       <!-- Google Merchant Verification 8.20.19 -->
       <meta name="google-site-verification" content="c-5yt-9GO0k92MBhOsolW8ylHUVkNMvVG_N0rqNQlUY" />  
       
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-958591666"></script><!-- Global site tag (gtag.js) - Google Ads: 958591666 -->
+      <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-958591666"></script>Global site tag (gtag.js) - Google Ads: 958591666 -->
       <!--<script src="https://www.googleoptimize.com/optimize.js?id=GTM-TQBQQR4"></script> Google Optimize (gtag.js) - Google Ads: 958591666 -->
       <script>
         window.dataLayer = window.dataLayer || [];
@@ -93,15 +89,7 @@
         })(window,document,'script','dataLayer','GTM-MGR467V');</script>
       <!-- End Google Tag Manager -->    
 
-      <!-- Global site tag (gtag.js) - Google Ads: 770172284 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-770172284"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-770172284');
-      </script>    
-      -->
+
   <!-- Bing Verification -->	
   <meta name="msvalidate.01" content="C9498BD5F84A663C4AFCC7D08EDF5C4B" />    
   <!----------- End GOOGLE ----------->
@@ -117,8 +105,8 @@
 
 
   <!-- Bugsnag -->
-  <script defer src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
-  <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script>
+  <!-- <script defer src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
+  <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script> -->
 
   <!-- Klaviyo -->
   <script type="text/javascript" async 
@@ -358,9 +346,12 @@
       <!-- <script defer src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script> -->
       <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script> 
       <script src="{{ 'vendor-widgets.js' | asset_url }}"></script>
-      <script type="text/javascript">
-
-      </script>
+      {% if settings.theme_switch %}
+      <script defer src="{{ 'theme_switch.js' | asset_url }}"></script>
+      {% endif %}
+      {% if template contains "product" %} 
+      <script src="{{ 'product-page.js' | asset_url }}"></script>
+      {% endif %}
     <!----------- End SCRIPTS ----------->
 
     {% if settings.show_multiple_currencies %}

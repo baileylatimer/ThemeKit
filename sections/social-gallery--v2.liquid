@@ -12,7 +12,7 @@
   {% endif %}
 
   <a href="{{ product.url }}" class="card-v9 backdrop-blur-20 card-v9--overlay-bg radius-md  {% cycle 'col-8@md', 'col-4@md', 'col-4@md', 'col-8@md' %} product-{{ product.id }} 
-  {% if block.settings.handle != blank %} filter-bottom {% endif %}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '600x' }} )" alt="{{ alt | escape }}"  itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+  {% if block.settings.handle != blank %} filter-bottom {% endif %}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '400x' }} )" alt="{{ alt | escape }}"  itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
 
     {{ block.shopify_attributes }}
 

@@ -473,7 +473,20 @@
   "shopify": {
     "checkout": {
       "general": {
-        "page_title": "Checkout"
+        "page_title": "Checkout",
+        "continue_to_shipping_method": "Continue to delivery"
+      },
+      "customer_account": {
+        "have_an_account_label": "Have a GoSun account?",
+        "sign_in_link_label": "Sign in",
+        "sign_out_link_label": "Sign out"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Stay up to date with exclusive offers and news. Unsubscribe anytime."
+      },
+      "contact": {
+        "contact_method_title": "Hi there. Checkout as a guest.",
+        "shipping_address_title": "Where should we send your order?"
       }
     }
   },

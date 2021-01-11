@@ -64,28 +64,31 @@
       $(".order-summary__section--discount").wrap("<details class='padding-y-lg'></details>");
       $("details").prepend("<summary class='color-success'>Add promo code</summary>");
 
-      valueProp.innerHTML = "<div class='border-left border-contrast-high border-2 width-100\% cart__gift bg-primary-lighter radius-md padding-md inline-flex flex-column items-left margin-y-xl text-center'>" +   
+      valueProp.innerHTML = "<div class='border-left border-primary-light border-2 width-100\% cart__gift bg-primary-lighter radius-md padding-md inline-flex flex-column items-left margin-y-xl'>" +   
         "<h4 class='margin-bottom-sm'> The perks of every order</h4>" +       
-        "<section class='flex'>" +  
-          "<div class='validator-item margin-sm flex flex-column align-center'>" + 
+        "<section class='flex flex-column '>" +  
+          "<div class='validator-item margin-sm flex flex-column align-start'>" + 
             "<span class='icon icon--default'>" +
               "<i class='icon--md material-icons-two-tone'>{{ 'value_props.warranty.icon' | t }}</i>" + 
             "</span>" +
             "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.warranty.title' | t }}</p>" + 
+            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.warranty.description' | t }}</p>" + 
           "</div>" + 
 
-          "<div class='validator-item margin-sm flex flex-column align-center'>" + 
+          "<div class='validator-item margin-sm flex flex-column  align-start'>" + 
             "<span class='icon icon--default'>" +
               "<i class='icon--md material-icons-two-tone'>{{ 'value_props.shipping.icon' | t }}</i>" + 
             "</span>" +
             "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.shipping.title' | t }}</p>" + 
+            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.shipping.description' | t }}</p>" + 
           "</div>" + 
 
-          "<div class='validator-item margin-sm flex flex-column align-center'>" + 
+          "<div class='validator-item margin-sm flex flex-column  align-start'>" + 
             "<span class='icon icon--default'>" +
               "<i class='icon--md material-icons-two-tone'>{{ 'value_props.security.icon' | t }}</i>" + 
             "</span>" +
             "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.security.title' | t }}</p>" + 
+            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.security.description' | t }}</p>" + 
           "</div>" + 
         "</section></div>";
 

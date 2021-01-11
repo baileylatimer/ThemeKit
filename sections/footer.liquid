@@ -163,6 +163,10 @@
   {% endif %}
 {% endfor %}
 
+<div class="footer-social-icons--mobile sixteen columns">
+  {% include 'social-icons' %}
+</div>
+
     <div class="sixteen columns row footer_credits flex justify-between">
       <p class="credits"><a>
         &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.

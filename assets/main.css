@@ -860,7 +860,7 @@ h1,
   font-size: var(--text-xxl, 2.074em); }
   h1::before,
   .text-xxxl::before {
-    content: '';
+    content: "";
     display: block;
     height: 0;
     width: 0;
@@ -9846,18 +9846,19 @@ Descr: Container of information used as teaser for further content exploration
   background-color: var(--color-white);
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: var(--shadow-sm);
   transition: 0.3s;
   width: 100%;
   height: var(--space-xxxxl);
+  transition: 0.3s;
+  box-shadow: var(--shadow-sm);
   transition: 0.3s; }
+  .card-v9:hover {
+    box-shadow: var(--shadow-md); }
   @media (min-width: 992px) {
     .card-v9 {
       height: 300px; } }
-  .card-v9:hover {
-    box-shadow: var(--shadow-md); }
-    .card-v9:hover .hide-content {
-      opacity: 0; }
+  .card-v9:hover .hide-content {
+    opacity: 0; }
   .card-v9--product {
     background-size: contain;
     overflow: hidden;
