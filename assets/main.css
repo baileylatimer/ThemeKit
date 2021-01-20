@@ -14613,7 +14613,7 @@ li[data-value="gender"] {
   border-color: var(--color-contrast-low) !important; }
 
 .reply--official {
-  background: hsla(var(--color-success-h), var(--color-success-s), var(--color-success-l), 0.2) !important;
+  background: hsla(var(--color-success-h), var(--color-success-s), var(--color-success-l), 0.1) !important;
   border-color: var(--color-success) !important; }
   .reply--official span {
     color: var(--color-success-dark) !important; }

@@ -1,11 +1,6 @@
 // ============================================================================
 // Third Party / Stamped.io
 // ============================================================================
-
-
-
-
-
  
  
 function buttonStyle() {
@@ -15,14 +10,13 @@ function buttonStyle() {
 };
 
 function readMorePrep(characterCount) {
-    $('.stamped-review-content-body').addClass('read-more js-read-more');
+    $('.stamped-reviews .stamped-review-content-body').addClass('read-more js-read-more');
     $('.stamped-review-content-body').attr({
         'data-characters': characterCount,
         'data-btn-class':'read-more__btn js-tab-focus'
     });
     console.log('✅ readMorePrep finished');
 };
-
 
     
 function officialReply() {
