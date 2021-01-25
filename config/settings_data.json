@@ -262,6 +262,94 @@
           "image": ""
         }
       },
+      "1602281874842": {
+        "type": "social-gallery--v2",
+        "blocks": {
+          "1602281874842-0": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20201003-Brew--023.jpg",
+              "featured_product": "fusion",
+              "rating": 4,
+              "title": "Fast, fun, & delicious.",
+              "description": "I cooked a hearty stew of mixed vegetables & diced chicken.",
+              "handle": "sarah",
+              "activity": "BBQ"
+            }
+          },
+          "1607117291127": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/darcy.jpg",
+              "featured_product": "solar-kitchen",
+              "rating": 5,
+              "title": "My emergency prep kit is complete.",
+              "description": "I stole the show when my friends saw my set up at our beach party.",
+              "handle": "Darcy",
+              "activity": "beach parties"
+            }
+          },
+          "1602281874842-1": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
+              "featured_product": "chill",
+              "rating": 5,
+              "title": "Changed the way we boat.",
+              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
+              "handle": "McKenna",
+              "activity": "boating"
+            }
+          },
+          "1602281874842-2": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20201003-Brew--025.jpg",
+              "featured_product": "flow-pro",
+              "rating": 5,
+              "title": "Much better than hand-sanitizer.",
+              "description": "No more grimy hands. The sink is perfect for dishes too.",
+              "handle": "ruby",
+              "activity": "camping"
+            }
+          },
+          "1602281874842-3": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20200908-P1100017.MP4.00_00_04_11.Still001.jpg",
+              "featured_product": "solarpanel-30",
+              "rating": 4.5,
+              "title": "Peace of mind, anywhere.",
+              "description": "When the grid goes down, I still have all the power I need.",
+              "handle": "thomas",
+              "activity": "emergencies"
+            }
+          },
+          "1607117811837": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Brew_Coffee--03.jpg",
+              "featured_product": "brew",
+              "rating": 1,
+              "title": "My morning hero.",
+              "description": "It's satisfying to enjoy hot, fresh coffee in even the most remote places.",
+              "handle": "Peter",
+              "activity": "off-grid living"
+            }
+          }
+        },
+        "block_order": [
+          "1602281874842-0",
+          "1607117291127",
+          "1602281874842-1",
+          "1602281874842-2",
+          "1602281874842-3",
+          "1607117811837"
+        ],
+        "settings": {
+          "title": "Share your adventures with"
+        }
+      },
       "footer": {
         "type": "footer",
         "blocks": {
@@ -291,22 +379,13 @@
             "settings": {
               "customer-service": true
             }
-          },
-          "1568672040105": {
-            "type": "logo",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Logo_Light_c457186a-bf76-472b-b6e5-24930f7956ce.png",
-              "text_align": "left",
-              "social_icons_footer": true
-            }
           }
         },
         "block_order": [
           "footer-1",
           "1562619085836",
           "footer-2",
-          "1571766532036",
-          "1568672040105"
+          "1571766532036"
         ],
         "settings": {
           "copyright_text": "All rights reserved.",
@@ -699,6 +778,47 @@
           "text_alignment": "center"
         }
       },
+      "1598461380754": {
+        "type": "testimonial-slider",
+        "disabled": true,
+        "blocks": {
+          "1598461380754-2": {
+            "type": "product",
+            "settings": {
+              "featured_product": "fusion",
+              "rating": 4.5,
+              "testimonial": "<p>The Fusion, by far, is the best product I&rsquo;ve purchased this year. I cooked a hearty stew of mixed vegetables and diced chicken. Needless to say, I was amazed at how well it worked.<\/p>",
+              "name": "William W"
+            }
+          },
+          "1598461380754-1": {
+            "type": "product",
+            "settings": {
+              "featured_product": "chill",
+              "rating": 5,
+              "testimonial": "<p>I liked my first Chill so much, I got a second one to use as a freezer. This gives me great peace of mind in the event of an extended power outage.<\/p>",
+              "name": "Charlie G"
+            }
+          },
+          "1598461380754-0": {
+            "type": "product",
+            "settings": {
+              "featured_product": "solarpanel-10",
+              "rating": 5,
+              "testimonial": "<p>My favorite thing about these panels is that you can hang them from anywhere. They reliably charged my phone &amp; camera all week under cloudy weather. Looks super cool on the outside of our tent too :)<\/p>",
+              "name": "Skye M"
+            }
+          }
+        },
+        "block_order": [
+          "1598461380754-2",
+          "1598461380754-1",
+          "1598461380754-0"
+        ],
+        "settings": {
+          "title": "See why customers love GoSun."
+        }
+      },
       "blog-template": {
         "type": "blog-template",
         "blocks": {
@@ -1084,6 +1204,23 @@
           "animation_speed": 0
         }
       },
+      "1607033991340": {
+        "type": "cta-banner",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Website.jpg",
+          "overline": "Gifts of Gratitude",
+          "title": "$10k Product Giveaway",
+          "description": "To give props to those making an impact, GoSun is donating to organizations that you nominate for bringing more sunshine to the world.",
+          "button1": "Learn more",
+          "button1_url": "shopify:\/\/pages\/gratitude",
+          "hero_external": false,
+          "invert": false,
+          "dark_theme": true,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--accent"
+        }
+      },
       "list-collections-template": {
         "type": "list-collections-template",
         "settings": {
@@ -1179,6 +1316,22 @@
           "1565622988135"
         ],
         "settings": {
+        }
+      },
+      "1602523575506": {
+        "type": "cta-banner",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Exterior--05_copy_2.jpg",
+          "overline": "Coming 2021",
+          "title": "Living off-grid has never been easier.",
+          "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
+          "button1": "Learn more",
+          "button1_url": "shopify:\/\/pages\/dream-tiny-house",
+          "hero_external": false,
+          "invert": false,
+          "dark_theme": false,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--primary"
         }
       },
       "collection-template": {
@@ -1407,6 +1560,77 @@
           "parent": "Chargers"
         }
       },
+      "1601324457687": {
+        "type": "image-tabs",
+        "disabled": true,
+        "blocks": {
+          "1601324457687-2": {
+            "type": "tab",
+            "settings": {
+              "name": "CES",
+              "testimonial": "<p>GoSun won <strong>Climate Change Innovation Award<\/strong> (2019) and <strong>Small Business of the Year Award<\/strong> (2017).<\/p>",
+              "image": "shopify:\/\/shop_images\/CES_Cutout_cbe5255c-b009-48f4-924a-8f76b9da35b8.png",
+              "quote": false
+            }
+          },
+          "1601324457687-0": {
+            "type": "tab",
+            "settings": {
+              "name": "Forbes",
+              "testimonial": "<p>People can now improve their quality of life without requiring the use of fossil fuels or deforestation.<\/p>",
+              "image": "shopify:\/\/shop_images\/Forbes_9df8b2ca-1c20-4fdf-b9c2-e6bef515adc8.png",
+              "quote": true
+            }
+          },
+          "1601324457687-1": {
+            "type": "tab",
+            "settings": {
+              "name": "Discovery Channel",
+              "testimonial": "<p>The GoSun is a stunning, tube-shaped portable oven powerful enough to bake, fry or broil a meal in as little as 10 minutes.<\/p>",
+              "image": "shopify:\/\/shop_images\/Discovery_Channel_-_Logo_2019_1.png",
+              "quote": true
+            }
+          },
+          "1601324707790": {
+            "type": "tab",
+            "settings": {
+              "name": "Top Chef",
+              "testimonial": "<p>Jos&eacute; Andr&eacute;s challenges contestants to cook with GoSun solar-powered stoves.<\/p>",
+              "image": "shopify:\/\/shop_images\/Top-Chef.png",
+              "quote": false
+            }
+          },
+          "1601324683693": {
+            "type": "tab",
+            "settings": {
+              "name": "Tech Crunch",
+              "testimonial": "<p>Fire is for prehistoric man. The modern man uses the sustainable and renewable energy to cook meats and veggies &ndash; like the GoSun Stove .<\/p>",
+              "image": "shopify:\/\/shop_images\/Tech_Crunch_5874e5c2-0199-4850-b73c-487d4728b7b2.png",
+              "quote": true
+            }
+          },
+          "1601324618148": {
+            "type": "tab",
+            "settings": {
+              "name": "National Geographic",
+              "testimonial": "<p>\"For simmering our sauces, we used GoSun Stoves, which are smaller and more compact but still have incredible power.\" - Jos&eacute; Andr&eacute;s<\/p>",
+              "image": "shopify:\/\/shop_images\/Nat_Geo_4ac47710-e6d5-4302-81c7-70ceb34120bb.png",
+              "quote": true
+            }
+          }
+        },
+        "block_order": [
+          "1601324457687-2",
+          "1601324457687-0",
+          "1601324457687-1",
+          "1601324707790",
+          "1601324683693",
+          "1601324618148"
+        ],
+        "settings": {
+          "title": "In the press"
+        }
+      },
       "mega-menu-4": {
         "type": "mega-menu-4",
         "blocks": {
@@ -1507,6 +1731,7 @@
       },
       "1596824502217": {
         "type": "video-background-hero",
+        "disabled": true,
         "settings": {
           "dark_theme": true,
           "autoplay": true,
@@ -1622,6 +1847,27 @@
           "background_color": "tundra",
           "text_color": "light",
           "banner_columns": "2"
+        }
+      },
+      "feature-1": {
+        "type": "feature-1",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Christmas_Go_Precrop_acace061-d3a2-4d59-8fb7-6a52f144f15b.jpg",
+          "overline": "",
+          "title": "Holiday Gifts",
+          "description": "Whether they like to travel off-grid or relax in the backyard, we've got the perfect gifts for everyone on your list.",
+          "button1": "",
+          "button1_url": "",
+          "button2": "",
+          "button2_url": "",
+          "hero_external": false,
+          "display_text": true,
+          "full_width": true,
+          "invert": false,
+          "dark_theme": false,
+          "background_color": "bg-primary-lighter",
+          "btn_type": "btn--primary",
+          "show_pattern": true
         }
       },
       "collection-sub-collections-template": {
@@ -1771,238 +2017,6 @@
           "show_pattern": false
         }
       },
-      "1598461380754": {
-        "type": "testimonial-slider",
-        "disabled": true,
-        "blocks": {
-          "1598461380754-2": {
-            "type": "product",
-            "settings": {
-              "featured_product": "fusion",
-              "rating": 4.5,
-              "testimonial": "<p>The Fusion, by far, is the best product I&rsquo;ve purchased this year. I cooked a hearty stew of mixed vegetables and diced chicken. Needless to say, I was amazed at how well it worked.<\/p>",
-              "name": "William W"
-            }
-          },
-          "1598461380754-1": {
-            "type": "product",
-            "settings": {
-              "featured_product": "chill",
-              "rating": 5,
-              "testimonial": "<p>I liked my first Chill so much, I got a second one to use as a freezer. This gives me great peace of mind in the event of an extended power outage.<\/p>",
-              "name": "Charlie G"
-            }
-          },
-          "1598461380754-0": {
-            "type": "product",
-            "settings": {
-              "featured_product": "solarpanel-10",
-              "rating": 5,
-              "testimonial": "<p>My favorite thing about these panels is that you can hang them from anywhere. They reliably charged my phone &amp; camera all week under cloudy weather. Looks super cool on the outside of our tent too :)<\/p>",
-              "name": "Skye M"
-            }
-          }
-        },
-        "block_order": [
-          "1598461380754-2",
-          "1598461380754-1",
-          "1598461380754-0"
-        ],
-        "settings": {
-          "title": "See why customers love GoSun."
-        }
-      },
-      "1601324457687": {
-        "type": "image-tabs",
-        "blocks": {
-          "1601324457687-2": {
-            "type": "tab",
-            "settings": {
-              "name": "CES",
-              "testimonial": "<p>GoSun won <strong>Climate Change Innovation Award<\/strong> (2019) and <strong>Small Business of the Year Award<\/strong> (2017).<\/p>",
-              "image": "shopify:\/\/shop_images\/CES_Cutout_cbe5255c-b009-48f4-924a-8f76b9da35b8.png",
-              "quote": false
-            }
-          },
-          "1601324457687-0": {
-            "type": "tab",
-            "settings": {
-              "name": "Forbes",
-              "testimonial": "<p>People can now improve their quality of life without requiring the use of fossil fuels or deforestation.<\/p>",
-              "image": "shopify:\/\/shop_images\/Forbes_9df8b2ca-1c20-4fdf-b9c2-e6bef515adc8.png",
-              "quote": true
-            }
-          },
-          "1601324457687-1": {
-            "type": "tab",
-            "settings": {
-              "name": "Discovery Channel",
-              "testimonial": "<p>The GoSun is a stunning, tube-shaped portable oven powerful enough to bake, fry or broil a meal in as little as 10 minutes.<\/p>",
-              "image": "shopify:\/\/shop_images\/Discovery_Channel_-_Logo_2019_1.png",
-              "quote": true
-            }
-          },
-          "1601324707790": {
-            "type": "tab",
-            "settings": {
-              "name": "Top Chef",
-              "testimonial": "<p>Jos&eacute; Andr&eacute;s challenges contestants to cook with GoSun solar-powered stoves.<\/p>",
-              "image": "shopify:\/\/shop_images\/Top-Chef.png",
-              "quote": false
-            }
-          },
-          "1601324683693": {
-            "type": "tab",
-            "settings": {
-              "name": "Tech Crunch",
-              "testimonial": "<p>Fire is for prehistoric man. The modern man uses the sustainable and renewable energy to cook meats and veggies &ndash; like the GoSun Stove .<\/p>",
-              "image": "shopify:\/\/shop_images\/Tech_Crunch_5874e5c2-0199-4850-b73c-487d4728b7b2.png",
-              "quote": true
-            }
-          },
-          "1601324618148": {
-            "type": "tab",
-            "settings": {
-              "name": "National Geographic",
-              "testimonial": "<p>\"For simmering our sauces, we used GoSun Stoves, which are smaller and more compact but still have incredible power.\" - Jos&eacute; Andr&eacute;s<\/p>",
-              "image": "shopify:\/\/shop_images\/Nat_Geo_4ac47710-e6d5-4302-81c7-70ceb34120bb.png",
-              "quote": true
-            }
-          }
-        },
-        "block_order": [
-          "1601324457687-2",
-          "1601324457687-0",
-          "1601324457687-1",
-          "1601324707790",
-          "1601324683693",
-          "1601324618148"
-        ],
-        "settings": {
-          "title": "In the press"
-        }
-      },
-      "1602281874842": {
-        "type": "social-gallery--v2",
-        "blocks": {
-          "1602281874842-0": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20201003-Brew--023.jpg",
-              "featured_product": "fusion",
-              "rating": 4,
-              "title": "Fast, fun, & delicious.",
-              "description": "I cooked a hearty stew of mixed vegetables & diced chicken.",
-              "handle": "sarah",
-              "activity": "BBQ"
-            }
-          },
-          "1607117291127": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/darcy.jpg",
-              "featured_product": "solar-kitchen",
-              "rating": 5,
-              "title": "My emergency prep kit is complete.",
-              "description": "I stole the show when my friends saw my set up at our beach party.",
-              "handle": "Darcy",
-              "activity": "beach parties"
-            }
-          },
-          "1602281874842-1": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
-              "featured_product": "chill",
-              "rating": 5,
-              "title": "Changed the way we boat.",
-              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
-              "handle": "McKenna",
-              "activity": "boating"
-            }
-          },
-          "1602281874842-2": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20201003-Brew--025.jpg",
-              "featured_product": "flow-pro",
-              "rating": 5,
-              "title": "Much better than hand-sanitizer.",
-              "description": "No more grimy hands. The sink is perfect for dishes too.",
-              "handle": "ruby",
-              "activity": "camping"
-            }
-          },
-          "1602281874842-3": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20200908-P1100017.MP4.00_00_04_11.Still001.jpg",
-              "featured_product": "solarpanel-30",
-              "rating": 4.5,
-              "title": "Peace of mind, anywhere.",
-              "description": "When the grid goes down, I still have all the power I need.",
-              "handle": "thomas",
-              "activity": "emergencies"
-            }
-          },
-          "1607117811837": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Brew_Coffee--03.jpg",
-              "featured_product": "brew",
-              "rating": 1,
-              "title": "My morning hero.",
-              "description": "It's satisfying to enjoy hot, fresh coffee in even the most remote places.",
-              "handle": "Peter",
-              "activity": "off-grid living"
-            }
-          }
-        },
-        "block_order": [
-          "1602281874842-0",
-          "1607117291127",
-          "1602281874842-1",
-          "1602281874842-2",
-          "1602281874842-3",
-          "1607117811837"
-        ],
-        "settings": {
-          "title": "Share your adventures with"
-        }
-      },
-      "1602523575506": {
-        "type": "cta-banner",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Exterior--05_copy_2.jpg",
-          "overline": "Coming 2021",
-          "title": "Living off-grid has never been easier.",
-          "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
-          "button1": "Learn more",
-          "button1_url": "shopify:\/\/pages\/dream-tiny-house",
-          "hero_external": false,
-          "invert": false,
-          "dark_theme": false,
-          "background_color": "bg-primary-lighter",
-          "btn_type": "btn--primary"
-        }
-      },
-      "1607033991340": {
-        "type": "cta-banner",
-        "disabled": true,
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Website.jpg",
-          "overline": "Gifts of Gratitude",
-          "title": "$10k Product Giveaway",
-          "description": "To give props to those making an impact, GoSun is donating to organizations that you nominate for bringing more sunshine to the world.",
-          "button1": "Learn more",
-          "button1_url": "shopify:\/\/pages\/gratitude",
-          "hero_external": false,
-          "invert": false,
-          "dark_theme": true,
-          "background_color": "bg-primary-lighter",
-          "btn_type": "btn--accent"
-        }
-      },
       "social-gallery--v2": {
         "type": "social-gallery--v2",
         "blocks": {
@@ -2063,27 +2077,6 @@
         ],
         "settings": {
           "title": "See why customers love GoSun."
-        }
-      },
-      "feature-1": {
-        "type": "feature-1",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/Christmas_Go_Precrop_acace061-d3a2-4d59-8fb7-6a52f144f15b.jpg",
-          "overline": "",
-          "title": "Holiday Gifts",
-          "description": "Whether they like to travel off-grid or relax in the backyard, we've got the perfect gifts for everyone on your list.",
-          "button1": "",
-          "button1_url": "",
-          "button2": "",
-          "button2_url": "",
-          "hero_external": false,
-          "display_text": true,
-          "full_width": true,
-          "invert": false,
-          "dark_theme": false,
-          "background_color": "bg-primary-lighter",
-          "btn_type": "btn--primary",
-          "show_pattern": true
         }
       }
     },
