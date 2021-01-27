@@ -11,7 +11,7 @@
                       <div class="grid flex-row-reverse@md image-tabs" >
                           <div class="col-6@md overflow-hidden flex justify-center align-center" style="background: var(--{{ block.settings.name | handleize }}) !important;" aria-hidden="true">
                               <div class="banner__figure width-100% flex align-center justify-center" >
-                                  <img class="banner__logo" src="{{ block.settings.image | img_url: '300x' }}"/>
+                                  <img loading="lazy" class="banner__logo" src="{{ block.settings.image | img_url: '300x' }}"/>
                               </div> 
                           </div>
                   
@@ -43,7 +43,7 @@
             {% if section.blocks.size > 0 %}
             {% for block in section.blocks %}
             <li class="flex align-center"><a href="#{{ block.settings.name | handleize }}" class="tabs__control" aria-selected="true">
-                <img class="marquee-logo" src="{{ block.settings.image | img_url: '150x' }}"/>
+                <img  loading="lazy" class="marquee-logo" src="{{ block.settings.image | img_url: '150x' }}"/>
             </a></li>
             {% endfor %}
             {% endif %}

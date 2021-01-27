@@ -8,19 +8,19 @@
   <div class="marquee-content">
     {% for block in section.blocks %}
       <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
-        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+        <img loading="lazy"  class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
   
     {% unless section.settings.animation_speed == 0 %}
     {% for block in section.blocks %}
       <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
-        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+        <img loading="lazy"  class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
     {% for block in section.blocks %}
       <a href="{{ block.settings.link }}" class="reveal-fx marquee-block padding-left-md">
-        <img class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
+        <img loading="lazy" class="marquee-logo" src="{{ block.settings.image | img_url: '200x' }}"/>
       </a>
     {% endfor %}
     {% endunless %}
