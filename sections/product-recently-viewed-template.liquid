@@ -11,7 +11,7 @@
           </div>
           {% if settings.collection_secondary_image != blank %}
             <div class="image__container" style="max-width: {% if product.images[1] != blank %}{{- product.images[1].width -}}px{% else %}{{- product.featured_image.width -}}px{% endif %}; ">
-              <img src="{% if product.images[1] != blank %}{{ product.images[1] | product_img_url: '800x' }}{% else %}{{ product.featured_image | product_img_url: '800x' }}{% endif %}"
+              <img loading="lazy" src="{% if product.images[1] != blank %}{{ product.images[1] | product_img_url: '200x' }}{% else %}{{ product.featured_image | product_img_url: '800x' }}{% endif %}"
               class="secondary lazyload"
               alt="{{ alt_text | escape }}"
               />

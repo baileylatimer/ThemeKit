@@ -11,7 +11,7 @@
         {% if block.type == 'logo' %}
           <div class="text-align--{{block.settings.text_align}}">
             {% if block.settings.image %}
-              <img  alt="{{ block.settings.image.alt | escape }}"
+              <img loading="lazy"  alt="{{ block.settings.image.alt | escape }}"
                     class="footer-logo lazyload {{ settings.image_loading_style }}"
                     data-sizes="25vw"
                     style="max-width: {{- block.settings.image.width -}}px"

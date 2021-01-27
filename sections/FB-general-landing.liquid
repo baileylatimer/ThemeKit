@@ -33,7 +33,7 @@
 
         <section id="banner-{{block.id}}" class="banner">
           {% if block.settings.image != nil %}
-            <img  src="{{ block.settings.image | img_url: '100x', format: 'pjpg' }}"
+            <img loading="lazy"  src="{{ block.settings.image | img_url: '100x', format: 'pjpg' }}"
                   alt="{{ block.settings.image.alt | escape }}"
                   class="lazyload {{ block.image_loading_style }}"
                   sizes="100vw"
@@ -296,7 +296,7 @@
                 <div class="{% if block.settings.home_page_articles == "2" %}eight columns{% elsif block.settings.home_page_articles == "3" %}one-third column{% else %}four columns{% endif %} article">
                   {% if article.image %}
                     <a href="{{ article.url }}">
-                      <img  src="{{ article.image | img_url: '100x' }}"
+                      <img loading="lazy"  src="{{ article.image | img_url: '100x' }}"
                             class="lazyload {{ settings.image_loading_style }}"
                             alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
                             data-sizes="auto"
@@ -429,7 +429,7 @@
             data-video-mp4="{{ block.settings.mp4 }}"
             data-video-ogv="{{ block.settings.ogv }}">
             {% if block.settings.image %}
-              <img  src="{{ block.settings.image | img_url: '100x', format: 'pjpg' }}"
+              <img loading="lazy"  src="{{ block.settings.image | img_url: '100x', format: 'pjpg' }}"
                     alt="{% if block.settings.image.alt != blank %}{{ block.settings.image.alt | escape }}{% else %}{{ block.settings.title | escape }}{% endif %}"
                     class="lazyload {{ settings.image_loading_style }}"
                     data-play-video
@@ -524,7 +524,7 @@
           <div class="sixteen columns" {{ block.shopify_attributes }} data-block-id="{{block.id}}">
             <div class="one-third column alpha thumbnail center">
               {% if block.settings.product_detail_image_1 %}
-                  <img src="{{ block.settings.product_detail_image_1 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_1.alt }}">
+                  <img loading="lazy" src="{{ block.settings.product_detail_image_1 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_1.alt }}">
                   <h3>{{block.settings.product_detail_image_1_header}}</h3>
                   {{block.settings.product_detail_image_1_cnt}}
               {% else %}
@@ -533,7 +533,7 @@
             </div>
             <div class="one-third column thumbnail center">
               {% if block.settings.product_detail_image_2 %}
-                  <img src="{{ block.settings.product_detail_image_2 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_2.alt }}">
+                  <img loading="lazy" src="{{ block.settings.product_detail_image_2 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_2.alt }}">
                   <h3>{{block.settings.product_detail_image_2_header}}</h3>
                   {{block.settings.product_detail_image_2_cnt}}
               {% else %}
@@ -542,7 +542,7 @@
             </div>
             <div class="one-third column omega thumbnail center">
               {% if block.settings.product_detail_image_3 %}
-                  <img src="{{ block.settings.product_detail_image_3 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_3.alt }}">
+                  <img loading="lazy" src="{{ block.settings.product_detail_image_3 | img_url: '760x' }}" alt="{{ block.settings.product_detail_image_3.alt }}">
                   <h3>{{block.settings.product_detail_image_3_header}}</h3>
                   {{block.settings.product_detail_image_3_cnt}}
               {% else %}
@@ -559,7 +559,7 @@
            <div class="one-third column alpha thumbnail">
               {% if block.settings.page_landing_image_1 %}
                 <a href="{{ block.settings.page_landing_image_1 | img_url: '1520x' }}" class="lightbox" rel="detail-gallery">
-                  <img src="{{ block.settings.page_landing_image_1 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_1.alt }}">
+                  <img loading="lazy" src="{{ block.settings.page_landing_image_1 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_1.alt }}">
                 </a>
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -568,7 +568,7 @@
             <div class="one-third column thumbnail">
               {% if block.settings.page_landing_image_2 %}
                 <a href="{{ block.settings.page_landing_image_2 | img_url: '1520x' }}" class="lightbox" rel="detail-gallery">
-                  <img src="{{ block.settings.page_landing_image_2 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_2.alt }}">
+                  <img loading="lazy" src="{{ block.settings.page_landing_image_2 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_2.alt }}">
                 </a>
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -577,7 +577,7 @@
             <div class="one-third column omega thumbnail">
               {% if block.settings.page_landing_image_3 %}
                 <a href="{{ block.settings.page_landing_image_3 | img_url: '1520x' }}" class="lightbox" rel="detail-gallery">
-                  <img src="{{ block.settings.page_landing_image_3 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_3.alt }}">
+                  <img loading="lazy" src="{{ block.settings.page_landing_image_3 | img_url: '760x' }}" alt="{{ block.settings.page_landing_image_3.alt }}">
                 </a>
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -804,7 +804,7 @@
               <div class="featured-link--wrap">
                 <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} title="{{ block.settings.title }}">
                   {% if block.settings.image %}
-                    <img  src="{{ block.settings.image | img_url: '100x' }}"
+                    <img loading="lazy"  src="{{ block.settings.image | img_url: '100x' }}"
                           alt="{% if block.settings.image.alt != blank %}{{ block.settings.image.alt }}{% else %}{{ block.settings.title | escape }}{% endif %}"
                           class="lazyload full-width-image {{ settings.image_loading_style }}"
                           data-sizes="auto"

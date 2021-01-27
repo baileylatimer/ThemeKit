@@ -43,7 +43,7 @@
     <div class="ajax-collection">
     <div class="relative product_image swap-{{ settings.collection_secondary_image }}">
         <div class="image__container" style="{% if settings.align_height %} max-width: {{ product_set_width }}px; {% else %} max-width: {{- product.featured_image.width -}}px; {% endif %}">
-          <img  src="{{ product.featured_image | product_img_url: '100x' }}"
+          <img loading="lazy"  src="{{ product.featured_image | product_img_url: '100x' }}"
                 alt="{{ alt_text | escape }}"
                 class="lazyload {{ settings.image_loading_style }}"
                 style="{{ align_height_value }} max-width: {{- product.featured_image.width -}}px;"

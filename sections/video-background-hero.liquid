@@ -71,7 +71,7 @@
     </div>
   
     <div class="hero__video-bg" aria-hidden="true" style="background-image: url( {{ section.settings.image |  img_url: '600x' }} ); background-size: cover; background-position: bottom;">
-      <!-- <img src="{{ image }}" alt="Video Preview"> -->
+      <!-- <img loading="lazy" src="{{ image }}" alt="Video Preview"> -->
       {% if autoloop == true %} 
       <video {% if autoplay == true %}autoplay{% endif %} {% if autoloop == true %} loop{% endif %} muted playsInline src="https://cdn.shopify.com/s/files/1/0789/1333/files/{{ mp4_preview }}"></video>
       {% endif %}

@@ -7,7 +7,7 @@
 
 {% if article.image and section.settings.banner_enabled %}
   <header class="banner center page_banner dark-overlay-{{section.settings.image_darken}}">
-    <img  src="{{ article.image | img_url: '100x' }}"
+    <img loading="lazy"  src="{{ article.image | img_url: '100x' }}"
           alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
           data-src="{{ article.image | img_url: '1400x', format: 'pjpg' }}"
           class="lazyload {{ settings.image_loading_style }}"
@@ -100,7 +100,7 @@
         <div class="article_content clearfix">
           {% if article.image and section.settings.banner_enabled == false %}
             <p>
-              <img  src="{{ article.image | img_url: '100x' }}"
+              <img loading="lazy"  src="{{ article.image | img_url: '100x' }}"
                     alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
                     data-src="{{ article.image | img_url: '2048x', format: 'pjpg' }}"
                     class="lazyload {{ settings.image_loading_style }}"
@@ -120,7 +120,7 @@
         <div class="author_share_wrap">
           {% if section.settings.blog_author %}
             <div class="blog_author">
-              <img src="//1.gravatar.com/avatar/{{ article.user.email | md5 }}?s=160&r=G" alt="{{ article.author }}" />
+              <img loading="lazy" src="//1.gravatar.com/avatar/{{ article.user.email | md5 }}?s=160&r=G" alt="{{ article.author }}" />
               <div class="author_bio">
                 <h6>{{ article.author }}</h6>
                 <p>{{ article.user.bio }}</p>
@@ -160,7 +160,7 @@
             {% for comment in article.comments %}
               <div id="comment-{{ comment.id }}" class="comment clearfix">
                 <div class="gravatar two columns alpha center" data-email="{{ comment.email }}">
-                  <img src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=160&r=G" alt="{{ comment.author }}" />
+                  <img loading="lazy" src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=160&r=G" alt="{{ comment.author }}" />
                 </div>
                 <div class="comment-body eight columns omega">
                   <h6>{{ comment.author }}</h6>
@@ -180,7 +180,7 @@
             {% endif %}
             <div id="comment-{{ comment.id }}" class="comment clearfix">
               <div class="gravatar two columns alpha center" data-email="{{ comment.email }}">
-                <img src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=160&r=G" alt="{{ comment.author }}" />
+                <img loading="lazy" src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=160&r=G" alt="{{ comment.author }}" />
               </div>
               <div class="comment-body eight columns omega">
                 <h6>{{ comment.author }}</h6>
@@ -252,7 +252,7 @@
             <div class="four columns {% cycle 'alpha', ' ', 'omega' %} article">
               {% if a.image %}
                 <a href="{{ a.url }}" title="{{ a.title | escape }}">
-                  <img  src="{{ a.image | img_url: '100x' }}"
+                  <img loading="lazy"  src="{{ a.image | img_url: '100x' }}"
                         alt="{% if a.image.alt != blank %}{{ a.image.alt }}{% else %}{{ a.title | escape }}{% endif %}"
                         data-src="{{ a.image | img_url: '1200x', format: 'pjpg' }}"
                         class="lazyload {{ settings.image_loading_style }}"

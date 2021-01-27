@@ -6,7 +6,7 @@
         {% for product_handle in product_refs %}
         {% assign product_ref = all_products[product_handle] %}
         <div class="flex-left width-1-1 align-center"> 
-            <img src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
+            <img loading="lazy" src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
             <p class="body-text--normal"> This product is no longer available. <b> Try the {{ product_ref.title }} instead? </b> </p>
             
         </div>
@@ -24,7 +24,7 @@
         {% assign product_ref = all_products[product_handle] %}
         <div class="flex-left width-1-2 align-center">
             <p class="body-text--normal"> This product is no longer available. <b> Try the {{ product_ref.title }} instead? </b> </p>
-            <img src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
+            <img loading="lazy" src="{{product_ref | img_url: '100x100'}};" alt="{{ product_ref.title }}">
         </div>
         <div class="flex-right  width-1-2 align-center">
             

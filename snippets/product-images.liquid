@@ -29,7 +29,7 @@
             {% include 'svg' with 'play-btn' %}
           </div>
         {% endif %}
-          <img  
+          <img loading="lazy"  
             src="{{ media | img_url: '100x100'}}"
             alt="{{ media.alt }}"
             data-index="{{ forloop.index0 }}"
