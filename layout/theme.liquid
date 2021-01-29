@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#0b225a">
     {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
     
+    {% comment %} Prevent apps from loading on /home {% endcomment %}
     {% if template contains "index" %}   
     <script>
         YETT_BLACKLIST = [
@@ -34,8 +35,11 @@
         /app.123formbuilder.com/,
         ]
     </script>
+
     <script src="//cdn.shopify.com/s/files/1/0062/5318/3045/t/2/assets/yett.js" type="text/javascript"></script>
     {% endif %}
+
+
 
     <title>
       {% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}

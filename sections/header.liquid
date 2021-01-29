@@ -191,7 +191,7 @@
         {% if section.settings.phone_number != blank %}     
           {% if section.settings.phone_position == "left" %}    
           <li class="info-item info-item--top-bar">
-            <span class="icon">
+            <span class="icon icon--cta">
               <i class="material-icons-outlined">call</i>
             </span>
             <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}">{{ section.settings.phone_number }}</a>
@@ -218,7 +218,7 @@
         {% if section.settings.phone_number != blank %}     
         {% if section.settings.phone_position == "right" %}    
         <li class="margin-left-sm info-item info-item--top-bar">
-          <span class="icon"><i class="material-icons-outlined">call</i></span>
+          <span class="icon icon--cta"><i class="material-icons-outlined">call</i></span>
           <a href="tel:+{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '', '' }}">{{ section.settings.phone_number }}</a>
         </li>
         {% endif %}

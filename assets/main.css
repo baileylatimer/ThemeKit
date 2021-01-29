@@ -8404,7 +8404,7 @@ div.section.collection_description {
   width: 100%; }
 
 .overlay-bottom {
-  background: linear-gradient(180deg, rgba(27, 53, 80, 0.65) 13.21%, rgba(27, 53, 80, 0) 46.54%);
+  background: linear-gradient(0deg, rgba(27, 53, 80, 0.65) 13.21%, rgba(27, 53, 80, 0) 46.54%);
   background-blend-mode: multiply;
   position: absolute;
   right: 0px;
@@ -11292,6 +11292,7 @@ Descr: Cards stack effect on vertical scrolling
   height: 100%;
   width: 100%;
   min-height: 250px;
+  position: relative;
   border-radius: var(--radius-md);
   -webkit-border-radius: var(--radius-md);
   -moz-border-radius: var(--radius-md);

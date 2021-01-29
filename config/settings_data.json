@@ -1292,7 +1292,7 @@
             "type": "text",
             "settings": {
               "title": "",
-              "text": "<p>Free Shipping on Orders $49+<\/p>\n<p>1-Year Limited Warranty<\/p>"
+              "text": "<p>Free Shipping on Orders $49+<\/p><p>1-Year Limited Warranty<\/p>"
             }
           },
           "1564500923857": {
@@ -1310,12 +1310,20 @@
               "filter_tags": "Bundles, Accessories,",
               "enable_filter_swatches": false
             }
+          },
+          "437d9970-bc88-4e6f-ac12-d6b0e3448467": {
+            "type": "video_by_coll",
+            "settings": {
+              "coll_video_collectionhandle": "solar-ovens",
+              "coll_video_url": "https:\/\/youtu.be\/UCymoEVKUFY"
+            }
           }
         },
         "block_order": [
           "1564501734189",
           "1564500923857",
-          "1564501898726"
+          "1564501898726",
+          "437d9970-bc88-4e6f-ac12-d6b0e3448467"
         ],
         "settings": {
           "display_collection_title": false,
@@ -1325,6 +1333,8 @@
           "image": "shopify:\/\/shop_images\/RhinegeistRoof_a3e65e33-6c19-41a2-8bbb-f2ffc959c452.png",
           "featured_collection_image": true,
           "image_darken": false,
+          "banner_video_autoplay": false,
+          "banner_video_hidecontrols": true,
           "products_per_row": 3,
           "pagination_limit": 48,
           "toggle": false
