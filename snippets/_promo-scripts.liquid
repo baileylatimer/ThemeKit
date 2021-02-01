@@ -31,9 +31,37 @@
   </div>
 </div>
 
-<script>
-  console.log("{{ variant_id }} before {{ item.variant.id }} {{ product.title }}");
-</script>
+
+
+
+
+{% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
+
+  {% assign variant_id = product.variants.first.id %}
+
+  <script>
+    console.log("{{ variant_id }} before {{ item.variant.id }} {{ product.title }}");
+  </script>
+
+  {% if gift_value_left < 0 and found_title == false %}
+    <script>
+      $( document ).ready(function() {
+        var variantId = {{ variant_id }};
+        jQuery.post('/cart/add.js', {
+          quantity: 1,
+          id: variantId
+        });
+        setTimeout( 
+          function() {
+            window.location.reload(false);
+          }, 1000);
+        });
+      </script>
+{% endif %} 
+{% endunless %}
+
+
+<!-- 
 {% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
 
   {% if gift_value_left < 0 and found_title == false %}
@@ -45,11 +73,11 @@
           quantity: 1,
           id: variantId
         });
-        setTimeout( 
-          function() {
-            window.location.reload(false);
-          }, 1000);
-        });
+        // setTimeout( 
+        //   function() {
+        //     window.location.reload(false);
+        //   }, 1000);
+        // });
     </script>
   {% endif %} 
-{% endunless %}
+{% endunless %} -->

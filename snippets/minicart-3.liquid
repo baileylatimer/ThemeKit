@@ -18,9 +18,9 @@
     <div class="drawer__body padding-x-md padding-y-sm js-drawer__body  position-relative">
 
 
-    <!-- {% if section.settings.show_sale %}
+    {% if section.settings.show_sale %}
      {% include '_promo-scripts' %}
-    {% endif %} -->
+    {% endif %}
 <!-- 
   <script>
 
@@ -126,7 +126,11 @@ $('.add_to_cart').on('click', function(e){
         </ol>
       
       <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0">
+        
+
         <p class="flex justify-between js-cart_subtotal"><span>{{ 'layout.general.subtotal' | t }}</span> <span>{{ cart.total_price | money }}</span></p>
+        
+        <section class="stackable-container"></section>
         <p class="flex justify-between"><span>Shipping</span> <span>Free</span></p>
       </summary>
     </div>
