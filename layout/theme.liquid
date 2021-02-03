@@ -296,6 +296,11 @@
         {{ content_for_layout }}
         </div>
 
+
+
+          {% section 'validator-bar' %}
+
+        
         {% unless template contains 'customer' %}
           {% section 'newsletter' %}
         {% endunless %}

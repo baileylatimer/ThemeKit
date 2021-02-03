@@ -17,6 +17,16 @@
 
     <div class="drawer__body padding-x-md padding-y-sm js-drawer__body  position-relative">
 
+    {% if section.settings.cart_promo != blank %}
+      <div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
+        <div class="flex items-center">
+          <i class="icon--sm material-icons-outlined margin-right-xxs">card_giftcard</i>
+          <span class="money  text-sm">
+              {{ section.settings.cart_promo }}
+          </span>
+        </div>
+      </div>
+    {% endif %}
 
     {% if section.settings.show_sale %}
      {% include '_promo-scripts' %}
@@ -124,13 +134,13 @@ $('.add_to_cart').on('click', function(e){
             </li>
           {% endfor %}
         </ol>
-      
+      <section class="stackable-embed padding-y-sm border-top border-contrast-lower flex-shrink-0"></section>
       <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0">
         
 
         <p class="flex justify-between js-cart_subtotal"><span>{{ 'layout.general.subtotal' | t }}</span> <span>{{ cart.total_price | money }}</span></p>
         
-        <section class="stackable-container"></section>
+        
         <p class="flex justify-between"><span>Shipping</span> <span>Free</span></p>
       </summary>
     </div>

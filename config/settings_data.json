@@ -654,20 +654,20 @@
       "advanced-gallery": {
         "type": "advanced-gallery",
         "blocks": {
-          "1595620842595": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Man_Dog--02.jpg",
-              "link": "",
-              "handle": "jetsetdior"
-            }
-          },
           "1595620794543": {
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/Go_Pour.jpg",
               "link": "",
               "handle": "robjgreenfield"
+            }
+          },
+          "1595620842595": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Man_Dog--02.jpg",
+              "link": "",
+              "handle": "jetsetdior"
             }
           },
           "1595620780600": {
@@ -825,53 +825,14 @@
               "divider_border": false
             }
           },
-          "product-details-template-2": {
-            "type": "image_gallery",
+          "product-details-template-8": {
+            "type": "contact_form",
             "settings": {
-              "detail_image_1": "",
-              "detail_image_2": "",
-              "detail_image_3": ""
-            }
-          },
-          "product-details-template-3": {
-            "type": "divider",
-            "settings": {
-              "divider_spacing": 20,
-              "divider_border": false
-            }
-          },
-          "product-details-template-4": {
-            "type": "image_with_text_overlay",
-            "settings": {
-              "wide_display": true,
-              "image": "",
-              "pretext": "<p>This is<\/p>",
-              "title": "Your Headline",
-              "subtitle": "<p>Customize this section<\/p>",
-              "caption_background": false,
-              "caption_background_transparency": false,
-              "text_position": "left",
-              "text_align": "left",
-              "button1": "Button",
-              "button1_link": "",
-              "button1_highlight": false,
-              "button2": "",
-              "button2_link": "",
-              "button2_highlight": false
-            }
-          },
-          "product-details-template-5": {
-            "type": "image_with_text",
-            "settings": {
-              "layout": false,
-              "frontpage_text_align": "left",
-              "frontpage_image_position": "left",
-              "image": "",
-              "image_crop": "none",
-              "title": "Headline",
-              "text": "<p>Vestibulum fringilla pede sit amet augue. Pellentesque habitant morbi tristique senecrutrum eu, nisl.<\/p>",
-              "link": "",
-              "button_label": "Button"
+              "contact_heading": "Get in touch",
+              "contact_subheading": "Leave a message",
+              "contact_content": "<p>Phasellus viverra nulla ut metus varius laoreet. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros. Etiam imperdiet imperdiet orci.<\/p>",
+              "contact_text_position": "left",
+              "contact_text_alignment": "left"
             }
           },
           "product-details-template-6": {
@@ -908,14 +869,53 @@
               "button2_highlight": false
             }
           },
-          "product-details-template-8": {
-            "type": "contact_form",
+          "product-details-template-4": {
+            "type": "image_with_text_overlay",
             "settings": {
-              "contact_heading": "Get in touch",
-              "contact_subheading": "Leave a message",
-              "contact_content": "<p>Phasellus viverra nulla ut metus varius laoreet. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros. Etiam imperdiet imperdiet orci.<\/p>",
-              "contact_text_position": "left",
-              "contact_text_alignment": "left"
+              "wide_display": true,
+              "image": "",
+              "pretext": "<p>This is<\/p>",
+              "title": "Your Headline",
+              "subtitle": "<p>Customize this section<\/p>",
+              "caption_background": false,
+              "caption_background_transparency": false,
+              "text_position": "left",
+              "text_align": "left",
+              "button1": "Button",
+              "button1_link": "",
+              "button1_highlight": false,
+              "button2": "",
+              "button2_link": "",
+              "button2_highlight": false
+            }
+          },
+          "product-details-template-5": {
+            "type": "image_with_text",
+            "settings": {
+              "layout": false,
+              "frontpage_text_align": "left",
+              "frontpage_image_position": "left",
+              "image": "",
+              "image_crop": "none",
+              "title": "Headline",
+              "text": "<p>Vestibulum fringilla pede sit amet augue. Pellentesque habitant morbi tristique senecrutrum eu, nisl.<\/p>",
+              "link": "",
+              "button_label": "Button"
+            }
+          },
+          "product-details-template-2": {
+            "type": "image_gallery",
+            "settings": {
+              "detail_image_1": "",
+              "detail_image_2": "",
+              "detail_image_3": ""
+            }
+          },
+          "product-details-template-3": {
+            "type": "divider",
+            "settings": {
+              "divider_spacing": 20,
+              "divider_border": false
             }
           }
         },
@@ -998,20 +998,6 @@
               "link": ""
             }
           },
-          "1595874324992": {
-            "type": "logo_block",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Red_Cross.png",
-              "link": ""
-            }
-          },
-          "1595874336362": {
-            "type": "logo_block",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Nat_Geo.png",
-              "link": ""
-            }
-          },
           "1595874343862": {
             "type": "logo_block",
             "settings": {
@@ -1023,6 +1009,20 @@
             "type": "logo_block",
             "settings": {
               "image": "shopify:\/\/shop_images\/Discovery_Channel.png",
+              "link": ""
+            }
+          },
+          "1595874336362": {
+            "type": "logo_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Nat_Geo.png",
+              "link": ""
+            }
+          },
+          "1595874324992": {
+            "type": "logo_block",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Red_Cross.png",
               "link": ""
             }
           },
@@ -1204,6 +1204,18 @@
       "page-innovation-template": {
         "type": "page-innovation-template",
         "blocks": {
+          "1565622960972": {
+            "type": "rich_text_and_image",
+            "settings": {
+              "image": "",
+              "title": "Join the Solar Future",
+              "content": "",
+              "text_size": "featured_text",
+              "text_alignment": "center",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
           "page-innovation-template-0": {
             "type": "image_with_text_overlay",
             "settings": {
@@ -1222,18 +1234,6 @@
               "button2": "",
               "button2_link": "",
               "button2_highlight": false
-            }
-          },
-          "1565622960972": {
-            "type": "rich_text_and_image",
-            "settings": {
-              "image": "",
-              "title": "Join the Solar Future",
-              "content": "",
-              "text_size": "featured_text",
-              "text_alignment": "center",
-              "button_label": "",
-              "button_link": ""
             }
           },
           "1565622897668": {
@@ -1292,7 +1292,7 @@
             "type": "text",
             "settings": {
               "title": "",
-              "text": "<p>Free Shipping on Orders $49+<\/p><p>1-Year Limited Warranty<\/p>"
+              "text": "<p>Free Shipping on Orders $49+<\/p>\n<p>1-Year Limited Warranty<\/p>"
             }
           },
           "1564500923857": {
@@ -1310,20 +1310,12 @@
               "filter_tags": "Bundles, Accessories,",
               "enable_filter_swatches": false
             }
-          },
-          "437d9970-bc88-4e6f-ac12-d6b0e3448467": {
-            "type": "video_by_coll",
-            "settings": {
-              "coll_video_collectionhandle": "solar-ovens",
-              "coll_video_url": "https:\/\/youtu.be\/UCymoEVKUFY"
-            }
           }
         },
         "block_order": [
           "1564501734189",
           "1564500923857",
-          "1564501898726",
-          "437d9970-bc88-4e6f-ac12-d6b0e3448467"
+          "1564501898726"
         ],
         "settings": {
           "display_collection_title": false,
@@ -1333,8 +1325,6 @@
           "image": "shopify:\/\/shop_images\/RhinegeistRoof_a3e65e33-6c19-41a2-8bbb-f2ffc959c452.png",
           "featured_collection_image": true,
           "image_darken": false,
-          "banner_video_autoplay": false,
-          "banner_video_hidecontrols": true,
           "products_per_row": 3,
           "pagination_limit": 48,
           "toggle": false
@@ -1651,7 +1641,7 @@
           "mp4": "https:\/\/cdn.shopify.com\/s\/files\/1\/0789\/1333\/files\/Solar_Table_Instagram_v3--min.mp4?v=1596838245",
           "mp4_preview": "Blue_Sky.mp4?v=1596830001",
           "video": "",
-          "image": "shopify:\/\/shop_images\/video.jpg",
+          "image": "shopify:\/\/shop_images\/video_a766aaaf-a8dc-40c2-9789-2ebd4336030b.jpg",
           "display_text_over_video": false,
           "title": "Become independent, healthy & resilient.",
           "subtitle": "",
@@ -1784,16 +1774,17 @@
         "type": "header",
         "settings": {
           "show_sale": false,
+          "cart_promo": "Free accessory discounts applied at checkout.",
           "featured_product": "flatware",
           "gift_value": "100",
-          "promo_icon": "local_shipping",
-          "promo_text": "Free shipping | Free returns",
+          "promo_icon": "card_giftcard",
+          "promo_text": "FREE accessories all February | Shop deals ➞",
           "promo_text_mobile": "",
           "countdown_date": "",
           "countdown_time": "",
           "promo_link": "shopify:\/\/collections\/todays-deals",
           "promo_external": false,
-          "tagline_text": "Portable Power for the People",
+          "tagline_text": "Free shipping & Returns",
           "social_icons_header": false,
           "phone_number": "+1 888.868.6154",
           "top_bar_menu": "top-bar-1",
@@ -1805,7 +1796,7 @@
           "sale_link": true,
           "sale_icon": "card_giftcard",
           "sale_text": "<p>Sale ➞<\/p>",
-          "sale_url": "shopify:\/\/collections\/best-sellers",
+          "sale_url": "shopify:\/\/collections\/open-box",
           "sale_external": false,
           "main_linklist": "main-menu",
           "main_linklist2": "",
@@ -1890,10 +1881,10 @@
       "1596226695144": {
         "type": "feature-1",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Chill_Fishing_02_9bb8d27a-7935-498f-9cfb-61de0a9710f9.jpg",
-          "overline": "Cook. Cool. Light. Charge. Purify.",
-          "title": "Power when you need it most.",
-          "description": "Ditch the fuel and ice, stock up on solar gear to enjoy the comforts of home anywhere.",
+          "image": "shopify:\/\/shop_images\/Chill_Context.Griffin_Christensen.Big_Beach_1.14.1.jpg",
+          "overline": "Free Feb Deals",
+          "title": "Free accessories all February.",
+          "description": "Get a free accessory with Flatware, Solar Ovens, and Solar Coolers.",
           "button1": "Shop Deals",
           "button1_url": "shopify:\/\/collections\/todays-deals",
           "button2": "",
@@ -1910,6 +1901,18 @@
       "social-gallery--v2": {
         "type": "social-gallery--v2",
         "blocks": {
+          "1607636533000": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
+              "featured_product": "chill",
+              "rating": 1,
+              "title": "Changed the way we boat.",
+              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
+              "handle": "Mckenna",
+              "activity": "boating"
+            }
+          },
           "1607636458462": {
             "type": "product",
             "settings": {
@@ -1944,18 +1947,6 @@
               "description": "I can boil just about anything. Super convenient.",
               "handle": "Rob",
               "activity": "living off-grid"
-            }
-          },
-          "1607636533000": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
-              "featured_product": "chill",
-              "rating": 1,
-              "title": "Changed the way we boat.",
-              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
-              "handle": "Mckenna",
-              "activity": "boating"
             }
           }
         },

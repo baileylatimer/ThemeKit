@@ -13546,6 +13546,11 @@ html:not(.js) .mega-nav--mobile .mega-nav__search {
   box-shadow: none;
   border-top: 1px solid var(--color-contrast-lower); }
 
+.raidPopup h1,
+.raidPopup h2,
+.raidPopup p {
+  color: var(--color-contrast-higher) !important; }
+
 /* Button spacing */
 .purchase-details {
   margin-bottom: var(--space-md); }
