@@ -1,26 +1,38 @@
-{% if type == 'block' %}
-  {% assign title = block.settings.title %}
-  {% assign settingCollection = block.settings.collection %}
-  {% assign collection_style = block.settings.collection_style %}
-  {% assign collection_description = block.settings.collection_description %}
-  {% assign products_per = block.settings.products_per %}
-  {% assign products_limit = block.settings.products_limit %}
-{% else %}
-  {% assign title = section.settings.title %}
-  {% assign settingCollection = section.settings.collection %}
-  {% assign collection_style = section.settings.collection_style %}
-  {% assign collection_description = section.settings.collection_description %}
-  {% assign products_per = section.settings.products_per %}
-  {% assign products_limit = section.settings.products_limit %}
-{% endif %}
+{% liquid
+if type == 'block'
+  assign title = block.settings.title
+  assign settingCollection = block.settings.collection
+  assign collection_style = block.settings.collection_style
+  assign collection_description = block.settings.collection_description
+  assign products_per = block.settings.products_per
+  assign products_limit = block.settings.products_limit
+  assign product_info_description = block.settings.product_description
+  assign product_info_description_words = block.settings.product_description_words
+  assign product_info_reviews = block.settings.product_reviews
+  assign product_info_add_to_cart = block.settings.product_add_to_cart
+else
+  assign title = section.settings.title
+  assign settingCollection = section.settings.collection
+  assign collection_style = section.settings.collection_style
+  assign collection_description = section.settings.collection_description
+  assign products_per = section.settings.products_per
+  assign products_limit = section.settings.products_limit
+  assign product_info_description = section.settings.product_description
+  assign product_info_description_words = section.settings.product_description_words
+  assign product_info_reviews = section.settings.product_reviews
+  assign product_info_add_to_cart = section.settings.product_add_to_cart
+endif
 
-{% if settingCollection == blank %}
-  {%- assign section_onboarding = true -%}
-  {% comment %}assign product length to be selected limit for onboarding{% endcomment %}
-  {% assign products_length = products_limit | plus: 0 %}
-{% else %}
-  {%- assign section_onboarding = false -%}
-{% endif %}
+if settingCollection == blank
+  assign section_onboarding = true
+  comment
+    ## assign product length to be selected limit for onboarding ##
+  endcomment
+  assign products_length = products_limit | plus: 0
+else
+  assign section_onboarding = false
+endif
+-%}
 
 <div class="container featured_products product-{{ collection_style }}">
   <div class="sixteen columns center homepage_content">
@@ -30,7 +42,7 @@
     {% endif %}
     {% if collection_description and collections[settingCollection].description != blank %}
       <div class="section clearfix featured-collection__description">
-        {{ collections[settingCollection].description }}
+        {{ collections[settingCollection].description | strip_html | strip_newlines | escape }}
       </div>
     {% endif %}
   </div>
@@ -79,11 +91,19 @@
     {% assign collection = collections[settingCollection] %}
     {% assign products = collections[settingCollection].products %}
     {% assign products_per_row = products_per %}
+    {% if type == 'block' %}
+    {% assign render_homepage = false %}
     <div class="container featured-collection__products">
       <div class="sixteen columns">
         {% include 'product-loop' %}
       </div>
     </div>
+    {% else %}
+    {% assign render_homepage = true %}
+    <div class="container js-product-slider homepage-product-slider full-width--true {% if per_slide == 2 or per_slide == 4 or per_slide == 6 %}even-num-slides{% endif %} featured-collection__products">
+        {% include 'product-loop' %}
+    </div>
+    {% endif %}
   {% else %}
     {% assign products_per_row = products_per %}
     <div class="container equal-columns--outside-trim">

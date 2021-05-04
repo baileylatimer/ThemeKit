@@ -490,7 +490,7 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 /* #Basic Styles
 ================================================== */
 body {
-  font-family: {{ settings.regular__font.family }}, {{ settings.regular__font.fallback_families }};
+  // font-family: {{ settings.regular__font.family }}, {{ settings.regular__font.fallback_families }};
   font-weight: {{ settings.regular__font.weight }};
   font-style: {{ settings.regular__font.style }};
   font-size: {{ settings.regular_font_size }}px;
@@ -5269,6 +5269,41 @@ div.container.gallery-content {
   }
 }
 
+/* Special styles for Gallery Slideshow */
+.gallery-slideshow-slide {
+  text-align: center;
+  background-color: transparent !important;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+.gallery-cell-heading-div h1 {
+  color: var(--color-contrast-higher) !important;
+}
+.gallery-cell-image-two-per-row-mobile, 
+.gallery-cell-image-three-per-row-mobile {
+  display: inline-block;
+  width: 20%;
+  > span {
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  img {
+    padding: 0.5em;
+  }
+}
+.gallery-cell-image-two-per-row-mobile {
+  @include respond-to('medium-down') {
+    width: 34%;
+  }
+}
+.gallery-cell-image-three-per-row-mobile {
+  @include respond-to('medium-down') {
+    width: 33.333%;
+  }
+}
+
+
 /* #Recently Viewed
 ================================================== */
 
@@ -6958,7 +6993,7 @@ $swatch-label-size: 34px;
   }
   .fancybox-content {
     padding: 0;
-    background-color: white;
+    // background-color: white;
     @include respond-to('small-up') {
       box-shadow: 0px 0px 0px 30px rgba(255,255,255,1);
     }
@@ -7029,7 +7064,7 @@ $swatch-label-size: 34px;
 .fancybox-button {
   min-height: auto;
   @include respond-to('small-down') {
-    background-color: white;
+    // background-color: white;
     svg path {
       fill: #95979c;
     }
@@ -7569,8 +7604,6 @@ http://flickity.metafizzy.co
   bottom: 0;
   width: 11%;
   border: none;
-  background: white;
-  background: hsla(0, 0%, 100%, 0.75);
   cursor: pointer;
   border-radius: 0;
   height: auto;
@@ -7579,7 +7612,6 @@ http://flickity.metafizzy.co
 }
 
 .flickity-prev-next-button:hover {
-  background: white;
   border: none;
 }
 
@@ -8636,16 +8668,9 @@ html.remodal-is-locked {
    }
 }
 
-@font-face {
-  font-family: 'turbo';
-  src: url('{{ "turbo.eot" | asset_url }}');
-  src: url('{{ "turbo.eot" | asset_url }}') format('embedded-opentype'),
-       url('{{ "turbo.woff" | asset_url }}') format('woff'),
-       url('{{ "turbo.ttf" | asset_url }}') format('truetype'),
-       url('{{ "turbo.svg" | asset_url }}') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
+ 
+
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {

@@ -2,6 +2,11 @@
 ** Cart page - default view **
 - Template section
 {% endcomment %}
+{% assign shipping_value = 0 %}
+{% assign cart_total = cart.total_price %}
+{% assign shipping_value_left = shipping_value | minus: cart_total %}
+
+
 <div class="container main content">
   <a name="pagecontent" id="pagecontent"></a>
   
@@ -9,9 +14,10 @@
   <div class="sixteen columns margin-bottom-lg">
     <div class="text-component">
       {% if cart.item_count == 0 %}
-      <h3>Your cart</h3>
+      <h1 id="drawer-cart-title" class="text-truncate text-md">Your Cart<span class="font-normal color-contrast-medium">&nbsp;(<span class="cart_count">{{ cart.item_count }}</span>)</span></h1>
       {% else %}
-      <h2>Your cart</h2>
+      <h1 id="drawer-cart-title" class="text-truncate text-md">Your Cart<span class="font-normal color-contrast-medium">&nbsp;(<span class="cart_count">{{ cart.item_count }}</span>)</span></h1>
+      
       <p>Not ready to check out?&nbsp;<a href="/collections/todays-deals">Continue shopping.</a></p>
       {% endif %}
     </div>
@@ -22,10 +28,18 @@
     <div class="sixteen columns">
       <div class="section clearfix">
         <div class="six columns offset-by-five medium-down--one-whole">
-          <p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
-          <a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/solar-ovens{% endif %}" class="btn btn--primary btn--md action_button continue-button add_to_cart">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
-        </div>
-        <br class="clear" />
+        
+      <!-- empty content -->
+      <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+        <div class="flex flex-column align-center padding-y-lg">
+        {% include 'svg' with 'cart' %}
+        <p class="empty_cart text-bold text-lg padding-bottom-xs">{{ 'layout.general.empty_cart' | t }}</p>
+        <a href="/collections/all" class="text-md link-fx-5 color-primary">Continue shopping ➞</a>
+      </div>
+      </div>
+
+
+
       </div>
     </div>
   {% else %}
@@ -104,19 +118,21 @@
       <div class="five columns medium-down--one-whole">
         <div class="section clearfix">
 
-          <div class="subtotal padding-bottom-lg">
+
+      <!-- <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0">
+        <p class="flex justify-between js-cart_subtotal"><span>{{ 'layout.general.subtotal' | t }}</span> <span><span class='raidupsell-cart-total-price' data-key='{{item.key}}'> {{ cart.total_price | money }} </span></span></p>
+        <p class="flex justify-between"><span>Shipping</span> <span>Free</span></p>
+      </summary> -->
+
+      <div class="stackable-embed"></div>
+
+
+          <!-- <div class="subtotal padding-bottom-lg">
             <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
               <table class="total-line-table width-100%">
 
                 <tbody class="total-line-table__tbody width-100%">
-                  <!--
-                  <tr class="total-line total-line--taxes " data-checkout-taxes="">
-                    <th class="total-line__name" scope="row">Taxes</th>
-                    <td class="total-line__price">
-                      <span class="order-summary__emphasis" >Calculated at next step</span>
-                    </td>
-                  </tr>
-                  -->
+
                   <tr class="total-line total-line--shipping flex justify-between width-100%">
                     <th class="total-line__name" scope="row">
                       <span> Shipping </span>
@@ -157,7 +173,7 @@
                 </tfoot>
               </table>
             </div>
-          </div>
+          </div> -->
 
           {% if settings.show_multiple_currencies %}
           <p>

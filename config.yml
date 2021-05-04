@@ -3,7 +3,9 @@ development:
   theme_id: ${DEVELOPMENT_THEME_ID}
   store: patricksherwin.myshopify.com
   ignore_files:
+    - "*.gif"
     - "settings_data.json"
+  
 
 staging:
   password: ${SHOPIFY_API_PASSWORD}
@@ -11,8 +13,13 @@ staging:
   store: patricksherwin.myshopify.com
   ignore_files:
      - "settings_data.json"
+
   
 production:
   password: ${SHOPIFY_API_PASSWORD}
   theme_id: ${PRODUCTION_THEME_ID}
   store: patricksherwin.myshopify.com
+  
+
+  
+

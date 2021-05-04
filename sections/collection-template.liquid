@@ -132,17 +132,39 @@
     </div>
   {% endif %}
 
-<!-- video section start -->
+  
+
+<!-- Custom Blocks section start -->
 {% assign banner_video_url_id = '' %}
+{% assign media_loop = '' %}
+{% assign media_video = '' %}
+{% assign media_image = '' %}
+{% assign media_text = '' %}
+
 {%- for block in section.blocks -%}
   {%- if block.type == 'video_by_coll' -%}
     {%- comment -%} A separate 'if' avoids parallel execution of both conditions. Don't combine with 'and' operator.{%- endcomment -%}
     {%- if collection.handle == block.settings.coll_video_collectionhandle -%}
       {%- assign banner_video_url_id = block.settings.coll_video_url.id -%}
       {%- break -%}
+    {%- endif -%} 
+  {%- endif -%}
+
+  {%- if block.type == 'media' -%}
+    {%- if collection.handle == block.settings.media_collectionhandle -%}
+      {%- assign media_loop = block.settings.media_loop -%}
+      {%- assign media_video = block.settings.media_video -%}
+      {%- assign media_image = block.settings.media_image -%}
+      {%- assign media_text = block.settings.media_text -%}
+      {%- break -%}
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
+
+<script> 
+ console.log(" Loop: {{ media_loop }}, Video: {{ media_video }}, Image: {{ media_image }}, Text: {{ media_text }}  ");
+</script>
+
 {%- if banner_video_url_id != blank -%}
   {%- capture ytparam -%}
     {%- if section.settings.banner_video_autoplay -%}&amp;autoplay=1{%- endif -%}
@@ -154,8 +176,17 @@ src="https://www.youtube.com/embed/{{ banner_video_url_id }}?modestbranding=1{{ 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 allowfullscreen></iframe>
 </div>
-{%- endif %}
-<!-- video section end -->
+{%- endif -%}
+
+
+{%- comment -%}  UNRESOLVED: Shows content exists, but won't populate with data. {%- endcomment -%}
+
+<!-- {%- if media_loop or media_image != blank -%}
+  {% include '_1_media-block' %}
+{%- endif -%} -->
+<!-- Custom Blocks section end -->
+
+
 
   <div class="section clearfix width-1-1 mobile--true">
     {% if section.settings.collection_sort %}
@@ -386,6 +417,41 @@ allowfullscreen></iframe>
         }
       ]
     },
+
+    {
+      "type": "media",
+      "name": "Media Block",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "media_collectionhandle",
+          "label": "Collection to apply"
+        },
+        {
+          "type": "text",
+          "id": "media_loop",
+          "label": "Custom thumbnail looping video"
+        },
+        {
+          "type": "image_picker",
+          "id": "media_image",
+          "label": "Custom thumbnail image"
+        },
+        {
+          "type": "text",
+          "id": "media_text",
+          "label": "Overlay text"
+        },
+        {
+          "type": "video_url",
+          "id": "media_video",
+          "label": "YouTube video URL",
+          "accept": ["youtube"],
+          "info": "To disable the video, leave this blank."
+        }
+      ]
+    },
+    
     {
       "type": "filter_by_collection",
       "name": "Collection list",

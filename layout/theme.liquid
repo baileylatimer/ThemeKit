@@ -19,9 +19,10 @@
     <meta name="theme-color" content="#0b225a">
     {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
     
-    {% comment %} Prevent apps from loading on /home {% endcomment %}
-    {% if template contains "index" %}   
-    <script>
+    {% comment %} Prevent apps from loading {% endcomment %}
+
+    {% if template contains "index" %} 
+      <script>
         YETT_BLACKLIST = [
         /stamped/,
         /sellup.herokuapp.com/,
@@ -33,11 +34,33 @@
         /cdn1.affirm.com/,
         /mlveda-shopifyapps.s3.amazonaws.com/,
         /app.123formbuilder.com/,
-        ]
+        /cdn.intelliticks.com/,
+        /static.klaviyo.com/,
+        /cdn1.stamped.io/,
+        /button.aftership.com/,
+        /fonts.shopifycdn.com/,
+        /affirm.com/,
+        /stamped.io/
+        ] 
     </script>
+    {% endif %}
+    {% if template contains 'collection' or 'product' %}   
+      <script>
+          YETT_BLACKLIST = [
+          /sellup.herokuapp.com/,
+          /static.zdassets.com/,
+          /zdassets.com/,
+          /button.aftership.com/,
+          /fonts.shopifycdn.com/,  
+          /raid/,
+          /raid-upsell/
+          ] 
+      </script>
+    {% endif %}
 
     <script src="//cdn.shopify.com/s/files/1/0062/5318/3045/t/2/assets/yett.js" type="text/javascript"></script>
-    {% endif %}
+
+
 
 
 
@@ -55,78 +78,71 @@
   <!----------- End META -----------> 
   
 
-    <!----------- STYLE ----------->
-      {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
-      {{ 'main.css' | asset_url | stylesheet_tag }}
-      {{ 'fonts.scss.css' | asset_url | stylesheet_tag }}
-      
-
-      {% if template contains 'product' %}
-        <!-- Fancybox / Gallery Lightbox -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css">
-      {% endif %}
-
-
-      <!-- Icons -->
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
-    <!----------- End STYLE ----------->
-
+  <!----------- STYLE ----------->
+    {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+    {{ 'fonts.scss.css' | asset_url | stylesheet_tag }}
     
-    <!----------- GOOGLE ----------->
-      <meta charset="utf-8">
-      <meta http-equiv="cleartype" content="on">
-      <meta name="robots" content="index,follow">
-      <meta name="p:domain_verify" content="374cefa258eaa52fdf33dff92fc7e19f"/>
-      <!-- Google Verification -->    
-      <meta name="google-site-verification" content="MqNDOMEsgaRJnIU89KQtsl77mryAlUCmuojDsUoA0sk" />
-      <meta name="google-site-verification" content="N7DY-MskUyNlFN88gHeuceAF4zSbRO3mos9qzhCdhA8" />  
-      <meta name="google-site-verification" content="ScjGgurM8TGo-6bf1C0wj8Zm1YbDMiMrOhQ64B6ZpTE" />  
-      <!-- Google Merchant Verification 8.20.19 -->
-      <meta name="google-site-verification" content="c-5yt-9GO0k92MBhOsolW8ylHUVkNMvVG_N0rqNQlUY" />  
-      
-      <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-958591666"></script>Global site tag (gtag.js) - Google Ads: 958591666 -->
-      <!--<script src="https://www.googleoptimize.com/optimize.js?id=GTM-TQBQQR4"></script> Google Optimize (gtag.js) - Google Ads: 958591666 -->
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-958591666');// AdWords ?
-        gtag('config', 'UA-43402130-1');// Analytics
-        gtag('config', 'GTM-MGR467V'); // Google Tag Manager
-      </script>
-      <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-MGR467V');</script>
-      <!-- End Google Tag Manager -->    
+
+    {% if template contains 'product' %}
+      <!-- Fancybox / Gallery Lightbox -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css">
+    {% endif %}
+
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" as="font" type="text/css" >
+  <!----------- End STYLE ----------->
+
+  
+  <!----------- GOOGLE ----------->
+    <meta charset="utf-8">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="robots" content="index,follow">
+    <meta name="p:domain_verify" content="374cefa258eaa52fdf33dff92fc7e19f"/>
+    <!-- Google Verification -->    
+    <meta name="google-site-verification" content="MqNDOMEsgaRJnIU89KQtsl77mryAlUCmuojDsUoA0sk" />
+    <meta name="google-site-verification" content="N7DY-MskUyNlFN88gHeuceAF4zSbRO3mos9qzhCdhA8" />  
+    <meta name="google-site-verification" content="ScjGgurM8TGo-6bf1C0wj8Zm1YbDMiMrOhQ64B6ZpTE" />  
+    <!-- Google Merchant Verification 8.20.19 -->
+    <meta name="google-site-verification" content="c-5yt-9GO0k92MBhOsolW8ylHUVkNMvVG_N0rqNQlUY" />  
+    
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-958591666');// AdWords ?
+      gtag('config', 'UA-43402130-1');// Analytics
+      gtag('config', 'GTM-MGR467V'); // Google Tag Manager
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MGR467V');</script>
+    <!-- End Google Tag Manager -->    
 
 
   <!-- Bing Verification -->	
   <meta name="msvalidate.01" content="C9498BD5F84A663C4AFCC7D08EDF5C4B" />    
   <!----------- End GOOGLE ----------->
 
-
-
-  <script src="{{ 'jquery.min.js' | asset_url }}"></script>
         
 <!----------- APPS 1 ----------->
-<!-- Start of gosun Zendesk Widget script -->
-<script type="text/javascript" id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> </script>
-<!-- End of gosun Zendesk Widget script -->
+  <!-- Start of gosun Zendesk Widget script -->
+  <script type="text/javascript" id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=cd4d1957-8f5a-4206-9d19-61ccd84c0dd6"> </script>
+  <!-- End of gosun Zendesk Widget script -->
 
-
-  <!-- Bugsnag -->
-  <!-- <script defer src="//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js"></script>
-  <script>Bugsnag.start({ apiKey: '5279bbabd5ce9add71c1cd5b8f4810b5' })</script> -->
+  <!-- Lozad / Lazy load videos -->
+  <script type="text/javascript" onerror="alert('lozad failed')"  src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 
   <!-- Klaviyo -->
   <script type="text/javascript" async 
   src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=hhNY44&shop=patricksherwin.myshopify.com"></script>
       
   <!-- Hotjar Tracking Code for gosun.co -->
-  <script>
+  <!-- <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:1783414,hjsv:6};
@@ -135,7 +151,7 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
+  </script> -->
     
   {% unless template contains 'index' %}
     {% if template contains 'product' or 'cart' or 'collection' %}
@@ -149,23 +165,18 @@
         // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
     </script>
     <!-- Currency Switcher -->
+    {% unless template contains 'index' %}
       <script defer >
         window.mlvedaShopCurrency = "{{ shop.currency }}";
         window.shopCurrency = "{{ shop.currency }}";
         window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
       </script>
+    {% endunless %}
 
       <script defer src="{{ '_1_stamped.js' | asset_url }}"></script>
     {% endif %}
-  {%  endunless %}
-
-
-
-
-
-
-
-<!----------- End APPS 1 ----------->
+  {% endunless %}
+  <!----------- End APPS 1 ----------->
     
   <script>
     window.lazySizesConfig = window.lazySizesConfig || {};
@@ -257,76 +268,91 @@
       </style>
   </noscript>
 
-  <body class="{% if template == '404' %}error-404{% else %}{{ template | replace: '.', '-' | handle }}{% endif %}"
-    data-money-format="{{ shop.money_format }}" data-shop-url="{{ shop.url }}" data-theme="default" > 
-      
-      <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGR467V"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <!-- End Google Tag Manager (noscript) -->
-      
-      <!----------- SHOPIFY ----------->
-      {% unless condition %}
-        
-      {% endunless %}
-        {% section 'header' %}
-
-        <div class="mega-menu-container">
-          {% if settings.mega_menu_1 %}
-            {% section 'mega-menu-1' %}
-          {% endif %}
-          {% if settings.mega_menu_2 %}
-            {% section 'mega-menu-2' %}
-          {% endif %}
-          {% if settings.mega_menu_3 %}
-            {% section 'mega-menu-3' %}
-          {% endif %}
-          {% if settings.mega_menu_4 %}
-            {% section 'mega-menu-4' %}
-          {% endif %}
-          {% if settings.mega_menu_5 %}
-            {% section 'mega-menu-5' %}
-          {% endif %}
-        </div>
-
-        {% unless feature_image %}
-        <div class="container main content">
-        {% endunless %}
-
-        {{ content_for_layout }}
-        </div>
-
-
-
-          {% section 'validator-bar' %}
-
-        
-        {% unless template contains 'customer' %}
-          {% section 'newsletter' %}
-        {% endunless %}
-
-   
-        {% section 'footer' %}
-
-        {% if settings.size_chart != blank %}
-          {% include 'popup-size-chart' %}
-        {% endif %}
-        {% if settings.newsletter_popup %}
-          {% include 'popup-newsletter' %}
-        {% endif %}
-        {% if settings.quick_shop_enabled %}
-          {% include 'popup-quick-shop' %}
-        {% endif %}
-        {% if settings.disqus_enabled %}
-          {% if template contains "blog" or template contains "article" or template contains "index" %}
-            <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
-          {% endif %}
-        {% endif %}
-      <!----------- End SHOPIFY ----------->
-      
-
+  <body 
+    class="{% if template == '404' %}error-404{% else %}{{ template | replace: '.', '-' | handle }}{% endif %}"
+    data-money-format="{{ shop.money_format }}" data-shop-url="{{ shop.url }}" data-theme="default"  data-barba="wrapper" > 
     
-      <!----------- APPS 2 ----------->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGR467V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    {% section 'header' %}
+
+    <div class="mega-menu-container">
+      {% if settings.mega_menu_1 %}
+        {% section 'mega-menu-1' %}
+      {% endif %}
+      {% if settings.mega_menu_2 %}
+        {% section 'mega-menu-2' %}
+      {% endif %}
+      {% if settings.mega_menu_3 %}
+        {% section 'mega-menu-3' %}
+      {% endif %}
+      {% if settings.mega_menu_4 %}
+        {% section 'mega-menu-4' %}
+      {% endif %}
+      {% if settings.mega_menu_5 %}
+        {% section 'mega-menu-5' %}
+      {% endif %}
+      {% if settings.mega_menu_6 %}
+        {% section 'mega-menu-6' %}
+      {% endif %}
+    </div>
+      
+    <main data-barba="container" data-barba-namespace="{{ handle }}" {% unless feature_image %}class="container main content"{% endunless %}>
+      {{ content_for_layout }}
+    </main>
+
+    {% unless template contains 'customer' %}
+      {% unless template contains 'index' %}
+        {% section 'validator-bar' %}
+      {% endunless %}
+      {% section 'newsletter' %}
+    {% endunless %}
+
+    {% section 'footer' %}
+
+    {% if settings.size_chart != blank %}
+      {% include 'popup-size-chart' %}
+    {% endif %}
+    {% if settings.newsletter_popup %}
+      {% include 'popup-newsletter' %}
+    {% endif %}
+    {% if settings.quick_shop_enabled %}
+      {% include 'popup-quick-shop' %}
+    {% endif %}
+    {% if settings.disqus_enabled %}
+      {% if template contains "blog" or template contains "article" or template contains "index" %}
+        <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
+      {% endif %}
+    {% endif %}      
+    
+    <!-- START / Third-party scripts / Added by Latimer Design -->
+      <!-- Barba.js / Page transitions -->
+      <!-- <script src="https://unpkg.com/@barba/core"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script> -->
+      <!-- GSAP / Animations -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+      <script>
+        barba.init({
+          sync: true,
+          transitions: [{
+            name: 'opacity-transition',
+            leave(data) {
+              return gsap.to(data.current.container, {
+                opacity: 0
+              });
+            },
+            enter(data) {
+              return gsap.from(data.next.container, {
+                opacity: 0
+              });
+            }
+          }]
+        });
+      </script> -->
+
       {% if template contains 'product' or 'collection'%}
         <!-- Currency Switcher / Accounts -->{% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}{% include 'mlveda-flag' %}
       {% endif %}
@@ -334,11 +360,9 @@
         <!-- AfterShip / Shipping --><div id="as-root"></div><script>(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t);r.id=n;r.src="https://button.aftership.com/all.js";i.parentNode.insertBefore(r,i)})(document,"script","aftership-jssdk")</script>
         <script>
           window.stamped_disable_font=true
-        </script>
-        <!----------- End APPS 2 ----------->
-
+        </script> 
       
-    
+    <!-- END / Third-party scripts / Added by Latimer Design -->
 
       {% if settings.show_shipping_calculator and template contains "cart" %}
         {% include 'cart-shipping-scripts' %}
@@ -356,19 +380,22 @@
     </script>
 
     <!----------- SCRIPTS ----------->
+      <script src="https://cdn.jsdelivr.net/npm/lozad"></script>
+      <script src="{{ 'jquery.min.js' | asset_url }}"></script> 
       <script src="{{ 'vendors.js' | asset_url }}"></script>
       <script src="{{ 'sections.js' | asset_url }}"></script>
       <script src="{{ 'utilities.js' | asset_url }}"></script>
       <script src="{{ 'app.js' | asset_url }}"></script>
       <script defer src="{{ 'gosun.js' | asset_url }}"></script>
+      <script src="https://cdn.attn.tv/gosun/dtag.js"></script>
       <!-- <script defer src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script> -->
-      <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script> 
+      <!-- <script defer src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script>  -->
       <script src="{{ 'vendor-widgets.js' | asset_url }}"></script>
       {% if settings.theme_switch %}
       <script defer src="{{ 'theme_switch.js' | asset_url }}"></script>
       {% endif %}
       {% if template contains "product" %} 
-      <script src="{{ 'product-page.js' | asset_url }}"></script>
+        <script src="{{ 'product-page.js' | asset_url }}"></script>
       {% endif %}
     <!----------- End SCRIPTS ----------->
 

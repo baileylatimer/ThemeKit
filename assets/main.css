@@ -898,10 +898,8 @@ a,
 a:visited {
   color: var(--color-contrast-higher); }
 
+.nav a:hover,
 a:hover {
-  color: var(--color-contrast-medium); }
-
-.nav a:hover {
   color: var(--color-link-hover); }
 
 .svg_logo {
@@ -2390,7 +2388,10 @@ html:not(.js) .no-js\:is-hidden {
   height: 100%; }
 
 .height-100vh {
-  height: 100vh; }
+  height: 100vh !important; }
+  @media (max-width: 768px) {
+    .height-100vh {
+      height: 110vh !important; } }
 
 .height-auto {
   height: auto; }
@@ -6148,6 +6149,19 @@ h2.product_type {
       font-size: 20px !important;
       line-height: 24px; } }
 
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; }
+
+@keyframes fade {
+  from {
+    display: none;
+    opacity: 0; }
+  to {
+    display: block;
+    opacity: 1; } }
+
 @-webkit-keyframes slideInRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
@@ -8244,17 +8258,6 @@ div.section.collection_description .klaviyo-section {
   float: right;
   width: 30%;
   height: 50px; }
-  .klaviyo-form-action button {
-    background-color: var(--color-contrast-high) !important;
-    color: var(--color-bg) !important;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.35);
-    font-size: 15px;
-    font-weight: 700; }
-    .klaviyo-form-action button:hover, .klaviyo-form-action button:focus, .klaviyo-form-action button:active {
-      background-color: hsl(var(--color-contrast-high-h), var(--color-contrast-high-s), calc(var(--color-contrast-high-l) * 1.15)) !important; }
-    .klaviyo-form-action button:hover {
-      background: rgba(0, 0, 0, 0.5); }
 
 /* #Email - Copy
 ================================================== */
@@ -9630,6 +9633,172 @@ Descr: Custom radio toggle
 
 /* -------------------------------- 
 
+File#: _1_switch-icon
+Title: Switch Icon 
+Descr: An icon transition generator that works with any icons
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.switch-icon {
+  position: relative;
+  padding: var(--space-xxs); }
+
+.switch-icon--disabled {
+  pointer-events: none; }
+
+.switch-icon__icon {
+  display: block;
+  fill: currentColor;
+  color: var(--color-contrast-higher);
+  font-size: 2em;
+  height: 1em;
+  width: 1em;
+  line-height: 1;
+  will-change: transform; }
+
+.switch-icon__icon--a {
+  opacity: 1; }
+
+.switch-icon__icon--b {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(50% - 0.5em);
+  opacity: 0; }
+
+.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--hover:hover .switch-icon__icon--a {
+  opacity: 0; }
+
+.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--hover:hover .switch-icon__icon--b {
+  opacity: 1; }
+
+.switch-icon--scale .switch-icon__icon {
+  transition: opacity 0s 0.2s, transform 0.4s; }
+
+.switch-icon--scale .switch-icon__icon--a {
+  transform: scale(1); }
+
+.switch-icon--scale .switch-icon__icon--b {
+  transform: scale(0.8); }
+
+.switch-icon--scale.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--scale.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: scale(0.8); }
+
+.switch-icon--scale.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--scale.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: scale(1); }
+
+.switch-icon--rotate .switch-icon__icon {
+  transition: opacity 0s 0.2s, transform 0.4s; }
+
+.switch-icon--rotate .switch-icon__icon--a {
+  transform: rotate(0); }
+
+.switch-icon--rotate .switch-icon__icon--b {
+  transform: rotate(90deg); }
+
+.switch-icon--rotate.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--rotate.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: rotate(-90deg); }
+
+.switch-icon--rotate.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--rotate.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: rotate(0); }
+
+.switch-icon--flip {
+  perspective: 10em; }
+  .switch-icon--flip .switch-icon__icon {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: opacity 0s 0.2s, transform 0.4s var(--ease-out-back); }
+  .switch-icon--flip .switch-icon__icon--a {
+    opacity: 1;
+    transform: rotateY(0deg); }
+  .switch-icon--flip .switch-icon__icon--b {
+    opacity: 1;
+    transform: rotateY(-180deg); }
+
+.switch-icon--flip.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--flip.switch-icon--hover:hover .switch-icon__icon--a {
+  opacity: 1;
+  transform: rotateY(180deg); }
+
+.switch-icon--flip.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--flip.switch-icon--hover:hover .switch-icon__icon--b {
+  opacity: 1;
+  transform: rotateY(0deg); }
+
+.switch-icon--slide-up,
+.switch-icon--slide-down,
+.switch-icon--slide-right,
+.switch-icon--slide-left {
+  overflow: hidden; }
+  .switch-icon--slide-up .switch-icon__icon,
+  .switch-icon--slide-down .switch-icon__icon,
+  .switch-icon--slide-right .switch-icon__icon,
+  .switch-icon--slide-left .switch-icon__icon {
+    transition: opacity 0.3s, transform 0.3s; }
+
+.switch-icon--slide-up .switch-icon__icon--a {
+  transform: translateY(0); }
+
+.switch-icon--slide-up .switch-icon__icon--b {
+  transform: translateY(100%); }
+
+.switch-icon--slide-up.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--slide-up.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: translateY(-100%); }
+
+.switch-icon--slide-up.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--slide-up.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: translateY(0); }
+
+.switch-icon--slide-down .switch-icon__icon--a {
+  transform: translateY(0); }
+
+.switch-icon--slide-down .switch-icon__icon--b {
+  transform: translateY(-100%); }
+
+.switch-icon--slide-down.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--slide-down.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: translateY(100%); }
+
+.switch-icon--slide-down.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--slide-down.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: translateY(0); }
+
+.switch-icon--slide-right .switch-icon__icon--a {
+  transform: translateX(0); }
+
+.switch-icon--slide-right .switch-icon__icon--b {
+  transform: translateX(-100%); }
+
+.switch-icon--slide-right.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--slide-right.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: translateX(100%); }
+
+.switch-icon--slide-right.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--slide-right.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: translateX(0); }
+
+.switch-icon--slide-left .switch-icon__icon--a {
+  transform: translateX(0); }
+
+.switch-icon--slide-left .switch-icon__icon--b {
+  transform: translateX(100%); }
+
+.switch-icon--slide-left.switch-icon--state-b .switch-icon__icon--a,
+.switch-icon--slide-left.switch-icon--hover:hover .switch-icon__icon--a {
+  transform: translateX(-100%); }
+
+.switch-icon--slide-left.switch-icon--state-b .switch-icon__icon--b,
+.switch-icon--slide-left.switch-icon--hover:hover .switch-icon__icon--b {
+  transform: translateX(0); }
+
+/* -------------------------------- 
+
 File#: _1_alert
 Title: Alert
 Descr: Feedback message
@@ -10638,6 +10807,9 @@ Descr: A slide-in panel used to display critical content
   transition: visibility 0s 0.3s; }
   .drawer:focus {
     outline: none; }
+  @media (max-width: 768px) {
+    .drawer footer {
+      box-shadow: 0px -4px 50px -10px rgba(27, 53, 80, 0.2); } }
 
 .drawer--is-visible {
   visibility: visible;
@@ -11616,7 +11788,6 @@ Usage: codyhouse.co/license
 
 -------------------------------- */
 .js .revealing-section {
-  position: sticky;
   min-height: 100vh;
   --reavealing-section-overlay-opacity: 1; }
   .js .revealing-section::after {
@@ -13546,11 +13717,6 @@ html:not(.js) .mega-nav--mobile .mega-nav__search {
   box-shadow: none;
   border-top: 1px solid var(--color-contrast-lower); }
 
-.raidPopup h1,
-.raidPopup h2,
-.raidPopup p {
-  color: var(--color-contrast-higher) !important; }
-
 /* Button spacing */
 .purchase-details {
   margin-bottom: var(--space-md); }
@@ -15333,7 +15499,7 @@ div.stamped-reviews-search-text input.stamped-reviews-search-input {
   );
   --promo-banner-height: 60px;
   --top-bar-height: 40px;
-  --header-height: calc(var(--mega-nav-height) + + var(--top-bar-height)); }
+  --header-height: calc(var(--mega-nav-height) + var(--top-bar-height)); }
   @media (min-width: 768px) {
     :root {
       --mega-nav-height: 70px; } }

@@ -10,53 +10,95 @@
     </a>
   </section> -->
 
-  <div class="container flex justify-between  align-center">
-    <h4 class="margin-right-auto display@md">Dream</h4>
-    <div class="subnav subnav--expanded@sm js-subnav">
-      <button class="reset btn btn--subtle margin-y-sm subnav__control js-subnav__control">
-        <span>Dream</span>
-        <svg class="icon icon--xxs margin-left-xxs" aria-hidden="true" viewBox="0 0 12 12">
-          <polyline points="0.5 3.5 6 9.5 11.5 3.5" fill="none" stroke-width="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></polyline>
-        </svg>
-      </button>
+  {% case page.url %}
+    {% when '/pages/dream-tiny-house' %} 
+    <div class="container flex justify-between  align-center">
+      <h4 class="margin-right-auto display@md">Dream</h4>
+      <div class="subnav subnav--expanded@sm js-subnav">
+        <button class="reset btn btn--subtle margin-y-sm subnav__control js-subnav__control">
+          <span>Dream</span>
+          <svg class="icon icon--xxs margin-left-xxs" aria-hidden="true" viewBox="0 0 12 12">
+            <polyline points="0.5 3.5 6 9.5 11.5 3.5" fill="none" stroke-width="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          </svg>
+        </button>
 
-      
+        
 
-      <div class="subnav__wrapper js-subnav__wrapper">
-        <nav class="subnav__nav ">
-          <button class="reset subnav__close-btn js-subnav__close-btn js-tab-focus" aria-label="Close navigation">
-            <svg class="icon" viewBox="0 0 16 16">
-              <g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-                <line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line>
-                <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
-              </g>
-            </svg>
-          </button>
+        <div class="subnav__wrapper js-subnav__wrapper">
+          <nav class="subnav__nav ">
+            <button class="reset subnav__close-btn js-subnav__close-btn js-tab-focus" aria-label="Close navigation">
+              <svg class="icon" viewBox="0 0 16 16">
+                <g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                  <line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line>
+                  <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
+                </g>
+              </svg>
+            </button>
 
-          <ul class="subnav__list">
-            <li class="subnav__item"><a href="#intro" class="subnav__link js-smooth-scroll" aria-current=page data-duration="300">Intro</a></li>
-            <li class="subnav__item"><a href="#overview" class="subnav__link js-smooth-scroll"  data-duration="300">Overview</a></li>
-            <li class="subnav__item"><a href="#solar-ready" class="subnav__link js-smooth-scroll"  data-duration="300">Solar</a></li>
-            <li class="subnav__item"><a href="#travel-anywhere" class="subnav__link js-smooth-scroll"  data-duration="300">Travel</a></li>
-            <li class="subnav__item"><a href="#cost-efficient" class="subnav__link js-smooth-scroll"  data-duration="300">Cost</a></li>
-            <li class="subnav__item"><a href="#video-tour" class="subnav__link js-smooth-scroll"  data-duration="300">Video Tour</a></li>
-            <li class="subnav__item"><a href="#floor-plan" class="subnav__link js-smooth-scroll"  data-duration="300">Floor Plan</a></li>
-            <li class="subnav__item"><a href="#interior" class="subnav__link js-smooth-scroll"  data-duration="300">Interior</a></li>
-            <li class="subnav__item"><a href="#specs" class="subnav__link js-smooth-scroll"  data-duration="300">Specs</a></li>
-            <li class="subnav__item"><a href="#updates" class="subnav__link js-smooth-scroll"  data-duration="300">Updates</a></li>
-          </ul>
-        </nav>
-      </div> 
+            <ul class="subnav__list">
+              <li class="subnav__item"><a href="#intro" class="subnav__link js-smooth-scroll" aria-current=page data-duration="300">Intro</a></li>
+              <li class="subnav__item"><a href="#overview" class="subnav__link js-smooth-scroll"  data-duration="300">Overview</a></li>
+              <li class="subnav__item"><a href="#solar-ready" class="subnav__link js-smooth-scroll"  data-duration="300">Solar</a></li>
+              <li class="subnav__item"><a href="#travel-anywhere" class="subnav__link js-smooth-scroll"  data-duration="300">Travel</a></li>
+              <li class="subnav__item"><a href="#cost-efficient" class="subnav__link js-smooth-scroll"  data-duration="300">Cost</a></li>
+              <li class="subnav__item"><a href="#video-tour" class="subnav__link js-smooth-scroll"  data-duration="300">Video Tour</a></li>
+              <li class="subnav__item"><a href="#floor-plan" class="subnav__link js-smooth-scroll"  data-duration="300">Floor Plan</a></li>
+              <li class="subnav__item"><a href="#interior" class="subnav__link js-smooth-scroll"  data-duration="300">Interior</a></li>
+              <li class="subnav__item"><a href="#specs" class="subnav__link js-smooth-scroll"  data-duration="300">Specs</a></li>
+              <li class="subnav__item"><a href="#updates" class="subnav__link js-smooth-scroll"  data-duration="300">Updates</a></li>
+            </ul>
+          </nav>
+        </div> 
+      </div>
+      <div class="position-relative flex justify-end items-center margin-left-auto">
+        <a class="btn btn--accent btn--sm" href="/products/dream-tiny-house" aria-label="Dream Tiny House">
+          Reserve yours
+        </a>
+      </div>
     </div>
-    <div class="position-relative flex justify-end items-center margin-left-auto">
-      <a class="btn btn--accent btn--sm" href="/products/dream-tiny-house" aria-label="Dream Tiny House">
-        Reserve yours
-      </a>
+
+    {% when '/pages/fusion' %} 
+    <div class="container flex justify-between  align-center">
+      <h4 class="margin-right-auto display@md">Fusion</h4>
+      <div class="subnav subnav--expanded@sm js-subnav">
+        <button class="reset btn btn--subtle margin-y-sm subnav__control js-subnav__control">
+          <span>Fusion</span>
+          <svg class="icon icon--xxs margin-left-xxs" aria-hidden="true" viewBox="0 0 12 12">
+            <polyline points="0.5 3.5 6 9.5 11.5 3.5" fill="none" stroke-width="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          </svg>
+        </button>
+
+        <div class="subnav__wrapper js-subnav__wrapper">
+          <nav class="subnav__nav ">
+            <button class="reset subnav__close-btn js-subnav__close-btn js-tab-focus" aria-label="Close navigation">
+              <svg class="icon" viewBox="0 0 16 16">
+                <g stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                  <line x1="13.5" y1="2.5" x2="2.5" y2="13.5"></line>
+                  <line x1="2.5" y1="2.5" x2="13.5" y2="13.5"></line>
+                </g>
+              </svg>
+            </button>
+
+            <ul class="subnav__list">
+              <li class="subnav__item"><a href="#overview" class="subnav__link js-smooth-scroll" aria-current=page data-duration="300">Overview</a></li>
+              <li class="subnav__item"><a href="#features" class="subnav__link js-smooth-scroll"  data-duration="300">Features</a></li>
+              <li class="subnav__item"><a href="#why-solar" class="subnav__link js-smooth-scroll"  data-duration="300">Why Solar?</a></li>
+              <li class="subnav__item"><a href="#bundles" class="subnav__link js-smooth-scroll"  data-duration="300">Bundles</a></li>
+              <li class="subnav__item"><a href="#faq" class="subnav__link js-smooth-scroll"  data-duration="300">FAQ</a></li>
+           
+            
+            </ul>
+          </nav>
+        </div> 
+      </div>
+      <div class="position-relative flex justify-end items-center margin-left-auto">
+        <a class="btn btn--accent btn--sm" href="/products/fusion" aria-label="Fusion">
+          Buy now
+        </a>
+      </div>
     </div>
-  </div>
-
-
-
+    {% else %}
+  {% endcase %}
 
 
 

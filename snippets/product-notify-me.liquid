@@ -1,5 +1,5 @@
 {% if settings.notify_me_form %}
-  <div class="notify_form notify-form-{{ product.id }}" id="notify-form-{{ product.id }}" {% if product.available %}style="display:none"{% endif %}>
+  <div class="notify_form notify-form-{{ product.id }} margin-bottom-md mtn25" id="notify-form-{{ product.id }}" {% if product.available %}style="display:none"{% endif %}>
     <p class="message"></p>
     {% form 'contact', id: "notify_me" %}
       {% if form.errors %}
@@ -21,7 +21,7 @@
 
               <input type="hidden" name="challenge" value="false" />
               <input type="hidden" name="contact[body]" class="notify_form_message" data-body="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" value="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" />
-              <input class="action_button" type="submit" value="{{ 'products.notify_form.send' | t }}" style="margin-bottom:0px" />
+              <input class="btn btn--accent btn--md" type="submit" value="{{ 'products.notify_form.send' | t }}" />
             {% endif %}
           </div>
         </p>

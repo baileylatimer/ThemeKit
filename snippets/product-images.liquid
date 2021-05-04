@@ -12,7 +12,7 @@
       data-zoom="{{ section.settings.activate_zoom }}"
       data-autoplay="{{ section.settings.activate_autoplay }}" other="reveal-fx reveal-fx--translate-right">
 
-    {% for media in product.media %}
+    {% for media in product.media limit:6 %}
       <div class="gallery-cell" data-thumb="{{ image_large }}" data-title="{% if media.media_type == "video" or media.media_type == "external_video" %}{{ product.title }}{% else %}{{ media.alt | escape }}{% endif %}" data-image-height="{{ media.height }}px" data-image-width="{{ media.width }}px">
         {% include 'media' %}
       </div>
@@ -21,7 +21,7 @@
 {% if section.settings.product_thumbs %}
   {% if product.images.size > 1 and image_width != 'full' %}
     <div class="product_gallery_nav product_gallery_nav--left product-{{ product.id }}-gallery-nav">
-      {% for media in product.media %}
+      {% for media in product.media limit:6 %}
         <div class="gallery-cell" data-title="{{ media.alt | escape }}">
 
         {% if media.media_type == "external_video" %}

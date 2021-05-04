@@ -190,7 +190,6 @@
               </div>
               {% endunless %}
           {% endif %}
-
                   
           <div class="divider"></div>
           
@@ -202,20 +201,12 @@
               {% include 'product-form' with 'product' %}
           {% endif %}
 
-          <!-- START / Value Proposition 
-          <div class="cart__gift bg-contrast-lower radius-md padding-md flex flex-column flex items-left margin-bottom-md">              
-            <div class="pill color-contrast-medium margin-bottom-xxs">
-              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">verified_user</i>
-              <p>1-year limited warranty</p>
-            </div>
-            <div class="pill color-contrast-medium margin-bottom-xxs">
-              <i class="icon--sm margin-right-xxs material-icons-outlined color-contrast-low">local_shipping</i>
-              <p>FREE shipping and FREE returns</p>
-            </div>
-
-          </div>
-           END / Value Proposition --> 
           
+          {% if product.price <= 5000 %}
+            {% include 'product-notify-me' %}
+          {% endif %}
+          
+
           {{ product.description }}
 
         </div>
@@ -227,8 +218,6 @@
 
     {% comment %}START / Details{% endcomment %}
     <section id="features reveal-fx">
-
-
       {% assign product-intro = product.metafields.custom_fields["product_intro_content_title"] | split: '|' %}
  
           {% include 'meta.product-intro' %}

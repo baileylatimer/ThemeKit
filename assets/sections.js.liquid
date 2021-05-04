@@ -448,7 +448,7 @@ selectCallback = function(variant, selector) {
   } else {
     var notifyEmailInput = '<input required type="email" class="notify_email" name="contact[email]" id="contact[email]" placeholder="'+ notifyEmail +'" value="'+ notifyEmailValue +'" />';
   }
-  var notifyFormHTML = notifyEmailInput+'<input type="hidden" name="challenge" value="false" /><input type="hidden" name="contact[body]" class="notify_form_message" data-body="'+ notifyMessage +'" value="'+ notifyMessage +'" /><input class="action_button" type="submit" value="'+ notifySend + '" style="margin-bottom:0px" />';
+  var notifyFormHTML = notifyEmailInput+'<input type="hidden" name="challenge" value="false" /><input type="hidden" name="contact[body]" class="notify_form_message" data-body="'+ notifyMessage +'" value="'+ notifyMessage +'" /><input class="action_button btn btn--accent btn--md" type="submit" value="'+ notifySend + '" style="margin-bottom:0px" />';
 
   //Image Variant feature
   if (variant && variant.featured_image && $product.is(":visible")) {

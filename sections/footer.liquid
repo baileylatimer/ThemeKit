@@ -119,7 +119,7 @@
       </div>
 
     {% elsif block.type == 'customer-service' %}
-      <div class="one-fifth column medium-down--one-whole">
+      <div class="one-whole column">
         <div class="customer-service">
           <div class="footer_menu">
             <h6>Contact<span class="right icon-down-arrow"></span></h6>
@@ -133,7 +133,15 @@
                 <li class="flex color-contrast-medium"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">email</em></span> <a href="mailto:support@gosun.co">support@gosun.co</a></p></li>
 
                 <li><p><a>Mon-Fri | 9AM-5PM ET </a></p></li>
+                <li>{{ 'money-back-guarantee.png' | asset_url | img_tag: '100% Money-back Guaranteed', 'footer-badge-rectangle' }}</li>
+                <li>{{ 'trust-badge-aes-256-bit-ssl.png' | asset_url | img_tag: 'AES 256-bit SSL Secured', 'footer-badge-rectangle' }}</li>
+                <li>
+                  {% for type in shop.enabled_payment_types %}
+                  {{ type | payment_type_svg_tag: class:'payment-icon' }}
+                  {% endfor %}
+                </li>
               </ul>
+              <style>img.footer-badge-rectangle { max-width: 256px; width: 100%; }</style>
             </div>
           </div>
         </div>

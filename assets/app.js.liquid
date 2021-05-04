@@ -415,6 +415,7 @@ $(function() {
     var cart_action_html = "";
     var cart_gift_html = "";
     var cart_savings_html = "";
+    var cart_shipping_html = "";
     var $cart = $(".cart_content form");
     var discounted_price_total = 0;
     var total_savings = 0;
@@ -485,31 +486,37 @@ $(function() {
 
       });
 
+      
+      let gift_value = 10000;
+      let free_shipping = 5000;
+      let cart_total = cart.total_price;
+      let gift_value_left = gift_value - cart_total;
+
+      if((gift_value_left > 0 ) && (cart.item_count > 0 )) {
+        cart_gift_html = "Free {{ settings.featured_product | capitalize }} on orders $100+ <br><a href='/collections/todays-deals' class='color-success-dark'> Add " + Shopify.formatMoney(gift_value_left, $('body').data('money-format')) + " to claim your free gift ➞</a>";
+      } else {
+        cart_gift_html = "You've unlocked a free {{ settings.featured_product | capitalize }}! <br>(Refresh the page if it doesn't appear in your cart)";
+      }
+      
       cart_action_html += '<span>{{ 'layout.general.subtotal' | t }}</span><span class="money">' + Shopify.formatMoney(cart.total_price, $('body').data('money-format')) + '</span>';
 
+      if(cart_total >= free_shipping ) {
+        cart_shipping_html += '<span>Shipping</span> <span>Free</span>';
+      } else {
+        cart_shipping_html += '<span>Shipping</span> <span>Calculated at checkout</span>';
+      }
       
       if(total_savings > 0 ) {
         cart_savings_html = "{{ 'layout.general.savings' | t }} &nbsp;" + Shopify.formatMoney(total_savings - discounted_price_total, $('body').data('money-format'));
       } else {
         cart_savings_html = "";
       }
-
-      let gift_value = 10000;
-      let cart_total = cart.total_price;
-      let gift_value_left = gift_value - cart_total;
-
-      if((gift_value_left > 0 ) && (cart.item_count > 0 )) {
-        cart_gift_html = "Free Flatware set on orders $100+ <br><a href='/collections/todays-deals' class='color-success-dark'> Add " + Shopify.formatMoney(gift_value_left, $('body').data('money-format')) + " to claim your free gift ➞</a>";
-      } else {
-        cart_gift_html = "You've unlocked a free Flatware set! <br>(Refresh the page if it doesn't appear in your cart)";
-      }
     }
-
-
 
 
     $('.js-cart_items').html(cart_items_html);
     $('.js-cart_subtotal').html(cart_action_html);
+    $('.js-cart_shipping').html(cart_shipping_html);
     $('.js-cart_savings').html(cart_savings_html);
     $('.js-cart_gift').html(cart_gift_html);
 

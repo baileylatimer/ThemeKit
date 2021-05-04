@@ -2,8 +2,6 @@
 {% assign cart_total = cart.total_price %}
 {% assign shipping_value_left = shipping_value | minus: cart_total %}
 
-
-
 {% unless settings.cart_action == 'ajax' and template contains 'cart' %}
 <div class="drawer drawer--modal dr-cart js-drawer js-drawer--modal" id="drawer-cart-id">
   <div class="drawer__content flex flex-column cart_content" role="alertdialog" aria-labelledby="drawer-cart-title">
@@ -16,63 +14,8 @@
     </header>
 
     <div class="drawer__body padding-x-md padding-y-sm js-drawer__body  position-relative">
-
-    {% if section.settings.cart_promo != blank %}
-      <div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
-        <div class="flex items-center">
-          <i class="icon--sm material-icons-outlined margin-right-xxs">card_giftcard</i>
-          <span class="money  text-sm">
-              {{ section.settings.cart_promo }}
-          </span>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if section.settings.show_sale %}
-     {% include '_promo-scripts' %}
-    {% endif %}
-<!-- 
-  <script>
-
-(function(){
-
-// when I click on the add to cart button
-$('.add_to_cart').on('click', function(e){
-  var variantId = 31989958508638;
-  console.log('Success')
-  jQuery.getJSON('/cart.js', function(data){
-   var items = data.items;
-   console.log(items);
-   var currentVarId;
-   var quantity;
-   var isProduct = false;
-   items.forEach(function(e,i,a){
-     console.log(e);
-     currentVarId = e.variant_id;
      
-     if(currentVarId === variantId) {
-       isProduct = true;
-       quantity = e.quantity;
-     }
-   });
-   
-    if(!isProduct) {
-      jQuery.post('/cart/add.js', {
-        quantity: 1,
-        id: variantId
-      });
-    } else {
-      if(quantity > 1) {
-        jQuery.post('/cart/change.js', {
-          quantity: 1,
-          id: variantId
-    });
-   }
-  }
- });
-});
-})();
-  </script> -->
+    {% include '_promo-scripts' %}
 
       <!-- empty content -->
       <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
@@ -134,19 +77,18 @@ $('.add_to_cart').on('click', function(e){
             </li>
           {% endfor %}
         </ol>
-      <section class="stackable-embed padding-y-sm border-top border-contrast-lower flex-shrink-0"></section>
-      <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0">
-        
-
+      
+      <summary class="padding-y-sm border-top border-contrast-lower flex-shrink-0  ">
         <p class="flex justify-between js-cart_subtotal"><span>{{ 'layout.general.subtotal' | t }}</span> <span>{{ cart.total_price | money }}</span></p>
-        
-        
-        <p class="flex justify-between"><span>Shipping</span> <span>Free</span></p>
+        <p class="flex justify-between js-cart_shipping"><span>Shipping</span> <span>{% if cart.total_price >= 5000 %}
+          Free
+          {% else %}
+          Calculated at checkout
+          {% endif %}</span></p>
       </summary>
     </div>
 
-
-    <footer class="padding-x-md padding-y-sm border-top border-contrast-lower flex-shrink-0">
+    <footer class="padding-x-md padding-top-sm padding-bottom-xxl padding-bottom-sm@md border-top border-contrast-lower flex-shrink-0">
       <p class="flex justify-between js-cart_subtotal text-lg font-medium"><span>Your total</span> <span>{{ cart.total_price | money }}</span></p>
 
       {% if settings.display_savings and total_saving > 0 %}
@@ -157,8 +99,7 @@ $('.add_to_cart').on('click', function(e){
           </div>
         </div>
       {% endif %}
-      
-
+     
       {% if settings.go_to_checkout %}
         <button type="submit" class="add_to_cart action_button btn btn--accent btn--md width-100%" id="checkout">{% if settings.show_lock_icon %}<span class="material-icons-outlined icon-lock"></span>{% endif %}{{ 'layout.general.checkout' | t }}</button>
       {% else %}
@@ -169,7 +110,7 @@ $('.add_to_cart').on('click', function(e){
     </form>
   </div>
 
-  {% include '_0_cart-add-on' %}
+  <!-- {% include '_0_cart-add-on' %} -->
 
 </div>
 

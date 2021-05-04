@@ -35,16 +35,8 @@
 <!------ START HEADER ------>
 
 <header id="header">
-
-
-
-
-  
-  
-
-
   {% if section.settings.promo_text != blank %}
-    <div class="pre-header padding-y-xs js-pre-header" {% if promo_link != blank %} onclick="window.open('{{ promo_link }}', {% if section.settings.promo_external %} '_blank' {% else %} '_self'{% endif %})" {% endif %}>
+    <div class="pre-header padding-y-xs js-pre-header {% if promo_link != blank %}cursor-pointer{% endif %}" {% if promo_link != blank %} onclick="window.open('{{ promo_link }}', {% if section.settings.promo_external %} '_blank' {% else %} '_self'{% endif %})" {% endif %}>
       <div class="container max-width-lg flex flex-column flex-row@md {% if section.settings.countdown_date != blank %} justify-between@md {% else %} justify-center {% endif %} align-center">
         <div class="flex align-center text-component text-sm">
           <span class="icon margin-right-sm">        
@@ -245,12 +237,15 @@
           </a>
         </li>
         {% endif %}
+        
+        {% if customer %}
         <!-- Wishlist -->
         <li class="info-item info-item--top-bar pointer" onclick="window.open('/account?p=1#wishlist', '_self')">
           <span class="icon">
             <i class="material-icons-outlined">favorite_border</i>
           </span>
         </li>
+        {% endif %}
 
         <!-- Cart -->
         {% if section.settings.show_cart %}
@@ -449,32 +444,7 @@
   "name": "Header",
   "class": "header-section",
   "settings": [
-  {
-    "type": "header",
-    "content": "Minicart"
-  },
-  {
-    "type": "checkbox",
-    "id": "show_sale",
-    "label": "Show sale",
-    "default": false
-  },
-  {
-    "type": "text",
-    "id": "cart_promo",
-    "label": "Cart promo text"
-  },
-  {
-    "type": "product",
-    "id": "featured_product",
-    "label": "Product"
-  },
-  {
-    "type": "text",
-    "id": "gift_value",
-    "label": "Minimum Value",
-    "info" : "Amount required to trigger event"
-  },
+
 
     {
       "type": "header",

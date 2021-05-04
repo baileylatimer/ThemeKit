@@ -11,20 +11,19 @@
     {%- assign section_onboarding = false -%}
   {% endif %}
 
-  <a href="{{ product.url }}" class="card-v9 backdrop-blur-20 card-v9--overlay-bg radius-md  {% cycle 'col-8@md', 'col-4@md', 'col-4@md', 'col-8@md' %} product-{{ product.id }} 
-  {% if block.settings.handle != blank %} filter-bottom {% endif %}" aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '400x' }} )" alt="{{ alt | escape }}"  itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+  <a href="{{ product.url }}" class="card-v9 backdrop-blur-20 card-v9--overlay-bg radius-md lozad {% cycle 'col-8@md', 'col-4@md', 'col-4@md', 'col-8@md' %} product-{{ product.id }} 
+  {% if block.settings.handle != blank %} filter-bottom {% endif %}" aria-labelledby="card-title-1"  data-background-image="{{ block.settings.image | img_url: '300x'}}" style="background-image: url('{{ block.settings.image | img_url: '300x'}}');" alt="{{ alt | escape }}"  itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
 
     {{ block.shopify_attributes }}
 
-    
 
       <div class="card-v9__content padding-md adv-gallery-v3__img-link reveal-content z-index-3">
 
         <div class="padding-bottom-xxxl max-width-xxs padding-right-md">
           <h2 class="margin-bottom-xxs text-md text-lg@lg"><span class="color-gradient-accent">{{ block.settings.title }}</span></h2>
-          <h3 class="color-contrast-higher text-md text-lg@lg" id="card-title-2">{{ block.settings.description }}</h3>
+          <h3 class="color-contrast-higher text-md text-lg@lg"  id="card-title-2">{{ block.settings.description }}</h3>
         </div>
-        
+         
         <div class="b10 z-index-3">
           <span class="text-base gallery-caption">
             <p itemprop="name" class="block color-white text-bold text-md@lg link-fx-5"><span class="color-gradient-accent">Shop&nbsp;{{ product.title }} ➞</span></p>

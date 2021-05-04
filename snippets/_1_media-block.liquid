@@ -1,15 +1,21 @@
-
-<figure class="bg-media" style="background-image: url( {{ image }} );"> 
-
-  {% unless loop == blank %}
-  <video class="bg-video" src="{{ loop }}" muted autoplay loop playsinline></video>
-  {% endunless %}
+{%- comment -%}  UNRESOLVED: Shows content exists, but won't populate with data. {%- endcomment -%}
+<figure class="bg-media" style="background-image: url( {{ media_image }} );"> 
+  <video class="bg-video" src="{{ media_loop }}" muted autoplay loop playsinline></video>
   
-  {% unless text == blank %}
-  <div class="overlay-bottom">
-    <p class="text-bold text-md color-white">{{ text }}</p>
+  <div id="play" class="video-wrapper" data-media-id="{{ media.id }}">
+    <div class="btn-wrap">
+        <div class="play-btn">
+          <div class="play-icon"></div>
+        </div>
+        <div class="play-btn-pulse"></div>
+    </div>
+    <div class='overlay-bottom'><p class="text-bold text-md color-white">{{ text }}</p></div>
+    <img loading="lazy"  id="video-cover" src='{{ media_image | img_url: '600x600' }}' alt="Video title">
+    <iframe id="player" width="560" height="315" src='https://www.youtube.com/embed/{{ media_video }}?modestbranding=1{{ ytparam }}' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
-  {% endunless %}
-  
+
+  <div class="overlay-bottom">
+    <p class="text-bold text-md color-white">{{ media_text }}</p>
+  </div>
 </figure>
- 
+

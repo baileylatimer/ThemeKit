@@ -1,0 +1,218 @@
+{% if section.settings.wide_display == false %}
+<div class="container">
+  <div class="sixteen columns">
+{% endif %}
+
+{% assign block_size_modulo = section.blocks.size | modulo: 5 %}
+{% if block_size_modulo == 0 %}
+  <section  id="homepage_slider-{{section.id}}"
+        class="homepage-slideshow js-homepage-slideshow slideshow_animation--{{ section.settings.slideshow_animation }} {% if section.settings.slideshow_text_animation != '' %}text-animation--true{% else %}text-animation--false{% endif %} 
+        full-width--{{ section.settings.wide_display }}"
+        data-slider-id="homepage_slider-{{section.id}}"
+        data-slideshow-speed="{{section.settings.slideshow_speed}}"
+        data-slideshow-text-animation="{{section.settings.slideshow_text_animation}}"
+        data-adaptive-height="{{section.settings.activate_adaptiveHeight}}"
+        >
+    {%- assign slide_counter = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- assign for_index_modulo = forloop.index0 | modulo: 5 -%}
+      {%- if for_index_modulo == 0 -%}
+        <div class="gallery-cell slide-{{ slide_counter | plus: 1 }} gallery-slideshow-slide" data-block-id="{{block.id}}">
+          {%- assign slide_headings = section.settings.slide_headings | split: '|' -%}
+          <div class="gallery-cell-heading-div"><h1>{{ slide_headings[slide_counter] }}</h1></div>
+      {%- endif -%}
+        {%- capture class_for_image_div %}gallery-cell-image-{% if for_index_modulo < 2 %}two{% else %}three{% endif %}-per-row-mobile{% endcapture -%}
+        <div class="{{ class_for_image_div }}" style="height: {{ section.settings.image_max_height }}px; line-height: {{ section.settings.image_max_height }}px;">
+          <span>
+          {% if block.settings.image_link != blank %}<a href="{{ block.settings.image_link }}" target="_blank">{% endif %}
+          {% assign block_image_url = block.settings.image | img_url %}
+          {% if block_image_url contains '/assets/no-image' %}
+            {% assign block_image_url = block.settings.asset_image | asset_img_url: 'x256' %}
+          {% endif %}
+          <img style="max-height: {{ section.settings.image_max_height }}px;" class="lozad" data-src="{{ block_image_url }}" alt="{{ block.settings.image_alt | strip_html }}" title="{{ block.settings.image_alt | strip_html }}" />
+          {% if block.settings.image_link != blank %}</a>{% endif %}
+          {% if block.settings.image_caption != blank %}<p class="gallery-cell-image-img-caption">{{ block.settings.image_caption | strip_html }}</p>{% endif %}
+          </span>
+        </div>
+      {%- assign for_index_modulo = forloop.index | modulo: 5 -%}
+      {%- if for_index_modulo == 0 -%}
+        {%- assign slide_counter = slide_counter | plus: 1 -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </section>
+{% else %}
+<p style="text-align: center;">"Gallery Slideshow" section is designed to display slides with 5 images in each slide. The number of image blocks must be 5, 10, 15, etc. You can continue to add more blocks until this message disappears. If you need a more customized version with less or more images in a slide, please contact the developer with your requirements.</p>
+{% endif %}
+
+{% if section.settings.wide_display == false %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Gallery Slideshow",
+  "class": "slideshow-section under-menu",
+  "settings": [
+    {
+      "type": "text",
+      "id": "slide_headings",
+      "label": "Slide Headings",
+      "info": "Use | to separate heading of each slide.",
+      "default": "Awarded|Reviewed"
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Max height of images",
+      "min": 64,
+      "max": 256,
+      "step": 2,
+      "default": 128,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "wide_display",
+      "label": "Wide display (without border)",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "slideshow_animation",
+      "label": "Gallery transition",
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "slide",
+          "label": "Slide"
+        }
+      ],
+      "default": "fade"
+    },
+    {
+      "type": "range",
+      "id": "slideshow_speed",
+      "label": "Change slides every",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "default": 6,
+      "unit": "sec"
+    },
+    {
+      "type": "checkbox",
+      "id": "activate_adaptiveHeight",
+      "label": "Enable adaptive height",
+      "info": "Slideshow will adjust based on height of individual slides"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image or Logo"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Link on image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Alt text (optional)",
+          "info": "For SEO and accessibility, provide a text describing the image. This may also display as a tooltip."
+        },
+        {
+          "type": "text",
+          "id": "image_caption",
+          "label": "Caption below (optional)"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Image or Logo (in Assets)",
+          "info": "If image is in theme assets, put the file name here. Note: The image picker will override this!"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Gallery Slideshow",
+    "category": "Content",
+    "settings": {
+    },
+    "blocks": [
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_01.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_02.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_03.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_04.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_05.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_06.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_07.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_08.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_09.png"
+        }
+      },
+      {
+        "type": "image",
+        "settings": {
+          "asset_image": "recognition_10.png"
+        }
+      }
+    ]
+  }]
+}
+{% endschema %}

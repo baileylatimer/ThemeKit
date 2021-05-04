@@ -1161,6 +1161,11 @@
         "type": "checkbox",
         "id": "mega_menu_5",
         "label": "Enable mega menu 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "mega_menu_6",
+        "label": "Enable mega menu 6"
       }
     ]
   },
@@ -1527,6 +1532,39 @@
     "name": "Cart",
     "settings": [
       {
+        "type": "text",
+        "id": "cart_promo_text",
+        "label": "Cart message",
+        "info": "Show information at the top of the cart. Only visible when Spend X Get Y Free is disabled."
+      },
+      {
+        "type": "header",
+        "content": "Spend X Get Y Free",
+        "info": "Tip: To make the product free, create an automatic discount in the Shopify Admin. [Learn more](https:\/\/help.shopify.com\/en\/manual\/discounts\/automatic-discounts)"
+      },
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product (Y)"
+      },
+      {
+        "type": "text",
+        "id": "gift_value",
+        "label": "Minimum Value (X)",
+        "info" : "Cart price total required to trigger event."
+      },
+      {
+        "type": "checkbox",
+        "id": "active_sale",
+        "label": "Enable",
+        "info": "Turn this on to automatically add the chosen product to your cart.",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Settings"
+      },
+      {
         "type": "select",
         "id": "cart_action",
         "label": "Cart type",
@@ -1571,6 +1609,7 @@
         "type": "header",
         "content": "Mini cart"
       },
+      
       {
         "type": "checkbox",
         "id": "go_to_checkout",
@@ -1588,11 +1627,6 @@
         "id": "display_savings",
         "label": "Show total savings",
         "default": false
-      },
-      {
-        "type": "richtext",
-        "id": "cart_message",
-        "label": "Cart message"
       },
       {
         "type": "header",

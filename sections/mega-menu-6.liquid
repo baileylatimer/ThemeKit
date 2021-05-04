@@ -6,7 +6,7 @@
 {% endcomment %}
 
 {% if section.blocks.size > 0 %}
-  <div class="dropdown_container mega-menu mega-menu-5" data-dropdown="{{ section.settings.parent | handleize }}">
+  <div class="dropdown_container mega-menu mega-menu-6" data-dropdown="{{ section.settings.parent | handleize }}">
     <div class="dropdown menu">
       <div class="dropdown_content {% if section.blocks < 4 %}dropdown_narrow{% endif %}">
         {% for block in section.blocks %}
@@ -269,7 +269,7 @@
 {% schema %}
 
 {
-  "name": "Mega menu 5",
+  "name": "Mega menu 6",
   "class": "mega-menu-section",
   "max_blocks": 5,
   "settings": [

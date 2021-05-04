@@ -64,31 +64,47 @@
       $(".order-summary__section--discount").wrap("<details class='padding-y-lg'></details>");
       $("details").prepend("<summary class='color-success'>Add promo code</summary>");
 
+      let moneyback_icon = "restore";
+      let moneyback_title = "30 Day Money Back";
+      let moneyback_description = "To really figure out if GoSun is right for you, you need to use our products.";
+
       valueProp.innerHTML = "<div class='border-left border-primary-light border-2 width-100\% cart__gift bg-primary-lighter radius-md padding-md inline-flex flex-column items-left margin-y-xl'>" +   
-        "<h4 class='margin-bottom-sm'> The perks of every order</h4>" +       
+        "<h3 class='margin-bottom-sm'> The perks of every order</h3>" +       
         "<section class='flex flex-column '>" +  
           "<div class='validator-item margin-sm flex flex-column align-start'>" + 
-            "<span class='icon icon--default'>" +
-              "<i class='icon--md material-icons-two-tone'>{{ 'value_props.warranty.icon' | t }}</i>" + 
-            "</span>" +
-            "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.warranty.title' | t }}</p>" + 
-            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.warranty.description' | t }}</p>" + 
+            "<p class='text-md font-bold margin-top-xs'>" + 
+              "<span class='icon icon--default checkout-0-span checkout-0-span-narrow'>" +
+                "<i class='icon--lg material-icons-two-tone checkout-0-icon'>{{ 'value_props.warranty.icon' | t }}</i>" + 
+              "</span>" +
+            "{{ 'value_props.warranty.title' | t }}</p>" + 
+            "<p class='text-md color-contrast-high margin-top-xs'>{{ 'value_props.warranty.description' | t }}</p>" + 
           "</div>" + 
 
           "<div class='validator-item margin-sm flex flex-column  align-start'>" + 
-            "<span class='icon icon--default'>" +
-              "<i class='icon--md material-icons-two-tone'>{{ 'value_props.shipping.icon' | t }}</i>" + 
-            "</span>" +
-            "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.shipping.title' | t }}</p>" + 
-            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.shipping.description' | t }}</p>" + 
+            "<p class='text-md font-bold margin-top-xs'>" + 
+              "<span class='icon icon--default checkout-0-span checkout-0-span-wide'>" +
+                "<i class='icon--lg material-icons-two-tone checkout-0-icon'>{{ 'value_props.shipping.icon' | t }}</i>" + 
+              "</span>" +
+            "{{ 'value_props.shipping.title' | t }}</p>" + 
+            "<p class='text-md color-contrast-high margin-top-xs'>{{ 'value_props.shipping.description' | t }}</p>" + 
           "</div>" + 
 
           "<div class='validator-item margin-sm flex flex-column  align-start'>" + 
-            "<span class='icon icon--default'>" +
-              "<i class='icon--md material-icons-two-tone'>{{ 'value_props.security.icon' | t }}</i>" + 
-            "</span>" +
-            "<p class='text-sm font-bold margin-top-xs'>{{ 'value_props.security.title' | t }}</p>" + 
-            "<p class='text-sm color-contrast-high margin-top-xs'>{{ 'value_props.security.description' | t }}</p>" + 
+            "<p class='text-md font-bold margin-top-xs'>" + 
+              "<span class='icon icon--default checkout-0-span checkout-0-span-wide'>" +
+                "<i class='icon--lg material-icons-two-tone checkout-0-icon'>"+moneyback_icon+"</i>" + 
+              "</span>" +
+            moneyback_title + "</p>" + 
+            "<p class='text-md color-contrast-high margin-top-xs'>"+moneyback_description+"</p>" + 
+          "</div>" + 
+
+          "<div class='validator-item margin-sm flex flex-column  align-start'>" + 
+            "<p class='text-md font-bold margin-top-xs'>" + 
+              "<span class='icon icon--default checkout-0-span checkout-0-span-narrow'>" +
+                "<i class='icon--lg material-icons-two-tone checkout-0-icon'>{{ 'value_props.security.icon' | t }}</i>" + 
+              "</span>" +
+            "{{ 'value_props.security.title' | t }}</p>" + 
+            "<p class='text-md color-contrast-high margin-top-xs'>{{ 'value_props.security.description' | t }}</p>" + 
           "</div>" + 
         "</section></div>";
 

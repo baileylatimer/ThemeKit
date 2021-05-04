@@ -127,7 +127,7 @@
           {% endif %}
 
           {% if useLazyframe != true %}
-            <video {% unless display_text_over_video %}class="hide-text-on-video"{% endunless %} {{html5Autoplay}} {{html5Autoloop}} {% if image %}poster="{{ image | img_url: '1500x' }}"{% endif %} id="video-{{ section.id }}{{ block.id }}" onclick="this.paused?this.play():this.pause()" data-html5-video >
+            <video preload="none" {% unless display_text_over_video %}class="hide-text-on-video"{% endunless %} {{html5Autoplay}} {{html5Autoloop}} {% if image %}poster="{{ image | img_url: '1500x' }}"{% endif %} id="video-{{ section.id }}{{ block.id }}" onclick="this.paused?this.play():this.pause()" data-html5-video >
               <source src="{{mp4}}" type="video/mp4">
               <source src="{{ogv}}" type="video/ogg" >
             </video>

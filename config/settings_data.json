@@ -123,6 +123,7 @@
     "mega_menu_3": true,
     "mega_menu_4": true,
     "mega_menu_5": true,
+    "mega_menu_6": true,
     "search_option": "everything",
     "search_pagination_type": "load_more",
     "enable_autocomplete": true,
@@ -160,6 +161,10 @@
     "quick_shop_product_images_position": "left",
     "quick_shop_product_thumbs": true,
     "quick_shop_thumbnail_position": "bottom-thumbnails",
+    "cart_promo_text": "Free shipping over $50",
+    "featured_product": "3-ply-cotton-mask",
+    "gift_value": "100",
+    "active_sale": false,
     "cart_action": "ajax",
     "show_lock_icon": true,
     "display_tos_checkbox": false,
@@ -167,7 +172,6 @@
     "go_to_checkout": true,
     "display_special_instructions": false,
     "display_savings": true,
-    "cart_message": "",
     "show_shipping_calculator": false,
     "shipping_calculator_default_country": "United States",
     "show_multiple_currencies": false,
@@ -237,6 +241,7 @@
     "checkout_accent_color": "#9a9a9a",
     "checkout_button_color": "#c75724",
     "checkout_error_color": "#e92f2a",
+    "cart_message": "",
     "mlvedaACS_positionTop": false,
     "mlvedaACS_positionLeft": false,
     "mlvedaACS_defaultCurrency": "USD",
@@ -276,18 +281,6 @@
               "activity": "BBQ"
             }
           },
-          "1607117291127": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/darcy.jpg",
-              "featured_product": "solar-kitchen",
-              "rating": 5,
-              "title": "My emergency prep kit is complete.",
-              "description": "I stole the show when my friends saw my set up at our beach party.",
-              "handle": "Darcy",
-              "activity": "beach parties"
-            }
-          },
           "1602281874842-1": {
             "type": "product",
             "settings": {
@@ -310,6 +303,18 @@
               "description": "No more grimy hands. The sink is perfect for dishes too.",
               "handle": "ruby",
               "activity": "camping"
+            }
+          },
+          "1607117291127": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Solar_Kitchen_Still.Griffin_Christensen.Keihe_Lunch._1.17.1.jpg",
+              "featured_product": "solar-kitchen",
+              "rating": 5,
+              "title": "My emergency prep kit is complete.",
+              "description": "I stole the show when my friends saw my set up at our beach party.",
+              "handle": "Kate",
+              "activity": "beach parties"
             }
           },
           "1602281874842-3": {
@@ -339,9 +344,9 @@
         },
         "block_order": [
           "1602281874842-0",
-          "1607117291127",
           "1602281874842-1",
           "1602281874842-2",
+          "1607117291127",
           "1602281874842-3",
           "1607117811837"
         ],
@@ -392,16 +397,131 @@
           "display_payment_methods": true
         }
       },
+      "161357945393bfa5aa": {
+        "type": "gallery-slideshow",
+        "blocks": {
+          "161357945393bfa5aa-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_01.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_01.png"
+            }
+          },
+          "161357945393bfa5aa-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/UNCookingAlliance_50ba55d0-886b-49e8-a770-0c21df9f6c65.png",
+              "image_alt": "UN Cooking Alliance 2015 Award",
+              "image_caption": "",
+              "asset_image": "recognition_02.png"
+            }
+          },
+          "161357945393bfa5aa-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_03.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_03.png"
+            }
+          },
+          "161357945393bfa5aa-3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_04.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_04.png"
+            }
+          },
+          "161357945393bfa5aa-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_05.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_05.png"
+            }
+          },
+          "161357945393bfa5aa-5": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_06.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_06.png"
+            }
+          },
+          "161357945393bfa5aa-6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_07.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_07.png"
+            }
+          },
+          "161357945393bfa5aa-7": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_08.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_08.png"
+            }
+          },
+          "161357945393bfa5aa-8": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_09.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_09.png"
+            }
+          },
+          "161357945393bfa5aa-9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/recognition_10.png",
+              "image_alt": "",
+              "image_caption": "",
+              "asset_image": "recognition_10.png"
+            }
+          }
+        },
+        "block_order": [
+          "161357945393bfa5aa-0",
+          "161357945393bfa5aa-1",
+          "161357945393bfa5aa-2",
+          "161357945393bfa5aa-3",
+          "161357945393bfa5aa-4",
+          "161357945393bfa5aa-5",
+          "161357945393bfa5aa-6",
+          "161357945393bfa5aa-7",
+          "161357945393bfa5aa-8",
+          "161357945393bfa5aa-9"
+        ],
+        "settings": {
+          "slide_headings": "Awards|In the press",
+          "image_max_height": 188,
+          "wide_display": false,
+          "slideshow_animation": "fade",
+          "slideshow_speed": 6,
+          "activate_adaptiveHeight": true
+        }
+      },
       "1596230707797": {
         "type": "feature-1",
         "disabled": true,
         "settings": {
           "image": "shopify:\/\/shop_images\/Exterior_v2.jpg",
-          "overline": "Coming Fall 2020",
+          "overline": "Coming Fall 2021",
           "title": "Living off-grid has never been easier.",
           "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
           "button1": "Live the dream",
-          "button1_url": "shopify:\/\/pages\/dream-tiny-house",
+          "button1_url": "https:\/\/gosun.co\/pages\/dream-tiny-house",
           "button2": "",
           "hero_external": false,
           "display_text": false,
@@ -476,7 +596,7 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Fusion_Hero_Open_for_MegaHeader.png",
+              "image_bottom": "shopify:\/\/shop_images\/Fusion_Hero_Open_for_MegaHeader_3352aeb3-8f91-4213-b4b3-9175984c4728.png",
               "image_caption_bottom": "Fusion",
               "image_link_bottom": "shopify:\/\/products\/fusion",
               "richtext_bottom": ""
@@ -491,7 +611,7 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Sport_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/Sport_200w_d4fe24e7-5fe3-43af-a7b2-e7c41ed72149.png",
               "image_caption_bottom": "Sport",
               "image_link_bottom": "shopify:\/\/products\/sport",
               "richtext_bottom": ""
@@ -506,9 +626,24 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Go_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/Go_200w_817bcc51-2f41-4780-9908-c43646818a18.png",
               "image_caption_bottom": "Go",
               "image_link_bottom": "shopify:\/\/products\/go",
+              "richtext_bottom": ""
+            }
+          },
+          "a428c43b-cd4a-48e1-b7b5-8e96e47577eb": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/sizzle_ortho_whitebg.jpg",
+              "image_caption_top": "Sizzle",
+              "image_link_top": "https:\/\/gosun.co\/products\/sizzle",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
               "richtext_bottom": ""
             }
           }
@@ -516,7 +651,8 @@
         "block_order": [
           "mega-menu-1-0",
           "mega-menu-1-1",
-          "mega-menu-1-2"
+          "mega-menu-1-2",
+          "a428c43b-cd4a-48e1-b7b5-8e96e47577eb"
         ],
         "settings": {
           "parent": "Ovens"
@@ -534,7 +670,7 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Chill_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/Chill_200w_d55fc2b5-8f08-4c3c-b605-7a4ccfe2565d.png",
               "image_caption_bottom": "Chill",
               "image_link_bottom": "shopify:\/\/products\/chill",
               "richtext_bottom": ""
@@ -549,7 +685,7 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Chill-Pro_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/Chill-Pro_200w_2606969b-7539-4113-bd9f-c44ab9330b6c.png",
               "image_caption_bottom": "Chill + SolarPanel 30",
               "image_link_bottom": "shopify:\/\/products\/chill-solarpanel-30",
               "richtext_bottom": ""
@@ -564,9 +700,24 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Chill-Ultimate_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/Chill-Ultimate_200w_73590ab0-7e93-48b1-b6ac-d4dea77b4def.png",
               "image_caption_bottom": "Chill + SolarTable 60",
               "image_link_bottom": "shopify:\/\/products\/chill-solartable-60",
+              "richtext_bottom": ""
+            }
+          },
+          "323d2e82-f2f7-4e9c-b3bd-d1eff41d6d2b": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/Front_02--min_b27f0fce-2815-4b0b-9d09-0e0e27841e08.png",
+              "image_caption_top": "Solar Kitchen",
+              "image_link_top": "shopify:\/\/products\/solar-kitchen",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
               "richtext_bottom": ""
             }
           }
@@ -574,7 +725,8 @@
         "block_order": [
           "mega-menu-2-0",
           "1570818284730",
-          "1596834211439"
+          "1596834211439",
+          "323d2e82-f2f7-4e9c-b3bd-d1eff41d6d2b"
         ],
         "settings": {
           "parent": "Coolers"
@@ -1272,13 +1424,13 @@
       "1602523575506": {
         "type": "cta-banner",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Exterior--05_copy_2.jpg",
-          "overline": "Coming 2021",
-          "title": "Living off-grid has never been easier.",
-          "description": "Meet the GoSun Dream: A solar powered, off-grid, smart tiny home.",
+          "image": "shopify:\/\/shop_images\/chillest-hero.jpg",
+          "overline": "Pre-order Mid-May 2021",
+          "title": "The ultimate portable refrigeration system",
+          "description": "Meet the GoSun Chillest: is the ultimate outdoor cooler because instead of using ice, it cools food and drinks using the power of the sun.",
           "button1": "Learn more",
-          "button1_url": "shopify:\/\/pages\/dream-tiny-house",
-          "hero_external": false,
+          "button1_url": "shopify:\/\/pages\/chillest",
+          "hero_external": true,
           "invert": false,
           "dark_theme": false,
           "background_color": "bg-primary-lighter",
@@ -1288,11 +1440,18 @@
       "collection-template": {
         "type": "collection-template",
         "blocks": {
+          "91370cec-d97e-4777-aae9-7caf5656e1ee": {
+            "type": "video_by_coll",
+            "settings": {
+              "coll_video_collectionhandle": "solar-ovens",
+              "coll_video_url": "https:\/\/youtu.be\/UCymoEVKUFY"
+            }
+          },
           "1564501734189": {
             "type": "text",
             "settings": {
               "title": "",
-              "text": "<p>Free Shipping on Orders $49+<\/p>\n<p>1-Year Limited Warranty<\/p>"
+              "text": "<p>Free Shipping on Orders $49+<\/p><p>1-Year Limited Warranty<\/p>"
             }
           },
           "1564500923857": {
@@ -1315,7 +1474,8 @@
         "block_order": [
           "1564501734189",
           "1564500923857",
-          "1564501898726"
+          "1564501898726",
+          "91370cec-d97e-4777-aae9-7caf5656e1ee"
         ],
         "settings": {
           "display_collection_title": false,
@@ -1325,9 +1485,52 @@
           "image": "shopify:\/\/shop_images\/RhinegeistRoof_a3e65e33-6c19-41a2-8bbb-f2ffc959c452.png",
           "featured_collection_image": true,
           "image_darken": false,
+          "banner_video_autoplay": false,
+          "banner_video_hidecontrols": false,
           "products_per_row": 3,
           "pagination_limit": 48,
           "toggle": false
+        }
+      },
+      "validator-bar": {
+        "type": "validator-bar",
+        "blocks": {
+          "2545ce02-822a-4e2f-8b7a-4b5df1fd9738": {
+            "type": "content",
+            "settings": {
+              "value_prop": "shipping"
+            }
+          },
+          "ffe110ce-b492-46a9-b89a-ead84a1b30f5": {
+            "type": "content",
+            "settings": {
+              "value_prop": "customer_service"
+            }
+          },
+          "208965dc-771d-4530-b25b-67c80921b542": {
+            "type": "content",
+            "settings": {
+              "value_prop": "warranty"
+            }
+          },
+          "0966bca5-2f87-4551-9b0e-f83aae333cf1": {
+            "type": "content",
+            "settings": {
+              "value_prop": "financing"
+            }
+          }
+        },
+        "block_order": [
+          "0966bca5-2f87-4551-9b0e-f83aae333cf1",
+          "2545ce02-822a-4e2f-8b7a-4b5df1fd9738",
+          "208965dc-771d-4530-b25b-67c80921b542",
+          "ffe110ce-b492-46a9-b89a-ead84a1b30f5"
+        ],
+        "settings": {
+          "alignment": "center",
+          "icon_size": "icon--md",
+          "icon_color": false,
+          "icon_style": "material-icons-two-tone"
         }
       },
       "page-ourstory-template": {
@@ -1425,9 +1628,9 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/SolarPanel10_200w.png",
-              "image_caption_bottom": "SolarPanel 10",
-              "image_link_bottom": "shopify:\/\/products\/solarpanel-10",
+              "image_bottom": "shopify:\/\/shop_images\/Studio_3.jpg",
+              "image_caption_bottom": "Power 266",
+              "image_link_bottom": "shopify:\/\/products\/power-266",
               "richtext_bottom": ""
             }
           },
@@ -1440,7 +1643,7 @@
               "menu_2": "",
               "menu_3": "",
               "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/SolarPanel30_200w.png",
+              "image_bottom": "shopify:\/\/shop_images\/SolarPanel30_200w_ea27a033-29c2-45cc-ace2-795b2f2c5a87.png",
               "image_caption_bottom": "SolarPanel 30",
               "image_link_bottom": "shopify:\/\/products\/solarpanel-30",
               "richtext_bottom": ""
@@ -1450,7 +1653,7 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/SolarTable60_200w_32700fff-df16-4c1e-84ba-bc6cef9a1d78.png",
+              "image_top": "shopify:\/\/shop_images\/SolarTable60_200w_079b5e93-ad66-4a73-b475-458d3ea508af.png",
               "image_caption_top": "SolarTable 60",
               "image_link_top": "shopify:\/\/products\/solartable-60",
               "menu_1": "",
@@ -1465,7 +1668,7 @@
             "type": "column",
             "settings": {
               "richtext_top": "",
-              "image_top": "shopify:\/\/shop_images\/PowerBank__200w.png",
+              "image_top": "shopify:\/\/shop_images\/PowerBank__200w_15449ece-3fb2-4fc9-a9e2-d0f4c8c8ac65.png",
               "image_caption_top": "PowerBank 144",
               "image_link_top": "shopify:\/\/products\/power-144",
               "menu_1": "",
@@ -1489,6 +1692,7 @@
       },
       "1601324457687": {
         "type": "image-tabs",
+        "disabled": true,
         "blocks": {
           "1601324457687-2": {
             "type": "tab",
@@ -1560,21 +1764,6 @@
       "mega-menu-4": {
         "type": "mega-menu-4",
         "blocks": {
-          "1608228669021": {
-            "type": "column",
-            "settings": {
-              "richtext_top": "",
-              "image_caption_top": "",
-              "menu_1": "",
-              "menu_2": "",
-              "menu_3": "",
-              "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Brew_Cover--min.png",
-              "image_caption_bottom": "Brew",
-              "image_link_bottom": "shopify:\/\/products\/brew",
-              "richtext_bottom": ""
-            }
-          },
           "mega-menu-4-0": {
             "type": "column",
             "settings": {
@@ -1622,7 +1811,6 @@
           }
         },
         "block_order": [
-          "1608228669021",
           "mega-menu-4-0",
           "mega-menu-4-1",
           "1596834950910"
@@ -1713,6 +1901,81 @@
           "parent": "Lighting"
         }
       },
+      "mega-menu-6": {
+        "type": "mega-menu-6",
+        "blocks": {
+          "mega-menu-6-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/Cover_a10fbd40-196f-44ea-abc8-027ad577273d.png",
+              "image_caption_top": "Flatware",
+              "image_link_top": "shopify:\/\/products\/flatware",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "shopify:\/\/products\/flatware",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-6-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/Brew_Cover--min.png",
+              "image_caption_top": "Brew",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "shopify:\/\/products\/brew",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-6-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_top": "shopify:\/\/shop_images\/Thermo_Ortho--app--min_d89da5b8-29c9-4ade-8d3a-6873196c9a73.png",
+              "image_caption_top": "Thermo",
+              "image_link_top": "shopify:\/\/products\/thermo",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "shopify:\/\/products\/thermo",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-6-0",
+          "mega-menu-6-1",
+          "mega-menu-6-2"
+        ],
+        "settings": {
+          "parent": "Accessories"
+        }
+      },
+      "161474198872ce95c7": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Featured Products",
+          "collection_description": true,
+          "collection": "fusion-sport",
+          "collection_style": "grid",
+          "product_description": true,
+          "product_description_words": 20,
+          "product_reviews": true,
+          "product_add_to_cart": true,
+          "products_per": 5,
+          "products_limit": 9
+        }
+      },
       "1574447604302": {
         "type": "components-banner",
         "disabled": true,
@@ -1773,18 +2036,14 @@
       "header": {
         "type": "header",
         "settings": {
-          "show_sale": false,
-          "cart_promo": "Free accessory discounts applied at checkout.",
-          "featured_product": "flatware",
-          "gift_value": "100",
-          "promo_icon": "card_giftcard",
-          "promo_text": "FREE accessories all February | Shop deals ➞",
+          "promo_icon": "public",
+          "promo_text": "Invest in GoSun",
           "promo_text_mobile": "",
           "countdown_date": "",
           "countdown_time": "",
-          "promo_link": "shopify:\/\/collections\/todays-deals",
-          "promo_external": false,
-          "tagline_text": "Free shipping & Returns",
+          "promo_link": "https:\/\/www.startengine.com\/gosun",
+          "promo_external": true,
+          "tagline_text": "Portable power to the people",
           "social_icons_header": false,
           "phone_number": "+1 888.868.6154",
           "top_bar_menu": "top-bar-1",
@@ -1796,7 +2055,7 @@
           "sale_link": true,
           "sale_icon": "card_giftcard",
           "sale_text": "<p>Sale ➞<\/p>",
-          "sale_url": "shopify:\/\/collections\/open-box",
+          "sale_url": "shopify:\/\/collections\/todays-deals",
           "sale_external": false,
           "main_linklist": "main-menu",
           "main_linklist2": "",
@@ -1845,16 +2104,6 @@
               "title": "Chargers"
             }
           },
-          "1576887130693-3": {
-            "type": "image",
-            "settings": {
-              "background_color": "stripe--dark",
-              "image": "shopify:\/\/shop_images\/Cover_SolarLighting.png",
-              "link": "shopify:\/\/collections\/solar-lighting",
-              "overline": "Shop",
-              "title": "Lighting"
-            }
-          },
           "1596745484279": {
             "type": "image",
             "settings": {
@@ -1864,14 +2113,24 @@
               "overline": "Shop",
               "title": "Water"
             }
+          },
+          "1576887130693-3": {
+            "type": "image",
+            "settings": {
+              "background_color": "stripe--dark",
+              "image": "shopify:\/\/shop_images\/Ortho_02_865c7f27-9526-4421-b45b-7d4af5687697.png",
+              "link": "shopify:\/\/collections\/accessories",
+              "overline": "Shop",
+              "title": "Accessories"
+            }
           }
         },
         "block_order": [
           "1576887130693-0",
           "1576887130693-1",
           "1576887130693-2",
-          "1576887130693-3",
-          "1596745484279"
+          "1596745484279",
+          "1576887130693-3"
         ],
         "settings": {
           "dark_theme": false,
@@ -1881,10 +2140,10 @@
       "1596226695144": {
         "type": "feature-1",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Chill_Context.Griffin_Christensen.Big_Beach_1.14.1.jpg",
-          "overline": "Free Feb Deals",
-          "title": "Free accessories all February.",
-          "description": "Get a free accessory with Flatware, Solar Ovens, and Solar Coolers.",
+          "image": "shopify:\/\/shop_images\/Sport_Paddleboard.jpg",
+          "overline": "Cook. Cool. Light. Charge. Purify.",
+          "title": "Power when you need it most.",
+          "description": "Ditch the fuel and ice, stock up on solar gear to enjoy the comforts of home anywhere.",
           "button1": "Shop Deals",
           "button1_url": "shopify:\/\/collections\/todays-deals",
           "button2": "",
@@ -1966,8 +2225,10 @@
       "1595533879839",
       "1576887448540",
       "1576887130693",
+      "161474198872ce95c7",
       "1602281874842",
       "1602523575506",
+      "161357945393bfa5aa",
       "1607033991340",
       "1601324457687",
       "1596824502217",

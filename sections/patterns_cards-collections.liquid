@@ -2,7 +2,7 @@
   <div class="flex flex-column flex-row@md"> 
     {% for block in section.blocks %}
       {% if block.settings.image != blank %}
-        <a href="{{ block.settings.link }}" itemprop="url" {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %} class="reveal-fx {{ block.settings.background_color }} card-v9 card-v9--product radius-md margin-bottom-sm margin-sm@md {% if section.settings.hover_effect != blank %} {{ section.settings.hover_effect }} {% else %} card-v9--subtle {% endif %} " aria-labelledby="card-title-1" style="background-image: url( {{ block.settings.image |  img_url: '350x' }} );" title="{{ alt | escape }}">
+        <a href="{{ block.settings.link }}" itemprop="url" {% if section.settings.dark_theme != blank %}data-theme="dark-1"{% endif %} class="reveal-fx {{ block.settings.background_color }} card-v9 card-v9--product radius-md margin-bottom-sm margin-sm@md {% if section.settings.hover_effect != blank %} {{ section.settings.hover_effect }} {% else %} card-v9--subtle {% endif %} lozad" aria-labelledby="card-title-1" data-background-image="{{ block.settings.image |  img_url: '350x' }};" title="{{ alt | escape }}">
           <div class="card-v9__content padding-md">
             <div class="padding-bottom-xxxl max-width-xxs">
               <p class="color-opacity-50% text-uppercase"> {{ block.settings.overline}} </p>

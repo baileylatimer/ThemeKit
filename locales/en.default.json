@@ -88,8 +88,8 @@
     },
     "shipping": {
       "icon": "local_shipping",
-      "title": "Free shipping & returns",
-      "description": "If you're unhappy with your purchase, we will take it back and provide a full refund."
+      "title": "Free shipping over $50",
+      "description": "Fast, free shipping to the US. International shipping not included."
     },
     "warranty": {
       "icon": "verified_user",

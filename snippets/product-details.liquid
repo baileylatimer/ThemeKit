@@ -1,7 +1,4 @@
-{% assign collection_handles = product.collections | map: 'handle' %}
-
-
-
+{% assign collection_handles = product.collections | map: 'handle' -%}
 
 <div class="thumbnail-overlay">
   <a href="{{ product.url  }}" itemprop="url" class="hidden-product-link">{{ product.title }}</a>
@@ -15,7 +12,4 @@
       {% include 'quick-shop-button' %}
     {% endif %}
   </div>
-</div>
-
-  
 </div>

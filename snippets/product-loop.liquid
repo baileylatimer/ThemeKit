@@ -10,7 +10,58 @@
   {% assign matrixType = 'search-matrix' %}
 {% endif %}
 
-<div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim">
+{% liquid
+if render_homepage
+
+comment
+  ## Check for related products and increase limit by one (to offset the
+  ## currently selected product that is removed from the product loop)
+endcomment
+if related_products == true
+  assign limit = limit | plus: 0
+  assign loop_limit = limit | plus: 1
+else
+  assign limit = limit | plus: 0
+  assign loop_limit = limit | plus: 0
+endif
+
+if per_slide != blank
+  assign visible_products = per_slide
+else
+  if section.settings.products_per != blank
+    assign visible_products = section.settings.products_per | plus: 0
+  else
+    assign visible_products = block.settings.products_per | plus: 0
+  endif
+endif
+
+if template contains 'product'
+  if limit <= visible_products
+    assign products_length = limit
+  else
+    assign products_length = products.length | minus: 1
+  endif
+elsif featured_collection
+  assign products_length = collections[featured_collection].products.length
+else
+  assign products_length = products.length
+endif
+
+endif
+%}
+
+{%- capture product_loop_div_attr -%}
+{%- if render_homepage -%}
+class="slider-gallery products-slider products-length-{{ products_length }} transparentBackground--{{settings.slideshow_button_style}}"
+      data-products-per-slide="{{ visible_products }}"
+      data-products-limit="{{ limit }}"
+      data-products-available="{{ products_length }}"
+{%- else -%}
+itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim"
+{%- endif -%}
+{%- endcapture -%}
+
+<div {{ product_loop_div_attr }}>
   {% for product in products limit: limit %}
     {% if product.id == skip_product.id or skip == true %}
       {% assign product_found = true %} 
@@ -54,4 +105,4 @@
     {% endif %}
   {% endif %}
 </div>
-<div class="load-more__icon"></div>
+{% unless render_homepage %}<div class="load-more__icon"></div>{% endunless %}

@@ -32,5 +32,17 @@
     {% endif %}
     </section>
 
+  {% if product_info_description %}
+    <h6 class="article-type article-description" itemprop="name">{{ product.description | strip_html | strip_newlines | escape | truncatewords: product_info_description_words }}</h6>
+  {% endif %}
+
+  {% if product_info_reviews %}
+  <!-- Stamped - Begin Star Rating Badge --><span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" data-product-type="{{product.type}}" data-product-title="{{product.title}}"  style="display:block;">{{ product.metafields.stamped.badge }}</span><!-- Stamped - End Star Rating Badge -->
+  {% endif %}
+
+  {% if product_info_add_to_cart %}
+  {% include 'product-form' with 'product' %}
+  {% endif %}
+
 </div>
 
