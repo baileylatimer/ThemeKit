@@ -661,6 +661,21 @@
       "mega-menu-2": {
         "type": "mega-menu-2",
         "blocks": {
+          "1596834211439": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_bottom": "shopify:\/\/shop_images\/Screen_Shot_2021-05-13_at_4.04.53_PM-removebg.png",
+              "image_caption_bottom": "NEW Chillest",
+              "image_link_bottom": "https:\/\/gosun.co\/products\/chillest",
+              "richtext_bottom": ""
+            }
+          },
           "mega-menu-2-0": {
             "type": "column",
             "settings": {
@@ -691,21 +706,6 @@
               "richtext_bottom": ""
             }
           },
-          "1596834211439": {
-            "type": "column",
-            "settings": {
-              "richtext_top": "",
-              "image_caption_top": "",
-              "menu_1": "",
-              "menu_2": "",
-              "menu_3": "",
-              "menu_4": "",
-              "image_bottom": "shopify:\/\/shop_images\/Chill-Ultimate_200w_73590ab0-7e93-48b1-b6ac-d4dea77b4def.png",
-              "image_caption_bottom": "Chill + SolarTable 60",
-              "image_link_bottom": "shopify:\/\/products\/chill-solartable-60",
-              "richtext_bottom": ""
-            }
-          },
           "323d2e82-f2f7-4e9c-b3bd-d1eff41d6d2b": {
             "type": "column",
             "settings": {
@@ -723,9 +723,9 @@
           }
         },
         "block_order": [
+          "1596834211439",
           "mega-menu-2-0",
           "1570818284730",
-          "1596834211439",
           "323d2e82-f2f7-4e9c-b3bd-d1eff41d6d2b"
         ],
         "settings": {
@@ -1424,12 +1424,12 @@
       "1602523575506": {
         "type": "cta-banner",
         "settings": {
-          "image": "shopify:\/\/shop_images\/chillest-hero.jpg",
-          "overline": "Pre-order Mid-May 2021",
+          "image": "shopify:\/\/shop_images\/chillest-cover_28839dad-1ec7-42fe-bc40-e920b4bd92c3.jpg",
+          "overline": "Pre-order Now",
           "title": "The ultimate portable refrigeration system",
           "description": "Meet the GoSun Chillest: is the ultimate outdoor cooler because instead of using ice, it cools food and drinks using the power of the sun.",
           "button1": "Learn more",
-          "button1_url": "shopify:\/\/pages\/chillest",
+          "button1_url": "http:\/\/97.kickto.link\/jV6JLV0\/",
           "hero_external": true,
           "invert": false,
           "dark_theme": false,
@@ -1495,16 +1495,16 @@
       "validator-bar": {
         "type": "validator-bar",
         "blocks": {
+          "0966bca5-2f87-4551-9b0e-f83aae333cf1": {
+            "type": "content",
+            "settings": {
+              "value_prop": "financing"
+            }
+          },
           "2545ce02-822a-4e2f-8b7a-4b5df1fd9738": {
             "type": "content",
             "settings": {
               "value_prop": "shipping"
-            }
-          },
-          "ffe110ce-b492-46a9-b89a-ead84a1b30f5": {
-            "type": "content",
-            "settings": {
-              "value_prop": "customer_service"
             }
           },
           "208965dc-771d-4530-b25b-67c80921b542": {
@@ -1513,10 +1513,10 @@
               "value_prop": "warranty"
             }
           },
-          "0966bca5-2f87-4551-9b0e-f83aae333cf1": {
+          "ffe110ce-b492-46a9-b89a-ead84a1b30f5": {
             "type": "content",
             "settings": {
-              "value_prop": "financing"
+              "value_prop": "customer_service"
             }
           }
         },
@@ -2036,13 +2036,13 @@
       "header": {
         "type": "header",
         "settings": {
-          "promo_icon": "public",
-          "promo_text": "Invest in GoSun",
+          "promo_icon": "card_giftcard",
+          "promo_text": "Memorial Day Deals",
           "promo_text_mobile": "",
           "countdown_date": "",
           "countdown_time": "",
-          "promo_link": "https:\/\/www.startengine.com\/gosun",
-          "promo_external": true,
+          "promo_link": "shopify:\/\/collections\/todays-deals",
+          "promo_external": false,
           "tagline_text": "Portable power to the people",
           "social_icons_header": false,
           "phone_number": "+1 888.868.6154",
@@ -2144,7 +2144,7 @@
           "overline": "Cook. Cool. Light. Charge. Purify.",
           "title": "Power when you need it most.",
           "description": "Ditch the fuel and ice, stock up on solar gear to enjoy the comforts of home anywhere.",
-          "button1": "Shop Deals",
+          "button1": "Shop Memorial Day Sale",
           "button1_url": "shopify:\/\/collections\/todays-deals",
           "button2": "",
           "hero_external": false,
@@ -2160,18 +2160,6 @@
       "social-gallery--v2": {
         "type": "social-gallery--v2",
         "blocks": {
-          "1607636533000": {
-            "type": "product",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
-              "featured_product": "chill",
-              "rating": 1,
-              "title": "Changed the way we boat.",
-              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
-              "handle": "Mckenna",
-              "activity": "boating"
-            }
-          },
           "1607636458462": {
             "type": "product",
             "settings": {
@@ -2207,6 +2195,18 @@
               "handle": "Rob",
               "activity": "living off-grid"
             }
+          },
+          "1607636533000": {
+            "type": "product",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20190330-IMG_9302.jpg",
+              "featured_product": "chill",
+              "rating": 1,
+              "title": "Changed the way we boat.",
+              "description": "I liked my first Chill so much, I got a second one to use as a freezer.",
+              "handle": "Mckenna",
+              "activity": "boating"
+            }
           }
         },
         "block_order": [
@@ -2217,6 +2217,88 @@
         ],
         "settings": {
           "title": "See why customers love GoSun."
+        }
+      },
+      "1_sub-navigation": {
+        "type": "1_sub-navigation",
+        "blocks": {
+          "1_sub-navigation-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Add description, images, menus and links to your mega menu<\/p>",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1_sub-navigation-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>A column with no settings can be used as a spacer<\/p>",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1_sub-navigation-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1_sub-navigation-3": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Link to your collections, sales and even external links<\/p>",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "1_sub-navigation-4": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Add up to five columns<\/p>",
+              "image_caption_top": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "menu_4": "",
+              "image_caption_bottom": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "1_sub-navigation-0",
+          "1_sub-navigation-1",
+          "1_sub-navigation-2",
+          "1_sub-navigation-3",
+          "1_sub-navigation-4"
+        ],
+        "settings": {
+          "parent": "",
+          "btn_label": "",
+          "btn_link": ""
         }
       }
     },

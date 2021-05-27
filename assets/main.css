@@ -7752,10 +7752,12 @@ a.highlight-true:hover {
   .-indiegogo img {
     height: 44px; }
 
-.-indiegogo {
-  background: #e51075 !important; }
-  .-indiegogo:hover {
-    background: #d50f6d !important; }
+.-indiegogo,
+a.btn--indiegogo {
+  background-color: #e51075 !important; }
+  .-indiegogo:hover,
+  a.btn--indiegogo:hover {
+    background-color: #d50f6d !important; }
 
 /* #Button - Flits / Social login
 ================================================== */
@@ -8398,15 +8400,18 @@ div.section.collection_description {
   .product_gallery_nav .gallery-cell.is-nav-selected img {
     box-shadow: 0 0 0 2px var(--color-contrast-medium); }
 
-.overlay-cover::before {
-  content: "";
-  background-color: rgba(27, 53, 80, 0.3);
-  mix-blend-mode: multiply;
-  position: absolute;
-  height: 100%;
-  width: 100%; }
+.overlay-cover {
+  pointer-events: none; }
+  .overlay-cover::before {
+    content: "";
+    background-color: rgba(27, 53, 80, 0.3);
+    mix-blend-mode: multiply;
+    position: absolute;
+    height: 100%;
+    width: 100%; }
 
 .overlay-bottom {
+  pointer-events: none;
   background: linear-gradient(0deg, rgba(27, 53, 80, 0.65) 13.21%, rgba(27, 53, 80, 0) 46.54%);
   background-blend-mode: multiply;
   position: absolute;
@@ -8425,6 +8430,7 @@ div.section.collection_description {
     margin-top: 2rem; }
 
 .overlay-top {
+  pointer-events: none;
   background: linear-gradient(0deg, rgba(27, 53, 80, 0.9) 13.21%, rgba(27, 53, 80, 0) 46.54%);
   background-blend-mode: multiply;
   position: absolute;
@@ -9902,6 +9908,78 @@ a.pre-header {
   a.pre-header:hover {
     text-decoration: underline;
     background-color: var(--color-contrast-high); }
+
+/* -------------------------------- 
+
+File#: _1_badge
+Title: Badge
+Descr: A small label containing a text string
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.badge {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-contrast-low);
+  padding: var(--space-xxxxs) var(--space-xxs);
+  border-radius: var(--radius-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.badge--outline {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.25); }
+
+.badge--contrast-higher {
+  background-color: var(--color-contrast-higher);
+  color: var(--color-bg); }
+
+.badge--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white); }
+
+.badge--primary-light {
+  background-color: hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.2);
+  color: var(--color-contrast-higher); }
+
+.badge--accent {
+  background-color: var(--color-accent);
+  color: var(--color-white); }
+
+.badge--accent-light {
+  background-color: hsla(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l), 0.2);
+  color: var(--color-contrast-higher); }
+
+.badge--error {
+  background-color: var(--color-error);
+  color: var(--color-white); }
+
+.badge--error-light {
+  background-color: hsla(var(--color-error-h), var(--color-error-s), var(--color-error-l), 0.2);
+  color: var(--color-contrast-higher); }
+
+.badge--success {
+  background-color: var(--color-success);
+  color: var(--color-white); }
+
+.badge--success-light {
+  background-color: hsla(var(--color-success-h), var(--color-success-s), var(--color-success-l), 0.2);
+  color: var(--color-contrast-higher); }
+
+.badge--warning {
+  background-color: var(--color-warning);
+  color: var(--color-white); }
+
+.badge--warning-light {
+  background-color: hsla(var(--color-warning-h), var(--color-warning-s), var(--color-warning-l), 0.2);
+  color: var(--color-contrast-higher); }
 
 /* -------------------------------- 
 

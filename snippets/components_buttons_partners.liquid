@@ -78,11 +78,11 @@ data-product-id="{{ product.id }}"
         {% elsif settings.cart_action == 'redirect_checkout' %}
           <input type="hidden" name="return_to" value="/checkout" />
         {% endif %}
-        <a href="{{ product.metafields.custom_fields["partners_url"] }}" target="_blank" type=""  class=" btn btn--accent btn--md btn--{{ product.metafields.custom_fields["partners_platform"] }} " style="background:var(--color-success) !important">
+        <a href="{{ product.metafields.custom_fields["partners_url"] }}" target="_blank" type=""  class=" btn btn--accent btn--md btn--{{ product.metafields.custom_fields["partners_platform"] }} ">
           {% if  product.metafields.custom_fields["partners_platform"] == "kickstarter" %}
               Pre-order on <span class="margin-left-sm"> {% include 'svg' with 'kickstarter' %} </span>
           {% elsif product.metafields.custom_fields["partners_platform"] == "indiegogo" %}
-              Pre-order on <img class="m0" src="https://www.dropbox.com/s/pcqrw8rkpleoxpy/Dark.svg?raw=1">
+              Pre-order on  <span class="margin-left-sm"> {% include 'svg' with 'indiegogo' %} </span>
           {% else %}
           {% endif %}
         </a>

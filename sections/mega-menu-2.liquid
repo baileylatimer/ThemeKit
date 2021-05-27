@@ -120,9 +120,14 @@
                     {% if block.settings.image_bottom != nil %}
                       {% include 'image-element', image: block.settings.image_bottom, alt: block.settings.image_bottom.alt %}
                     {% endif %}
-                    {% if block.settings.image_caption_bottom %}
-                      <p>{{ block.settings.image_caption_bottom }}</p>
-                    {% endif %}
+                    <!-- <div class="flex justify-center">
+                      {% if block.settings.violator != nil %}
+                        <div class="badge badge--contrast-higher text-sm margin-right-xs"> {{ block.settings.violator }}</div>
+                      {% endif %}
+                      {% if block.settings.image_caption_bottom %}
+                        <p>{{ block.settings.image_caption_bottom }}</p>
+                      {% endif %}
+                    </div> -->
                   </a>
                 </div>
               {% endif %}
@@ -367,6 +372,11 @@
           "type": "image_picker",
           "id": "image_bottom",
           "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "violator",
+          "label": "Violator"
         },
         {
           "type": "text",
