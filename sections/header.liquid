@@ -363,6 +363,12 @@
 
  
   {% include 'minicart-3' %}
+
+
+  {% if template contains 'product' %}
+  {% render '_1_sub-navigation' %}
+  {% endif %}
+
 </header>
 
 <!------ END HEADER ------>

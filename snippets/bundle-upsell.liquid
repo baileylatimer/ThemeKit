@@ -1,0 +1,78 @@
+{% if product.metafields.custom_fields["bundle_options"] != blank %}
+<div class="custom-field custom-field__bundle-options custom-field__type--product-reference margin-bottom-xl">
+  <p class="custom-field--title"><b>Upgrade to a bundle</b> (optional)</p>
+  <div class="custom-field--value">  
+  {% assign product_refs = product.metafields.custom_fields["bundle_options"] | split: "|" %}
+    <ul>
+      {% for product_handle in product_refs %}
+        <li>
+          {% assign product_ref = all_products[product_handle] %}
+          <div class="cursor-pointer bundle-option margin-y-sm position-relative" onclick="window.open('{{ product_ref.url }}', '_self')">
+            {% if settings.sale_banner_enabled and product.compare_at_price_max > product.price %}
+              <div class="article-violator article-violator--top position-absolute"> 
+                <span class="right thumbnail_banner violator violator--discount">Save ${{ product.compare_at_price_min | minus: product.price_min | money_without_currency }}</span>
+              </div>
+            {% endif %}
+
+            <div class="flex padding-sm">
+              <img src="{{product_ref | img_url: '80x80'}}">            
+              <div class="product-details">
+                <!-- Name -->
+                <h4 class="article-title base-BodyTitle" itemprop="name">{{ product_ref.title }}</h4>
+                <h6 class="article-type" itemprop="name">{{ product_ref.type }}</h6>
+              
+                <!-- Price -->
+                <section class="flex">
+
+                    <span class="money price {% unless product_ref.compare_at_price == product_ref.price %}{% if product_ref.compare_at_price_max > product_ref.price %}sale{% endif %}{% endunless %}">
+                        {% if product_ref.available %}
+                            {% if product_ref.price_min > 0 %}
+                            <span class="money money--discount">{{ product_ref.price_min | money }}</span>
+                            {% else %}
+                            <span class="money--discount">
+                                {{ settings.free_price_text }}
+                            </span>
+                            {% endif %}
+                        {% else %}
+                        <span class="sold_out">{{ 'products.product_ref.sold_out' | t }}</span>
+                        {% endif %}
+                        {% unless product_ref.compare_at_price == product_ref.price %}
+                        {% if product_ref.compare_at_price_max > product_ref.price %}
+                        <span class="was_price">
+                            <span class="money">{{ product_ref.compare_at_price_min | money }}</span>
+                        </span>
+                        {% endif %}
+                        {% endunless %}
+                    </span>
+                    <!-- <p class="affirm-as-low-as text-sm margin-left-xs color-contrast-medium" data-page-type="category" data-amount="{{ product_ref.price }}" data-learnmore-show="false" data-affirm-type = "text"></p> -->
+
+                </section>
+              
+              {% if product_info_description %}
+                <h6 class="article-type article-description" itemprop="name">{{ product_ref.description | strip_html | strip_newlines | escape | truncatewords: product_info_description_words }}</h6>
+              {% endif %} 
+              
+              {% if product_info_reviews %}
+              <!-- Stamped - Begin Star Rating Badge --><span class=" stamped-product-reviews-badge" data-product-sku="{{ product_ref.handle }}" data-id="{{ product_ref.id }}" data-product-type="{{product_ref.type}}" data-product-title="{{product_ref.title}}"  style="display:block;">{{ product_ref.metafields.stamped.badge }}</span><!-- Stamped - End Star Rating Badge -->
+              {% endif %}
+              
+              {% if product_info_add_to_cart %}
+              {% include 'product-form' with 'product' %}
+              {% endif %}
+              
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+
+
+
+
+        
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}

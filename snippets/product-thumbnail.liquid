@@ -32,7 +32,7 @@ class="
   {% assign alt_text = product.featured_image.alt %}
   {% assign violator = product.metafields.custom_fields["violator_tag_text"] | split: '|'%}
 
-  <article class="article-tile article-tile--lg" >
+  <article class="article-tile " >
     <meta itemprop="image" content="{{ product.featured_image | img_url: '800x' }}">
     <a href="{{ product.url }}" itemprop="url">
       <figure class="product-media">

@@ -19,7 +19,8 @@ production:
   password: ${SHOPIFY_API_PASSWORD}
   theme_id: ${PRODUCTION_THEME_ID}
   store: patricksherwin.myshopify.com
-  
+  ignore_files:
+    - "settings_data.json"
 
   
 

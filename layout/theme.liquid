@@ -142,7 +142,7 @@
   src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=hhNY44&shop=patricksherwin.myshopify.com"></script>
       
   <!-- Hotjar Tracking Code for gosun.co -->
-  <!-- <script>
+  <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:1783414,hjsv:6};
@@ -151,7 +151,7 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script> -->
+  </script>
     
   {% unless template contains 'index' %}
     {% if template contains 'product' or 'cart' or 'collection' %}
@@ -222,6 +222,10 @@
   {{ content_for_header }}
 
   {% include 'shogun-head' %}
+
+  <!-------- CROWDFUNDER -------->
+  <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer="defer"></script>
+ {{ 'crowdfunder.scss.css' | asset_url | stylesheet_tag }}
 </head>
 
   {% if template contains "index" %}
@@ -279,6 +283,8 @@
     
     {% section 'header' %}
 
+
+    
     <div class="mega-menu-container">
       {% if settings.mega_menu_1 %}
         {% section 'mega-menu-1' %}
@@ -299,6 +305,8 @@
         {% section 'mega-menu-6' %}
       {% endif %}
     </div>
+
+
       
     <main data-barba="container" data-barba-namespace="{{ handle }}" {% unless feature_image %}class="container main content"{% endunless %}>
       {{ content_for_layout }}
@@ -378,6 +386,93 @@
     <script>
       {{ settings.custom_scripts }}
     </script>
+
+{% if template contains 'product' %}
+
+<script>
+// (function(){
+
+// var doc = document.documentElement;
+// var w = window;
+
+// var prevScroll = w.scrollY || doc.scrollTop;
+// var curScroll;
+// var direction = 0;
+// var prevDirection = 0;
+
+// var header = document.getElementsByClassName('header');
+
+// var checkScroll = function() {
+
+//   /*
+//   ** Find the direction of scroll
+//   ** 0 - initial, 1 - up, 2 - down
+//   */
+
+//   curScroll = w.scrollY || doc.scrollTop;
+//   if (curScroll > prevScroll) { 
+//     //scrolled up
+//     direction = 2;
+//   }
+//   else if (curScroll < prevScroll) { 
+//     //scrolled down
+//     direction = 1;
+//   }
+
+//   if (direction !== prevDirection) {
+//     toggleHeader(direction, curScroll);
+//   }
+
+//   prevScroll = curScroll;
+// };
+
+// var toggleHeader = function(direction, curScroll) {
+//   if (direction === 2 && curScroll > 52) { 
+
+//     //replace 52 with the height of your header in px
+
+//     header.classList.add('hide');
+//     prevDirection = direction;
+//   }
+//   else if (direction === 1) {
+//     header.classList.remove('hide');
+//     prevDirection = direction;
+//   }
+// };
+
+// window.addEventListener('scroll', checkScroll);
+
+// })();
+</script>
+<script>
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 40) {
+    $('.pre-header').addClass('hide');
+    $('.header').addClass('hide');
+    $('.top_bar').addClass('hide');
+  } else {
+    $('.pre-header').removeClass('hide');
+    $('.header').removeClass('hide');
+    $('.top_bar').removeClass('hide');
+  }
+  } 
+</script>
+{% else %}
+<script>
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 40) {
+    $('.pre-header').addClass('hide');
+  } else {
+    $('.pre-header').removeClass('hide');
+  }
+  } 
+</script>
+{% endif %}
+
 
     <!----------- SCRIPTS ----------->
       <script src="https://cdn.jsdelivr.net/npm/lozad"></script>

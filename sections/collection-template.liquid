@@ -7,6 +7,84 @@
 
 <span class='{{ collection.metafields.custom_fields["theme_color"] }}-0rm'>
   <!-- START / Mobile  -->
+
+
+  {% for link in linklists['collection-nav'].links %}
+  {% if link.url == currentCollection %}
+    {% assign currentIndex = forloop.index %}
+    {% assign previousIndex = currentIndex | minus:1 %}
+    {% assign nextIndex = currentIndex | plus:1 %}
+  {% endif %}
+{% endfor %}
+
+  <button class="btn btn--subtle width-100 mobile--true" aria-controls="modal-select">Shop categories
+
+    <svg class="icon select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+  </button>
+
+  <div class="modal modal--select modal--animate-scale flex flex-center padding-md js-modal" id="modal-select">
+    <div class="modal__content max-width-xs max-height-100% overflow-auto padding-md text-center" role="alertdialog" aria-labelledby="modal-select-title" aria-describedby="">
+      <p class="color-contrast-medium margin-bottom-xs" id="modal-select-title">{{ link.title }}</p>
+
+      <ul class="full-screen-select flex flex-column gap-xxs js-full-screen-select" role="listbox">
+        {% for link in linklists['collection-nav'].links %}
+        <li><a href="{{ link.url }}" class="full-screen-select__option full-screen-select__option--selected" role="option">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  
+    <button class="reset modal__close-btn modal__close-btn--outer  js-modal__close js-tab-focus">
+      <svg class="icon icon--sm" viewBox="0 0 24 24">
+        <title>Close modal window</title>
+        <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="3" x2="21" y2="21" />
+          <line x1="21" y1="3" x2="3" y2="21" />
+        </g>
+      </svg>
+    </button>
+  </div>
+
+  
+  
+
+
+<!-- <label class="form-label margin-bottom-xxxs" for="selectThis">Select:</label>
+
+<div class="select">
+  <select class="select__input form-control" name="selectThis" id="selectThis" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);>
+    <optgroup label="Group 1">
+      {% for link in linklists['collection-nav'].links %}
+        {% if link.url == currentCollection %}
+          {% assign currentIndex = forloop.index %}
+          {% assign previousIndex = currentIndex | minus:1 %}
+          {% assign nextIndex = currentIndex | plus:1 %}
+        {% endif %}
+      {% endfor %}
+      {% for link in linklists['collection-nav'].links %}
+      <option value="https://gosun.co{{ link.url }}" onclick="window.open('{{ link.url }}', '_self' ">{{ link.title }}</option>
+      {% endfor %}
+    </optgroup>
+
+  </select>
+  
+  <svg class="icon select__icon" aria-hidden="true" viewBox="0 0 16 16"><polyline points="1 5 8 12 15 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+</div> -->
+
+
+<script>
+  $(function(){
+    // bind change event to select
+    $('#selectThis').on('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+  });
+</script>
+  
+
     <!-- Banner / 2-Columns -->
     <div class="banner center page_banner collection_banner mobile--true dark-overlay-{{ section.settings.image_darken }}">
       <div class="width-1-1 split-banner split-banner--img right reveal-fx reveal-fx--translate-down">
@@ -65,10 +143,11 @@
             </ul>  
             <ul class="toggle_list">
               <h3 class="base-BodyUppercase"><span> Category </span></h3>
-              <li><a class=" parent-link--true" data-no-instant="" href="/collections/solar-coolers">Solar Coolers</a></li>     
+                  
               <li><a href="/collections/solar-ovens">Solar Ovens</a></li>
-              <li><a href="/collections/solar-power">Solar Chargers</a></li>             
-              <li><a href="/collections/solar-lighting">Solar Lighting</a></li>
+              <li><a class=" parent-link--true" data-no-instant="" href="/collections/solar-coolers">Solar Coolers</a></li> 
+              <li><a href="/collections/solar-power">Solar Power</a></li>             
+              <!-- <li><a href="/collections/solar-lighting">Solar Lighting</a></li> -->
               <li><a href="/collections/water">Water</a></li>  
               <li><a href="/collections/accessories">Accessories</a></li>             
               <li><a href="/collections/bundles">Bundles</a></li> 
@@ -188,7 +267,7 @@ allowfullscreen></iframe>
 
 
 
-  <div class="section clearfix width-1-1 mobile--true">
+  <!-- <div class="section clearfix width-1-1 mobile--true">
     {% if section.settings.collection_sort %}
       <select class="sort_by"  data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
         <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
@@ -201,9 +280,9 @@ allowfullscreen></iframe>
         <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
       </select>
     {% endif %}
-  </div>
+  </div> -->
 
-  <div class="section clearfix width-1-3 mobile--false float-right">
+  <!-- <div class="section clearfix width-1-3 mobile--false float-right">
     
     {% if section.settings.collection_sort %}
       <select class="sort_by" id="sort-by" data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
@@ -217,7 +296,7 @@ allowfullscreen></iframe>
         <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
       </select>
     {% endif %}
-  </div>
+  </div> -->
     {% comment %} Remove collection-matrix class to prevent conflict infinite loading between app & theme {% endcomment %}
     <div id="bc-sf-filter-products" itemtype="http://schema.org/ItemList" class="product-list clearfix equal-columns--clear equal-columns--outside-trim" data-bc-sort="{{ collection.default_sort_by }}">
       {% assign products_per_row = section.settings.products_per_row %}

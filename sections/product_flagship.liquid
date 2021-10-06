@@ -174,12 +174,16 @@
                 </span>
               {% endif %}
             </p>
-            
+             
             {% include 'product-notify-me' %}
           {% endif %}
 
           <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-type="{{ product.type }}" style="display: block;"></span>
-                  
+                 
+          
+          {% unless product.available %}
+            {% include 'product-notify-me' %}
+          {% endunless %}
                   
           {% if collection_handles contains 'coming-soon' %}
             {% elsif product.metafields.custom_fields["partners_platform"] != blank %}

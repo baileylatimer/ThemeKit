@@ -1,0 +1,51 @@
+.crowdfunder-widget {
+  margin-bottom: var(--space-md);
+  clear: both;
+
+  span.cf-bignumber {
+    font-size: 2.6rem;
+    line-height: 0.9em;
+    display: block;
+  }
+
+  .cf-meter {
+    height: var(--space-sm);
+    width: 100%;
+    position: relative;
+    background-color: var(--color-contrast-lower);
+    overflow: hidden;
+    margin: var(--space-sm) 0;
+  }
+
+  .cf-meter span {
+    display: block;
+    height: 100%;
+    background-color: #586be9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .cf-meter-label {
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+}
+
+.crowdfunder-widget.simple {
+  padding: 0%;
+  background-color: transparent;
+
+  .cf-meter-label p:first-of-type {
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+  }
+  .cf-meter-label p:nth-of-type(2) {
+    display: inline-block;
+    width: 27.5%;
+    text-align: right;
+  }
+}

@@ -15,7 +15,7 @@
 
 
 {% comment %}START / Breadcrumbs {% endcomment %}
-<nav class="breadcrumbs sixteen columns text-sm" aria-label="Breadcrumbs">
+<!-- <nav class="breadcrumbs sixteen columns text-sm" aria-label="Breadcrumbs">
   {% if collection.previous_product or collection.next_product or section.settings.product_breadcrumb %}
     <div class="clearfix breadcrumb-collection">
       {% if collection.previous_product or collection.next_product %}
@@ -70,7 +70,7 @@
       {% endif %}
     </div>
   {% endif %}
-</nav>
+</nav> -->
 {% comment %}END / Breadcrumbs {% endcomment %}
 
 
@@ -86,6 +86,7 @@
         {% endif %}
         <div id="product-images" class="ten columns medium-down--one-whole {% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}">
           {% include 'product-images' %}
+          {% include '_1_scroll-indicator' %}
         </div>
         <div id="product-details"class="reveal-fx reveal-fx--translate-left six columns medium-down--one-whole product--overview  {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
           {% assign collection_handles = product.collections | map: 'handle' %}
@@ -184,37 +185,51 @@
               {% endif %}
             </p>
 
-            {% unless product.title == 'Dream' %}
+            {% unless product.title == 'Dream' or product.available %}
               <div class="pill color-contrast-medium margin-bottom-xxs">
                 <p class="affirm-as-low-as" data-page-type="product" data-amount="{{ variant.price }}" data-affirm-type="text" data-learnmore-show="true"></p>
               </div>
               {% endunless %}
           {% endif %}
+
+          {% unless product.available %}
+            {% include 'product-notify-me' %}
+          {% endunless %}
+          <div class="divider"></div>
+
+          {{ product.description }}
                   
           <div class="divider"></div>
+          
           
 
           {% if collection_handles contains 'coming-soon' %}
             {% elsif product.metafields.custom_fields["partners_platform"] != blank %}
               {% include 'components_buttons_partners' with 'product' %}
             {% else %}
-              {% include 'product-form' with 'product' %}
+            <div class="display@lg"> {% include 'product-form' with 'product' %}</div>
           {% endif %}
+
+          {% if product.available %}
+          <div class="padding-bottom-md width-100%">{% include 'components_pill_stock' %}</div>
+          </div>
+          {% endif %}
+
+          <div class="divider"></div>
+
+          {% include 'bundle-upsell' %}
 
           
           {% if product.price <= 5000 %}
             {% include 'product-notify-me' %}
           {% endif %}
-          
 
-          {{ product.description }}
+          
 
         </div>
       </div>
     </section>
     {% comment %}END / Overview {% endcomment %}
-
-
 
     {% comment %}START / Details{% endcomment %}
     <section id="features reveal-fx">

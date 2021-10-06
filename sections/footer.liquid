@@ -132,14 +132,15 @@
 
                 <li class="flex color-contrast-medium"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">email</em></span> <a href="mailto:support@gosun.co">support@gosun.co</a></p></li>
 
-                <li><p><a>Mon-Fri | 9AM-5PM ET </a></p></li>
-                <li>{{ 'money-back-guarantee.png' | asset_url | img_tag: '100% Money-back Guaranteed', 'footer-badge-rectangle' }}</li>
-                <li>{{ 'trust-badge-aes-256-bit-ssl.png' | asset_url | img_tag: 'AES 256-bit SSL Secured', 'footer-badge-rectangle' }}</li>
-                <li>
+                <li><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined"><span class="material-icons">calendar_today</span></em></span>Mon-Fri | 9AM-5PM ET </p></li>
+                <li class="flex"><p class="flex"><span class="icon icon--cta"> <em class="material-icons-outlined">place</em></span> 1217 Ellis St, Cincinnati, OH 45223, USA</p></li>
+                <!-- <li>{{ 'money-back-guarantee.png' | asset_url | img_tag: '100% Money-back Guaranteed', 'footer-badge-rectangle' }}</li>
+                <li>{{ 'trust-badge-aes-256-bit-ssl.png' | asset_url | img_tag: 'AES 256-bit SSL Secured', 'footer-badge-rectangle' }}</li> -->
+                <!-- <li>
                   {% for type in shop.enabled_payment_types %}
                   {{ type | payment_type_svg_tag: class:'payment-icon' }}
                   {% endfor %}
-                </li>
+                </li> -->
               </ul>
               <style>img.footer-badge-rectangle { max-width: 256px; width: 100%; }</style>
             </div>
@@ -182,6 +183,7 @@
         {% if section.settings.display_designed_by %}
           {{ 'layout.general.designer_credits_html' | t }}
         {% endif %}
+        
       </a>
       </p>
       <div class="footer-social-icons">

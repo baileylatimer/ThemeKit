@@ -1,8 +1,12 @@
+
+
 <progress aria-hidden="true" class="reset reading-progressbar reading-progressbar--is-hidden js-reading-progressbar" max="100" value="0">
   <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
 </progress>
 
 {% comment %}START / Page {% endcomment %}
+
+
 <span class="js-reading-content">
 
 {{product.metafields.shogun.above}}
@@ -44,7 +48,9 @@
 </script>
 <!-- END Klaviyo Product Favorite -->  
 
-{{product.metafields.shogun.below}}
+<section id="features" class="section--page reveal-fx">
+  {{product.metafields.shogun.below}}
+</section>
 {% comment %}START / Static {% endcomment %}
 {% if product.metafields.custom_fields["product_list__title"] != blank %}
   <section class="width-100 section--page reveal-fx">

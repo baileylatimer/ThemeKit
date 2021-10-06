@@ -1,48 +1,49 @@
 <div class="product-details">
-    <!-- Name -->
-    <h4 class="article-title base-BodyTitle" itemprop="name">{{ product.title }}</h4>
-    <h6 class="article-type" itemprop="name">{{ product.type }}</h6>
-  
-    <!-- Price -->
-    <section class="flex">
-    {% if collection_handles contains 'coming-soon' %}
-        <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
-    {% else %}
-        <span class="money price {% unless product.compare_at_price == product.price %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endunless %}">
-            {% if product.available %}
-                {% if product.price_min > 0 %}
-                <span class="money money--discount">{{ product.price_min | money }}</span>
-                {% else %}
-                <span class="money--discount">
-                    {{ settings.free_price_text }}
-                </span>
-                {% endif %}
-            {% else %}
-            <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
-            {% endif %}
-            {% unless product.compare_at_price == product.price %}
-            {% if product.compare_at_price_max > product.price %}
-            <span class="was_price">
-                <span class="money">{{ product.compare_at_price_min | money }}</span>
-            </span>
-            {% endif %}
-            {% endunless %}
-        </span>
-        <p class="affirm-as-low-as text-sm margin-left-xs color-contrast-medium" data-page-type="category" data-amount="{{ product.price }}" data-learnmore-show="false" data-affirm-type = "text"></p>
-    {% endif %}
-    </section>
+  {% render 'crowdfunder-simple', product: product %}
+  <!-- Name -->
+  <h4 class="article-title base-BodyTitle" itemprop="name">{{ product.title }}</h4>
+  <h6 class="article-type" itemprop="name">{{ product.type }}</h6>
 
-  {% if product_info_description %}
-    <h6 class="article-type article-description" itemprop="name">{{ product.description | strip_html | strip_newlines | escape | truncatewords: product_info_description_words }}</h6>
+  <!-- Price -->
+  <section class="flex">
+  {% if collection_handles contains 'coming-soon' %}
+      <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
+  {% else %}
+      <span class="money price {% unless product.compare_at_price == product.price %}{% if product.compare_at_price_max > product.price %}sale{% endif %}{% endunless %}">
+          {% if product.available %}
+              {% if product.price_min > 0 %}
+              <span class="money money--discount">{{ product.price_min | money }}</span>
+              {% else %}
+              <span class="money--discount">
+                  {{ settings.free_price_text }}
+              </span>
+              {% endif %}
+          {% else %}
+          <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
+          {% endif %}
+          {% unless product.compare_at_price == product.price %}
+          {% if product.compare_at_price_max > product.price %}
+          <span class="was_price">
+              <span class="money">{{ product.compare_at_price_min | money }}</span>
+          </span>
+          {% endif %}
+          {% endunless %}
+      </span>
+      <p class="affirm-as-low-as text-sm margin-left-xs color-contrast-medium" data-page-type="category" data-amount="{{ product.price }}" data-learnmore-show="false" data-affirm-type = "text"></p>
   {% endif %}
+  </section>
 
-  {% if product_info_reviews %}
-  <!-- Stamped - Begin Star Rating Badge --><span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" data-product-type="{{product.type}}" data-product-title="{{product.title}}"  style="display:block;">{{ product.metafields.stamped.badge }}</span><!-- Stamped - End Star Rating Badge -->
-  {% endif %}
+{% if product_info_description %}
+  <h6 class="article-type article-description" itemprop="name">{{ product.description | strip_html | strip_newlines | escape | truncatewords: product_info_description_words }}</h6>
+{% endif %}
 
-  {% if product_info_add_to_cart %}
-  {% include 'product-form' with 'product' %}
-  {% endif %}
+{% if product_info_reviews %}
+<!-- Stamped - Begin Star Rating Badge --><span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" data-product-type="{{product.type}}" data-product-title="{{product.title}}"  style="display:block;">{{ product.metafields.stamped.badge }}</span><!-- Stamped - End Star Rating Badge -->
+{% endif %}
+
+{% if product_info_add_to_cart %}
+{% include 'product-form' with 'product' %}
+{% endif %}
 
 </div>
 

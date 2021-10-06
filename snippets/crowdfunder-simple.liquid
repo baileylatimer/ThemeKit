@@ -1,0 +1,162 @@
+{% comment %}
+-----------------------------------------------------------------------------
+Hey there! This is the markup for the Crowdfunder simple campaign widgets.
+
+If you just need to alter the visual display of the widget you should try
+looking at assets/crowdfunder.css
+
+If you need to make bigger changes, then this is the spot.
+
+There are two sections to this file.
+
+1. The config block at the top. You probably don't want to mess whith this.
+
+2. The the markup for the widget itself. You can customize the arrangement and
+appearance of the widget by tweaking that section
+
+If you have questions please don't hesitate to contact us. We'll reply within
+one business day.
+
+https://ethercycle.com/crowdfunder/support/
+-----------------------------------------------------------------------------
+{% endcomment %}
+
+{% comment %}
+-----------------------------------------------------------------------------
+Config Section - Here be dragons!
+-----------------------------------------------------------------------------
+{% endcomment %}
+
+{% unless product.metafields.crowdfunder == empty %}
+  {% comment %}
+  Here we protect against showing the widget on products that have been duplicated
+  from a product that has an active campaign.
+  {% endcomment %}
+  {% if product.id == product.metafields.crowdfunder.product_id %}
+    {% assign amountPreSold = product.inventory_quantity %}
+    {% capture goalInCents %}{{product.metafields.crowdfunder.goal | times:100}}{% endcapture %}
+    {% capture goalWithCurrency %}{{goalInCents | money}}{% endcapture %}
+
+    {% assign total_stock = 0 %}
+    {% assign total_currency = 0 %}
+    {%for variant in product.variants %}
+    {% capture i %}{{ total_stock | plus:variant.inventory_quantity }}{%endcapture%}
+    {% capture variant_currency %}{{ variant.price | times:variant.inventory_quantity }}{%endcapture%}
+    {% capture j %}{{total_currency | plus:variant_currency}}{%endcapture%}
+    {% assign total_stock = i %}
+    {% assign total_currency = j %}
+    {%endfor%}
+    {% capture i %}{{ total_stock | times:-1 }}{%endcapture%}
+    {% assign total_stock = i %}
+    {% capture j %}{{ total_currency | times:-1 }}{%endcapture%}
+    {% assign total_currency = j %}
+
+    {% if product.metafields.crowdfunder.goal_mode == 'currency' %}
+      {% capture goal %}{{ goalWithCurrency }}{% endcapture %}
+      {% capture percentPreSold %}{{total_currency | times: 100 | divided_by: goalInCents }}{% endcapture %}
+    {% else %}
+      {% capture percentPreSold %}{{total_stock | times: 100 | divided_by: product.metafields.crowdfunder.goal }}{% endcapture %}
+      {% capture goal %}{{product.metafields.crowdfunder.goal }}{% endcapture %}
+    {% endif %}
+
+    {% capture endTimeFriendly %}{{product.metafields.crowdfunder.end_time_friendly}}{% endcapture %}
+    {% capture timezone %}{{product.metafields.crowdfunder.timezone}}{% endcapture %}
+
+
+    {% capture infoText %}{{product.metafields.crowdfunder.pre_sale_widget_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture raisedText %}{{product.metafields.crowdfunder.raised_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture supportedText %}{{product.metafields.crowdfunder.supported_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture fundedText %}{{product.metafields.crowdfunder.funded_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture remainingText %}{{product.metafields.crowdfunder.remaining_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture expiredText %}{{product.metafields.crowdfunder.expired_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+
+    {% capture timeLeft %}{{product.metafields.crowdfunder.calculating_text |
+                replace: "$goal$", goal |
+                replace: "$end_time$", endTimeFriendly |
+                replace: "$timezone$", timezone
+    }}{% endcapture %}
+  {% endif %}
+{% endunless %}
+
+
+
+{% comment %}
+-----------------------------------------------------------------------------
+Markup Section - Customize the widget by tweaking the code below.
+-----------------------------------------------------------------------------
+{% endcomment %}
+
+{% unless product.metafields.crowdfunder == empty %}
+  {% comment %}
+  Here we protect against showing the widget on products that have been duplicated
+  from a product that has an active campaign.
+  {% endcomment %}
+  {% if product.id == product.metafields.crowdfunder.product_id %}
+
+    <section class="crowdfunder-widget simple">
+      <div class='cf-meter'>
+        <span class='cf-percent-bar' style='width: {{percentPreSold}}%; background: {{product.metafields.crowdfunder.progress_bar_color}};'></span>
+      </div>
+
+      <div class='cf-meter-label'>
+        <p>
+          <span class='cf-time-left'
+                data-end-time="{{product.metafields.crowdfunder.end_time}}"
+                data-expired-text="{{expiredText}}"
+                data-singular-year-text="{{product.metafields.crowdfunder.singular_year_text}}"
+                data-plural-year-text="{{product.metafields.crowdfunder.plural_year_text}}"
+                data-singular-month-text="{{product.metafields.crowdfunder.singular_month_text}}"
+                data-plural-month-text="{{product.metafields.crowdfunder.plural_month_text}}"
+                data-singular-day-text="{{product.metafields.crowdfunder.singular_day_text}}"
+                data-plural-day-text="{{product.metafields.crowdfunder.plural_day_text}}"
+                data-hour-abbreviation-text="{{product.metafields.crowdfunder.hour_abbreviation_text}}"
+                data-minute-abbreviation-text="{{product.metafields.crowdfunder.minute_abbreviation_text}}"
+                data-second-abbreviation-text="{{product.metafields.crowdfunder.second_abbreviation_text}}"
+                data-add-to-cart-button-selector=""
+                data-hide-atc-button-at-end="no"
+                data-hide-atc-button-when-funded="no"
+                data-replace-add-to-cart-text="no"
+                data-add-to-cart-text-selector="{{product.metafields.crowdfunder.add_to_cart_text_selector}}"
+                data-add-to-cart-replacement-text="{{product.metafields.crowdfunder.add_to_cart_replacement_text}}"
+                data-product-id="{{product.id}}"
+                data-percent-pre-sold="{{percentPreSold}}"
+                >
+            {{timeLeft}}
+          </span>
+          {{remainingText}}
+        </p>
+        <p><span class='cf-percent-text'>{{percentPreSold}}</span>% {{fundedText}}</p>
+      </div>
+    </section>
+  {% endif %}
+{% endunless %}
+
