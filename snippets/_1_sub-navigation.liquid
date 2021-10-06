@@ -38,74 +38,76 @@
 {% assign variant = product.selected_or_first_available_variant %}
 
     <div class="position-relative display@lg flex justify-end items-center margin-left-auto width-100%@xs">
-      <div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
-        id="product-form-{{ product.id }}"
-        data-product-form
-        data-money-format="{{ shop.money_format }}"
-        data-shop-currency="{{ shop.currency }}"
-        data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
-        data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
-        data-product="{{ product | json | escape }}"
-        {% if settings.limit_quantity or settings.display_inventory_left %}
-          data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
-        {% endif %}
-        data-product-id="{{ product.id }}"
-        >
-        {% render 'crowdfunder', product: product %}
-        {% form 'product', product %}
-      
-        {% if product.options.size > 1 %}
-          <div class="select">
-            <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
-              {% for v in product.variants %}
-                <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+      <div class="flex">
+        <div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
+          id="product-form-{{ product.id }}"
+          data-product-form
+          data-money-format="{{ shop.money_format }}"
+          data-shop-currency="{{ shop.currency }}"
+          data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+          data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+          data-product="{{ product | json | escape }}"
+          {% if settings.limit_quantity or settings.display_inventory_left %}
+            data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+          {% endif %}
+          data-product-id="{{ product.id }}"
+          >
+          {% render 'crowdfunder', product: product %}
+          {% form 'product', product %}
+        
+          {% if product.options.size > 1 %}
+            <div class="select">
+              <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
+                {% for v in product.variants %}
+                  <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% elsif product.options.size == 1 and product.variants.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
+            <div class="select">
+              <label>{{ product.options[0] }}</label>
+              <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
+                {% for v in product.variants %}
+                  <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ variant.id }}" />
+          {% endif %}
+        
+          {% if settings.product_form_style == "swatches" and product.variants.size > 1 or settings.product_form_style == "swatches" and product.options[0] != "Title" %}
+            <!-- <div class="swatch_options">
+              {% for option in product.options %}
+                {% include 'product-swatch' with option %}
               {% endfor %}
-            </select>
-          </div>
-        {% elsif product.options.size == 1 and product.variants.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
-          <div class="select">
-            <label>{{ product.options[0] }}</label>
-            <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
-              {% for v in product.variants %}
-                <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
-              {% endfor %}
-            </select>
-          </div>
-        {% else %}
-          <input type="hidden" name="id" value="{{ variant.id }}" />
-        {% endif %}
-      
-        {% if settings.product_form_style == "swatches" and product.variants.size > 1 or settings.product_form_style == "swatches" and product.options[0] != "Title" %}
-          <div class="swatch_options">
-            {% for option in product.options %}
-              {% include 'product-swatch' with option %}
-            {% endfor %}
-          </div>
-        {% endif %}
-      
-        <section class="purchase-details">
-          <div class="width-1-1 flex">
-            {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}Add to cart{% elsif collection_handles contains 'retired' %}Sold out{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-            
-            {% if product.available %}
-              <div aria-controls="drawer-cart-id" class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} width-1-1">
-                {% if settings.cart_action == 'reload_page' %}
-                  <input type="hidden" name="return_to" value="back" />
-                {% elsif settings.cart_action == 'redirect_checkout' %}
-                  <input type="hidden" name="return_to" value="/checkout" />
-                {% endif %}
-                  <button id="AddToCart" type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="btn btn--md btn--accent{% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %} raid-add-to-cart" data-label={{ add_to_cart_label | json }} aria-controls="drawer-cart-id" >
-                    <span class="text"> <div class="info-item justify-center"> <span class="icon"> <i class="material-icons-outlined">add_shopping_cart</i></span> <span id="AddToCartText">{{ add_to_cart_label }}</span></div></span>
-                    <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
-                      <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-                    </svg>
-                  </button>
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      {% endform %} 
-   
+            </div> -->
+          {% endif %}
+        
+          <section class="purchase-details">
+            <div class="width-1-1 flex">
+              {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% elsif collection_handles contains 'back-order' %}Add to cart{% elsif collection_handles contains 'retired' %}Sold out{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+              
+              {% if product.available %}
+                <div aria-controls="drawer-cart-id" class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} width-1-1">
+                  {% if settings.cart_action == 'reload_page' %}
+                    <input type="hidden" name="return_to" value="back" />
+                  {% elsif settings.cart_action == 'redirect_checkout' %}
+                    <input type="hidden" name="return_to" value="/checkout" />
+                  {% endif %}
+                    <button id="AddToCart" type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}" name="add" class="btn btn--md btn--accent{% if settings.cart_action == 'ajax' %} ajax-submit {% endif %}action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %} raid-add-to-cart" data-label={{ add_to_cart_label | json }} aria-controls="drawer-cart-id" >
+                      <span class="text"> <div class="info-item justify-center"> <span class="icon"> <i class="material-icons-outlined">add_shopping_cart</i></span> <span id="AddToCartText">{{ add_to_cart_label }}</span></div></span>
+                      <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
+                        <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                      </svg>
+                    </button>
+                </div>
+              {% endif %}
+            </div>
+          </section>
+        {% endform %} 
+    
+        </div>
     </div>
     </div>
     <div class="position-relative hide@lg width-1-1">
@@ -124,9 +126,9 @@
         >
         {% render 'crowdfunder', product: product %}
         {% form 'product', product %}
-      
+      <div class="flex  margin-auto">
         {% if product.options.size > 1 %}
-          <div class="select">
+          <div class="select margin-right-md width-50%">
             <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
               {% for v in product.variants %}
                 <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
@@ -134,7 +136,7 @@
             </select>
           </div>
         {% elsif product.options.size == 1 and product.variants.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
-          <div class="select">
+          <div class="select margin-right-md width-50%">
             <label>{{ product.options[0] }}</label>
             <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
               {% for v in product.variants %}
@@ -147,11 +149,11 @@
         {% endif %}
       
         {% if settings.product_form_style == "swatches" and product.variants.size > 1 or settings.product_form_style == "swatches" and product.options[0] != "Title" %}
-          <div class="swatch_options">
+          <!-- <div class="swatch_options">
             {% for option in product.options %}
               {% include 'product-swatch' with option %}
             {% endfor %}
-          </div>
+          </div> -->
         {% endif %}
       
         <section class="purchase-details">
@@ -175,6 +177,7 @@
             {% endif %}
           </div>
         </section>
+      </div>
       {% endform %} 
    
     </div>
