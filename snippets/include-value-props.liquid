@@ -1,0 +1,444 @@
+{% if type == 'block' %}
+
+{% assign global = block.settings.global %}
+{% assign value_prop = block.settings.value_prop %}
+{% assign icon_style = block.settings.icon_style %}
+{% assign icon_size = block.settings.icon_size %}
+{% assign icon_color = block.settings.icon_color %}
+{% assign alignment = block.settings.newsletter_title %}
+{% assign description = block.settings.description %}
+{% else %}
+  {% assign global = section.settings.global %}
+  {% assign value_prop = section.settings.value_prop %}
+  {% assign icon_style = section.settings.icon_style %}
+  {% assign icon_size = section.settings.icon_size %}
+  {% assign icon_color = section.settings.icon_color %}
+  {% assign alignment = section.settings.newsletter_title %}
+  {% assign description = section.settings.description %}
+{% endif %}
+
+<script>
+  console.log("{{ icon_size }} - {{ 'value_props.financing.title' | t }}");
+</script>
+
+<div class="container flex flex-wrap flex-center padding-y-md@xl">
+
+  {% if global == blank %}
+    {% for block in section.blocks %}
+      <div aria-controls="{{ value_prop | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ alignment }}">
+          <span  class="icon {% if section.settings.icon_style != blank %} {{ icon_style }} {% endif %} {% if icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+              <i class="{% if icon_style != blank %} {{ icon_style }}{% else %} material-icons-outlined {% endif %} {% if icon_size != blank %} {{ icon_size }}{% else %} icon--md {% endif %}">
+              {% case value_prop %}
+                {% when 'shipping' %}
+                {{ 'value_props.shipping.icon' | t }}
+                {% when 'customer_count' %}
+                {{ 'value_props.customer_count.icon' | t }}
+                {% when 'customer_service' %}
+                {{ 'value_props.customer_service.icon' | t }}
+                {% when 'financing' %}
+                {{ 'value_props.financing.icon' | t }}
+                {% when 'warranty' %}
+                {{ 'value_props.warranty.icon' | t }}
+                {% when 'security' %}
+                {{ 'value_props.security.icon' | t }}
+                {% else %}
+              {% endcase %}
+            </i>
+          </span>
+          <h5 class="text-md font-medium margin-top-xs {{ alignment }}">
+            {% case value_prop %}
+              {% when 'shipping' %}
+              {{ 'value_props.shipping.title' | t }}
+              {% when 'customer_count' %}
+              {{ 'value_props.customer_count.title' | t }}
+              {% when 'customer_service' %}
+              {{ 'value_props.customer_service.title' | t }}
+              {% when 'financing' %}
+              {{ 'value_props.financing.title' | t }}
+              {% when 'warranty' %}
+              {{ 'value_props.warranty.title' | t }}
+              {% when 'security' %}
+              {{ 'value_props.security.title' | t }}
+              {% else %}
+            {% endcase %}
+          </h5>
+          
+          <div id="{{ value_prop | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+            <div class="text-component text-sm">
+              <h1 class="text-md">
+                {% case value_prop %}
+                  {% when 'shipping' %}
+                  {{ 'value_props.shipping.title' | t }}
+                  {% when 'customer_count' %}
+                  {{ 'value_props.customer_count.title' | t }}
+                  {% when 'customer_service' %}
+                  {{ 'value_props.customer_service.title' | t }}
+                  {% when 'financing' %}
+                  {{ 'value_props.financing.title' | t }}
+                  {% when 'warranty' %}
+                  {{ 'value_props.warranty.title' | t }}
+                  {% when 'security' %}
+                  {{ 'value_props.security.title' | t }}
+                  {% else %}
+                {% endcase %}
+              </h1>
+              <p>
+                {% case value_prop %}
+                  {% when 'shipping' %}
+                  {{ 'value_props.shipping.description' | t }}
+                  {% when 'customer_count' %}
+                  {{ 'value_props.customer_count.description' | t }}
+                  {% when 'customer_service' %}
+                  {{ 'value_props.customer_service.description' | t }}
+                  {% when 'financing' %}
+                  {{ 'value_props.financing.description' | t }}
+                  {% when 'warranty' %}
+                  {{ 'value_props.warranty.description' | t }}
+                  {% when 'security' %}
+                  {{ 'value_props.security.description' | t }}
+                  {% else %}
+                {% endcase %}
+              </p>
+            </div>
+          </div>
+          
+          {% if description != blank %}
+              <p class="body-text--md {{ alignment }}">{{ description }}</p>
+          {% endif %}
+      </div>
+    {% endfor %}
+
+  {% else %}
+  <div aria-controls="{{ value_prop_1 | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ alignment }}">
+    <span class="icon {% if section.settings.icon_style != blank %} {{ icon_style }} {% endif %} {% if icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+        <i class="{% if icon_style != blank %} {{ icon_style }}{% else %} material-icons-outlined {% endif %} {% if icon_size != blank %} {{ icon_size }}{% else %} icon--md {% endif %}">
+        {% case value_prop %}
+          {% when 'shipping' %}
+          {{ 'value_props.shipping.icon' | t }}
+          {% when 'customer_count' %}
+          {{ 'value_props.customer_count.icon' | t }}
+          {% when 'customer_service' %}
+          {{ 'value_props.customer_service.icon' | t }}
+          {% when 'financing' %}
+          {{ 'value_props.financing.icon' | t }}
+          {% when 'warranty' %}
+          {{ 'value_props.warranty.icon' | t }}
+          {% when 'security' %}
+          {{ 'value_props.security.icon' | t }}
+          {% else %}
+        {% endcase %}
+      </i>
+    </span>
+    <h5 class="text-md font-medium margin-top-xs {{ alignment }}">
+      {% case value_prop_1 %}
+        {% when 'shipping' %}
+        {{ 'value_props.shipping.title' | t }}
+        {% when 'customer_count' %}
+        {{ 'value_props.customer_count.title' | t }}
+        {% when 'customer_service' %}
+        {{ 'value_props.customer_service.title' | t }}
+        {% when 'financing' %}
+        {{ 'value_props.financing.title' | t }}
+        {% when 'warranty' %}
+        {{ 'value_props.warranty.title' | t }}
+        {% when 'security' %}
+        {{ 'value_props.security.title' | t }}
+        {% else %}
+      {% endcase %}
+    </h5>
+    
+    <div id="{{ value_prop_1 | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+      <div class="text-component text-sm">
+        <h1 class="text-md">
+          {% case value_prop_1 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.title' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.title' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.title' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.title' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.title' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.title' | t }}
+            {% else %}
+          {% endcase %}
+        </h1>
+        <p>
+          {% case value_prop_1 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.description' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.description' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.description' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.description' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.description' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.description' | t }}
+            {% else %}
+          {% endcase %}
+        </p>
+      </div>
+    </div>
+    
+    {% if description != blank %}
+        <p class="body-text--md {{ alignment }}">{{ description }}</p>
+    {% endif %}
+  </div>
+
+  <div aria-controls="{{ value_prop_2 | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ alignment }}">
+    <span class="icon {% if section.settings.icon_style != blank %} {{ icon_style }} {% endif %} {% if icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+        <i class="{% if icon_style != blank %} {{ icon_style }}{% else %} material-icons-outlined {% endif %} {% if icon_size != blank %} {{ icon_size }}{% else %} icon--md {% endif %}">
+        {% case value_prop %}
+          {% when 'shipping' %}
+          {{ 'value_props.shipping.icon' | t }}
+          {% when 'customer_count' %}
+          {{ 'value_props.customer_count.icon' | t }}
+          {% when 'customer_service' %}
+          {{ 'value_props.customer_service.icon' | t }}
+          {% when 'financing' %}
+          {{ 'value_props.financing.icon' | t }}
+          {% when 'warranty' %}
+          {{ 'value_props.warranty.icon' | t }}
+          {% when 'security' %}
+          {{ 'value_props.security.icon' | t }}
+          {% else %}
+        {% endcase %}
+      </i>
+    </span>
+    <h5 class="text-md font-medium margin-top-xs {{ alignment }}">
+      {% case value_prop_2 %}
+        {% when 'shipping' %}
+        {{ 'value_props.shipping.title' | t }}
+        {% when 'customer_count' %}
+        {{ 'value_props.customer_count.title' | t }}
+        {% when 'customer_service' %}
+        {{ 'value_props.customer_service.title' | t }}
+        {% when 'financing' %}
+        {{ 'value_props.financing.title' | t }}
+        {% when 'warranty' %}
+        {{ 'value_props.warranty.title' | t }}
+        {% when 'security' %}
+        {{ 'value_props.security.title' | t }}
+        {% else %}
+      {% endcase %}
+    </h5>
+    
+    <div id="{{ value_prop_2 | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+      <div class="text-component text-sm">
+        <h1 class="text-md">
+          {% case value_prop_2 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.title' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.title' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.title' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.title' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.title' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.title' | t }}
+            {% else %}
+          {% endcase %}
+        </h1>
+        <p>
+          {% case value_prop_2 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.description' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.description' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.description' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.description' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.description' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.description' | t }}
+            {% else %}
+          {% endcase %}
+        </p>
+      </div>
+    </div>
+    
+    {% if description != blank %}
+        <p class="body-text--md {{ alignment }}">{{ description }}</p>
+    {% endif %}
+  </div>
+
+  <div aria-controls="{{ value_prop_3 | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ alignment }}">
+    <span class="icon {% if section.settings.icon_style != blank %} {{ icon_style }} {% endif %} {% if icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+        <i class="{% if icon_style != blank %} {{ icon_style }}{% else %} material-icons-outlined {% endif %} {% if icon_size != blank %} {{ icon_size }}{% else %} icon--md {% endif %}">
+        {% case value_prop %}
+          {% when 'shipping' %}
+          {{ 'value_props.shipping.icon' | t }}
+          {% when 'customer_count' %}
+          {{ 'value_props.customer_count.icon' | t }}
+          {% when 'customer_service' %}
+          {{ 'value_props.customer_service.icon' | t }}
+          {% when 'financing' %}
+          {{ 'value_props.financing.icon' | t }}
+          {% when 'warranty' %}
+          {{ 'value_props.warranty.icon' | t }}
+          {% when 'security' %}
+          {{ 'value_props.security.icon' | t }}
+          {% else %}
+        {% endcase %}
+      </i>
+    </span>
+    <h5 class="text-md font-medium margin-top-xs {{ alignment }}">
+      {% case value_prop_3 %}
+        {% when 'shipping' %}
+        {{ 'value_props.shipping.title' | t }}
+        {% when 'customer_count' %}
+        {{ 'value_props.customer_count.title' | t }}
+        {% when 'customer_service' %}
+        {{ 'value_props.customer_service.title' | t }}
+        {% when 'financing' %}
+        {{ 'value_props.financing.title' | t }}
+        {% when 'warranty' %}
+        {{ 'value_props.warranty.title' | t }}
+        {% when 'security' %}
+        {{ 'value_props.security.title' | t }}
+        {% else %}
+      {% endcase %}
+    </h5>
+    
+    <div id="{{ value_prop_3 | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+      <div class="text-component text-sm">
+        <h1 class="text-md">
+          {% case value_prop_3 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.title' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.title' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.title' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.title' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.title' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.title' | t }}
+            {% else %}
+          {% endcase %}
+        </h1>
+        <p>
+          {% case value_prop_3 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.description' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.description' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.description' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.description' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.description' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.description' | t }}
+            {% else %}
+          {% endcase %}
+        </p>
+      </div>
+    </div>
+    
+    {% if description != blank %}
+        <p class="body-text--md {{ alignment }}">{{ description }}</p>
+    {% endif %}
+  </div>
+
+  <div aria-controls="{{ value_prop_4 | prepend: 'value_props'}}" class="cursor-pointer validator-item margin-sm margin-lg@lg flex flex-column align-{{ alignment }}">
+    <span class="icon {% if section.settings.icon_style != blank %} {{ icon_style }} {% endif %} {% if icon_color != blank %} icon--display {% else %} icon--default {% endif %} m0">
+        <i class="{% if icon_style != blank %} {{ icon_style }}{% else %} material-icons-outlined {% endif %} {% if icon_size != blank %} {{ icon_size }}{% else %} icon--md {% endif %}">
+        {% case value_prop %}
+          {% when 'shipping' %}
+          {{ 'value_props.shipping.icon' | t }}
+          {% when 'customer_count' %}
+          {{ 'value_props.customer_count.icon' | t }}
+          {% when 'customer_service' %}
+          {{ 'value_props.customer_service.icon' | t }}
+          {% when 'financing' %}
+          {{ 'value_props.financing.icon' | t }}
+          {% when 'warranty' %}
+          {{ 'value_props.warranty.icon' | t }}
+          {% when 'security' %}
+          {{ 'value_props.security.icon' | t }}
+          {% else %}
+        {% endcase %}
+      </i>
+    </span>
+    <h5 class="text-md font-medium margin-top-xs {{ alignment }}">
+      {% case value_prop_4 %}
+        {% when 'shipping' %}
+        {{ 'value_props.shipping.title' | t }}
+        {% when 'customer_count' %}
+        {{ 'value_props.customer_count.title' | t }}
+        {% when 'customer_service' %}
+        {{ 'value_props.customer_service.title' | t }}
+        {% when 'financing' %}
+        {{ 'value_props.financing.title' | t }}
+        {% when 'warranty' %}
+        {{ 'value_props.warranty.title' | t }}
+        {% when 'security' %}
+        {{ 'value_props.security.title' | t }}
+        {% else %}
+      {% endcase %}
+    </h5>
+    
+    <div id="{{ value_prop_4 | prepend: 'value_props'}}" class="popover bg padding-sm radius-md shadow-md js-popover js-tab-focus" role="dialog">
+      <div class="text-component text-sm">
+        <h1 class="text-md">
+          {% case value_prop_4 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.title' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.title' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.title' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.title' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.title' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.title' | t }}
+            {% else %}
+          {% endcase %}
+        </h1>
+        <p>
+          {% case value_prop_4 %}
+            {% when 'shipping' %}
+            {{ 'value_props.shipping.description' | t }}
+            {% when 'customer_count' %}
+            {{ 'value_props.customer_count.description' | t }}
+            {% when 'customer_service' %}
+            {{ 'value_props.customer_service.description' | t }}
+            {% when 'financing' %}
+            {{ 'value_props.financing.description' | t }}
+            {% when 'warranty' %}
+            {{ 'value_props.warranty.description' | t }}
+            {% when 'security' %}
+            {{ 'value_props.security.description' | t }}
+            {% else %}
+          {% endcase %}
+        </p>
+      </div>
+    </div>
+    
+    {% if description != blank %}
+        <p class="body-text--md {{ alignment }}">{{ description }}</p>
+    {% endif %}
+  </div>
+
+  {% endif %}
+
+
+
+</div>

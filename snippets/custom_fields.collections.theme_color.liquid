@@ -1,0 +1,8 @@
+{% if collection.metafields.custom_fields["theme_color"] != blank %}
+  <div class="custom-field custom-field__theme-color custom-field__type--text-list">
+    <h3 class="custom-field--title">Theme Color</h3>
+    <div class="custom-field--value">  
+      {{ collection.metafields.custom_fields["theme_color"] }}
+    </div>
+  </div>
+{% endif %}

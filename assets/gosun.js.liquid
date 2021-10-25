@@ -12,7 +12,21 @@ lozad('.lozad', {
 }).observe()
 
 
-
+var lastScrollTop = 0;
+$(window).scroll(function(){
+  var st = $(this).scrollTop();
+  var banner = $('nav');
+  setTimeout(function(){
+    if (st > lastScrollTop){
+      banner.addClass('hide-nav');
+      $('.sub-nav').addClass('hide-subnav');
+    } else {
+      banner.removeClass('hide-nav');
+      $('.sub-nav').removeClass('hide-subnav');
+    }
+    lastScrollTop = st;
+  }, 100);
+});
 
 
 $(window).resize(function(){

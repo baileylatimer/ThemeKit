@@ -42,7 +42,7 @@
             <li class="dr-cart__product cart_item">
             {% if item.image %}
               <a href="{{ item.url }}" class="dr-cart__img">
-                <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
+                <img src="{{ item.featured_image | img_url: '320x' }}" alt="{{ item.title | escape }}" class="lazyload" />
               </a>
             {% endif %}
 

@@ -1,0 +1,8 @@
+{% if shop.metafields.custom_fields["tab_definition"] != blank %}
+  <div class="custom-field custom-field__tab-definition custom-field__type--text">
+    <h3 class="custom-field--title">Tab Definition</h3>
+    <div class="custom-field--value">
+      {{ shop.metafields.custom_fields["tab_definition"] }}
+    </div>
+  </div>
+{% endif %}

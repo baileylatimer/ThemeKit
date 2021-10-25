@@ -10,3 +10,5 @@
     {% capture accdesc %}{% include 'page-multi-column', content: page.content %}{% endcapture %}{% assign content = accdesc | replace: '&lt;!-- acsplit --&gt;', '<!-- acsplit -->' | split: '<!-- acsplit -->' %}{% for c in content %}{% include 'product-description-slider-page' with c %}{% endfor %}
   </div>
 </div>
+
+{% section 'custom-fields-pages' %}

@@ -1,0 +1,8 @@
+{% if shop.metafields.custom_fields["product_table_properties"] != blank %}
+  <div class="custom-field custom-field__product-table-properties custom-field__type--text">
+    <h3 class="custom-field--title">Product Table Properties</h3>
+    <div class="custom-field--value">
+      {{ shop.metafields.custom_fields["product_table_properties"] }}
+    </div>
+  </div>
+{% endif %}

@@ -4,6 +4,19 @@
   <h4 class="article-title base-BodyTitle" itemprop="name">{{ product.title }}</h4>
   <h6 class="article-type" itemprop="name">{{ product.type }}</h6>
 
+ <!-- Stamped - Begin Star Rating Badge -->
+ <span 
+ class="stamped-product-reviews-badge" 
+ data-id="{{ product.id }}"
+ data-product-sku="{{ product.handle }}" 
+ data-product-type="{{product.type}}" 
+ data-product-title="{{product.title}}" 
+ style="display:none;">
+ {{product.metafields.stamped.badge}}
+ </span>
+<!-- Stamped - End Star Rating Badge -->
+
+
   <!-- Price -->
   <section class="flex">
   {% if collection_handles contains 'coming-soon' %}

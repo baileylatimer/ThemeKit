@@ -15,3 +15,16 @@ This file can be re-written at any time.
     {% endfor %}
   </script>
 {% endif %}
+
+{% if cart and cart.currency and cart.currency.iso_code %}
+  <script type="text/javascript">
+    window.__shgCurrentCurrencyCode = window.__shgCurrentCurrencyCode || {
+      currency: "{{ cart.currency.iso_code }}",
+      currency_symbol: "{{ cart.currency.symbol }}",
+      decimal_separator: ".",
+      thousands_separator: ",",
+      decimal_places: 2,
+      currency_symbol_location: "left"
+    };
+  </script>
+{% endif %}

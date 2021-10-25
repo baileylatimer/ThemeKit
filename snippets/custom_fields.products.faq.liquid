@@ -1,0 +1,25 @@
+{% if product.metafields.custom_fields["faq"] != blank %}
+{% assign data_attr = shop.metafields._cf_products["faq"].data_attr %}
+<div class="cf-widget-faq cf-widget__accordion cf-auto-init" {{ data_attr }}>
+  <div class="cf-widget-items-wrapper">
+    {% for item in product.metafields.custom_fields["faq"] %}
+    <div class="cf-widget-item" data-index="{{ forloop.index0 }}">
+      <div class="cf-accordion-title">
+        {{ item.title }}
+      </div>
+      <div class="inner">
+        <div class="inner-padding">
+          
+            {% if item.body != blank %}
+            <div class="cf-widget-field cf-widget-field__body cf-widget-field--html">
+              {{ item.body }}
+            </div>
+            {% endif %}
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

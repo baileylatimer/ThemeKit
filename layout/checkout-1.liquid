@@ -12,7 +12,9 @@
 
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
-  </head>
+  
+  {% render 'shogun-head' %}
+</head>
   <body>
     {{ skip_to_content_link }}
 

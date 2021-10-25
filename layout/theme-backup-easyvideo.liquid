@@ -212,7 +212,7 @@ window.mlvedaShopCurrency = "{{ shop.currency }}";
 window.shopCurrency = "{{ shop.currency }}";
 window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
 </script>
-  {% include 'shogun-head' %}
+  
 
   {{ 'custom-css-shopify.css' | asset_url | stylesheet_tag }}
 
@@ -236,6 +236,8 @@ window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   <script src="https://kit.fontawesome.com/40a53939d2.js" crossorigin="anonymous"></script>  
 
 
+
+  {% render 'shogun-head' %}
 </head>
 
   {% if template contains "index" %}

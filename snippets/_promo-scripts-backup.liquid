@@ -1,0 +1,83 @@
+{%- assign product = all_products[section.settings.featured_product] -%}
+{% assign found_title = false %}
+{% assign gift_value = section.settings.gift_value %}
+{% assign cart_total = cart.total_price %}
+{% assign gift_value_left = gift_value | minus: cart_total %}
+{% assign variant_id = product.variants.first.id %}
+
+{% for item in cart.items %}
+<script>
+  console.log("{{ item.variant.id }} {{ product.title }}");
+</script>
+{% if item.variant.id == variant_id  %}
+  {% assign found_title = true %}
+{% endif %}
+{% endfor %}
+
+
+<div class="alert alert--success alert--is-visible js-alert margin-y-xs" role="alert">
+  <div class="flex items-center">
+    <i class="icon--sm material-icons-outlined margin-right-xxs">card_giftcard</i>
+    <span class="money js-cart_gift text-sm">
+      {% if gift_value_left > 0 %}
+      Free {{ product.title }} set on orders ${{ section.settings.gift_value }}+ <br><a href='/collections/todays-deals' class='color-success-dark'>Add {{ gift_value_left | money }}  to unlock your free gift ➞</a>
+      {% else %}
+        You've unlocked a free {{ product.title }}! 
+        {% if found_title == false %}
+        <br>(Refresh the page if it doesn't appear in your cart)
+        {% endif %}
+      {% endif %}
+    </span>
+  </div>
+</div>
+
+
+
+
+
+{% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
+
+  {% assign variant_id = product.variants.first.id %}
+
+  <script>
+    console.log("{{ variant_id }} before {{ item.variant.id }} {{ product.title }}");
+  </script>
+
+  {% if gift_value_left < 0 and found_title == false %}
+    <script>
+      $( document ).ready(function() {
+        var variantId = {{ variant_id }};
+        jQuery.post('/cart/add.js', {
+          quantity: 1,
+          id: variantId
+        });
+        setTimeout( 
+          function() {
+            window.location.reload(false);
+          }, 1000);
+        });
+      </script>
+{% endif %} 
+{% endunless %}
+
+
+<!-- 
+{% unless cart.item_count == 0 or product.empty? or product.variants.first.available == false %}
+
+  {% if gift_value_left < 0 and found_title == false %}
+    <script>
+      console.log("{{ variant_id }} success");
+      $( document ).ready(function() {
+        var variantId = {{ product.id }};
+        jQuery.post('/cart/add.js', {
+          quantity: 1,
+          id: variantId
+        });
+        // setTimeout( 
+        //   function() {
+        //     window.location.reload(false);
+        //   }, 1000);
+        // });
+    </script>
+  {% endif %} 
+{% endunless %} -->

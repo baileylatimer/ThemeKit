@@ -1,0 +1,48 @@
+{% render "blocks.custom_fields" with resource_type: "pages", blocks: section.blocks %}
+{% schema %}
+  {
+    "name": {
+        "en": "Custom Fields"
+    },
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "[View Documentation](https:\/\/custom-fields.docs.bonify.io\/)"
+        },
+        {
+            "type": "paragraph",
+            "content": "[Edit Custom Fields](https:\/\/customfields.bonify.io\/dashboard\/patricksherwin.myshopify.com\/pages\/configure)"
+        }
+    ],
+    "templates": [
+        "page"
+    ],
+    "presets": [
+        {
+            "name": "Custom Fields",
+            "blocks": []
+        }
+    ],
+    "blocks": [
+        {
+            "type": "cf_f_fc",
+            "name": {
+                "en": "Field Collection"
+            },
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "key",
+                    "label": "Select a Field Collection",
+                    "options": [
+                        {
+                            "value": "staff",
+                            "label": "Staff Members"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

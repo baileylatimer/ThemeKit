@@ -8028,6 +8028,25 @@ img {
   -ms-border-radius: var(--radius-md);
   -o-border-radius: var(--radius-md); }
 
+/* styles.scss.css | https://cdn.shopify.com/s/files/1/0789/1333/t/184/assets/styles.scss.css?v=11468049965419844593 */
+.flickity-slider, .flickity-enabled.is-draggable .flickity-viewport, .product_gallery .gallery-cell, .video-wrapper {
+  height: 450px; }
+  @media (min-width: 768px) {
+    .flickity-slider, .flickity-enabled.is-draggable .flickity-viewport, .product_gallery .gallery-cell, .video-wrapper {
+      height: 600px; } }
+
+@media (max-width: 768px) {
+  .video-wrapper {
+    height: 0; } }
+
+@media (max-width: 768px) {
+  .product_gallery .gallery-cell {
+    margin-top: 60px; } }
+
+@media (max-width: 768px) {
+  .product_gallery {
+    margin-bottom: 0px !important; } }
+
 .index-sections .no-filter img {
   filter: none !important;
   -webkit-filter: none !important; }
@@ -8056,9 +8075,7 @@ img {
 ================================================== */
 .video-wrapper {
   position: relative;
-  margin-top: 25px;
   padding-bottom: 56.25%;
-  height: 0;
   overflow: hidden !important;
   border-radius: var(--radius-md) !important;
   -webkit-border-radius: var(--radius-md) !important;
@@ -8084,9 +8101,13 @@ img {
 .img--short {
   max-height: 450px; }
 
-.gallery-cell .video-wrapper,
-.gallery-cell video {
-  margin-top: 90px; }
+@media (max-width: 768px) {
+  .gallery-cell .video-wrapper,
+  .gallery-cell video {
+    margin-top: 120px; } }
+
+.product_gallery .gallery-cell {
+  height: 100%; }
 
 .video-wrapper img {
   height: auto;
@@ -8096,9 +8117,12 @@ img {
   -webkit-filter: brightness(0.97) !important;
   object-fit: cover;
   z-index: 2; }
+  @media (min-width: 768px) {
+    .video-wrapper img {
+      min-height: 600px; } }
 
 #video-cover {
-  z-index: 2 !important;
+  z-index: 1 !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -8445,7 +8469,7 @@ div.section.collection_description {
   padding-left: 1.5rem;
   width: 100%;
   height: 200px;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start; }
@@ -10254,7 +10278,7 @@ Usage: codyhouse.co/license
     -webkit-filter: brightness(0.94) !important; }
 
 .aniWrap {
-  margin: 40px auto;
+  margin: 0px auto;
   display: block;
   width: 72px; }
   @media (max-width: 768px) {
@@ -10631,10 +10655,13 @@ Descr: Advanced image gallery template
   margin-bottom: var(--space-md); }
 
 @media (min-width: 768px) {
-  .adv-gallery__grid > :nth-child(1), .adv-gallery__grid > :nth-child(2), .adv-gallery__grid > :nth-child(3) {
+  .adv-gallery__grid > :nth-child(1),
+  .adv-gallery__grid > :nth-child(2),
+  .adv-gallery__grid > :nth-child(3) {
     width: 32%;
     float: left; }
-  .adv-gallery__grid > :nth-child(1), .adv-gallery__grid > :nth-child(2) {
+  .adv-gallery__grid > :nth-child(1),
+  .adv-gallery__grid > :nth-child(2) {
     margin-right: 2%; }
   .adv-gallery__grid > :nth-child(4) {
     clear: both; } }
@@ -11753,6 +11780,9 @@ Descr: Selectable images that behave like radio/checkbox buttons
 Usage: codyhouse.co/license
 
 -------------------------------- */
+.custom-field__bundle-options {
+  display: none; }
+
 :root {
   --choice-img-input-size: 100px;
   --choice-img-input-icon-size: 26px; }
@@ -11782,6 +11812,14 @@ Usage: codyhouse.co/license
     height: 50px;
     width: 50px;
     */ }
+
+.launchtip_upsell_design {
+  background-color: white !important;
+  color: var(--color-contrast-higher) !important;
+  letter-spacing: 0 !important;
+  font-size: var(--text-sm) !important;
+  padding: var(--space-md) !important;
+  float: right; }
 
 .choice-img, .productbox {
   position: relative;
@@ -16320,10 +16358,22 @@ div.dropdown.menu {
   position: fixed !important;
   width: 100vw !important;
   display: block;
-  z-index: 999 !important; }
+  z-index: 999 !important;
+  transition: transform 300ms; }
   @media (min-width: 768px) {
     #header {
       margin-top: calc(calc(var(--header-height) - 65px) * -1); } }
+
+.hide-nav {
+  transform: translateY(-100px);
+  -webkit-transform: translateY(-100px);
+  -moz-transform: translateY(-100px);
+  -ms-transform: translateY(-100px);
+  -o-transform: translateY(-100px); }
+
+@media (min-width: 768px) {
+  .hide-subnav {
+    transform: translateY(-100px); } }
 
 @media (min-width: 768px) {
   .product [data-barba="container"] {

@@ -24,7 +24,7 @@
               {% if block.settings.product != nil %}
                 <div class="mega-menu__image-caption-link">
                   <a href="{{ block.settings.product.url }}" >
-                    <img src="{{block.settings.product.featured_image | img_url: '150x150'}}"> 
+                    <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{block.settings.product.featured_image | img_url: '150x150'}}"> 
                     <p>{{ block.settings.product.title }}</p>
                   </a>
                 </div>
@@ -48,7 +48,7 @@
         {% if block.settings.product != nil %}
           <li class="mobile-mega-menu_block"  >
             <a href="{{ block.settings.product.url }}" >
-              <img src="{{block.settings.product.featured_image | img_url: '100x100'}}"> 
+              <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{block.settings.product.featured_image | img_url: '100x100'}}"> 
               <p>{{ block.settings.product.title }}</p>
             </a>
           </li>

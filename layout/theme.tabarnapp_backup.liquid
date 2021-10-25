@@ -75,8 +75,10 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 </script>
 <!-- End Visual Website Optimizer Asynchronous Code -->    
 
-  {% include 'shogun-head' %}
-{% include 'buildify-head' %}</head>
+  
+{% include 'buildify-head' %}
+  {% render 'shogun-head' %}
+</head>
   {% if template contains "index" %}
     {% assign feature_image = true %}
   {% elsif template contains "collection" %}

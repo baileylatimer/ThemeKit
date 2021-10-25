@@ -1,0 +1,58 @@
+{% render "blocks.custom_fields" with resource_type: "collections", blocks: section.blocks %}
+{% schema %}
+  {
+    "name": {
+        "en": "Custom Fields"
+    },
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "[View Documentation](https:\/\/custom-fields.docs.bonify.io\/)"
+        },
+        {
+            "type": "paragraph",
+            "content": "[Edit Custom Fields](https:\/\/customfields.bonify.io\/dashboard\/patricksherwin.myshopify.com\/collections\/configure)"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "cf_f_txtl",
+            "name": {
+                "en": "Text (List)"
+            },
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "key",
+                    "label": "Select a Field",
+                    "options": [
+                        {
+                            "value": "theme_color",
+                            "label": "Theme Color"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "cf_f_text",
+            "name": {
+                "en": "Text"
+            },
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "key",
+                    "label": "Select a Field",
+                    "options": [
+                        {
+                            "value": "custom_fields",
+                            "label": "Custom Fields"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

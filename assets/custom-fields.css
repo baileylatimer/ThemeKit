@@ -1,0 +1,94 @@
+/**
+ * Base CSS file for Custom Fields widget styles.
+ * You can modify this file.
+ */
+.custom-fields-widgets-wrapper {
+  margin-top: 2rem;
+}
+.custom-fields-widgets-wrapper > div {
+  margin-bottom: 2rem;
+}
+.custom-fields-widgets-wrapper > div:last-child {
+  margin-bottom: 0;
+}
+
+.custom-fields-wrapper > [class*=cf-widget-] {
+  margin-bottom: 2rem;
+}
+
+.custom-fields-section {
+  margin-top: 6rem;
+}
+.custom-fields-section .custom-field {
+  margin: auto;
+  padding-left: 22px;
+  padding-right: 22px;
+  max-width: 1200px;
+}
+.custom-fields-section .cf-widget-items-wrapper {
+  margin: auto;
+  padding-left: 22px;
+  padding-right: 22px;
+  max-width: 1200px;
+}
+.custom-fields-section .custom-fields-section__item > div {
+  margin-bottom: 8rem;
+}
+@media screen and (min-width: 749px) {
+  .custom-fields-section .custom-field {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+  .custom-fields-section .cf-widget-items-wrapper {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+
+/**
+ * Accordion Widget CSS.
+ */
+.cf-widget__accordion .inner {
+  overflow: hidden;
+}
+.cf-widget__accordion .inner-padding {
+  padding: 0.5rem 2rem 2rem 2rem;
+}
+.cf-widget__accordion .cf-accordion-title {
+  padding: 0.9rem 2.9rem 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 100%;
+  transition: all 0.25s;
+  position: relative;
+  cursor: pointer;
+}
+.cf-widget__accordion .cf-accordion-title:hover {
+  opacity: 0.7;
+}
+.cf-widget__accordion .cf-accordion-title:after {
+  display: block;
+  content: "";
+  background-image: url("cf-arrow-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 24.8888888889px;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  transform: rotateZ(-90deg);
+  transition: all 0.2s;
+}
+.cf-widget__accordion .cf-widget-item {
+  background-color: #f4f4f4;
+  margin-bottom: 5px;
+}
+.cf-widget__accordion .cf-widget-item.closed .cf-accordion-title:after {
+  transform: rotateZ(90deg);
+}
+.cf-widget__accordion.force-one-open[data-open-count="1"] .cf-widget-item:not(.closed) .cf-accordion-title {
+  pointer-events: none;
+  cursor: default;
+}

@@ -1,6 +1,6 @@
 development:
   password: ${SHOPIFY_API_PASSWORD}
-  theme_id: ${DEVELOPMENT_THEME_ID}
+  theme_id: 120498683998
   store: patricksherwin.myshopify.com
   ignore_files:
     - "*.gif"
@@ -17,7 +17,7 @@ staging:
   
 production:
   password: ${SHOPIFY_API_PASSWORD}
-  theme_id: ${PRODUCTION_THEME_ID}
+  theme_id: 80319053918
   store: patricksherwin.myshopify.com
   ignore_files:
     - "settings_data.json"

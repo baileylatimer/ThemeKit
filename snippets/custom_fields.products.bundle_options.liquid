@@ -1,0 +1,16 @@
+{% if product.metafields.custom_fields["bundle_options"] != blank %}
+  <div class="custom-field custom-field__bundle-options custom-field__type--product-reference">
+    <h3 class="custom-field--title">Bundle Options</h3>
+    <div class="custom-field--value">  
+    {% assign product_refs = product.metafields.custom_fields["bundle_options"] | split: "|" %}
+      <ul>
+        {% for product_handle in product_refs %}
+          <li>
+            {% assign product_ref = all_products[product_handle] %}
+            {{ product_ref.title | link_to: product_ref.url }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

@@ -1,5 +1,4 @@
-
-
+{% render 'shogun-products', content: product %}
 <progress aria-hidden="true" class="reset reading-progressbar reading-progressbar--is-hidden js-reading-progressbar" max="100" value="0">
   <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
 </progress>
@@ -11,7 +10,7 @@
 
 {{product.metafields.shogun.above}}
 
-{% include 'shogun-products', content: product %}
+
 
 {% comment %}
   The contents of the product.liquid template can be found in /sections/product-template.liquid

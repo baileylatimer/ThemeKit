@@ -207,7 +207,7 @@
             {% elsif product.metafields.custom_fields["partners_platform"] != blank %}
               {% include 'components_buttons_partners' with 'product' %}
             {% else %}
-            <div class="display@lg"> {% include 'product-form' with 'product' %}</div>
+             {% include 'product-form' with 'product' %}
           {% endif %}
 
           {% if product.available %}
