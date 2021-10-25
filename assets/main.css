@@ -1095,7 +1095,7 @@ u {
     filter: invert(56%) sepia(19%) saturate(306%) hue-rotate(177deg) brightness(91%) contrast(87%); }
 
 :root {
-  --btn-font-size: 2rem;
+  --btn-font-size: var(--text-md);
   --btn-font-size-sm: 0.8em;
   --btn-font-size-md: 1em;
   --btn-font-size-lg: 1.2em;
@@ -1124,7 +1124,7 @@ a.btn {
   text-decoration: none;
   box-shadow: 0px 2px 8px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12), 0px 1px 1px 0 hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.12);
   transition: all 0.3s ease;
-  font-size: var(--btn-font-size, 2rem);
+  font-size: var(--btn-font-size) !important;
   padding: var(--btn-padding-y, 0.5em) var(--btn-padding-x, 0.75em);
   border-radius: var(--btn-radius, 0.25em);
   overflow: hidden !important;
